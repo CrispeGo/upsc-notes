@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="hi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>भारतीय रेल अर्थशास्त्र — Mind Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #0d0d0d;
+    --bg2:     #141414;
+    --bg3:     #1a1a1a;
+    --border:  rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.14);
+    --text:    #e8e4dc;
+    --muted:   #777770;
+    --accent:  #e8793c;
+    --accent2: #f0a855;
+    --green:   #5aad7a;
+    --red:     #d95050;
+    --blue:    #4a8fd4;
+    --purple:  #8a72d4;
+    --teal:    #3ea8a0;
+    --gold:    #c9a227;
+    --nav-h:   60px;
+    --zoom:    1;
+  }
+
+  /* Light mode override — user can toggle */
+  [data-theme="light"] {
+    --bg:      #f5f1eb;
+    --bg2:     #ffffff;
+    --bg3:     #faf8f5;
+    --border:  rgba(0,0,0,0.08);
+    --border2: rgba(0,0,0,0.14);
+    --text:    #1a1714;
+    --muted:   #888880;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-size: calc(13px * var(--zoom));
+    transition: font-size 0.2s ease;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ══════════════════════════════
+     NAV
+  ══════════════════════════════ */
+  nav {
+    background: #0a0e14;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    border-bottom: 2px solid var(--accent);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+  }
+  [data-theme="light"] nav { background: #1e2d45; }
+
+  .nav-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .nav-left { display: flex; align-items: center; gap: 0.65rem; min-width: 0; }
+
+  .back-btn {
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .back-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+  .back-btn svg { width: 15px; height: 15px; }
+
+  .nav-brand { display: flex; flex-direction: column; min-width: 0; }
+  .nav-brand-top {
+    font-size: 0.6rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-brand-bottom {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'Noto Serif Devanagari', serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-right { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+
+  .zoom-group {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.11);
+    border-radius: 9px;
+    padding: 3px;
+  }
+  .zoom-btn {
+    width: 27px; height: 27px;
+    background: transparent; border: none;
+    border-radius: 6px;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 600;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .zoom-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+  .zoom-label {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.45);
+    min-width: 30px;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .ctrl-btn {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    color: rgba(255,255,255,0.7);
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.16); color: #fff; }
+  .ctrl-btn svg { width: 14px; height: 14px; }
+
+  /* ══════════════════════════════
+     PAGE WRAPPER
+  ══════════════════════════════ */
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  /* ══════════════════════════════
+     HEADER
+  ══════════════════════════════ */
+  .header {
+    text-align: center;
+    padding: 1.5rem 1rem 1.25rem;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 1.5rem;
+    position: relative;
+    border-radius: 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(232,121,60,0.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .header-loco { font-size: 2rem; margin-bottom: 0.4rem; display: block; }
+  .header h1 {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+  }
+  .header p {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ══════════════════════════════
+     GRID
+  ══════════════════════════════ */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+
+  /* ══════════════════════════════
+     CARD
+  ══════════════════════════════ */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    animation: cardIn 0.35s ease both;
+  }
+  .card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  @keyframes cardIn {
+    from { opacity:0; transform: translateY(12px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .card:nth-child(1) { animation-delay:0.04s }
+  .card:nth-child(2) { animation-delay:0.08s }
+  .card:nth-child(3) { animation-delay:0.12s }
+  .card:nth-child(4) { animation-delay:0.16s }
+  .card:nth-child(5) { animation-delay:0.20s }
+  .card:nth-child(6) { animation-delay:0.24s }
+  .card:nth-child(7) { animation-delay:0.28s }
+  .card:nth-child(8) { animation-delay:0.32s }
+  .card:nth-child(9) { animation-delay:0.36s }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2.5px;
+  }
+  .c1::before { background: var(--blue); }
+  .c2::before { background: var(--gold); }
+  .c3::before { background: var(--green); }
+  .c4::before { background: var(--accent); }
+  .c5::before { background: var(--purple); }
+  .c6::before { background: var(--red); }
+  .c7::before { background: var(--teal); }
+  .c8::before { background: var(--accent2); }
+  .c9::before { background: var(--green); }
+
+  /* span variants */
+  .wide { grid-column: span 3; }
+  .two  { grid-column: span 2; }
+
+  /* ── Card Header ── */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+  .card-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .c1 .card-num { background: rgba(74,143,212,0.18); color: var(--blue); }
+  .c2 .card-num { background: rgba(201,162,39,0.18); color: var(--gold); }
+  .c3 .card-num { background: rgba(90,173,122,0.18); color: var(--green); }
+  .c4 .card-num { background: rgba(232,121,60,0.18); color: var(--accent); }
+  .c5 .card-num { background: rgba(138,114,212,0.18); color: var(--purple); }
+  .c6 .card-num { background: rgba(217,80,80,0.18); color: var(--red); }
+  .c7 .card-num { background: rgba(62,168,160,0.18); color: var(--teal); }
+  .c8 .card-num { background: rgba(240,168,85,0.18); color: var(--accent2); }
+  .c9 .card-num { background: rgba(90,173,122,0.18); color: var(--green); }
+
+  .card-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .card-title span {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 1px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── Items ── */
+  .items { list-style: none; }
+  .items li {
+    padding: 0.32rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0.45rem;
+    align-items: flex-start;
+    font-size: 0.8rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  [data-theme="light"] .items li { color: #444; }
+  .items li:last-child { border-bottom: none; }
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-top: 0.37rem;
+    flex-shrink: 0;
+  }
+  .c1 .dot { background: var(--blue); }
+  .c2 .dot { background: var(--gold); }
+  .c3 .dot { background: var(--green); }
+  .c4 .dot { background: var(--accent); }
+  .c5 .dot { background: var(--purple); }
+  .c6 .dot { background: var(--red); }
+  .c7 .dot { background: var(--teal); }
+  .c8 .dot { background: var(--accent2); }
+  .c9 .dot { background: var(--green); }
+
+  .items li b { color: var(--text); font-weight: 600; }
+  .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    padding: 0 4px;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-left: 2px;
+    font-weight: 400;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+  [data-theme="light"] .tag { background: rgba(0,0,0,0.06); }
+
+  /* ── Subsection label ── */
+  .sub {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0.6rem 0 0.3rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── Stats pills ── */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.3rem;
+  }
+  .stat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.73rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .stat b { color: var(--accent2); }
+
+  /* ── Quote box ── */
+  .quote {
+    background: var(--bg3);
+    border-left: 2px solid var(--accent2);
+    border-radius: 0 6px 6px 0;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.78rem;
+    color: #bbb;
+    line-height: 1.55;
+    font-style: italic;
+    margin: 0.45rem 0;
+  }
+  [data-theme="light"] .quote { color: #555; background: #f0ede6; }
+
+  /* ── Cycle box ── */
+  .cycle {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.6rem 0.75rem;
+    margin: 0.45rem 0;
+    font-size: 0.73rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.9;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cycle .step { color: var(--text); font-weight: 500; font-size: 0.78rem; }
+  .cycle .arrow { color: var(--red); font-size: 0.85rem; }
+
+  /* ── Cross-subsidy inline box ── */
+  .xsub-box {
+    font-size: 0.76rem;
+    color: #ccc;
+    margin-top: 0.3rem;
+    line-height: 1.65;
+    background: var(--bg3);
+    padding: 0.45rem 0.6rem;
+    border-radius: 5px;
+  }
+  [data-theme="light"] .xsub-box { color: #555; background: #f0ede6; }
+
+  /* ── 360 dim grid ── */
+  .dim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+    margin-top: 0.35rem;
+  }
+  .dim-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.45rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  .dim-box .dim-head {
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+  .dim-box ul { padding-left: 0.9rem; color: var(--muted); }
+  .dim-box ul li { font-size: 0.72rem; margin-bottom: 1px; line-height: 1.45; }
+  .green-text { color: var(--green); font-size: 0.7rem; font-weight: 600; }
+  .red-text   { color: var(--red);   font-size: 0.7rem; font-weight: 600; margin-top: 0.2rem; }
+
+  /* ══════════════════════════════
+     CONCLUSION
+  ══════════════════════════════ */
+  .conclusion {
+    background: linear-gradient(135deg, rgba(232,121,60,0.07) 0%, rgba(201,162,39,0.04) 100%);
+    border: 1px solid rgba(232,121,60,0.22);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    grid-column: span 3;
+    text-align: center;
+  }
+  .conclusion h3 {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .conclusion .sub-text {
+    font-size: 0.82rem;
+    color: #ccc;
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  [data-theme="light"] .conclusion .sub-text { color: #444; }
+  .tri {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+  .tri-item {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 9px;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-align: center;
+    min-width: 150px;
+    flex: 1;
+    max-width: 200px;
+  }
+  .tri-item .ti { font-size: 1.3rem; display: block; margin-bottom: 0.2rem; }
+  .conclusion .footer-quote {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.75rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+  [data-theme="light"] .conclusion .footer-quote { color: #777; }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  footer b { color: var(--accent); }
+
+  /* ══════════════════════════════
+     RESPONSIVE BREAKPOINTS
+  ══════════════════════════════ */
+
+  /* Tablet: 2 columns */
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .wide { grid-column: span 2; }
+    .two  { grid-column: span 2; }
+    .conclusion { grid-column: span 2; }
+  }
+
+  /* Mobile: 1 column */
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    .wide, .two, .conclusion { grid-column: span 1; }
+    .dim-grid { grid-template-columns: 1fr; }
+    .tri-item { max-width: 100%; flex: 1 1 100%; }
+    .zoom-label { display: none; }
+    .nav-brand-top { display: none; }
+  }
+
+  @media (max-width: 380px) {
+    .page { padding: 0.75rem 0.65rem 3rem; }
+    .card { padding: 0.7rem 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="../../index.html" class="back-btn" title="Dashboard पर जाएं">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      </a>
+      <div class="nav-brand">
+        <span class="nav-brand-top">Indian Economy → Infrastructure</span>
+        <span class="nav-brand-bottom">🚂 भारतीय रेल — Mind Map</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="zoom-group">
+        <button class="zoom-btn" id="zoomOut">−</button>
+        <span class="zoom-label" id="zoomLabel">100%</span>
+        <button class="zoom-btn" id="zoomIn">+</button>
+      </div>
+      <button class="ctrl-btn" id="themeToggle" title="Theme बदलें">
+        <svg id="themeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="header-loco">🚂</span>
+    <h1>भारतीय रेल अर्थशास्त्र</h1>
+    <p>UPSC IAS — एक नज़र में सम्पूर्ण विश्लेषण &nbsp;|&nbsp; Quick Revision Mind Map</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- CARD 1: INTRODUCTION -->
+    <div class="card c1">
+      <div class="card-header">
+        <div class="card-num">1</div>
+        <div class="card-title">परिभाषा और परिचय
+          <span>Introduction & Core Concepts</span>
+        </div>
+      </div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>रेल अर्थशास्त्र</b> = संसाधन आवंटन, वितरण, मूल्य-निर्धारण का अध्ययन</div></li>
+        <li><span class="dot"></span><div><b>प्राकृतिक एकाधिकार</b> <span class="tag">Natural Monopoly</span> — पटरी बिछाना बेहद महंगा → समानांतर track अव्यावहारिक</div></li>
+        <li><span class="dot"></span><div><b>उच्च स्थिर लागत</b> + <b>निम्न परिवर्तनीय लागत</b> → पैमाने की बचत <span class="tag">Economies of Scale</span></div></li>
+        <li><span class="dot"></span><div><b>सामाजिक-आर्थिक संस्था</b> — लाभ + सार्वजनिक सेवा दोनों</div></li>
+      </ul>
+      <div class="sub" style="margin-top:0.5rem">राजस्व स्रोत</div>
+      <ul class="items">
+        <li><span class="dot"></span><div>यात्री किराया <span class="tag">~30%</span> + मालभाड़ा <span class="tag">~65-70%</span> + गैर-किराया</div></li>
+      </ul>
+    </div>
+
+    <!-- CARD 2: HISTORY -->
+    <div class="card c2">
+      <div class="card-header">
+        <div class="card-num">2</div>
+        <div class="card-title">आर्थिक इतिहास
+          <span>Historical Background</span>
+        </div>
+      </div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>1853</b> — बॉम्बे-ठाणे, ब्रिटिश पूंजी, <b>निष्कासनात्मक</b> अर्थशास्त्र<br><span style="color:var(--muted);font-size:0.72rem">कच्चा माल बंदरगाह तक भेजना</span></div></li>
+        <li><span class="dot"></span><div><b>1950</b> — राष्ट्रीयकरण → पंचवर्षीय योजना में प्राथमिकता<br><span style="color:var(--muted);font-size:0.72rem">सामाजिक दायित्व बढ़ते गए</span></div></li>
+        <li><span class="dot"></span><div><b>1991 के बाद</b> — वाणिज्यिक दृष्टिकोण का दबाव</div></li>
+        <li><span class="dot"></span><div><b>2017</b> — रेल बजट का आम बजट में विलय → वित्तीय अनुशासन</div></li>
+      </ul>
+      <div class="sub" style="margin-top:0.5rem">क्रॉस-सब्सिडी का सार</div>
+      <div class="xsub-box">
+        यात्री किराया कम <span style="color:var(--red)">↓</span> → माल भाड़ा ऊंचा <span style="color:var(--accent)">↑</span><br>
+        उद्योग रेलवे छोड़ें → राजस्व घटे → दुष्चक्र
+      </div>
+    </div>
+
+    <!-- CARD 3: PRELIMS FACTS -->
+    <div class="card c3">
+      <div class="card-header">
+        <div class="card-num">3</div>
+        <div class="card-title">Prelims फैक्ट-शीट
+          <span>Key Numbers & Facts</span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">स्थापना <b>1853</b></div>
+        <div class="stat">नेटवर्क <b>68,000 km</b></div>
+        <div class="stat">विश्व में <b>4th</b> सबसे बड़ा</div>
+        <div class="stat">कर्मचारी <b>12 लाख</b></div>
+        <div class="stat">यात्री/वर्ष <b>800 करोड़+</b></div>
+        <div class="stat">माल ढुलाई <b>160 करोड़ टन</b></div>
+        <div class="stat">विद्युतीकरण <b>94%+</b></div>
+        <div class="stat">OR <b>98.32%</b> (FY25)</div>
+        <div class="stat">Budget <b>₹2.5 लाख Cr</b></div>
+        <div class="stat">पेंशन <b>₹58,844 Cr</b></div>
+        <div class="stat">Kavach <b>1,306 km</b></div>
+        <div class="stat">संविधान सूची <b>Union Entry 22</b></div>
+      </div>
+      <div class="sub" style="margin-top:0.5rem">समितियां</div>
+      <ul class="items">
+        <li><span class="dot"></span><div>बिबेक देबरॉय <span class="tag">2014</span> वित्तीय सुधार</div></li>
+        <li><span class="dot"></span><div>काकोदकर <span class="tag">1986</span> दुर्घटनाएं</div></li>
+        <li><span class="dot"></span><div>प्रकाश तिवारी <span class="tag">2012</span> सुरक्षा</div></li>
+      </ul>
+    </div>
+
+    <!-- CARD 4: CURRENT CONTEXT -->
+    <div class="card c4">
+      <div class="card-header">
+        <div class="card-num">4</div>
+        <div class="card-title">चर्चा में क्यों?
+          <span>Current Context</span>
+        </div>
+      </div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>रिकॉर्ड निवेश vs वित्तीय संकट</b> — यही विरोधाभास है</div></li>
+        <li><span class="dot"></span><div><b>DFC</b> — Logistics लागत GDP 14% → single digit करने की उम्मीद → Make in India को बल</div></li>
+        <li><span class="dot"></span><div><b>Operating Ratio 98%+</b> — खुद के पास modernization के लिए पैसे नहीं</div></li>
+        <li><span class="dot"></span><div><b>कोयले पर 50% निर्भरता</b> — Renewable energy बढ़ी तो यह जोखिम बनेगा</div></li>
+        <li><span class="dot"></span><div><b>नई दिल्ली स्टेशन भगदड़ 2025</b> — Systemic Inertia का परिणाम</div></li>
+      </ul>
+    </div>
+
+    <!-- CARD 5: 360 ANALYSIS -->
+    <div class="card c5 two">
+      <div class="card-header">
+        <div class="card-num">5</div>
+        <div class="card-title">360° विश्लेषण — तार्किक प्रभाव
+          <span>Multi-dimensional Analysis</span>
+        </div>
+      </div>
+      <div class="dim-grid">
+        <div class="dim-box">
+          <div class="dim-head" style="color:var(--blue)">💰 आर्थिक</div>
+          <div class="green-text">✓ सकारात्मक</div>
+          <ul><li>Multiplier effect ~5x</li><li>Logistics 60-70% सस्ता</li><li>12L+ रोजगार</li></ul>
+          <div class="red-text">✗ चुनौती</div>
+          <ul><li>ऊंचा माल भाड़ा → निर्यात महंगा</li><li>अलाभकारी मार्ग जारी</li></ul>
+        </div>
+        <div class="dim-box">
+          <div class="dim-head" style="color:var(--green)">🤝 सामाजिक</div>
+          <div class="green-text">✓ सकारात्मक</div>
+          <ul><li>गरीबों की गतिशीलता</li><li>प्रवासियों की जीवन रेखा</li></ul>
+          <div class="red-text">✗ चुनौती</div>
+          <ul><li>कम दाम → मांग बेलगाम → भीड़</li><li>गुणवत्ता गिरती है</li></ul>
+        </div>
+        <div class="dim-box">
+          <div class="dim-head" style="color:var(--purple)">🗳️ राजनीतिक</div>
+          <div class="green-text">✓ सकारात्मक</div>
+          <ul><li>राष्ट्रीय एकीकरण</li><li>USBRL — कश्मीर कनेक्टिविटी</li></ul>
+          <div class="red-text">✗ चुनौती</div>
+          <ul><li>Populist फैसले</li><li>राजनीतिक नियुक्तियां</li></ul>
+        </div>
+        <div class="dim-box">
+          <div class="dim-head" style="color:var(--teal)">🌿 पर्यावरणीय</div>
+          <div class="green-text">✓ सकारात्मक</div>
+          <ul><li>सड़क से 75-80% कम CO₂</li><li>94% electrified</li><li>898 MW Solar</li></ul>
+          <div class="red-text">✗ चुनौती</div>
+          <ul><li>नई lines के लिए वन भूमि</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6: CHALLENGES -->
+    <div class="card c6">
+      <div class="card-header">
+        <div class="card-num">6</div>
+        <div class="card-title">चुनौतियाँ
+          <span>Logical Challenges</span>
+        </div>
+      </div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>क्रॉस-सब्सिडी trap</b> — माल हिस्सा 89% (1950) → 27% (आज)</div></li>
+        <li><span class="dot"></span><div><b>पेंशन बोझ</b> — राजस्व का 65-70% वेतन+पेंशन में; 2027 तक ₹74,500 Cr</div></li>
+        <li><span class="dot"></span><div><b>Route Saturation</b> — मुख्य मार्ग 115-150% क्षमता पर; मालगाड़ी avg 25 km/h</div></li>
+        <li><span class="dot"></span><div><b>Elite Skew</b> — Vande Bharat focus vs साधारण class demand 17% बढ़ी</div></li>
+        <li><span class="dot"></span><div><b>Kavach gap</b> — 68,000 km में से मात्र 1,306 km covered</div></li>
+        <li><span class="dot"></span><div><b>PPP विफलता</b> — स्पष्ट नीति + नियामक ढांचे के अभाव में निवेश नहीं आता</div></li>
+      </ul>
+    </div>
+
+    <!-- CARD 7: GOVT INITIATIVES -->
+    <div class="card c7">
+      <div class="card-header">
+        <div class="card-num">7</div>
+        <div class="card-title">सरकार के कदम
+          <span>Government Initiatives</span>
+        </div>
+      </div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>NRP 2030</b> — 2050 तक 45% freight share; speed 50 km/h; भाड़ा 30% कम</div></li>
+        <li><span class="dot"></span><div><b>DFC</b> — पूर्वी+पश्चिमी गलियारा; World Bank सहयोग</div></li>
+        <li><span class="dot"></span><div><b>कवच</b> — स्वदेशी ATP; 2 km range; SIL-4 certified; टक्कर रोको</div></li>
+        <li><span class="dot"></span><div><b>Amrit Bharat Station</b> — 1,300+ stations का कायाकल्प</div></li>
+        <li><span class="dot"></span><div><b>Vande / Amrit Bharat</b> — Semi-high speed + sleeper; Made in India</div></li>
+        <li><span class="dot"></span><div><b>SwaRail App</b> — IRCTC+UTS+Rail Madad एक जगह; 1.5L tickets/day</div></li>
+        <li><span class="dot"></span><div><b>विद्युतीकरण</b> — 94%+; Net Zero 2030 target</div></li>
+        <li><span class="dot"></span><div><b>Bio-Toilets</b> — DRDO; पटरी पर कचरा नहीं</div></li>
+        <li><span class="dot"></span><div><b>Flexi-Fare</b> — Shatabdi/Rajdhani में airline model</div></li>
+      </ul>
+    </div>
+
+    <!-- CARD 8: MAINS VALUE ADDITION -->
+    <div class="card c8 two">
+      <div class="card-header">
+        <div class="card-num">8</div>
+        <div class="card-title">Mains Value Addition — Quotes + Case Study
+          <span>Answer Writing Edge</span>
+        </div>
+      </div>
+      <div class="quote">
+        "रेलवे को सिर्फ दुकान समझो → बंद होगी। सिर्फ सेवा समझो → देश डूबेगा। रास्ता बीच का है — सामाजिक जिम्मेदारी + कमाई।"
+      </div>
+      <div class="quote">
+        "Public utility की कीमत = लागत और समाज की सहनशक्ति के बीच का खिंचाव।"
+      </div>
+      <div class="sub" style="margin-top:0.5rem">Case Study — छठ पूजा भीड़ (Oct-Nov 2025)</div>
+      <div class="dim-grid" style="margin-top:0.35rem">
+        <div class="dim-box">
+          <div class="dim-head" style="color:var(--accent2)">अर्थशास्त्र</div>
+          <ul>
+            <li>Demand Shock → तय supply</li>
+            <li>Controlled fares → Price rationing ✗</li>
+            <li>नतीजा → Rationing by Congestion ✓</li>
+          </ul>
+        </div>
+        <div class="dim-box">
+          <div class="dim-head" style="color:var(--accent2)">असली सीख</div>
+          <ul>
+            <li>Neo-liberal: किराया बढ़ाओ → गरीब घर नहीं जाएगा ✗</li>
+            <li>सस्ती सेवा = Public Investment ज़रूरी</li>
+            <li>कम किराया बिना capacity = टालमटोल</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sub" style="margin-top:0.5rem">दुष्चक्र — परीक्षा में ज़रूर बनाओ</div>
+      <div class="cycle">
+        <span class="step">राजनीतिक दबाव</span>
+        <span class="arrow"> → </span>
+        <span class="step">कम किराया</span>
+        <span class="arrow"> → </span>
+        <span class="step">ऊंचा माल भाड़ा</span>
+        <span class="arrow"> → </span>
+        <span class="step">उद्योग सड़क पर</span>
+        <span class="arrow"> → </span>
+        <span class="step">राजस्व घटा</span>
+        <span class="arrow"> → </span>
+        <span class="step">Modernization नहीं</span>
+        <span class="arrow"> → </span>
+        <span class="step">सेवा खराब</span>
+        <span class="arrow"> → </span>
+        <span class="step" style="color:var(--red)">और दबाव ↺</span>
+      </div>
+    </div>
+
+    <!-- CARD 9: WAY FORWARD -->
+    <div class="card c9">
+      <div class="card-header">
+        <div class="card-num">9</div>
+        <div class="card-title">आगे की राह
+          <span>Way Forward</span>
+        </div>
+      </div>
+      <div class="sub">वित्तीय</div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>Direct Subsidy</b> — Cross-subsidy पारदर्शी बनाओ (Debroy Committee)</div></li>
+        <li><span class="dot"></span><div><b>TOD</b> — Japan JR model; स्टेशन के आसपास commercial hub</div></li>
+        <li><span class="dot"></span><div><b>NPS</b> — नए कर्मचारियों पर; पेंशन बोझ घटाओ</div></li>
+      </ul>
+      <div class="sub" style="margin-top:0.4rem">क्षमता</div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>Freight Diversification</b> — कोयले की जगह FMCG/Auto/Container</div></li>
+        <li><span class="dot"></span><div><b>Mission Raftaar</b> — 160-200 km/h; track+signal upgrade</div></li>
+        <li><span class="dot"></span><div><b>Kavach</b> — जल्दी rollout; Safety = Investment, Cost नहीं</div></li>
+      </ul>
+      <div class="sub" style="margin-top:0.4rem">समावेश + नियामक</div>
+      <ul class="items">
+        <li><span class="dot"></span><div><b>साधारण class</b> बढ़ाओ — रेलवे का core purpose मत भूलो</div></li>
+        <li><span class="dot"></span><div><b>USBRL model</b> — पूर्वोत्तर+आदिवासी इलाके</div></li>
+        <li><span class="dot"></span><div><b>IRRA</b> — Independent regulator; किराया, access, standards</div></li>
+      </ul>
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="conclusion">
+      <h3>निष्कर्ष — त्रिवेणी (Confluence)</h3>
+      <p class="sub-text">
+        रेलवे एक <b style="color:var(--accent)">ज़िंदा विरोधाभास</b> है — दुनिया का सबसे सस्ता, फिर भी वित्तीय रूप से कमज़ोर।
+        इसे <b style="color:var(--accent2)">"विभाग"</b> नहीं, <b style="color:var(--accent2)">"विकास का इंजन"</b> मानना होगा।
+      </p>
+      <div class="tri">
+        <div class="tri-item">
+          <span class="ti">⚖️</span>
+          <b>सामाजिक जिम्मेदारी</b><br>
+          <span style="font-size:0.72rem;color:var(--muted)">गरीबों को सस्ता transport</span>
+        </div>
+        <div class="tri-item" style="border-color:var(--accent);background:rgba(232,121,60,0.07)">
+          <span class="ti">🔗</span>
+          <b style="color:var(--accent)">+</b>
+          <span style="font-size:0.72rem;color:var(--muted);display:block">यही त्रिवेणी है</span>
+          <span style="font-size:0.68rem;color:var(--muted)">Viksit Bharat @2047</span>
+        </div>
+        <div class="tri-item">
+          <span class="ti">📈</span>
+          <b>वाणिज्यिक व्यवहार्यता</b><br>
+          <span style="font-size:0.72rem;color:var(--muted)">कमाई हो, घाटा नहीं</span>
+        </div>
+        <div class="tri-item">
+          <span class="ti">🛡️</span>
+          <b>सुरक्षा सर्वोच्च</b><br>
+          <span style="font-size:0.72rem;color:var(--muted)">Kavach, signalling</span>
+        </div>
+      </div>
+      <p class="footer-quote">
+        "जब public infrastructure कमज़ोर पड़ती है, सबसे पहले गरीब टूटता है।<br>
+        रेलवे का पुनरुद्धार आर्थिक आवश्यकता नहीं — <b style="color:var(--accent)">सामाजिक अनिवार्यता</b> है।"
+      </p>
+    </div>
+
+  </div><!-- /grid -->
+
+  <footer>
+    <b>भारतीय रेल अर्थशास्त्र — UPSC IAS Mains GS-3</b> &nbsp;|&nbsp; Manash Rathore
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  // ── Zoom ──
+  const ZOOM_LEVELS = [0.65, 0.75, 0.85, 1.0, 1.1, 1.2, 1.35, 1.5];
+  let zoomIndex = 3; // 100%
+  function applyZoom() {
+    const z = ZOOM_LEVELS[zoomIndex];
+    document.documentElement.style.setProperty('--zoom', z);
+    document.getElementById('zoomLabel').textContent = Math.round(z * 100) + '%';
+    localStorage.setItem('upsc_zoom', zoomIndex);
+  }
+  document.getElementById('zoomIn').addEventListener('click', () => {
+    if (zoomIndex < ZOOM_LEVELS.length - 1) { zoomIndex++; applyZoom(); }
+  });
+  document.getElementById('zoomOut').addEventListener('click', () => {
+    if (zoomIndex > 0) { zoomIndex--; applyZoom(); }
+  });
+  const savedZoom = localStorage.getItem('upsc_zoom');
+  if (savedZoom !== null) { zoomIndex = parseInt(savedZoom); applyZoom(); }
+
+  // ── Theme (this page defaults dark, but respects localStorage) ──
+  const MOON = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>`;
+  const SUN  = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>`;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon   = document.getElementById('themeIcon');
+
+  // mind map default dark; but respect saved pref
+  let isDark = localStorage.getItem('upsc_theme') !== 'light';
+
+  function applyTheme(dark) {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeIcon.innerHTML = dark ? SUN : MOON;
+    localStorage.setItem('upsc_theme', dark ? 'dark' : 'light');
+  }
+  applyTheme(isDark);
+  themeToggle.addEventListener('click', () => { isDark = !isDark; applyTheme(isDark); });
+</script>
+</body>
+</html>

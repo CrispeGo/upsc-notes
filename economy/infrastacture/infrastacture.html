@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure — Introduction | Indian Economy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── CSS VARIABLES (same system as dashboard) ── */
+        :root {
+            --bg: #f5f1eb;
+            --bg2: #ede8e0;
+            --surface: #ffffff;
+            --surface2: #faf8f5;
+            --border: #ddd8cf;
+            --text-primary: #1a1714;
+            --text-secondary: #5c5650;
+            --text-muted: #9c958e;
+            --accent: #b5832a;
+            --accent-light: #f3e8d0;
+            --accent-dark: #8a6018;
+            --navy: #1e2d45;
+            --nav-h: 60px;
+            --sidebar-w: 260px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+            --zoom: 1;
+        }
+        [data-theme="dark"] {
+            --bg: #111418;
+            --bg2: #181d24;
+            --surface: #1e2530;
+            --surface2: #242c3a;
+            --border: #2e3848;
+            --text-primary: #e8e4dc;
+            --text-secondary: #a8a09a;
+            --text-muted: #5e6a7a;
+            --accent: #d4a843;
+            --accent-light: #2a2218;
+            --accent-dark: #f0c060;
+            --navy: #c5d5f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.30);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.40);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.50);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            font-size: calc(16px * var(--zoom));
+            transition: font-size 0.2s ease;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--navy);
+            height: var(--nav-h);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+        }
+        [data-theme="dark"] nav { background: #0d1117; }
+
+        .nav-inner {
+            width: 100%;
+            padding: 0 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .back-btn {
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+        .back-btn svg { width: 16px; height: 16px; }
+
+        .nav-breadcrumb {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .nav-bc-top {
+            font-size: 0.65rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .nav-bc-bottom {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .zoom-group {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 3px;
+        }
+        .zoom-btn {
+            width: 28px; height: 28px;
+            background: transparent; border: none;
+            border-radius: 6px;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 600;
+            transition: all 0.15s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .zoom-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .zoom-label {
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.5);
+            min-width: 32px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .ctrl-btn {
+            width: 34px; height: 34px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.75);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+        .ctrl-btn svg { width: 15px; height: 15px; }
+
+        /* Hamburger for mobile sidebar */
+        .sidebar-toggle {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .sidebar-toggle { display: flex; }
+        }
+
+        /* ── LAYOUT ── */
+        .layout {
+            display: flex;
+            position: relative;
+        }
+
+        /* ── SIDEBAR ── */
+        aside {
+            width: var(--sidebar-w);
+            flex-shrink: 0;
+            background: var(--surface);
+            border-right: 1.5px solid var(--border);
+            height: calc(100vh - var(--nav-h));
+            position: sticky;
+            top: var(--nav-h);
+            overflow-y: auto;
+            padding: 1.5rem 1rem;
+            transition: transform 0.3s ease, background 0.3s;
+            z-index: 50;
+        }
+
+        aside::-webkit-scrollbar { width: 4px; }
+        aside::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+        .sidebar-head {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-subject {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .sidebar-chapter {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .sidebar-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            padding-left: 0.25rem;
+        }
+
+        .topic-list { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+        .topic-list a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.6rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .topic-list a:hover {
+            background: var(--accent-light);
+            color: var(--text-primary);
+        }
+        .topic-list a.active {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            font-weight: 600;
+            border-left: 3px solid var(--accent);
+            padding-left: calc(0.6rem - 3px);
+        }
+        [data-theme="dark"] .topic-list a.active { color: var(--accent); }
+        .topic-num {
+            font-size: 0.68rem;
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--bg2);
+            color: var(--text-muted);
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+        .topic-list a.active .topic-num {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* Mobile sidebar overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 49;
+        }
+        @media (max-width: 768px) {
+            aside {
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                height: calc(100vh - var(--nav-h));
+                transform: translateX(-100%);
+                box-shadow: var(--shadow-lg);
+            }
+            aside.open {
+                transform: translateX(0);
+            }
+            .sidebar-overlay.open { display: block; }
+        }
+
+        /* ── MAIN CONTENT ── */
+        main {
+            flex: 1;
+            min-width: 0;
+            padding: 2.5rem 1.5rem;
+            background: var(--surface);
+            min-height: calc(100vh - var(--nav-h));
+            transition: background 0.3s;
+        }
+        @media (min-width: 1024px) { main { padding: 3rem 4rem; } }
+
+        .content-wrap { max-width: 740px; }
+
+        /* ── ARTICLE TYPOGRAPHY ── */
+        .article-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .article-eyebrow span { opacity: 0.5; }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-tagline {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .article-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            margin-bottom: 2.5rem;
+            border-radius: 2px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+            animation: fadeUp 0.4s ease both;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .section:nth-child(1) { animation-delay: 0.05s; }
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.15s; }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .section-num {
+            width: 30px; height: 30px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            flex-shrink: 0;
+        }
+
+        p {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* Info cards (replacing plain ul/li) */
+        .info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .info-card {
+            background: var(--surface2);
+            border: 1.5px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            padding: 0.9rem 1.1rem;
+            transition: box-shadow 0.2s;
+        }
+        .info-card:hover { box-shadow: var(--shadow-md); }
+        .info-card-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .info-card-body {
+            font-family: 'Lora', serif;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Color variants */
+        .info-card.blue  { border-left-color: #2563eb; }
+        .info-card.blue  .info-card-title { color: #2563eb; }
+        [data-theme="dark"] .info-card.blue .info-card-title { color: #60a5fa; }
+        .info-card.green { border-left-color: #16a34a; }
+        .info-card.green .info-card-title { color: #16a34a; }
+        [data-theme="dark"] .info-card.green .info-card-title { color: #4ade80; }
+
+        /* Highlight box */
+        .highlight-box {
+            background: var(--accent-light);
+            border: 1.5px solid var(--accent);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .highlight-box .hb-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .highlight-box p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); }
+        [data-theme="dark"] .highlight-box { background: #2a2218; border-color: #7a5515; }
+
+        /* Bullet list - styled */
+        .styled-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-bottom: 1rem;
+        }
+        .styled-list li {
+            display: flex;
+            gap: 0.6rem;
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+        .styled-list li::before {
+            content: '▸';
+            color: var(--accent);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+        }
+
+        /* ── NEXT / PREV NAV ── */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3.5rem;
+            padding-top: 1.5rem;
+            border-top: 1.5px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .page-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.25rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .page-nav-btn svg { width: 16px; height: 16px; }
+        .page-nav-btn.prev {
+            background: var(--surface2);
+            border: 1.5px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .page-nav-btn.prev:hover { background: var(--bg2); color: var(--text-primary); }
+        .page-nav-btn.next {
+            background: var(--accent);
+            border: 1.5px solid var(--accent);
+            color: #fff;
+            margin-left: auto;
+        }
+        .page-nav-btn.next:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+        .page-nav-label { display: flex; flex-direction: column; }
+        .page-nav-hint { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 400; }
+
+        /* ── READING PROGRESS BAR ── */
+        #progressBar {
+            position: fixed;
+            top: calc(var(--nav-h) + 3px);
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            z-index: 200;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* ── MOBILE BOTTOM TOPIC SELECTOR ── */
+        .mobile-topic-bar {
+            display: none;
+            position: sticky;
+            top: var(--nav-h);
+            z-index: 40;
+            background: var(--surface);
+            border-bottom: 1.5px solid var(--border);
+            padding: 0.6rem 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .mobile-topic-select {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background: var(--surface2);
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            outline: none;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .mobile-topic-bar { display: block; }
+        }
+
+        /* ── RESPONSIVE TWEAKS ── */
+        @media (max-width: 640px) {
+            .zoom-label { display: none; }
+            main { padding: 1.5rem 1rem 3rem; }
+            .page-nav-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading Progress -->
+    <div id="progressBar"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <!-- Mobile: sidebar toggle -->
+                <button class="ctrl-btn sidebar-toggle" id="sidebarToggle" title="Topics">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                </button>
+
+                <!-- Back button -->
+                <a href="economy.html" class="back-btn" title="Back to Economy">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                </a>
+
+                <div class="nav-breadcrumb">
+                    <span class="nav-bc-top">Indian Economy → Infrastructure</span>
+                    <span class="nav-bc-bottom">1. Introduction</span>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <!-- Zoom -->
+                <div class="zoom-group">
+                    <button class="zoom-btn" id="zoomOut">−</button>
+                    <span class="zoom-label" id="zoomLabel">100%</span>
+                    <button class="zoom-btn" id="zoomIn">+</button>
+                </div>
+                <!-- Theme -->
+                <button class="ctrl-btn" id="themeToggle" title="Toggle Theme">
+                    <svg id="themeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Topic Bar -->
+    <div class="mobile-topic-bar">
+        <select class="mobile-topic-select" onchange="if(this.value) location.href=this.value">
+            <option value="infrastructure.html" selected>1. Introduction</option>
+            <option value="topic/railway.html">2. Railway</option>
+            <!-- ADD MORE OPTIONS HERE -->
+        </select>
+    </div>
+
+    <!-- Sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="layout">
+
+        <!-- ── SIDEBAR ── -->
+        <aside id="sidebar">
+            <div class="sidebar-head">
+                <span class="sidebar-subject">Indian Economy</span>
+                <span class="sidebar-chapter">Infrastructure</span>
+            </div>
+            <p class="sidebar-label">Topics</p>
+            <ul class="topic-list">
+                <li>
+                    <a href="infrastructure.html" class="active">
+                        <span class="topic-num">1</span>
+                        Introduction
+                    </a>
+                </li>
+                <li>
+                    <a href="topic/railway.html">
+                        <span class="topic-num">2</span>
+                        Railway
+                    </a>
+                </li>
+                <!-- ADD MORE TOPICS HERE -->
+            </ul>
+        </aside>
+
+        <!-- ── MAIN ── -->
+        <main>
+            <div class="content-wrap">
+
+                <!-- Article Header -->
+                <div class="article-eyebrow">
+                    <span>Indian Economy</span>
+                    <span>›</span>
+                    <span>Infrastructure</span>
+                </div>
+                <h1 class="article-title">Infrastructure in India</h1>
+                <p class="article-tagline">The backbone of economic and social development — understanding what drives India's growth engine.</p>
+                <div class="article-divider"></div>
+
+                <!-- ── SECTION 1 ── -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="section-num">1</span>
+                        Introduction
+                    </h2>
+
+                    <p>
+                        Infrastructure provides the <strong>supporting services</strong> in the main areas of industrial and agricultural production, domestic and foreign trade, and commerce.
+                    </p>
+
+                    <div class="highlight-box">
+                        <span class="hb-icon">💡</span>
+                        <p><strong>Key Idea:</strong> Infrastructure is not a direct productive sector — it enables and supports all other sectors. Think of it as the "foundation" on which the economy is built.</p>
+                    </div>
+
+                    <div class="info-cards">
+                        <div class="info-card blue">
+                            <div class="info-card-title">⚡ Economic Infrastructure</div>
+                            <p class="info-card-body">Energy, Transport, and Communication. Directly and immediately linked to the productive processes of the economy — enables production and trade.</p>
+                        </div>
+                        <div class="info-card green">
+                            <div class="info-card-title">🏫 Social Infrastructure</div>
+                            <p class="info-card-body">Education, Health, and Housing. Improves the quality and productivity of human resources — an indirect but equally vital contributor to growth.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ── ADD MORE SECTIONS BELOW ──
+                     Copy the .section block and fill in your own content.
+                     Use:
+                       <div class="section"> ... </div>            for each topic
+                       <h2 class="section-title"> ... </h2>        for headings
+                       <p> ... </p>                                 for paragraphs
+                       <div class="info-card"> ... </div>           for key points
+                       <div class="highlight-box"> ... </div>       for important notes
+                       <ul class="styled-list"> <li>...</li> </ul>  for bullet points
+                ── -->
+
+                <!-- Page Navigation -->
+                <div class="page-nav">
+                    <a href="economy.html" class="page-nav-btn prev">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        <div class="page-nav-label">
+                            <span class="page-nav-hint">Back to</span>
+                            Economy Overview
+                        </div>
+                    </a>
+                    <a href="topic/railway.html" class="page-nav-btn next">
+                        <div class="page-nav-label" style="text-align:right">
+                            <span class="page-nav-hint">Next Topic</span>
+                            Railway
+                        </div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ── Reading Progress ──
+        window.addEventListener('scroll', () => {
+            const doc = document.documentElement;
+            const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100;
+            document.getElementById('progressBar').style.width = Math.min(scrolled, 100) + '%';
+        });
+
+        // ── Sidebar (mobile) ──
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const toggleBtn = document.getElementById('sidebarToggle');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        });
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('open');
+        });
+
+        // ── Zoom ──
+        const ZOOM_LEVELS = [0.75, 0.85, 1.0, 1.1, 1.2, 1.35, 1.5];
+        let zoomIndex = 2;
+
+        function applyZoom() {
+            const z = ZOOM_LEVELS[zoomIndex];
+            document.documentElement.style.setProperty('--zoom', z);
+            document.getElementById('zoomLabel').textContent = Math.round(z * 100) + '%';
+            localStorage.setItem('upsc_zoom', zoomIndex);
+        }
+        document.getElementById('zoomIn').addEventListener('click', () => {
+            if (zoomIndex < ZOOM_LEVELS.length - 1) { zoomIndex++; applyZoom(); }
+        });
+        document.getElementById('zoomOut').addEventListener('click', () => {
+            if (zoomIndex > 0) { zoomIndex--; applyZoom(); }
+        });
+        const savedZoom = localStorage.getItem('upsc_zoom');
+        if (savedZoom !== null) { zoomIndex = parseInt(savedZoom); applyZoom(); }
+
+        // ── Theme ──
+        const MOON = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>`;
+        const SUN  = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>`;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon   = document.getElementById('themeIcon');
+        let isDark = localStorage.getItem('upsc_theme') === 'dark';
+
+        function applyTheme(dark) {
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            themeIcon.innerHTML = dark ? SUN : MOON;
+            localStorage.setItem('upsc_theme', dark ? 'dark' : 'light');
+        }
+        applyTheme(isDark);
+        themeToggle.addEventListener('click', () => { isDark = !isDark; applyTheme(isDark); });
+    </script>
+</body>
+</html>
