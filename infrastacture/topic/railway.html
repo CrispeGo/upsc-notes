@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>भारतीय रेल अर्थशास्त्र — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #141414;
+    --bg3: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.15);
+    --text: #e8e4dc;
+    --muted: #888880;
+    --accent: #e8793c;
+    --accent2: #f0a855;
+    --green: #5aad7a;
+    --red: #d95050;
+    --blue: #4a8fd4;
+    --purple: #8a72d4;
+    --teal: #3ea8a0;
+    --gold: #c9a227;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 16px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    padding: 20px 0 16px;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(232,121,60,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .header h1 {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+  .header p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .loco {
+    font-size: 28px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--border2); }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  /* color accents per card */
+  .c1::before { background: var(--blue); }
+  .c2::before { background: var(--gold); }
+  .c3::before { background: var(--green); }
+  .c4::before { background: var(--accent); }
+  .c5::before { background: var(--purple); }
+  .c6::before { background: var(--red); }
+  .c7::before { background: var(--teal); }
+  .c8::before { background: var(--accent2); }
+  .c9::before { background: var(--green); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .card-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .c1 .card-num { background: rgba(74,143,212,0.2); color: var(--blue); }
+  .c2 .card-num { background: rgba(201,162,39,0.2); color: var(--gold); }
+  .c3 .card-num { background: rgba(90,173,122,0.2); color: var(--green); }
+  .c4 .card-num { background: rgba(232,121,60,0.2); color: var(--accent); }
+  .c5 .card-num { background: rgba(138,114,212,0.2); color: var(--purple); }
+  .c6 .card-num { background: rgba(217,80,80,0.2); color: var(--red); }
+  .c7 .card-num { background: rgba(62,168,160,0.2); color: var(--teal); }
+  .c8 .card-num { background: rgba(240,168,85,0.2); color: var(--accent2); }
+  .c9 .card-num { background: rgba(90,173,122,0.2); color: var(--green); }
+
+  .card-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .card-title span {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  /* ── ITEMS ── */
+  .items { list-style: none; }
+  .items li {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 7px;
+    align-items: flex-start;
+    font-size: 12px;
+    color: #ccc;
+    line-height: 1.45;
+  }
+  .items li:last-child { border-bottom: none; }
+  .items li .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .c1 .dot { background: var(--blue); }
+  .c2 .dot { background: var(--gold); }
+  .c3 .dot { background: var(--green); }
+  .c4 .dot { background: var(--accent); }
+  .c5 .dot { background: var(--purple); }
+  .c6 .dot { background: var(--red); }
+  .c7 .dot { background: var(--teal); }
+  .c8 .dot { background: var(--accent2); }
+  .c9 .dot { background: var(--green); }
+
+  .items li b { color: var(--text); font-weight: 600; }
+  .items li .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    padding: 0px 5px;
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: 3px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  /* ── SUBSECTIONS ── */
+  .sub {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 8px 0 4px;
+  }
+
+  /* ── STAT PILLS ── */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .stat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    color: var(--text);
+  }
+  .stat b { color: var(--accent2); }
+
+  /* ── QUOTE BOX ── */
+  .quote {
+    background: var(--bg3);
+    border-left: 2px solid var(--accent2);
+    border-radius: 0 6px 6px 0;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    color: #bbb;
+    line-height: 1.5;
+    font-style: italic;
+    margin: 6px 0;
+  }
+
+  /* ── CYCLE BOX ── */
+  .cycle {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin: 6px 0;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+  .cycle .step {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 11.5px;
+  }
+  .cycle .arrow {
+    color: var(--red);
+    font-size: 13px;
+  }
+
+  /* ── WIDE CARD ── */
+  .wide { grid-column: span 3; }
+  .two { grid-column: span 2; }
+
+  /* ── CONCLUSION BOX ── */
+  .conclusion {
+    background: linear-gradient(135deg, rgba(232,121,60,0.08) 0%, rgba(201,162,39,0.05) 100%);
+    border: 1px solid rgba(232,121,60,0.25);
+    border-radius: 10px;
+    padding: 14px 16px;
+    grid-column: span 3;
+    text-align: center;
+  }
+  .conclusion h3 {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 15px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .conclusion .tri {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .tri-item {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--text);
+    text-align: center;
+    min-width: 180px;
+  }
+  .tri-item .ti {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 14px 0 4px;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+  .footer b { color: var(--accent); }
+
+  /* ── 360 GRID ── */
+  .dim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .dim-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  .dim-box .dim-head {
+    font-weight: 700;
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+  .dim-box ul { padding-left: 14px; color: var(--muted); }
+  .dim-box ul li { font-size: 11px; margin-bottom: 1px; }
+
+  .green-text { color: var(--green); }
+  .red-text { color: var(--red); }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .wide, .two { grid-column: span 1; }
+    .conclusion { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <span class="loco">🚂</span>
+  <h1>भारतीय रेल अर्थशास्त्र</h1>
+  <p>UPSC IAS — एक नज़र में सम्पूर्ण विश्लेषण &nbsp;|&nbsp; Quick Revision Mind Map</p>
+</div>
+
+<div class="grid">
+
+  <!-- CARD 1: INTRODUCTION -->
+  <div class="card c1">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div class="card-title">परिभाषा और परिचय
+        <span>Introduction & Core Concepts</span>
+      </div>
+    </div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>रेल अर्थशास्त्र</b> = संसाधन आवंटन, वितरण, मूल्य-निर्धारण का अध्ययन</div></li>
+      <li><span class="dot"></span><div><b>प्राकृतिक एकाधिकार</b> <span class="tag">Natural Monopoly</span> — पटरी बिछाना बेहद महंगा → समानांतर track अव्यावहारिक</div></li>
+      <li><span class="dot"></span><div><b>उच्च स्थिर लागत</b> + <b>निम्न परिवर्तनीय लागत</b> → पैमाने की बचत <span class="tag">Economies of Scale</span></div></li>
+      <li><span class="dot"></span><div><b>सामाजिक-आर्थिक संस्था</b> — लाभ + सार्वजनिक सेवा दोनों</div></li>
+    </ul>
+    <div class="sub" style="margin-top:8px">राजस्व स्रोत</div>
+    <ul class="items">
+      <li><span class="dot"></span><div>यात्री किराया <span class="tag">~30%</span> + मालभाड़ा <span class="tag">~65-70%</span> + गैर-किराया</div></li>
+    </ul>
+  </div>
+
+  <!-- CARD 2: STATIC CORE / HISTORY -->
+  <div class="card c2">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div class="card-title">आर्थिक इतिहास
+        <span>Historical Background</span>
+      </div>
+    </div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>1853</b> — बॉम्बे-ठाणे, ब्रिटिश पूंजी, <b>निष्कासनात्मक</b> अर्थशास्त्र<br><span style="color:var(--muted);font-size:11px">कच्चा माल बंदरगाह तक भेजना</span></div></li>
+      <li><span class="dot"></span><div><b>1950</b> — राष्ट्रीयकरण → पंचवर्षीय योजना में प्राथमिकता<br><span style="color:var(--muted);font-size:11px">सामाजिक दायित्व बढ़ते गए</span></div></li>
+      <li><span class="dot"></span><div><b>1991 के बाद</b> — वाणिज्यिक दृष्टिकोण का दबाव</div></li>
+      <li><span class="dot"></span><div><b>2017</b> — रेल बजट का आम बजट में विलय → वित्तीय अनुशासन</div></li>
+    </ul>
+    <div class="sub" style="margin-top:8px">क्रॉस-सब्सिडी का सार</div>
+    <div style="font-size:11.5px;color:#ccc;margin-top:4px;line-height:1.6;background:var(--bg3);padding:6px 8px;border-radius:5px;">
+      यात्री किराया कम <span style="color:var(--red)">↓</span> → माल भाड़ा ऊंचा <span style="color:var(--accent)">↑</span><br>
+      उद्योग रेलवे छोड़ें → राजस्व घटे → दुष्चक्र
+    </div>
+  </div>
+
+  <!-- CARD 3: PRELIMS FACTS -->
+  <div class="card c3">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div class="card-title">Prelims फैक्ट-शीट
+        <span>Key Numbers & Facts</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat">स्थापना <b>1853</b></div>
+      <div class="stat">नेटवर्क <b>68,000 km</b></div>
+      <div class="stat">विश्व में <b>4th</b> सबसे बड़ा</div>
+      <div class="stat">कर्मचारी <b>12 लाख</b></div>
+      <div class="stat">यात्री/वर्ष <b>800 करोड़+</b></div>
+      <div class="stat">माल ढुलाई <b>160 करोड़ टन</b></div>
+      <div class="stat">विद्युतीकरण <b>94%+</b></div>
+      <div class="stat">OR <b>98.32%</b> (FY25)</div>
+      <div class="stat">Budget <b>₹2.5 लाख Cr</b></div>
+      <div class="stat">पेंशन <b>₹58,844 Cr</b></div>
+      <div class="stat">Kavach <b>1,306 km</b></div>
+      <div class="stat">संविधान सूची <b>Union Entry 22</b></div>
+    </div>
+    <div class="sub" style="margin-top:8px">समितियां</div>
+    <ul class="items">
+      <li><span class="dot"></span><div>बिबेक देबरॉय <span class="tag">2014</span> वित्तीय सुधार</div></li>
+      <li><span class="dot"></span><div>काकोदकर <span class="tag">1986</span> दुर्घटनाएं</div></li>
+      <li><span class="dot"></span><div>प्रकाश तिवारी <span class="tag">2012</span> सुरक्षा</div></li>
+    </ul>
+  </div>
+
+  <!-- CARD 4: CURRENT CONTEXT -->
+  <div class="card c4">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <div class="card-title">चर्चा में क्यों?
+        <span>Current Context</span>
+      </div>
+    </div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>रिकॉर्ड निवेश vs वित्तीय संकट</b> — यही विरोधाभास है</div></li>
+      <li><span class="dot"></span><div><b>DFC</b> — Logistics लागत GDP 14% → single digit करने की उम्मीद → Make in India को बल</div></li>
+      <li><span class="dot"></span><div><b>Operating Ratio 98%+</b> — खुद के पास modernization के लिए पैसे नहीं</div></li>
+      <li><span class="dot"></span><div><b>कोयले पर 50% निर्भरता</b> — Renewable energy बढ़ी तो यह जोखिम बनेगा</div></li>
+      <li><span class="dot"></span><div><b>नई दिल्ली स्टेशन भगदड़ 2025</b> — Systemic Inertia का परिणाम</div></li>
+    </ul>
+  </div>
+
+  <!-- CARD 5: 360 ANALYSIS -->
+  <div class="card c5 two">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <div class="card-title">360° विश्लेषण — तार्किक प्रभाव
+        <span>Multi-dimensional Analysis</span>
+      </div>
+    </div>
+    <div class="dim-grid">
+      <div class="dim-box">
+        <div class="dim-head" style="color:var(--blue)">💰 आर्थिक</div>
+        <div class="green-text" style="font-size:10.5px;font-weight:600">✓ सकारात्मक</div>
+        <ul><li>Multiplier effect ~5x</li><li>Logistics 60-70% सस्ता</li><li>12L+ रोजगार</li></ul>
+        <div class="red-text" style="font-size:10.5px;font-weight:600;margin-top:3px">✗ चुनौती</div>
+        <ul><li>ऊंचा माल भाड़ा → निर्यात महंगा</li><li>अलाभकारी मार्ग जारी</li></ul>
+      </div>
+      <div class="dim-box">
+        <div class="dim-head" style="color:var(--green)">🤝 सामाजिक</div>
+        <div class="green-text" style="font-size:10.5px;font-weight:600">✓ सकारात्मक</div>
+        <ul><li>गरीबों की गतिशीलता</li><li>प्रवासियों की जीवन रेखा</li></ul>
+        <div class="red-text" style="font-size:10.5px;font-weight:600;margin-top:3px">✗ चुनौती</div>
+        <ul><li>कम दाम → मांग बेलगाम → भीड़</li><li>गुणवत्ता गिरती है</li></ul>
+      </div>
+      <div class="dim-box">
+        <div class="dim-head" style="color:var(--purple)">🗳️ राजनीतिक</div>
+        <div class="green-text" style="font-size:10.5px;font-weight:600">✓ सकारात्मक</div>
+        <ul><li>राष्ट्रीय एकीकरण</li><li>USBRL — कश्मीर कनेक्टिविटी</li></ul>
+        <div class="red-text" style="font-size:10.5px;font-weight:600;margin-top:3px">✗ चुनौती</div>
+        <ul><li>Populist फैसले</li><li>राजनीतिक नियुक्तियां</li></ul>
+      </div>
+      <div class="dim-box">
+        <div class="dim-head" style="color:var(--teal)">🌿 पर्यावरणीय</div>
+        <div class="green-text" style="font-size:10.5px;font-weight:600">✓ सकारात्मक</div>
+        <ul><li>सड़क से 75-80% कम CO₂</li><li>94% electrified</li><li>898 MW Solar</li></ul>
+        <div class="red-text" style="font-size:10.5px;font-weight:600;margin-top:3px">✗ चुनौती</div>
+        <ul><li>नई lines के लिए वन भूमि</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 6: CHALLENGES -->
+  <div class="card c6">
+    <div class="card-header">
+      <div class="card-num">6</div>
+      <div class="card-title">चुनौतियाँ
+        <span>Logical Challenges</span>
+      </div>
+    </div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>क्रॉस-सब्सिडी trap</b> — माल हिस्सा 89% (1950) → 27% (आज)</div></li>
+      <li><span class="dot"></span><div><b>पेंशन बोझ</b> — राजस्व का 65-70% वेतन+पेंशन में; 2027 तक ₹74,500 Cr</div></li>
+      <li><span class="dot"></span><div><b>Route Saturation</b> — मुख्य मार्ग 115-150% क्षमता पर; मालगाड़ी avg 25 km/h</div></li>
+      <li><span class="dot"></span><div><b>Elite Skew</b> — Vande Bharat focus vs साधारण class demand 17% बढ़ी</div></li>
+      <li><span class="dot"></span><div><b>Kavach gap</b> — 68,000 km नेटवर्क में से मात्र 1,306 km covered</div></li>
+      <li><span class="dot"></span><div><b>PPP विफलता</b> — स्पष्ट नीति + नियामक ढांचे के अभाव में निवेश नहीं आता</div></li>
+    </ul>
+  </div>
+
+  <!-- CARD 7: GOVT INITIATIVES -->
+  <div class="card c7">
+    <div class="card-header">
+      <div class="card-num">7</div>
+      <div class="card-title">सरकार के कदम
+        <span>Government Initiatives</span>
+      </div>
+    </div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>NRP 2030</b> — 2050 तक 45% freight share; speed 50 km/h; भाड़ा 30% कम</div></li>
+      <li><span class="dot"></span><div><b>DFC</b> — पूर्वी+पश्चिमी गलियारा; World Bank सहयोग; Track अलग</div></li>
+      <li><span class="dot"></span><div><b>कवच</b> — स्वदेशी ATP; 2 km range; SIL-4 certified; टक्कर रोको</div></li>
+      <li><span class="dot"></span><div><b>Amrit Bharat Station</b> — 1,300+ stations का कायाकल्प</div></li>
+      <li><span class="dot"></span><div><b>Vande / Amrit Bharat</b> — Semi-high speed + sleeper; Made in India</div></li>
+      <li><span class="dot"></span><div><b>SwaRail App</b> — IRCTC+UTS+Rail Madad एक जगह; 1.5L tickets/day</div></li>
+      <li><span class="dot"></span><div><b>विद्युतीकरण</b> — 94%+; Net Zero 2030 target</div></li>
+      <li><span class="dot"></span><div><b>Bio-Toilets</b> — DRDO; पटरी पर कचरा नहीं</div></li>
+      <li><span class="dot"></span><div><b>Flexi-Fare</b> — Shatabdi/Rajdhani में airline model</div></li>
+    </ul>
+  </div>
+
+  <!-- CARD 8: MAINS VALUE ADDITION -->
+  <div class="card c8 two">
+    <div class="card-header">
+      <div class="card-num">8</div>
+      <div class="card-title">Mains Value Addition — Quotes + Case Study
+        <span>Answer Writing Edge</span>
+      </div>
+    </div>
+    <div class="quote">
+      "रेलवे को सिर्फ दुकान समझो → बंद होगी। सिर्फ सेवा समझो → देश डूबेगा। रास्ता बीच का है — सामाजिक जिम्मेदारी + कमाई।"
+    </div>
+    <div class="quote">
+      "Public utility की कीमत = लागत और समाज की सहनशक्ति के बीच का खिंचाव।"
+    </div>
+    <div class="sub" style="margin-top:8px">Case Study — छठ पूजा भीड़ (Oct-Nov 2025)</div>
+    <div class="dim-grid" style="margin-top:6px">
+      <div class="dim-box">
+        <div class="dim-head" style="color:var(--accent2)">अर्थशास्त्र</div>
+        <ul>
+          <li>Demand Shock → तय supply</li>
+          <li>Controlled fares → Price rationing ✗</li>
+          <li>नतीजा → Rationing by Congestion ✓</li>
+        </ul>
+      </div>
+      <div class="dim-box">
+        <div class="dim-head" style="color:var(--accent2)">असली सीख</div>
+        <ul>
+          <li>Neo-liberal: किराया बढ़ाओ → गरीब घर नहीं जाएगा ✗</li>
+          <li>सस्ती सेवा = Public Investment ज़रूरी</li>
+          <li>कम किराया बिना capacity = टालमटोल</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub" style="margin-top:8px">दुष्चक्र — परीक्षा में ज़रूर बनाओ</div>
+    <div class="cycle">
+      <span class="step">राजनीतिक दबाव</span>
+      <span class="arrow"> → </span>
+      <span class="step">कम किराया</span>
+      <span class="arrow"> → </span>
+      <span class="step">ऊंचा माल भाड़ा</span>
+      <span class="arrow"> → </span>
+      <span class="step">उद्योग सड़क पर</span>
+      <span class="arrow"> → </span>
+      <span class="step">राजस्व घटा</span>
+      <span class="arrow"> → </span>
+      <span class="step">Modernization नहीं</span>
+      <span class="arrow"> → </span>
+      <span class="step">सेवा खराब</span>
+      <span class="arrow"> → </span>
+      <span class="step" style="color:var(--red)">और दबाव ↺</span>
+    </div>
+  </div>
+
+  <!-- CARD 9: WAY FORWARD -->
+  <div class="card c9">
+    <div class="card-header">
+      <div class="card-num">9</div>
+      <div class="card-title">आगे की राह
+        <span>Way Forward</span>
+      </div>
+    </div>
+    <div class="sub">वित्तीय</div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>Direct Subsidy</b> — Cross-subsidy पारदर्शी बनाओ (Debroy Committee)</div></li>
+      <li><span class="dot"></span><div><b>TOD</b> — Japan JR model; स्टेशन के आसपास commercial hub</div></li>
+      <li><span class="dot"></span><div><b>NPS</b> — नए कर्मचारियों पर; पेंशन बोझ घटाओ</div></li>
+    </ul>
+    <div class="sub" style="margin-top:6px">क्षमता</div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>Freight Diversification</b> — कोयले की जगह FMCG/Auto/Container</div></li>
+      <li><span class="dot"></span><div><b>Mission Raftaar</b> — 160-200 km/h; track+signal upgrade</div></li>
+      <li><span class="dot"></span><div><b>Kavach</b> — जल्दी rollout; Safety = Investment, Cost नहीं</div></li>
+    </ul>
+    <div class="sub" style="margin-top:6px">समावेश + नियामक</div>
+    <ul class="items">
+      <li><span class="dot"></span><div><b>साधारण class</b> बढ़ाओ — रेलवे का core purpose मत भूलो</div></li>
+      <li><span class="dot"></span><div><b>USBRL model</b> — पूर्वोत्तर+आदिवासी इलाके</div></li>
+      <li><span class="dot"></span><div><b>IRRA</b> — Independent regulator; किराया, access, standards</div></li>
+    </ul>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h3>निष्कर्ष — त्रिवेणी (Confluence)</h3>
+    <p style="font-size:12.5px;color:#ccc;max-width:700px;margin:0 auto;">
+      रेलवे एक <b style="color:var(--accent)">ज़िंदा विरोधाभास</b> है — दुनिया का सबसे सस्ता, फिर भी वित्तीय रूप से कमज़ोर।
+      इसे <b style="color:var(--accent2)">"विभाग"</b> नहीं, <b style="color:var(--accent2)">"विकास का इंजन"</b> मानना होगा।
+    </p>
+    <div class="tri">
+      <div class="tri-item">
+        <span class="ti">⚖️</span>
+        <b>सामाजिक जिम्मेदारी</b><br>
+        <span style="font-size:11px;color:var(--muted)">गरीबों को सस्ता transport</span>
+      </div>
+      <div class="tri-item" style="border-color:var(--accent);background:rgba(232,121,60,0.08)">
+        <span class="ti">🔗</span>
+        <b style="color:var(--accent)">+</b>
+        <span style="font-size:11px;color:var(--muted)">यही त्रिवेणी है</span><br>
+        <span style="font-size:10.5px;color:var(--muted)">Viksit Bharat @2047</span>
+      </div>
+      <div class="tri-item">
+        <span class="ti">📈</span>
+        <b>वाणिज्यिक व्यवहार्यता</b><br>
+        <span style="font-size:11px;color:var(--muted)">कमाई हो, घाटा नहीं</span>
+      </div>
+      <div class="tri-item">
+        <span class="ti">🛡️</span>
+        <b>सुरक्षा सर्वोच्च</b><br>
+        <span style="font-size:11px;color:var(--muted)">Kavach, signalling</span>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;font-style:italic;">
+      "जब public infrastructure कमज़ोर पड़ती है, सबसे पहले गरीब टूटता है।<br>
+      रेलवे का पुनरुद्धार आर्थिक आवश्यकता नहीं — <b style="color:var(--accent)">सामाजिक अनिवार्यता</b> है।"
+    </p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <b>भारतीय रेल अर्थशास्त्र — UPSC IAS Mains GS-3</b> &nbsp;|&nbsp; Manash Rathore
+</div>
+
+</body>
+</html>
