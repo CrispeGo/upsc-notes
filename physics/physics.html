@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics — Chapters | My Notes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f1eb; --surface:#fff; --border:#ddd8cf;
+  --text:#1a1714; --muted:#9c958e;
+  --primary:#7c3aed; --primary-light:#f5f3ff;
+}
+body{margin:0;font-family:'DM Sans';background:var(--bg);color:var(--text);}
+.container{max-width:900px;margin:auto;padding:2rem;}
+
+.hero{
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:2rem;
+}
+.hero-top{
+  height:5px;
+  background:linear-gradient(90deg,#7c3aed,#8b5cf6);
+}
+.hero-body{
+  padding:1.5rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.hero-title{
+  font-family:'Playfair Display';
+  font-size:2rem;
+}
+.hero-sub{color:var(--muted);font-size:0.9rem;}
+.hero-icon{
+  font-size:2rem;
+  background:var(--primary-light);
+  padding:10px;
+  border-radius:10px;
+}
+
+.chapter{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1rem;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  margin-bottom:10px;
+  text-decoration:none;
+  color:inherit;
+  background:var(--surface);
+  transition:0.2s;
+}
+.chapter:hover{
+  transform:translateX(4px);
+  border-color:var(--primary);
+}
+.num{
+  background:var(--primary-light);
+  color:var(--primary);
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:bold;
+}
+.title{
+  font-family:'Playfair Display';
+}
+.desc{
+  font-size:0.8rem;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top"></div>
+  <div class="hero-body">
+    <div>
+      <div class="hero-title">Physics</div>
+      <div class="hero-sub">Select a chapter to start your IAT prep</div>
+    </div>
+    <div class="hero-icon">⚛️</div>
+  </div>
+</div>
+
+<!-- CHAPTERS -->
+
+<a href="COM/index.html" class="chapter">
+  <div class="num">01</div>
+  <div>
+    <div class="title">Center of Mass</div>
+    <div class="desc">Man-plank, explosion, collision, system tricks</div>
+  </div>
+</a>
+
+<a href="#" class="chapter">
+  <div class="num">02</div>
+  <div>
+    <div class="title">Mechanics</div>
+    <div class="desc">Kinematics, NLM, Work-Energy, Rotation</div>
+  </div>
+</a>
+
+<a href="#" class="chapter">
+  <div class="num">03</div>
+  <div>
+    <div class="title">Thermodynamics</div>
+    <div class="desc">Heat, laws, Carnot engine, entropy</div>
+  </div>
+</a>
+
+<a href="#" class="chapter">
+  <div class="num">04</div>
+  <div>
+    <div class="title">Waves & Oscillation</div>
+    <div class="desc">SHM, waves, sound, resonance</div>
+  </div>
+</a>
+
+<a href="#" class="chapter">
+  <div class="num">05</div>
+  <div>
+    <div class="title">Modern Physics</div>
+    <div class="desc">Photoelectric, atom, nuclear physics</div>
+  </div>
+</a>
+
+</div>
+
+</body>
+</html>
