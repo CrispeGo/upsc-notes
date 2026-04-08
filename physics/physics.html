@@ -1,112 +1,587 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physics — Chapters | My Notes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Economy — Chapters | My UPSC Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f1eb;
+            --bg2: #ede8e0;
+            --surface: #ffffff;
+            --surface2: #faf8f5;
+            --border: #ddd8cf;
+            --text-primary: #1a1714;
+            --text-secondary: #5c5650;
+            --text-muted: #9c958e;
+            --accent: #b5832a;
+            --accent-light: #f3e8d0;
+            --accent-dark: #8a6018;
+            --navy: #1e2d45;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+            --zoom: 1;
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+            /* Subject accent color — change per subject */
+            --subject-color: #2563eb;
+            --subject-color-light: #eff6ff;
+            --subject-color-mid: #3b82f6;
+        }
+        [data-theme="dark"] {
+            --bg: #111418;
+            --bg2: #181d24;
+            --surface: #1e2530;
+            --surface2: #242c3a;
+            --border: #2e3848;
+            --text-primary: #e8e4dc;
+            --text-secondary: #a8a09a;
+            --text-muted: #5e6a7a;
+            --accent: #d4a843;
+            --accent-light: #2a2218;
+            --accent-dark: #f0c060;
+            --navy: #c5d5f0;
+            --subject-color-light: #1e2d45;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.30);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.40);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.50);
+        }
 
-<style>
-:root{
-  --bg:#f5f1eb; --surface:#fff; --border:#ddd8cf;
-  --text:#1a1714; --muted:#9c958e;
-  --primary:#7c3aed; --primary-light:#f5f3ff;
-}
-body{margin:0;font-family:'DM Sans';background:var(--bg);color:var(--text);}
-.container{max-width:900px;margin:auto;padding:2rem;}
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.hero{
-  background:var(--surface);
-  border:1.5px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  margin-bottom:2rem;
-}
-.hero-top{
-  height:5px;
-  background:linear-gradient(90deg,#7c3aed,#8b5cf6);
-}
-.hero-body{
-  padding:1.5rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.hero-title{
-  font-family:'Playfair Display';
-  font-size:2rem;
-}
-.hero-sub{color:var(--muted);font-size:0.9rem;}
-.hero-icon{
-  font-size:2rem;
-  background:var(--primary-light);
-  padding:10px;
-  border-radius:10px;
-}
+        html {
+            font-size: calc(16px * var(--zoom));
+            transition: font-size 0.2s ease;
+        }
 
-.chapter{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  padding:1rem;
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  margin-bottom:10px;
-  text-decoration:none;
-  color:inherit;
-  background:var(--surface);
-  transition:0.2s;
-}
-.chapter:hover{
-  transform:translateX(4px);
-  border-color:var(--primary);
-}
-.num{
-  background:var(--primary-light);
-  color:var(--primary);
-  padding:8px 12px;
-  border-radius:8px;
-  font-weight:bold;
-}
-.title{
-  font-family:'Playfair Display';
-}
-.desc{
-  font-size:0.8rem;
-  color:var(--muted);
-}
-</style>
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--navy);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+        [data-theme="dark"] nav { background: #0d1117; }
+
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-left { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+
+        .back-btn {
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.20); color: #fff; }
+        .back-btn svg { width: 16px; height: 16px; }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .nav-brand-top {
+            font-size: 0.62rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+        }
+        .nav-brand-bottom {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+
+        .zoom-group {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 3px;
+        }
+        .zoom-btn {
+            width: 28px; height: 28px;
+            background: transparent; border: none;
+            border-radius: 6px;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 600;
+            transition: all 0.15s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .zoom-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .zoom-label {
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.5);
+            min-width: 32px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .ctrl-btn {
+            width: 34px; height: 34px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.75);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+        .ctrl-btn svg { width: 15px; height: 15px; }
+
+        /* ── PAGE WRAPPER ── */
+        .page-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 5rem;
+        }
+
+        /* ── SUBJECT HERO ── */
+        .subject-hero {
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            animation: fadeUp 0.4s ease both;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-stripe {
+            height: 5px;
+            background: linear-gradient(90deg, var(--subject-color), var(--subject-color-mid), transparent);
+        }
+        .hero-body {
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-left { display: flex; flex-direction: column; gap: 0.3rem; }
+        .hero-eyebrow {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .hero-sub {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+        .hero-icon {
+            width: 56px; height: 56px;
+            background: var(--subject-color-light);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        /* Search */
+        .search-row {
+            padding: 0 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .search-wrap { position: relative; flex: 1; }
+        .search-wrap svg {
+            position: absolute;
+            left: 0.8rem; top: 50%;
+            transform: translateY(-50%);
+            width: 15px; height: 15px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.6rem 1rem 0.6rem 2.25rem;
+            background: var(--surface2);
+            border: 1.5px solid var(--border);
+            border-radius: 9px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+        .chapter-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .chapter-count strong { color: var(--text-primary); }
+
+        /* ── CHAPTERS LIST ── */
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .chapter-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 1.1rem 1.25rem;
+            text-decoration: none;
+            transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+                        box-shadow 0.22s ease,
+                        border-color 0.2s;
+            box-shadow: var(--shadow-sm);
+            animation: cardIn 0.35s ease both;
+        }
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateX(-12px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        .chapter-card:nth-child(1)  { animation-delay: 0.05s; }
+        .chapter-card:nth-child(2)  { animation-delay: 0.10s; }
+        .chapter-card:nth-child(3)  { animation-delay: 0.15s; }
+        .chapter-card:nth-child(4)  { animation-delay: 0.20s; }
+        .chapter-card:nth-child(5)  { animation-delay: 0.25s; }
+        .chapter-card:nth-child(6)  { animation-delay: 0.30s; }
+        .chapter-card:nth-child(7)  { animation-delay: 0.35s; }
+        .chapter-card:nth-child(8)  { animation-delay: 0.40s; }
+
+        .chapter-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--subject-color);
+        }
+
+        .chapter-num-badge {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: var(--subject-color-light);
+            color: var(--subject-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: background 0.2s, color 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        [data-theme="dark"] .chapter-num-badge { color: #60a5fa; }
+        .chapter-card:hover .chapter-num-badge {
+            background: var(--subject-color);
+            color: #fff;
+        }
+
+        .chapter-info { flex: 1; min-width: 0; }
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chapter-card:hover .chapter-title { color: var(--subject-color); }
+        [data-theme="dark"] .chapter-card:hover .chapter-title { color: #60a5fa; }
+
+        .chapter-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chapter-tags {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .chapter-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            background: var(--bg2);
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+        }
+
+        .chapter-arrow {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--bg2);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .chapter-arrow svg { width: 14px; height: 14px; color: var(--text-muted); }
+        .chapter-card:hover .chapter-arrow {
+            background: var(--subject-color);
+            transform: translateX(2px);
+        }
+        .chapter-card:hover .chapter-arrow svg { color: #fff; }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            display: none;
+        }
+        .empty-state svg { width: 40px; height: 40px; margin: 0 auto 0.75rem; opacity: 0.35; }
+        .empty-state p { font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem; }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            border-top: 1.5px solid var(--border);
+            background: var(--surface);
+        }
+
+        @media (max-width: 640px) {
+            .zoom-label { display: none; }
+            .hero-body { padding: 1.25rem; }
+            .search-row { padding: 0.75rem 1.25rem 1.25rem; }
+            .chapter-desc { display: none; }
+            .chapter-tags { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-left">
+            <a href="../index.html" class="back-btn" title="Back to Dashboard">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+            </a>
+            <div class="nav-brand">
+                <span class="nav-brand-top">My IAT Notes</span>
+                <span class="nav-brand-bottom">Physics</span>
+            </div>
+        </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-top"></div>
-  <div class="hero-body">
-    <div>
-      <div class="hero-title">Physics</div>
-      <div class="hero-sub">Select a chapter to start your IAT prep</div>
+        <div class="nav-right">
+            <div class="zoom-group">
+                <button class="zoom-btn" id="zoomOut">−</button>
+                <span class="zoom-label" id="zoomLabel">100%</span>
+                <button class="zoom-btn" id="zoomIn">+</button>
+            </div>
+            <button class="ctrl-btn" id="themeToggle">
+                <svg id="themeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+            </button>
+        </div>
     </div>
-    <div class="hero-icon">⚛️</div>
-  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page-wrap">
+
+    <!-- HERO -->
+    <div class="subject-hero">
+        <div class="hero-stripe"></div>
+        <div class="hero-body">
+            <div class="hero-left">
+                <span class="hero-eyebrow">⚛️ Physics</span>
+                <h1 class="hero-title">Center of Mass</h1>
+                <p class="hero-sub">Master COM, collisions, explosion tricks — IAT focused.</p>
+            </div>
+            <div class="hero-right">
+                <div class="hero-icon">⚛️</div>
+            </div>
+        </div>
+
+        <div class="search-row">
+            <div class="search-wrap">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search concepts…" autocomplete="off">
+            </div>
+            <span class="chapter-count"><strong id="visibleCount">1</strong> topic</span>
+        </div>
+    </div>
+
+    <!-- CHAPTER LIST -->
+    <div class="chapters-list" id="chaptersList">
+
+        <!-- COM -->
+        <a href="COM/centerofmass.html" class="chapter-card" data-search="center of mass com man plank explosion collision momentum iat">
+            <div class="chapter-num-badge">01</div>
+            <div class="chapter-info">
+                <div class="chapter-title">Center of Mass</div>
+                <div class="chapter-desc">Man-plank, explosion motion, collision tricks, and IAT PYQs.</div>
+                <div class="chapter-tags">
+                    <span class="chapter-tag">COM</span>
+                    <span class="chapter-tag">Collision</span>
+                    <span class="chapter-tag">IAT</span>
+                </div>
+            </div>
+            <div class="chapter-arrow">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+        </a>
+
+        <!-- EMPTY STATE -->
+        <div class="empty-state" id="emptyState">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p>No topics match your search.</p>
+        </div>
+
+    </div>
 </div>
 
-<!-- CHAPTERS -->
+<footer>
+    &copy; <span id="yr"></span> My IAT Notes · Selection mindset 🚀
+</footer>
 
-<a href="COM/centerofmass.html" class="chapter">
-  <div class="num">01</div>
-  <div>
-    <div class="title">Center of Mass</div>
-    <div class="desc">Man-plank, explosion, collision, system tricks</div>
-  </div>
-</a>
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
 
+        // ── Search ──
+        const searchInput = document.getElementById('searchInput');
+        const visibleCount = document.getElementById('visibleCount');
+        const emptyState = document.getElementById('emptyState');
 
-</div>
+        function updateCount() {
+            const cards = document.querySelectorAll('.chapter-card');
+            let count = 0;
+            cards.forEach(c => { if (c.style.display !== 'none') count++; });
+            visibleCount.textContent = count;
+            const suffix = count === 1 ? 'chapter' : 'chapters';
+            visibleCount.parentElement.lastChild.textContent = ' ' + suffix;
+        }
 
+        searchInput.addEventListener('input', function () {
+            const q = this.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.chapter-card');
+            let visible = 0;
+            cards.forEach(card => {
+                const text = (card.textContent + ' ' + (card.dataset.search || '')).toLowerCase();
+                const match = text.includes(q);
+                card.style.display = match ? '' : 'none';
+                if (match) visible++;
+            });
+            emptyState.style.display = visible === 0 ? 'block' : 'none';
+            visibleCount.textContent = visible;
+        });
+
+        updateCount();
+
+        // ── Zoom ──
+        const ZOOM_LEVELS = [0.75, 0.85, 1.0, 1.1, 1.2, 1.35, 1.5];
+        let zoomIndex = 2;
+        function applyZoom() {
+            const z = ZOOM_LEVELS[zoomIndex];
+            document.documentElement.style.setProperty('--zoom', z);
+            document.getElementById('zoomLabel').textContent = Math.round(z * 100) + '%';
+            localStorage.setItem('upsc_zoom', zoomIndex);
+        }
+        document.getElementById('zoomIn').addEventListener('click', () => { if (zoomIndex < ZOOM_LEVELS.length - 1) { zoomIndex++; applyZoom(); } });
+        document.getElementById('zoomOut').addEventListener('click', () => { if (zoomIndex > 0) { zoomIndex--; applyZoom(); } });
+        const savedZoom = localStorage.getItem('upsc_zoom');
+        if (savedZoom !== null) { zoomIndex = parseInt(savedZoom); applyZoom(); }
+
+        // ── Theme ──
+        const MOON = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>`;
+        const SUN  = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>`;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon   = document.getElementById('themeIcon');
+        let isDark = localStorage.getItem('upsc_theme') === 'dark';
+        function applyTheme(dark) {
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            themeIcon.innerHTML = dark ? SUN : MOON;
+            localStorage.setItem('upsc_theme', dark ? 'dark' : 'light');
+        }
+        applyTheme(isDark);
+        themeToggle.addEventListener('click', () => { isDark = !isDark; applyTheme(isDark); });
+    </script>
 </body>
 </html>
