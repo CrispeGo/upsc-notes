@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>⚡ COM • 1‑Hour Mastery • IAT Cheat Sheet</title>
+    <!-- Tailwind + Inter font -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .formula-badge {
+            background: linear-gradient(145deg, #f8fafc, #eef2ff);
+            border-left: 4px solid #3b82f6;
+        }
+        .trick-title {
+            letter-spacing: -0.01em;
+        }
+        .iat-blink {
+            background: #fef9c3;
+            color: #854d0e;
+            font-weight: 600;
+        }
+        /* smooth expand/collapse */
+        .example-panel {
+            transition: all 0.2s ease;
+        }
+        .rotate-chevron {
+            transform: rotate(90deg);
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 min-h-screen antialiased">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10">
+    
+    <!-- HEADER : clean & bold -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-3">
+        <div>
+            <div class="flex items-center gap-3 flex-wrap">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+                    ⚡ Center of Mass
+                </h1>
+                <span class="bg-black/5 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-slate-600 border border-white/30">IAT • 10s tricks</span>
+            </div>
+            <p class="text-slate-500 mt-2 text-lg font-medium flex items-center gap-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                revise full chapter in 60 minutes · zero fluff · every formula that matters
+            </p>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="bg-white/70 backdrop-blur-sm px-4 py-2 rounded-2xl shadow-sm border border-white">
+                <span class="text-sm font-semibold text-slate-700">📌 11 power tricks</span>
+                <span class="mx-2 text-slate-300">|</span>
+                <span class="text-sm text-slate-500">Part 1 · 2 · 3</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK THEORY DROP (essentials) — clean minimal -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-4 border border-white shadow-sm flex items-start gap-3">
+            <div class="bg-blue-100 p-2 rounded-xl text-blue-700 text-xl">🧠</div>
+            <div>
+                <h3 class="font-bold text-slate-800">COM definition</h3>
+                <p class="text-sm text-slate-600 mt-0.5">R<sub>cm</sub> = (Σ mᵢ rᵢ) / Σ mᵢ<br>V<sub>cm</sub> = (Σ mᵢ vᵢ) / M</p>
+            </div>
+        </div>
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-4 border border-white shadow-sm flex items-start gap-3">
+            <div class="bg-emerald-100 p-2 rounded-xl text-emerald-700 text-xl">⚖️</div>
+            <div>
+                <h3 class="font-bold text-slate-800">Internal force rule</h3>
+                <p class="text-sm text-slate-600 mt-0.5">ΣF<sub>ext</sub> = 0 ⇒ a<sub>cm</sub> = 0<br>COM path never changes</p>
+            </div>
+        </div>
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-4 border border-white shadow-sm flex items-start gap-3">
+            <div class="bg-amber-100 p-2 rounded-xl text-amber-700 text-xl">📐</div>
+            <div>
+                <h3 class="font-bold text-slate-800">Continuous bodies</h3>
+                <p class="text-sm text-slate-600 mt-0.5">Rod · semicircle · cone · know standard results</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRICKS GRID — dynamic from JS -->
+    <div id="tricks-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+        <!-- Cards will be injected via JavaScript -->
+    </div>
+
+    <!-- FOOTER NOTE : add tricks easily -->
+    <div class="mt-12 border-t border-slate-200/60 pt-6 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+            <span class="bg-slate-200/70 w-6 h-6 rounded-full flex items-center justify-center text-slate-600">✏️</span>
+            <span><strong class="text-slate-700">Add new trick →</strong> edit the <code class="bg-slate-100 px-1.5 py-0.5 rounded text-xs">tricksData</code> array in JS. Include <code class="bg-slate-100 px-1.5 py-0.5 rounded text-xs">example</code> for expand.</span>
+        </div>
+        <div class="flex gap-1">
+            <span class="bg-white px-3 py-1 rounded-full text-xs border shadow-sm">🎯 IAT focused</span>
+            <span class="bg-white px-3 py-1 rounded-full text-xs border shadow-sm">⚡ 10‑second hacks</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        'use strict';
+
+        // ---------- MASTER TRICKS DATA (with examples & SVG diagrams) ----------
+        const tricksData = [
+            // PART 1
+            {
+                part: 'Part 1 · Shift Hacks',
+                title: '🔥 Man‑Plank Shortcut',
+                formula: 'x<sub>shift</sub> = (m · L) / (m + M)',
+                description: 'Man (m) walks on plank/boat (M, length L). No external force → plank shifts opposite. Use directly — no Σmx.',
+                iatFavorite: true,
+                extra: '⏱️ 5 sec · IAT favourite',
+                example: {
+                    whenUse: '✓ Smooth surface (no friction), man moves from one end to other.',
+                    whenNot: '✗ If external force present (e.g., boat anchored).',
+                    diagramSvg: `<svg viewBox="0 0 300 70" class="w-full h-auto"><rect x="30" y="30" width="240" height="15" fill="#cbd5e1" rx="4"/><circle cx="60" cy="22" r="10" fill="#3b82f6"/><text x="55" y="27" font-size="8" fill="white">m</text><circle cx="240" cy="22" r="10" fill="#64748b"/><text x="235" y="27" font-size="8" fill="white">M</text><line x1="60" y1="45" x2="60" y2="55" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow)"/><text x="80" y="60" font-size="9" fill="#334155">L</text><defs><marker id="arrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#0f172a"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 1 · Shift Hacks',
+                title: '🔄 Mass‑Swap Shift',
+                formula: 'Shift = d · |p − q| / (p + q)',
+                description: 'Two masses p & q swapped over distance d. COM shift instantly. Works even without velocity details.',
+                iatFavorite: true,
+                extra: 'swap trick · saves 2 min',
+                example: {
+                    whenUse: '✓ Two particles exchanged positions, want COM displacement.',
+                    whenNot: '✗ If masses are not point particles or moved asymmetrically.',
+                    diagramSvg: `<svg viewBox="0 0 200 70"><circle cx="40" cy="35" r="12" fill="#f97316"/><text x="34" y="40" font-size="9" fill="white">p</text><circle cx="160" cy="35" r="12" fill="#0ea5e9"/><text x="154" y="40" font-size="9" fill="white">q</text><line x1="52" y1="35" x2="148" y2="35" stroke="#475569" stroke-dasharray="4"/><text x="90" y="28" font-size="9" fill="#1e293b">d</text><path d="M40,50 L160,20" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow2)"/><defs><marker id="arrow2" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#94a3b8"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 1 · Shift Hacks',
+                title: '👻 Ghost Shift (Internal force)',
+                formula: 'Δr<sub>cm</sub> = 0  (if ΣF<sub>ext</sub>=0)',
+                description: 'Bomb blasts mid‑air, gun recoil, man on plank — COM path unchanged. If initially at rest, COM stays put.',
+                iatFavorite: true,
+                extra: 'conceptual gold',
+                example: {
+                    whenUse: '✓ Projectile explodes, two parts recoil — COM follows original parabola.',
+                    whenNot: '✗ If external impulse (e.g., hitting ground) changes COM motion.',
+                    diagramSvg: `<svg viewBox="0 0 200 80"><path d="M20,60 Q70,10 120,60" stroke="#6b7280" fill="none" stroke-width="1.5" stroke-dasharray="4"/><circle cx="70" cy="35" r="6" fill="#ef4444"/><circle cx="55" cy="42" r="4" fill="#f97316"/><circle cx="85" cy="42" r="4" fill="#3b82f6"/><text x="70" y="18" font-size="8" fill="#475569">COM path unchanged</text></svg>`
+                }
+            },
+            // PART 2
+            {
+                part: 'Part 2 · Head‑on Collisions',
+                title: '⚡ Same Mass → Velocity Swap',
+                formula: 'v₁′ = u₂ ,  v₂′ = u₁  (e=1, m₁=m₂)',
+                description: 'Perfectly elastic, equal masses: velocities simply exchange. No need to solve momentum/energy equations.',
+                iatFavorite: true,
+                extra: '10× faster',
+                example: {
+                    whenUse: '✓ Two identical billiard balls, one moving other at rest.',
+                    whenNot: '✗ If e<1 (inelastic) or masses differ.',
+                    diagramSvg: `<svg viewBox="0 0 220 50"><circle cx="40" cy="25" r="8" fill="#2563eb"/><text x="35" y="30" font-size="8" fill="white">m</text><line x1="48" y1="25" x2="65" y2="25" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrBlue)"/><circle cx="180" cy="25" r="8" fill="#dc2626"/><text x="175" y="30" font-size="8" fill="white">m</text><text x="100" y="20" font-size="9" fill="#1e293b">→ swap velocities</text><defs><marker id="arrBlue" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#2563eb"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 2 · Head‑on Collisions',
+                title: '🚚 Truck vs Bicycle (heavy vs light)',
+                formula: 'v₁ ≈ u₁ ,  v₂ ≈ 2u₁  (m₁≫m₂, target at rest)',
+                description: 'Heavy mass speed unchanged, light mass gets almost double the incoming speed. Ideal for IAT approximations.',
+                iatFavorite: true,
+                extra: 'extreme mass limit',
+                example: {
+                    whenUse: '✓ Massive object collides elastically with tiny stationary object.',
+                    whenNot: '✗ If masses are comparable or collision is inelastic.',
+                    diagramSvg: `<svg viewBox="0 0 240 60"><rect x="10" y="20" width="40" height="20" fill="#475569" rx="4"/><text x="22" y="35" font-size="9" fill="white">M</text><circle cx="180" cy="30" r="10" fill="#fbbf24"/><text x="174" y="35" font-size="8">m</text><line x1="50" y1="30" x2="170" y2="30" stroke="#475569" stroke-width="2" marker-end="url(#truckArrow)"/><text x="90" y="20" font-size="9">→ 2u</text><defs><marker id="truckArrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#475569"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 2 · Head‑on Collisions',
+                title: '🏀 Bouncing Ball Multiplier',
+                formula: 'Hₙ = e²ⁿ H  ·  D<sub>total</sub> = H·(1+e²)/(1−e²)',
+                description: 'After nth bounce height = e²ⁿ·H. Total distance till stop uses the infinite sum shortcut.',
+                iatFavorite: true,
+                extra: 'e² rule · super recurrent',
+                example: {
+                    whenUse: '✓ Ball dropped, coefficient of restitution given, find height after n bounces.',
+                    whenNot: '✗ If surface moves or initial velocity is not zero.',
+                    diagramSvg: `<svg viewBox="0 0 150 80"><circle cx="75" cy="15" r="6" fill="#eab308"/><line x1="75" y1="21" x2="75" y2="55" stroke="#94a3b8" stroke-dasharray="2"/><path d="M75,55 Q85,45 75,35 Q65,25 75,15" stroke="#eab308" fill="none" stroke-width="1.5"/><line x1="0" y1="55" x2="150" y2="55" stroke="#475569" stroke-width="2"/><text x="20" y="70" font-size="9">H₁ = e²H</text></svg>`
+                }
+            },
+            {
+                part: 'Part 2 · Head‑on Collisions',
+                title: '💥 Max KE Loss (Perfectly Inelastic)',
+                formula: 'ΔK<sub>max</sub> = ½ · [m₁m₂/(m₁+m₂)] · (u₁−u₂)²',
+                description: 'Maximum energy loss when e=0 (bodies stick). Use reduced mass × relative velocity².',
+                iatFavorite: true,
+                extra: 'always e=0',
+                example: {
+                    whenUse: '✓ Two cars crash and stick together — find lost energy.',
+                    whenNot: '✗ If collision is elastic or partially elastic.',
+                    diagramSvg: `<svg viewBox="0 0 200 60"><rect x="20" y="25" width="30" height="15" fill="#64748b" rx="3"/><rect x="140" y="25" width="30" height="15" fill="#64748b" rx="3"/><line x1="50" y1="32" x2="130" y2="32" stroke="#ef4444" stroke-width="2" marker-end="url(#crash)"/><text x="80" y="20" font-size="9">stick → max loss</text><defs><marker id="crash" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#ef4444"/></marker></defs></svg>`
+                }
+            },
+            // PART 3
+            {
+                part: 'Part 3 · 2D & Oblique',
+                title: '📐 90° Split (equal mass elastic)',
+                formula: 'θ₁ + θ₂ = 90°',
+                description: 'Equal masses, elastic oblique collision (one initially at rest) → scattering angle is exactly 90°. Blindly tick 90° in IAT.',
+                iatFavorite: true,
+                extra: '⚡ IAT super favourite',
+                example: {
+                    whenUse: '✓ Two protons, one moving, elastic collision. Angle between final velocities is 90°.',
+                    whenNot: '✗ If masses differ or collision inelastic.',
+                    diagramSvg: `<svg viewBox="0 0 180 100"><circle cx="40" cy="50" r="8" fill="#3b82f6"/><line x1="48" y1="50" x2="75" y2="50" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrBlue2)"/><circle cx="130" cy="30" r="8" fill="#ef4444"/><circle cx="130" cy="70" r="8" fill="#ef4444"/><line x1="75" y1="50" x2="122" y2="35" stroke="#ef4444" stroke-width="1.2"/><line x1="75" y1="50" x2="122" y2="65" stroke="#ef4444" stroke-width="1.2"/><text x="80" y="25" font-size="9">θ₁</text><text x="80" y="75" font-size="9">θ₂</text><text x="130" y="90" font-size="9">θ₁+θ₂=90°</text><defs><marker id="arrBlue2" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#3b82f6"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 3 · 2D & Oblique',
+                title: '🏓 Smooth Floor Bounce',
+                formula: 'vₓ = uₓ ,  vᵧ = e·uᵧ',
+                description: 'Horizontal velocity unchanged; vertical component multiplied by e. Then use kinematics as usual.',
+                iatFavorite: false,
+                extra: 'separation of axes',
+                example: {
+                    whenUse: '✓ Ball strikes smooth horizontal floor at an angle.',
+                    whenNot: '✗ If floor is rough (friction changes horizontal velocity).',
+                    diagramSvg: `<svg viewBox="0 0 200 80"><line x1="10" y1="60" x2="190" y2="60" stroke="#1e293b" stroke-width="2"/><path d="M40,60 L100,20" stroke="#2563eb" stroke-width="1.5" marker-end="url(#blueArr)"/><text x="55" y="40" font-size="9">u</text><path d="M100,20 L160,50" stroke="#dc2626" stroke-width="1.5" marker-end="url(#redArr)"/><text x="120" y="35" font-size="9">v</text><text x="20" y="75" font-size="9">v_x = u_x, v_y = e·u_y</text><defs><marker id="blueArr" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#2563eb"/></marker><marker id="redArr" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#dc2626"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 3 · 2D & Oblique',
+                title: '💣 Bomb K.E. Inverse Ratio',
+                formula: 'KE₁ / KE₂ = m₂ / m₁',
+                description: 'Bomb at rest splits. Since momentum is equal & opposite, KE ∝ 1/m. Lighter fragment gets higher KE.',
+                iatFavorite: true,
+                extra: 'no velocity needed',
+                example: {
+                    whenUse: '✓ Stationary bomb explodes into two fragments — find KE ratio.',
+                    whenNot: '✗ If bomb initially moving, use COM frame first.',
+                    diagramSvg: `<svg viewBox="0 0 160 70"><circle cx="80" cy="35" r="10" fill="#6b7280"/><line x1="70" y1="35" x2="30" y2="35" stroke="#f97316" stroke-width="2" marker-end="url(#leftArr)"/><line x1="90" y1="35" x2="130" y2="35" stroke="#0ea5e9" stroke-width="2" marker-end="url(#rightArr)"/><text x="15" y="30" font-size="9">m₁</text><text x="135" y="30" font-size="9">m₂</text><text x="60" y="55" font-size="9">KE ∝ 1/m</text><defs><marker id="leftArr" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="6 0, 0 2, 6 4" fill="#f97316"/></marker><marker id="rightArr" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#0ea5e9"/></marker></defs></svg>`
+                }
+            },
+            {
+                part: 'Part 3 · 2D & Oblique',
+                title: '🎯 Projectile Range Cheat',
+                formula: 'm₁x₁ + m₂x₂ = (m₁+m₂)R',
+                description: 'Projectile explodes at top. COM lands at range R. Use this to find landing point of second fragment instantly.',
+                iatFavorite: true,
+                extra: 'COM = R always',
+                example: {
+                    whenUse: '✓ Projectile explodes at highest point, one piece falls vertically, find other.',
+                    whenNot: '✗ If explosion occurs before/after highest point — use COM position at that instant.',
+                    diagramSvg: `<svg viewBox="0 0 220 80"><path d="M20,60 Q70,10 120,60" stroke="#94a3b8" fill="none" stroke-width="1.5" stroke-dasharray="3"/><circle cx="70" cy="35" r="5" fill="#ef4444"/><line x1="70" y1="35" x2="70" y2="60" stroke="#b91c1c" stroke-width="1.5"/><circle cx="70" cy="60" r="4" fill="#b91c1c"/><line x1="70" y1="35" x2="140" y2="60" stroke="#2563eb" stroke-width="1.5"/><circle cx="140" cy="60" r="4" fill="#2563eb"/><text x="100" y="75" font-size="9">COM lands at R</text><text x="20" y="75" font-size="9">R</text></svg>`
+                }
+            }
+        ];
+
+        const container = document.getElementById('tricks-container');
+        if (!container) return;
+
+        // Helper to build card with expandable example
+        function createTrickCard(trick) {
+            const card = document.createElement('div');
+            card.className = 'glass-card rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 p-5 flex flex-col h-full border border-white/60';
+
+            // part label
+            const partSpan = document.createElement('span');
+            partSpan.className = 'text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-1';
+            partSpan.textContent = trick.part;
+
+            // title row
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'flex items-start justify-between gap-2';
+            const h3 = document.createElement('h3');
+            h3.className = 'trick-title text-xl font-bold text-slate-800 leading-tight';
+            h3.innerHTML = trick.title;
+            titleDiv.appendChild(h3);
+            if (trick.iatFavorite) {
+                const badge = document.createElement('span');
+                badge.className = 'iat-blink text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap shadow-sm';
+                badge.textContent = '⭐ IAT fav';
+                titleDiv.appendChild(badge);
+            }
+
+            // formula block
+            const formulaDiv = document.createElement('div');
+            formulaDiv.className = 'formula-badge mt-3 p-3 rounded-xl text-base font-mono font-semibold text-slate-800 shadow-inner';
+            formulaDiv.innerHTML = trick.formula;
+
+            // description
+            const desc = document.createElement('p');
+            desc.className = 'text-sm text-slate-600 mt-3 leading-relaxed';
+            desc.innerHTML = trick.description;
+
+            // extra hint
+            const extraSpan = document.createElement('div');
+            extraSpan.className = 'mt-2 flex items-center gap-1.5 text-xs font-medium text-slate-500';
+            extraSpan.innerHTML = `<span class="inline-block w-1 h-1 rounded-full bg-emerald-400"></span> ${trick.extra || '10‑second trick'}`;
+
+            // ----- EXPAND BUTTON + PANEL (DROPDOWN) -----
+            const expandWrapper = document.createElement('div');
+            expandWrapper.className = 'mt-3';
+
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = 'flex items-center gap-1 text-xs font-semibold text-indigo-700 hover:text-indigo-900 transition px-1 py-1';
+            toggleBtn.innerHTML = `<span class="inline-block w-3 text-center">▶</span> Show example & diagram`;
+
+            const panel = document.createElement('div');
+            panel.className = 'example-panel hidden mt-3 p-3 bg-white/60 rounded-xl border border-indigo-100/70 text-sm';
+            
+            // Build panel content from trick.example (if exists)
+            if (trick.example) {
+                const ex = trick.example;
+                panel.innerHTML = `
+                    <div class="grid gap-2">
+                        <div class="flex items-start gap-2"><span class="text-green-700 font-semibold text-xs">✅ Use when:</span><span class="text-slate-700 text-xs">${ex.whenUse}</span></div>
+                        <div class="flex items-start gap-2"><span class="text-red-600 font-semibold text-xs">❌ Avoid when:</span><span class="text-slate-700 text-xs">${ex.whenNot}</span></div>
+                        <div class="mt-2 bg-slate-50 p-2 rounded-lg border border-slate-200 flex justify-center">
+                            ${ex.diagramSvg || '<span class="text-slate-400 text-xs italic">📐 diagram placeholder</span>'}
+                        </div>
+                    </div>
+                `;
+            } else {
+                panel.innerHTML = `<p class="text-slate-500 text-xs">No example added yet. Edit tricksData to include example.</p>`;
+            }
+
+            // Toggle logic
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                panel.classList.toggle('hidden');
+                const chevron = toggleBtn.querySelector('span');
+                if (panel.classList.contains('hidden')) {
+                    chevron.innerHTML = '▶';
+                } else {
+                    chevron.innerHTML = '▼';
+                }
+            });
+
+            expandWrapper.appendChild(toggleBtn);
+            expandWrapper.appendChild(panel);
+
+            // assemble
+            card.appendChild(partSpan);
+            card.appendChild(titleDiv);
+            card.appendChild(formulaDiv);
+            card.appendChild(desc);
+            card.appendChild(extraSpan);
+            card.appendChild(expandWrapper);
+
+            return card;
+        }
+
+        // Render all tricks
+        tricksData.forEach(trick => {
+            container.appendChild(createTrickCard(trick));
+        });
+
+        console.log('✅ COM 1‑hour mind map with examples & SVG diagrams loaded. Edit tricksData to add more.');
+    })();
+</script>
+
+<!-- small style for code readability -->
+<style>
+    code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 10px; font-size: 0.8rem; color: #0f172a; }
+    .formula-badge sub, .formula-badge sup { font-size: 0.75rem; }
+    .glass-card { transition: transform 0.15s, box-shadow 0.2s; }
+    .glass-card:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.95); box-shadow: 0 16px 30px -8px rgba(0, 0, 0, 0.08); }
+    .example-panel svg { max-width: 100%; height: auto; }
+</style>
+
+<!-- 
+    ========== HOW TO ADD A NEW TRICK (with example/diagram) ==========
+    Find the "tricksData" array. Each trick now expects an "example" object:
+    example: {
+        whenUse: "describe situation",
+        whenNot: "when it fails",
+        diagramSvg: `<svg> ... </svg>`   // inline SVG for simple diagrams
+    }
+    If you don't want an example, omit "example" — it will show a placeholder.
+    ============================================================
+-->
+</body>
+</html>
