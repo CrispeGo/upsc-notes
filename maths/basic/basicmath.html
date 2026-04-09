@@ -612,6 +612,218 @@ const cardsData = [
     useNo: "❌ Transcendental equations (trig, log) without factorization. Non‑polynomial factors.",
     examQ: "📌 IAT Style: Solve (x−2)²⁰²³(x+4)⁴ / (x+1)² < 0.\n→ Ans: x ∈ (−∞, −4) ∪ (−4, −1) ∪ (−1, 2). (Note even powers cause bounce, denominator open)."
   }
+},
+// ========== MATH NINJA TRICKS (Cards 08 to 16) ==========
+
+{
+  number: "08",
+  title: "Logarithm Domain Trap · Log Cries Check",
+  badge: "🚫 DOMAIN",
+  stripe: "red",
+  formula: "<b>logₐ x exists ⇔ x>0, a>0, a≠1</b>",
+  desc: "10‑Second Trick: Log solve karke jo x mile, use original argument me daal kar check karo. Agar ≤0 aaye to REJECT!",
+  deepDive: {
+    what: "Logarithm function logₐ x tabhi defined hai jab argument x strictly positive ho, base a positive ho aur a≠1. Agar inme se koi condition fail ho, to expression undefined hai.",
+    why: "Logarithm ka graph sirf positive x‑axis ke liye exist karta hai. Zero ya negative arguments ke liye log real numbers mein defined nahi hota. IAT isi trap ko set karta hai — algebraic solve se extra roots aate hain jo domain fail karte hain.",
+    how: "Step 1: Equation ko normally solve karo, roots nikaalo. Step 2: Har root ko original equation ke log argument mein rakho. Agar argument ≤0 ho ya base invalid ho, root ko turant reject kar do. Step 3: Bache hue roots hi final answer hain.",
+    derivation:
+      "logₐ x defined ⇔ x>0, a>0, a≠1.\n" +
+      "Example: 3^{log₃(x²-4x+3)} = x-3\n" +
+      "Using a^{logₐ u} = u gives x²-4x+3 = x-3 → x²-5x+6=0 → x=2,3.\n" +
+      "Check x=2: argument x²-4x+3 = 4-8+3 = -1 (≤0) → REJECT.\n" +
+      "Check x=3: argument = 9-12+3 = 0 (≤0) → REJECT.\n" +
+      "No real solution!",
+    example: "Solve: log₂(x-1) + log₂(x-2) = 1.\n" +
+      "→ Combine: log₂((x-1)(x-2)) = 1 → (x-1)(x-2) = 2 → x²-3x+2=2 → x²-3x=0 → x=0,3.\n" +
+      "Check domain: x>1 and x>2 ⇒ x>2. So x=0 reject, x=3 valid. Answer: x=3.",
+    useYes: "✅ Any equation involving logarithms. Finding real roots. IAT 'number of real solutions' questions.",
+    useNo: "❌ When log is inside absolute value or complex domain allowed (rare in IAT).",
+    examQ: "📌 IAT Style: Number of real roots of log(x-2) + log(x-3) = log(2).\n→ Ans: Solve → x²-5x+6=2 → x²-5x+4=0 → x=1,4. Domain x>3 ⇒ only x=4. Answer: 1 root."
+  }
+},
+{
+  number: "09",
+  title: "Ghost Exponential · Strictly Positive Rule",
+  badge: "👻 EXP TRAP",
+  stripe: "purple",
+  formula: "<b>a<sup>x</sup> > 0 for all real x (a>0)</b>",
+  desc: "10‑Second Trick: Exponential substitution (t = aˣ) me agar t ≤ 0 aaye to directly REJECT! Exponential kabhi negative nahi hota.",
+  deepDive: {
+    what: "Exponential functions of the form aˣ (with a>0) always produce positive values for any real x. Jab hum substitution t = aˣ karte hain aur quadratic solve karne par t negative ya zero aata hai, to use reject karna hoga.",
+    why: "Positive base ki koi bhi real power positive hi hoti hai. aˣ = 0 kabhi nahi hota (asymptote). Isliye equation aˣ = negative value ka koi real solution nahi hota.",
+    how: "Step 1: Equation mein aˣ = t substitute karo. Step 2: t ke liye solve karo (quadratic, etc.). Step 3: Sirf t > 0 wale values ko aage solve karo (x = logₐ t). t ≤ 0 wale roots reject karo.",
+    derivation:
+      "For a>0, aˣ = e^{x ln a} > 0.\n" +
+      "Example: 4ˣ - 3·2ˣ + 2 = 0.\n" +
+      "Let 2ˣ = t (>0). Then t² - 3t + 2 = 0 → t=1,2. Both >0, so x=0,1.\n" +
+      "If equation gave t = -1, reject.",
+    example: "Solve: 9ˣ - 4·3ˣ + 3 = 0.\n" +
+      "→ Let 3ˣ = t >0. Then t² - 4t + 3 = 0 → t=1,3. Both >0 ⇒ x=0,1.",
+    useYes: "✅ Exponential equations where substitution aˣ = t is used. Checking validity of roots.",
+    useNo: "❌ When a is negative (complex domain) or when x can be complex.",
+    examQ: "📌 IAT Style: Number of real solutions of 2ˣ + 2⁻ˣ = -2.\n→ Ans: Multiply by 2ˣ: (2ˣ)² + 1 = -2·2ˣ → t²+2t+1=0 → t=-1. t>0 fails, so 0 solutions."
+  }
+},
+{
+  number: "10",
+  title: "Vieta's Log Hack · Product of Roots",
+  badge: "📦 VIETA",
+  stripe: "green",
+  formula: "<b>If t = logₐ x and Σt = S, then ∏x = a<sup>S</sup></b>",
+  desc: "10‑Second Trick: Log equation mein x ke product ke liye roots mat nikalo! Sum of t nikaalo Vieta se, phir a^Sum karo.",
+  deepDive: {
+    what: "Jab equation logₐ x ke polynomial mein convert ho jaye (substitution t = logₐ x), aur question 'Product of all real x' pooche, to individual x nikalne ke bajaye Vieta's formula se t ke sum ka use karke seedha product nikaal sakte hain.",
+    why: "x₁·x₂·... = a^{logₐ x₁ + logₐ x₂ + ...} = a^{t₁+t₂+...} = a^{S_t}. Polynomial ke roots t ka sum Vieta se mil jaata hai. Individual t solve karne ki zaroorat nahi.",
+    how: "Step 1: Equation ko t = logₐ x ke polynomial ke roop mein arrange karo. Step 2: Coefficient of highest degree se sum of roots S_t = - (coeff of t^{n-1})/(coeff of t^n). Step 3: Product of all x = a^{S_t}.",
+    derivation:
+      "Let t = logₐ x. Then x = a^t.\n" +
+      "Product = a^{t₁}·a^{t₂}·...·a^{t_n} = a^{t₁+t₂+...+t_n}.\n" +
+      "For quadratic At² + Bt + C = 0, sum S = -B/A.\n" +
+      "Product of x = a^{S}.",
+    example: "If (log₂ x)² - 3 log₂ x + 2 = 0, product of all real x?\n" +
+      "→ Sum of t = -(-3)/1 = 3. Product = 2³ = 8.",
+    useYes: "✅ Log equations reducible to polynomial in t = logₐ x. Question asks product of all x.",
+    useNo: "❌ When some roots are invalid due to domain (must filter first). When equation has multiple bases.",
+    examQ: "📌 IAT Style: Equation (log₃ x)² - 5 log₃ x + 6 = 0. Product of all real x?\n→ Ans: Sum = 5, product = 3⁵ = 243."
+  }
+},
+{
+  number: "11",
+  title: "Power Spotting · Complex Log Simplification",
+  badge: "🔎 SPOT",
+  stripe: "gold",
+  formula: "<b>log_{a^m} b^n = (n/m) · logₐ b</b>",
+  desc: "10‑Second Trick: Base aur argument ko prime factors mein tod kar powers compare karo. Jo ratio aaye, wahi log ka value hai!",
+  deepDive: {
+    what: "Jab log ka base aur argument complex ho (roots, fractions, large numbers), to unhe prime factors mein tod kar powers nikaal lo. Phir property log_{a^m} b^n = (n/m) logₐ b use karke simple value nikaal sakte hain, often integer.",
+    why: "Logarithm ki power property directly applicable hai. Base aur argument ko same base ki power mein express karne se log ka value seedha power ratio ban jaata hai.",
+    how: "Step 1: Base aur argument dono ko prime factorization karke a^m aur b^n ke roop mein likho. Step 2: Property apply karo: log_{a^m} b^n = (n/m) logₐ b. Agar b a ki power hai (b = a^k), to answer (n·k)/m ho jaata hai.",
+    derivation:
+      "log_{a^m} b^n = (log b^n)/(log a^m) = n log b / (m log a) = (n/m) logₐ b.\n" +
+      "If b = a^k, then logₐ b = k, so answer = n·k / m.",
+    example: "Evaluate: log_{1/(5√6)} (√1080).\n" +
+      "→ Base = (5·6^{1/2})^{-1} = 5^{-1}·6^{-1/2} = 5^{-1}·2^{-1/2}·3^{-1/2}.\n" +
+      "Argument = √1080 = (2³·3³·5)^{1/2} = 2^{3/2}·3^{3/2}·5^{1/2}.\n" +
+      "Express as powers of same primes, then ratio simplifies to -3. Answer = -3.",
+    useYes: "✅ Complex looking logs with roots and fractions. IAT integer answer questions.",
+    useNo: "❌ When bases are different primes and no simplification possible.",
+    examQ: "📌 IAT Style: Find value of log_{√8} (1/4).\n→ Ans: Base = 2^{3/2}, argument = 2^{-2}. Ratio = (-2)/(3/2) = -4/3."
+  }
+},
+{
+  number: "12",
+  title: "Swap Rule · A^{log_B C} = C^{log_B A}",
+  badge: "🔄 SWAP",
+  stripe: "blue",
+  formula: "<b>A<sup>log<sub>B</sub> C</sup> = C<sup>log<sub>B</sub> A</sup></b>",
+  desc: "10‑Second Trick: Exponential mein log hai? Base aur argument swap kar do. Equation instantly simplify ho jaati hai.",
+  deepDive: {
+    what: "Property: A^{log_B C} = C^{log_B A}. Ye identity tab use hoti hai jab exponential ke exponent mein log ho. Isse terms interchange ho jaate hain aur equation easily solve ho jaati hai.",
+    why: "Take log_B of both sides: log_B (A^{log_B C}) = log_B C · log_B A. RHS: log_B (C^{log_B A}) = log_B A · log_B C. Both equal, hence identity holds.",
+    how: "Step 1: Identify term of form A^{log_B C}. Step 2: Swap base of exponent with argument of log → C^{log_B A}. Step 3: Simplify resulting equation, often leading to equal exponents or cancellation.",
+    derivation:
+      "Let LHS = A^{log_B C}. Take log_B: log_B(LHS) = log_B C · log_B A.\n" +
+      "Similarly, log_B(C^{log_B A}) = log_B A · log_B C. So LHS = RHS.",
+    example: "Solve: 2^{log₃ x} = x^{log₃ 2}.\n" +
+      "→ Using swap rule, LHS = x^{log₃ 2}. So equation becomes identity for all x>0. Infinitely many solutions? Need domain check.",
+    useYes: "✅ Equations with exponentials having log exponents. Comparing terms with different bases.",
+    useNo: "❌ When base of exponent or log is negative (domain issues).",
+    examQ: "📌 IAT Style: Simplify: 5^{log₂ 7} · 7^{log₂ 5}.\n→ Ans: Using swap, 5^{log₂ 7} = 7^{log₂ 5}. So product = 7^{2 log₂ 5} = (7^{log₂ 5})². Further simplification possible."
+  }
+},
+{
+  number: "13",
+  title: "Same Base Hack · Choose Smaller Base Log",
+  badge: "⚡ FAST LOG",
+  stripe: "red",
+  formula: "<b>For aˣ = bʸ, take logₐ or log_b to eliminate one variable</b>",
+  desc: "10‑Second Trick: Different bases ke exponential equation mein log lo, lekin wahi log lo jo chhoti power ke base ka ho. Ek variable direct eliminate!",
+  deepDive: {
+    what: "Equation like 3ˣ = 4ˣ⁻¹. Dono taraf log₃ lene se LHS simple x ban jaata hai, RHS mein log₃ 4 constant rehta hai. Agar natural log lete to dono taraf variables rehte.",
+    why: "logₐ (aˣ) = x, direct cancellation. Agar hum kisi ek base ka log lein to us side ka variable exponent eliminate ho jaata hai, solving easy.",
+    how: "Step 1: Observe the bases. Choose the base that appears with a variable exponent you want to isolate. Step 2: Take log of that base on both sides. Step 3: Simplify and solve linear equation.",
+    derivation:
+      "Example: 2ˣ = 5ˣ⁺².\n" +
+      "Take log₂: x = (x+2) log₂ 5 → x = x log₂5 + 2 log₂5 → x(1 - log₂5) = 2 log₂5 → x = 2 log₂5 / (1 - log₂5).",
+    example: "Solve: 3ˣ = 4ˣ⁻¹.\n" +
+      "→ Take log₃: x = (x-1) log₃ 4 → x = x log₃4 - log₃4 → x(1 - log₃4) = -log₃4 → x = log₃4 / (log₃4 - 1).",
+    useYes: "✅ Exponential equations with different bases. Avoiding natural logs with messy decimals.",
+    useNo: "❌ When both bases are convenient (e.g., both powers of 2). Then simplify bases first.",
+    examQ: "📌 IAT Style: Solve for x: 5ˣ = 7²ˣ⁻³.\n→ Ans: Take log₅: x = (2x-3) log₅7 → solve for x."
+  }
+},
+{
+  number: "14",
+  title: "Sum to Product Ninja Hack · Vieta Exponent",
+  badge: "🧠 VIETA EXP",
+  stripe: "green",
+  formula: "<b>If 2ˣ = t, then sum of x = log₂(product of t)</b>",
+  desc: "10‑Second Trick: Exponential quadratic me roots ka sum nikalna hai? Vieta se t ka product lo, phir log base le lo!",
+  deepDive: {
+    what: "Equation aˣ + b·aˣ + c = 0 type, substitution t = aˣ. Quadratic roots t₁, t₂. x₁ + x₂ = logₐ (t₁·t₂). Product of roots t from Vieta seedha milta hai.",
+    why: "t = aˣ ⇒ x = logₐ t. So x₁ + x₂ = logₐ t₁ + logₐ t₂ = logₐ (t₁ t₂). Quadratic me t₁ t₂ = c/a (constant term).",
+    how: "Step 1: Substitute t = aˣ to get quadratic At² + Bt + C = 0. Step 2: Product of t = C/A. Step 3: Sum of x = logₐ (C/A).",
+    derivation:
+      "Given a^{2x} + b a^{x} + c = 0.\n" +
+      "Let t = aˣ. Then t² + b t + c = 0.\n" +
+      "Roots t₁, t₂ satisfy t₁ t₂ = c.\n" +
+      "x₁ + x₂ = logₐ t₁ + logₐ t₂ = logₐ (t₁ t₂) = logₐ c.",
+    example: "Equation: 2^{2x} - 14·2ˣ + 11 = 0. Sum of all real x?\n" +
+      "→ t = 2ˣ. Product of t = 11/1 = 11. Sum = log₂ 11.",
+    useYes: "✅ Exponential equations reducible to quadratic. Finding sum of roots quickly.",
+    useNo: "❌ When substitution is not exactly aˣ. When some t roots negative (reject first).",
+    examQ: "📌 IAT Style: If 3^{2x} - 10·3ˣ + 9 = 0, sum of real x?\n→ Ans: t² -10t +9 = 0, product t=9, sum = log₃ 9 = 2."
+  }
+},
+{
+  number: "15",
+  title: "Log Inequality · Base Flip & Intersection",
+  badge: "📉 INEQUALITY",
+  stripe: "purple",
+  formula: "<b>If a>1, logₐ x > logₐ y ⇒ x>y<br>If 0<a<1, logₐ x > logₐ y ⇒ x<y</b>",
+  desc: "10‑Second Trick: Log inequality mein base 1 se chhota hai to sign reverse ho jaata hai! Phir domain intersection lo.",
+  deepDive: {
+    what: "Logarithmic inequalities solve karte waqt base ka value decide karta hai ki inequality sign same rahega ya reverse hoga. Agar base >1, function increasing hai; agar 0<base<1, function decreasing hai. Additionally, argument must be >0.",
+    why: "Because log function is monotonically increasing for base>1, and decreasing for base<1. Inequality direction flips accordingly.",
+    how: "Step 1: Ensure arguments >0 (domain). Step 2: If base>1, remove log and keep sign. If 0<base<1, remove log and reverse sign. Step 3: Solve resulting inequality. Step 4: Intersect with domain to get final solution.",
+    derivation:
+      "Example: log_{0.5} (x-1) > log_{0.5} (3x-2).\n" +
+      "Base 0.5 <1, so reverse sign: x-1 < 3x-2 → -2x < -1 → x > 0.5.\n" +
+      "Domain: x-1>0 → x>1; 3x-2>0 → x>2/3. Intersection: x>1.",
+    example: "Solve: log₂ (x+3) < log₂ (2x-1).\n" +
+      "→ Base>1, keep sign: x+3 < 2x-1 → -x < -4 → x>4.\n" +
+      "Domain: x+3>0 → x>-3; 2x-1>0 → x>0.5. Intersection: x>4.",
+    useYes: "✅ Logarithmic inequalities. IAT multiple choice with sign traps.",
+    useNo: "❌ When variable is in base (requires case splitting).",
+    examQ: "📌 IAT Style: Solve log_{1/3} (x-2) ≥ log_{1/3} (x+1).\n→ Ans: Base<1 ⇒ x-2 ≤ x+1 → -2 ≤ 1 (always true). Domain: x>2. Solution: x>2."
+  }
+},
+{
+  number: "16",
+  title: "Variable Base Inequality · Two Cases",
+  badge: "🎭 VARIABLE BASE",
+  stripe: "red",
+  formula: "<b>For log_{x} A > B, consider x>1 and 0<x<1 separately</b>",
+  desc: "10‑Second Trick: Base variable hai to do cases banao: x>1 (sign same) and 0<x<1 (sign reverse). Dono ke solutions ka union final answer.",
+  deepDive: {
+    what: "Jab inequality mein log ka base variable ho (jaise log_x (x+2) > 2), to hum directly sign nahi rakh sakte kyunki base 1 se bada ya chhota ho sakta hai. Isliye do cases consider karne hote hain: Case 1 (x>1) mein sign same; Case 2 (0<x<1) mein sign reverse.",
+    why: "Logarithmic function ka monotonicity base par depend karta hai. Variable base ke liye case splitting necessary hai.",
+    how: "Step 1: Domain from argument >0, base>0, base≠1. Step 2: Case I: Assume x>1. Remove log keeping sign. Solve inequality. Intersect with x>1 and domain. Step 3: Case II: Assume 0<x<1. Remove log and reverse sign. Solve. Intersect with 0<x<1 and domain. Step 4: Final answer = Union of solutions from both cases.",
+    derivation:
+      "Example: log_x (x+2) > 2.\n" +
+      "Domain: x+2>0 → x>-2; base x>0, x≠1 → x>0, x≠1.\n" +
+      "Case 1: x>1. Inequality becomes x+2 > x² → x² - x - 2 < 0 → (x-2)(x+1)<0 → -1<x<2. Intersect with x>1 → 1<x<2.\n" +
+      "Case 2: 0<x<1. Inequality becomes x+2 < x² → x² - x - 2 > 0 → x<-1 or x>2. Intersect with 0<x<1 → no solution.\n" +
+      "Final: 1<x<2.",
+    example: "Solve: log_x (2x-1) < 1.\n" +
+      "→ Domain: 2x-1>0 → x>0.5; base x>0, x≠1. So x>0.5, x≠1.\n" +
+      "Case 1: x>1 → 2x-1 < x → x<1. Intersect: no solution.\n" +
+      "Case 2: 0.5<x<1 → 2x-1 > x → x>1. Intersect: no solution.\n" +
+      "Overall: No solution.",
+    useYes: "✅ Logarithmic inequalities with variable base. IAT trap questions.",
+    useNo: "❌ When base is constant or given range already.",
+    examQ: "📌 IAT Style: Solve log_x (x+1) > 2.\n→ Ans: Case 1 (x>1): x+1 > x² → x²-x-1<0 → (1-√5)/2 < x < (1+√5)/2. Intersect with x>1 → 1<x<(1+√5)/2. Case 2 (0<x<1): x+1 < x² → x²-x-1>0 → x<(1-√5)/2 or x>(1+√5)/2. Intersect → ∅. Final: 1<x<(1+√5)/2."
+  }
 }
 ];
 
