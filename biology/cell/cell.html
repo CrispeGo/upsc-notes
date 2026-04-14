@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #dc2626;
+--accent2: #ef4444;
+--accent3: #b91c1c;
+
+--formula-bg: #fef2f2;
+--formula-border: #dc2626;
+
+--dive-bg: #fef2f2;
+--what-bg: #fee2e2;
+--why-bg: #fef9c3;
+--deriv-bg: #fee2e2;
+--example-bg: #ffe4e6;
+--use-bg: #fee2e2;
+--nouse-bg: #fef2f2;
+--exam-bg: #fef9c3;
+
+--shadow: 0 4px 24px rgba(220,38,38,0.10);
+--shadow-hover: 0 12px 40px rgba(220,38,38,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(220,38,38,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(239,68,68,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 60%, #ef4444 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #7f1d1d;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Biology";
+const CHAPTER = "Cell Structure";
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+  // ========== BIOLOGY · CELL: THE UNIT OF LIFE (Cards 01 to 20) ==========
+
+{
+  number: "01",
+  title: "Cell Theory · Fundamental Unit of Life",
+  badge: "🔬 THEORY",
+  stripe: "blue",
+  formula: "<b>All living things are made of cells. New cells arise from pre‑existing cells (Virchow).</b>",
+  desc: "10‑Second Trick: Cell theory ke 3 main points yaad rakho: (1) Cell is structural & functional unit. (2) All organisms made of cells. (3) Omnis cellula e cellula.",
+  deepDive: {
+    what: "Cell theory states that all living organisms are composed of cells and their products. Cells are the basic structural and functional units of life. All cells arise from pre‑existing cells (Rudolf Virchow, 1855).",
+    why: "IAT directly asks about cell theory tenets and exceptions (e.g., viruses are not made of cells). Virchow's modification is a favorite.",
+    how: "Memorize the three points and remember that viruses, viroids, prions are exceptions. Also, first cell arose from non‑living material (abiogenesis) is not part of cell theory.",
+    derivation: "",
+    example: "Which of the following is not an exception to cell theory? (A) Bacteria (B) Viruses (C) Viroids (D) Prions. Answer: Bacteria (they are made of cells).",
+    diagramSvg: "",
+    useYes: "✅ Direct questions on cell theory tenets, exceptions, and historical contributions.",
+    useNo: "❌ Not applicable for organelle identification.",
+    examQ: "📌 IAT Style: Which scientist proposed that new cells arise from pre‑existing cells? → Ans: Rudolf Virchow (Omnis cellula e cellula)."
+  }
+},
+{
+  number: "02",
+  title: "Cell Size & Shape · Extremes to Remember",
+  badge: "📏 SIZE",
+  stripe: "red",
+  formula: "<b>Smallest cell: Mycoplasma (0.1‑0.3 µm)<br>Longest cell: Nerve cell<br>Largest isolated cell: Ostrich egg</b>",
+  desc: "10‑Second Trick: Mycoplasma = smallest, Nerve cell = longest, Ostrich egg = largest single cell. RBC = 7 µm, Bacteria = 1‑5 µm.",
+  deepDive: {
+    what: "Cell size varies from 0.1 µm (Mycoplasma) to meters (nerve cells). Shape depends on function: RBCs are biconcave for gas exchange, nerve cells are long and branched for signal transmission, WBCs are amoeboid for phagocytosis.",
+    why: "IAT frequently asks for the smallest cell (Mycoplasma/PPLO), largest cell (ostrich egg), and longest cell (nerve cell). Also typical sizes like eukaryotic cell 10‑20 µm, bacteria 1‑2 µm.",
+    how: "Create a mental table: Mycoplasma (0.1‑0.3 µm) < Bacteria (1‑2 µm) < Eukaryotic cell (10‑20 µm) < RBC (7 µm) < Nerve cell (up to 1 m). Ostrich egg is an exception (visible to naked eye).",
+    derivation: "",
+    example: "Which of the following is the smallest cell? (A) Bacterial cell (B) Mycoplasma (C) Virus (D) RBC. Answer: Mycoplasma (PPLO).",
+    diagramSvg: `
+      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" font-size="11" fill="#333" font-family="DM Sans,sans-serif" font-weight="600">📏 Cell Size Comparison</text>
+        <rect x="20" y="35" width="60" height="20" fill="#c8d8f8" rx="4"/><text x="30" y="50" font-size="9" fill="#2a4494">Mycoplasma</text>
+        <rect x="90" y="35" width="60" height="20" fill="#a5d6a5" rx="4"/><text x="100" y="50" font-size="9" fill="#1a6b3c">Bacteria</text>
+        <rect x="160" y="35" width="60" height="20" fill="#f9e79f" rx="4"/><text x="170" y="50" font-size="9" fill="#b8860b">RBC</text>
+        <rect x="230" y="35" width="80" height="20" fill="#f5b7b1" rx="4"/><text x="240" y="50" font-size="9" fill="#c0392b">Eukaryotic</text>
+        <text x="20" y="80" font-size="9" fill="#666">0.1-0.3 µm</text>
+        <text x="90" y="80" font-size="9" fill="#666">1-2 µm</text>
+        <text x="160" y="80" font-size="9" fill="#666">7 µm</text>
+        <text x="230" y="80" font-size="9" fill="#666">10-20 µm</text>
+        <text x="20" y="105" font-size="9" fill="#333">Longest: Nerve cell (up to 1 m) | Largest isolated: Ostrich egg (15 cm)</text>
+      </svg>
+    `,
+    useYes: "✅ Direct recall of extreme sizes/shapes. Comparison questions.",
+    useNo: "❌ Not for detailed organelle dimensions.",
+    examQ: "📌 IAT Style: Which of the following is the smallest living cell? (A) PPLO (B) Virus (C) RBC (D) Bacterial cell. → Ans: PPLO (Mycoplasma)."
+  }
+},
+{
+  number: "03",
+  title: "Prokaryotic vs Eukaryotic · Quick Differences",
+  badge: "🦠 PROKARYOTE",
+  stripe: "green",
+  formula: "<b>Prokaryotes: No nucleus, 70S ribosome, single circular DNA<br>Eukaryotes: True nucleus, 80S ribosome, multiple linear DNA</b>",
+  desc: "10‑Second Trick: Nucleus absent = Prokaryote (Bacteria, Archaea). Membrane‑bound organelles = Eukaryote (Protists, Fungi, Plants, Animals).",
+  deepDive: {
+    what: "Prokaryotic cells lack a membrane‑bound nucleus and organelles. Genetic material is naked, circular DNA in nucleoid. Ribosomes are 70S. Eukaryotic cells have a true nucleus and membrane‑bound organelles like mitochondria, ER, Golgi.",
+    why: "IAT questions ask to identify prokaryotic features (mesosome, 70S ribosome, peptidoglycan cell wall) or eukaryotic features (80S ribosome, cytoskeleton, cilia with 9+2 arrangement).",
+    how: "Memorize key differences: Nucleus (absent/present), Ribosomes (70S/80S), Cell wall (peptidoglycan in bacteria, cellulose in plants, chitin in fungi), Organelles (none/many), DNA (circular/linear).",
+    derivation: "",
+    example: "Which of the following is a prokaryotic feature? (A) 80S ribosome (B) Membrane‑bound nucleus (C) 70S ribosome (D) Mitochondria. Answer: 70S ribosome.",
+    diagramSvg: `
+      <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Prokaryotic cell -->
+        <rect x="20" y="20" width="150" height="140" fill="#fff" stroke="#2a4494" stroke-width="2" rx="10"/>
+        <text x="95" y="35" font-size="11" fill="#2a4494" font-family="DM Sans,sans-serif" text-anchor="middle" font-weight="600">Prokaryotic</text>
+        <ellipse cx="95" cy="80" rx="40" ry="30" fill="#e8f0ff" stroke="#2a4494" stroke-width="1"/>
+        <text x="95" y="85" font-size="9" fill="#2a4494" text-anchor="middle">Nucleoid</text>
+        <circle cx="60" cy="120" r="5" fill="#aaa"/><text x="55" y="135" font-size="8">70S</text>
+        <circle cx="130" cy="120" r="5" fill="#aaa"/><text x="125" y="135" font-size="8">70S</text>
+        <!-- Eukaryotic cell -->
+        <rect x="220" y="20" width="150" height="140" fill="#fff" stroke="#c0392b" stroke-width="2" rx="10"/>
+        <text x="295" y="35" font-size="11" fill="#c0392b" font-family="DM Sans,sans-serif" text-anchor="middle" font-weight="600">Eukaryotic</text>
+        <circle cx="295" cy="70" r="18" fill="#f9e79f" stroke="#b8860b" stroke-width="1"/>
+        <text x="295" y="75" font-size="9" fill="#b8860b" text-anchor="middle">Nucleus</text>
+        <circle cx="255" cy="120" r="6" fill="#f5b7b1"/><text x="250" y="135" font-size="8">80S</text>
+        <circle cx="335" cy="120" r="6" fill="#f5b7b1"/><text x="330" y="135" font-size="8">80S</text>
+        <rect x="260" y="90" width="15" height="10" fill="#a5d6a5"/><text x="240" y="100" font-size="8">Mito</text>
+      </svg>
+    `,
+    useYes: "✅ Distinguishing prokaryotic and eukaryotic features. Match the column questions.",
+    useNo: "❌ Not for detailed organelle functions.",
+    examQ: "📌 IAT Style: Which of the following is present in prokaryotes but absent in eukaryotes? (A) Ribosome (B) Mesosome (C) Mitochondria (D) Nucleus. → Ans: Mesosome."
+  }
+},
+{
+  number: "04",
+  title: "Bacterial Cell Envelope · Glycocalyx, Cell Wall, Membrane",
+  badge: "🧫 BACTERIA",
+  stripe: "blue",
+  formula: "<b>Glycocalyx (slime/capsule) → Cell wall (peptidoglycan) → Plasma membrane</b>",
+  desc: "10‑Second Trick: Bacterial cell envelope has 3 layers: outermost glycocalyx (sugar coat), middle cell wall (peptidoglycan), inner plasma membrane.",
+  deepDive: {
+    what: "Prokaryotic cell envelope consists of glycocalyx (slime layer or capsule), cell wall (made of peptidoglycan = NAG + NAM), and plasma membrane (selectively permeable). Mycoplasma lacks cell wall.",
+    why: "IAT asks about composition (peptidoglycan, mucopolysaccharide), function (protection, shape, prevents osmotic lysis), and differences (capsule vs slime layer).",
+    how: "Glycocalyx: Mucopolysaccharide, protective. Cell wall: Peptidoglycan (NAG‑NAM), gives shape, prevents bursting. Plasma membrane: Lipid bilayer with proteins, mesosome infoldings for respiration and DNA segregation.",
+    derivation: "",
+    example: "Which component of bacterial cell wall is responsible for its rigidity? Answer: Peptidoglycan (murein).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+        <rect x="50" y="20" width="200" height="110" fill="#f0f0f0" stroke="#2a4494" stroke-width="2" rx="8"/>
+        <rect x="60" y="30" width="180" height="20" fill="#c8d8f8" rx="3"/><text x="150" y="44" font-size="9" fill="#2a4494" text-anchor="middle">Glycocalyx (Capsule/Slime)</text>
+        <rect x="60" y="55" width="180" height="20" fill="#a5d6a5" rx="3"/><text x="150" y="69" font-size="9" fill="#1a6b3c" text-anchor="middle">Cell Wall (Peptidoglycan)</text>
+        <rect x="60" y="80" width="180" height="20" fill="#f9e79f" rx="3"/><text x="150" y="94" font-size="9" fill="#b8860b" text-anchor="middle">Plasma Membrane</text>
+        <text x="150" y="120" font-size="9" fill="#666" text-anchor="middle">Mesosome (infolding)</text>
+        <line x1="150" y1="100" x2="150" y2="110" stroke="#666" stroke-width="1"/>
+      </svg>
+    `,
+    useYes: "✅ Bacterial cell wall composition, functions, and Gram staining basis.",
+    useNo: "❌ For eukaryotic cell walls.",
+    examQ: "📌 IAT Style: Which of the following is absent in Mycoplasma? (A) Cell wall (B) Plasma membrane (C) Ribosomes (D) DNA. → Ans: Cell wall."
+  }
+},
+{
+  number: "05",
+  title: "Bacterial Surface Appendages · Flagella, Pili, Fimbriae",
+  badge: "🦠 MOTILITY",
+  stripe: "green",
+  formula: "<b>Flagella = Motility (flagellin)<br>Pili = Conjugation (pilin)<br>Fimbriae = Attachment</b>",
+  desc: "10‑Second Trick: Flagella for movement (made of flagellin), Pili for DNA transfer (pilin), Fimbriae for sticking to surfaces.",
+  deepDive: {
+    what: "Prokaryotes have three types of surface structures: Flagella (long, made of flagellin protein, rotate for motility), Pili (elongated tubes of pilin, used in bacterial conjugation), and Fimbriae (small bristle‑like, for attachment to host tissues or rocks).",
+    why: "IAT differentiates between pili and fimbriae (both proteinaceous, but pili are longer and fewer, involved in sex). Flagella structure (basal body, hook, filament) may be asked.",
+    how: "Flagella: 3 parts – basal body (rotor), hook, filament. Pili: longer, few, for conjugation. Fimbriae: numerous, short, for adhesion.",
+    derivation: "",
+    example: "Which bacterial structure is involved in conjugation? Answer: Pili (sex pili).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="75" rx="40" ry="20" fill="#e8f0ff" stroke="#2a4494" stroke-width="1.5"/>
+        <text x="150" y="80" font-size="10" fill="#2a4494" text-anchor="middle">Bacterial Cell</text>
+        <!-- Flagellum -->
+        <line x1="190" y1="75" x2="260" y2="55" stroke="#2a4494" stroke-width="2"/><text x="240" y="45" font-size="8">Flagellum</text>
+        <!-- Pilus -->
+        <line x1="190" y1="80" x2="260" y2="95" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="3 2"/><text x="245" y="110" font-size="8">Pilus</text>
+        <!-- Fimbriae -->
+        <line x1="110" y1="55" x2="80" y2="45" stroke="#1a6b3c" stroke-width="1"/><line x1="115" y1="60" x2="85" y2="55" stroke="#1a6b3c" stroke-width="1"/>
+        <text x="60" y="45" font-size="8">Fimbriae</text>
+      </svg>
+    `,
+    useYes: "✅ Identifying bacterial appendages and their functions.",
+    useNo: "❌ For eukaryotic flagella (different structure).",
+    examQ: "📌 IAT Style: Which of the following is made of pilin protein? (A) Flagella (B) Pili (C) Fimbriae (D) Capsule. → Ans: Pili."
+  }
+},
+{
+  number: "06",
+  title: "Gram Positive vs Gram Negative Bacteria",
+  badge: "🟣 GRAM STAIN",
+  stripe: "purple",
+  formula: "<b>Gram + : Thick peptidoglycan, purple<br>Gram – : Thin peptidoglycan + outer membrane, pink</b>",
+  desc: "10‑Second Trick: Gram positive bacteria retain crystal violet (purple); Gram negative have outer LPS membrane, appear pink after counterstain.",
+  deepDive: {
+    what: "Christian Gram classified bacteria based on cell wall staining. Gram‑positive bacteria have a thick peptidoglycan layer and no outer membrane. Gram‑negative have a thin peptidoglycan layer and an outer membrane containing lipopolysaccharide (LPS).",
+    why: "IAT asks about basis of Gram staining (difference in cell wall composition) and examples (e.g., E. coli Gram‑negative).",
+    how: "Gram‑positive: thick peptidoglycan, teichoic acids. Gram‑negative: thin peptidoglycan, outer membrane with LPS, periplasmic space.",
+    derivation: "",
+    example: "Which of the following is true for Gram‑negative bacteria? Answer: They have an outer membrane with lipopolysaccharide.",
+    diagramSvg: `
+      <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="140" height="80" fill="#e8daef" stroke="#6a2b8a" stroke-width="1.5" rx="5"/>
+        <text x="90" y="40" font-size="10" fill="#6a2b8a" text-anchor="middle" font-weight="600">Gram Positive</text>
+        <rect x="30" y="50" width="120" height="15" fill="#c8d8f8" rx="2"/><text x="90" y="62" font-size="8" text-anchor="middle">Thick Peptidoglycan</text>
+        <rect x="30" y="68" width="120" height="12" fill="#f9e79f" rx="2"/><text x="90" y="78" font-size="8" text-anchor="middle">Plasma Membrane</text>
+        <rect x="180" y="20" width="150" height="80" fill="#fadbd8" stroke="#c0392b" stroke-width="1.5" rx="5"/>
+        <text x="255" y="40" font-size="10" fill="#c0392b" text-anchor="middle" font-weight="600">Gram Negative</text>
+        <rect x="190" y="50" width="130" height="10" fill="#f5b7b1" rx="2"/><text x="255" y="59" font-size="8" text-anchor="middle">Outer Membrane (LPS)</text>
+        <rect x="190" y="62" width="130" height="8" fill="#a5d6a5" rx="2"/><text x="255" y="70" font-size="8" text-anchor="middle">Thin Peptidoglycan</text>
+        <rect x="190" y="73" width="130" height="10" fill="#f9e79f" rx="2"/><text x="255" y="82" font-size="8" text-anchor="middle">Plasma Membrane</text>
+      </svg>
+    `,
+    useYes: "✅ Gram staining basis and differences. Examples of each type.",
+    useNo: "❌ For Archaea (different cell wall).",
+    examQ: "📌 IAT Style: Which component is unique to Gram‑negative bacteria? (A) Peptidoglycan (B) Lipopolysaccharide (C) Teichoic acid (D) Porins. → Ans: Lipopolysaccharide."
+  }
+},
+{
+  number: "07",
+  title: "Ribosomes · 70S vs 80S",
+  badge: "🧬 RIBOSOME",
+  stripe: "blue",
+  formula: "<b>Prokaryotes: 70S (50S+30S)<br>Eukaryotes: 80S (60S+40S)</b>",
+  desc: "10‑Second Trick: Prokaryotic ribosomes smaller (70S), eukaryotic larger (80S). Mitochondria & chloroplast have 70S ribosomes (endosymbiont theory).",
+  deepDive: {
+    what: "Ribosomes are non‑membranous organelles made of rRNA and proteins, site of protein synthesis. Prokaryotes have 70S ribosomes; eukaryotes have 80S in cytoplasm. Mitochondria and chloroplasts contain 70S ribosomes.",
+    why: "IAT frequently asks about ribosome types in different cell compartments. Also, Svedberg unit (S) is sedimentation coefficient, not additive.",
+    how: "Remember: 70S = 50S + 30S (prokaryotic). 80S = 60S + 40S (eukaryotic cytoplasmic). Organelle ribosomes: 70S in mitochondria/chloroplast.",
+    derivation: "",
+    example: "Which type of ribosome is found in the matrix of mitochondria? Answer: 70S.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" font-size="11" fill="#333" font-family="DM Sans,sans-serif" font-weight="600">Ribosome Types</text>
+        <circle cx="70" cy="60" r="30" fill="#c8d8f8" stroke="#2a4494" stroke-width="1.5"/>
+        <text x="70" y="55" font-size="14" fill="#2a4494" text-anchor="middle" font-weight="600">70S</text>
+        <text x="70" y="72" font-size="9" fill="#2a4494" text-anchor="middle">50S + 30S</text>
+        <text x="70" y="95" font-size="8" fill="#666" text-anchor="middle">Prokaryotes, Mito, Chloro</text>
+        <circle cx="210" cy="60" r="30" fill="#f5b7b1" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="210" y="55" font-size="14" fill="#c0392b" text-anchor="middle" font-weight="600">80S</text>
+        <text x="210" y="72" font-size="9" fill="#c0392b" text-anchor="middle">60S + 40S</text>
+        <text x="210" y="95" font-size="8" fill="#666" text-anchor="middle">Eukaryotic cytoplasm</text>
+      </svg>
+    `,
+    useYes: "✅ Ribosome size and location questions. Endosymbiont theory support.",
+    useNo: "❌ Not for specific protein functions.",
+    examQ: "📌 IAT Style: Which of the following contains 70S ribosomes? (A) Cytoplasm of plant cell (B) Cytoplasm of animal cell (C) Mitochondrial matrix (D) Nucleus. → Ans: Mitochondrial matrix."
+  }
+},
+{
+  number: "08",
+  title: "Inclusion Bodies · Storage in Prokaryotes",
+  badge: "📦 INCLUSIONS",
+  stripe: "green",
+  formula: "<b>Reserve material in prokaryotic cytoplasm: glycogen, polyphosphate, gas vacuoles</b>",
+  desc: "10‑Second Trick: Inclusion bodies are membraneless structures storing nutrients or providing buoyancy (gas vacuoles).",
+  deepDive: {
+    what: "Prokaryotic cells contain inclusion bodies, which are aggregates of reserve materials like glycogen, poly‑β‑hydroxybutyrate, polyphosphate (volutin granules), and gas vacuoles (in cyanobacteria for buoyancy). They lie free in cytoplasm and are not bound by membrane.",
+    why: "IAT asks about examples of inclusion bodies and their functions (e.g., gas vacuoles in cyanobacteria for floating).",
+    how: "Memorize: Gas vacuoles – cyanobacteria, purple/green sulfur bacteria. Phosphate granules – volutin. Glycogen – carbon storage.",
+    derivation: "",
+    example: "Which inclusion body helps cyanobacteria float? Answer: Gas vacuole.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="125" cy="50" rx="60" ry="25" fill="#e8f0ff" stroke="#2a4494" stroke-width="1.5"/>
+        <text x="125" y="40" font-size="10" fill="#2a4494" text-anchor="middle">Prokaryotic Cell</text>
+        <circle cx="90" cy="60" r="8" fill="#f9e79f"/><text x="90" y="63" font-size="7" text-anchor="middle">Gas</text>
+        <circle cx="110" cy="55" r="6" fill="#a5d6a5"/><text x="110" y="58" font-size="6">Gly</text>
+        <circle cx="130" cy="65" r="7" fill="#c8d8f8"/><text x="130" y="68" font-size="6">PO₄</text>
+        <text x="125" y="90" font-size="9" fill="#666" text-anchor="middle">Inclusion Bodies (Membraneless)</text>
+      </svg>
+    `,
+    useYes: "✅ Prokaryotic storage structures and their functions.",
+    useNo: "❌ Eukaryotic storage organelles (like vacuoles).",
+    examQ: "📌 IAT Style: Gas vacuoles are found in (A) All bacteria (B) Cyanobacteria (C) Fungi (D) Animal cells. → Ans: Cyanobacteria."
+  }
+},
+{
+  number: "09",
+  title: "Plasma Membrane · Fluid Mosaic Model",
+  badge: "🧪 MEMBRANE",
+  stripe: "red",
+  formula: "<b>Phospholipid bilayer + proteins (integral & peripheral) + carbohydrates</b>",
+  desc: "10‑Second Trick: Singer & Nicolson (1972) proposed fluid mosaic model. Lipid bilayer with icebergs of proteins. Fluid nature due to phospholipids.",
+  deepDive: {
+    what: "The plasma membrane is a selectively permeable barrier composed of a phospholipid bilayer with embedded proteins. According to fluid mosaic model, the lipids and proteins can move laterally. Carbohydrates are attached to lipids (glycolipids) or proteins (glycoproteins) on the outer surface.",
+    why: "IAT asks about membrane composition, types of proteins (integral vs peripheral), function of glycocalyx, and fluidity factors (cholesterol in animals).",
+    how: "Integral proteins span the membrane; peripheral proteins are on the surface. Cholesterol regulates fluidity. RBC membrane composition: 52% protein, 40% lipid.",
+    derivation: "",
+    example: "Which component of plasma membrane is responsible for cell‑cell recognition? Answer: Glycoproteins/Glycolipids (carbohydrates).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="280" height="80" fill="#e8f0ff" stroke="#2a4494" stroke-width="1.5" rx="5"/>
+        <text x="150" y="15" font-size="10" fill="#2a4494" text-anchor="middle" font-weight="600">Fluid Mosaic Model</text>
+        <!-- Phospholipid heads -->
+        <circle cx="40" cy="60" r="6" fill="#f9e79f"/><circle cx="80" cy="60" r="6" fill="#f9e79f"/><circle cx="120" cy="60" r="6" fill="#f9e79f"/>
+        <circle cx="160" cy="60" r="6" fill="#f9e79f"/><circle cx="200" cy="60" r="6" fill="#f9e79f"/><circle cx="240" cy="60" r="6" fill="#f9e79f"/>
+        <!-- Tails -->
+        <line x1="40" y1="66" x2="40" y2="75" stroke="#aaa" stroke-width="2"/><line x1="80" y1="66" x2="80" y2="75" stroke="#aaa" stroke-width="2"/>
+        <!-- Integral protein -->
+        <rect x="130" y="50" width="40" height="30" fill="#c8d8f8" rx="3"/><text x="150" y="70" font-size="8" fill="#2a4494" text-anchor="middle">Integral</text>
+        <!-- Peripheral protein -->
+        <ellipse cx="220" cy="55" rx="15" ry="8" fill="#f5b7b1"/><text x="220" y="58" font-size="7" fill="#c0392b" text-anchor="middle">Peripheral</text>
+        <!-- Carbohydrate chain -->
+        <path d="M30 50 Q35 40 40 50" stroke="#1a6b3c" fill="none"/><text x="25" y="40" font-size="7" fill="#1a6b3c">Glyco</text>
+      </svg>
+    `,
+    useYes: "✅ Membrane structure, protein types, fluidity factors.",
+    useNo: "❌ Detailed transport mechanisms (active/passive).",
+    examQ: "📌 IAT Style: Which of the following is a function of integral membrane proteins? (A) Cell recognition (B) Transport (C) Enzymatic activity (D) All of the above. → Ans: All."
+  }
+},
+{
+  number: "10",
+  title: "Cell Wall · Plant, Fungal, Bacterial",
+  badge: "🧱 CELL WALL",
+  stripe: "green",
+  formula: "<b>Plant: Cellulose · Fungi: Chitin · Bacteria: Peptidoglycan</b>",
+  desc: "10‑Second Trick: Plant cell wall = cellulose (primary) + lignin (secondary). Fungal = chitin. Bacterial = peptidoglycan (murein).",
+  deepDive: {
+    what: "Cell wall is a non‑living rigid structure outside plasma membrane. Plants have primary wall (cellulose, hemicellulose, pectin) and secondary wall (lignin). Middle lamella (calcium pectate) joins adjacent cells. Fungi have chitin. Bacteria have peptidoglycan. Algae have cellulose, mannans, etc.",
+    why: "IAT asks about composition and layers (middle lamella, primary wall, secondary wall). Also, pits and plasmodesmata for communication.",
+    how: "Remember: Plant – cellulose; Fungi – chitin; Bacteria – peptidoglycan; Algae – varied (cellulose, alginic acid).",
+    derivation: "",
+    example: "Which polysaccharide is the main component of fungal cell wall? Answer: Chitin.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="260" height="90" fill="#f5f5dc" stroke="#8b4513" stroke-width="1.5" rx="5"/>
+        <text x="150" y="15" font-size="10" fill="#8b4513" text-anchor="middle" font-weight="600">Plant Cell Wall Layers</text>
+        <rect x="40" y="30" width="220" height="15" fill="#c8d8f8" rx="2"/><text x="150" y="41" font-size="9" text-anchor="middle">Middle Lamella (Calcium Pectate)</text>
+        <rect x="40" y="50" width="220" height="15" fill="#a5d6a5" rx="2"/><text x="150" y="61" font-size="9" text-anchor="middle">Primary Wall (Cellulose, Hemicellulose)</text>
+        <rect x="40" y="70" width="220" height="15" fill="#f9e79f" rx="2"/><text x="150" y="81" font-size="9" text-anchor="middle">Secondary Wall (Lignin, sometimes absent)</text>
+        <text x="150" y="100" font-size="9" fill="#666" text-anchor="middle">Plasmodesmata connect adjacent cells</text>
+      </svg>
+    `,
+    useYes: "✅ Cell wall composition and layers. Comparison across kingdoms.",
+    useNo: "❌ Not for animal cells (no cell wall).",
+    examQ: "📌 IAT Style: Middle lamella is mainly composed of (A) Cellulose (B) Calcium pectate (C) Lignin (D) Chitin. → Ans: Calcium pectate."
+  }
+},
+{
+  number: "11",
+  title: "Endomembrane System · ER, Golgi, Lysosome, Vacuole",
+  badge: "🔄 ENDOMEMBRANE",
+  stripe: "purple",
+  formula: "<b>RER → Protein synthesis & transport<br>SER → Lipid synthesis & detox<br>Golgi → Packaging & secretion<br>Lysosome → Digestion</b>",
+  desc: "10‑Second Trick: Endomembrane system includes organelles that work together: ER, Golgi, lysosomes, vacuoles. Each has distinct functions.",
+  deepDive: {
+    what: "The endomembrane system is a group of membranous organelles that function in synthesis, modification, packaging, and transport of proteins and lipids. Includes endoplasmic reticulum (RER with ribosomes, SER without), Golgi apparatus (cis, medial, trans), lysosomes (suicidal bags), and vacuoles (storage).",
+    why: "IAT matches functions: RER – protein synthesis; SER – steroid hormone synthesis, detox; Golgi – glycosylation, packaging; Lysosome – hydrolytic enzymes (acidic pH).",
+    how: "Remember: RER has ribosomes (rough), SER smooth. Golgi has cis face (receiving) and trans face (shipping). Lysosomes contain acid hydrolases.",
+    derivation: "",
+    example: "Which organelle is the site of glycosylation of proteins? Answer: Golgi apparatus.",
+    diagramSvg: `
+      <svg viewBox="0 0 350 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="330" height="100" fill="#fff" stroke="#2a4494" stroke-width="1.5" rx="8"/>
+        <text x="175" y="15" font-size="10" fill="#2a4494" text-anchor="middle" font-weight="600">Endomembrane System</text>
+        <!-- Nucleus -->
+        <circle cx="40" cy="60" r="15" fill="#f9e79f" stroke="#b8860b"/><text x="40" y="64" font-size="8" text-anchor="middle">Nucleus</text>
+        <!-- RER -->
+        <path d="M70 50 Q80 40 90 50 Q100 60 110 50" stroke="#2a4494" fill="none" stroke-width="2"/><circle cx="75" cy="45" r="2" fill="#aaa"/><circle cx="85" cy="55" r="2" fill="#aaa"/><text x="90" y="40" font-size="8" fill="#2a4494">RER</text>
+        <!-- SER -->
+        <path d="M120 50 Q130 40 140 50 Q150 60 160 50" stroke="#c0392b" fill="none" stroke-width="2"/><text x="140" y="40" font-size="8" fill="#c0392b">SER</text>
+        <!-- Golgi -->
+        <path d="M190 50 Q200 40 210 50 Q220 60 230 50" stroke="#1a6b3c" fill="none" stroke-width="2"/><text x="210" y="40" font-size="8" fill="#1a6b3c">Golgi</text>
+        <!-- Vesicle -->
+        <circle cx="260" cy="60" r="10" fill="#c8d8f8" stroke="#2a4494"/><text x="260" y="64" font-size="7">Lysosome</text>
+        <circle cx="310" cy="60" r="12" fill="#e8f0ff" stroke="#2a4494"/><text x="310" y="64" font-size="7">Vacuole</text>
+        <text x="175" y="110" font-size="9" fill="#666" text-anchor="middle">Protein synthesis → processing → packaging → digestion/storage</text>
+      </svg>
+    `,
+    useYes: "✅ Functions of ER, Golgi, lysosomes, vacuoles. Pathway of protein secretion.",
+    useNo: "❌ Not for mitochondria or chloroplasts (not part of endomembrane system).",
+    examQ: "📌 IAT Style: Which of the following is NOT part of the endomembrane system? (A) Golgi (B) Lysosome (C) Mitochondria (D) ER. → Ans: Mitochondria."
+  }
+},
+{
+  number: "12",
+  title: "Mitochondria · Powerhouse of the Cell",
+  badge: "⚡ MITOCHONDRIA",
+  stripe: "red",
+  formula: "<b>Double membrane · Cristae (inner folds) · Matrix contains 70S ribosomes & circular DNA</b>",
+  desc: "10‑Second Trick: Aerobic respiration site. Inner membrane has oxysomes (F₁ particles) for ATP synthesis. Semiautonomous organelle.",
+  deepDive: {
+    what: "Mitochondria are double‑membrane bound organelles. The outer membrane is smooth; inner membrane forms cristae to increase surface area. Matrix contains enzymes for Krebs cycle, 70S ribosomes, and circular DNA. They are semiautonomous and can divide by fission.",
+    why: "IAT asks about structure (cristae, matrix), function (ATP production via oxidative phosphorylation), and evidence for endosymbiont theory (own DNA, 70S ribosomes).",
+    how: "Memorize: Inner membrane – electron transport chain and ATP synthase (F₁ particles). Matrix – Krebs cycle. Cristae – increase surface area.",
+    derivation: "",
+    example: "Which part of mitochondria contains enzymes for Krebs cycle? Answer: Matrix.",
+    diagramSvg: `
+      <svg viewBox="0 0 280 150" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="140" cy="70" rx="60" ry="35" fill="#fce4ec" stroke="#c0392b" stroke-width="2"/>
+        <ellipse cx="140" cy="70" rx="45" ry="25" fill="#fff" stroke="#c0392b" stroke-width="1.5"/>
+        <path d="M110 70 Q120 55 130 70 Q140 85 150 70 Q160 55 170 70" fill="none" stroke="#c0392b" stroke-width="2"/>
+        <text x="140" y="50" font-size="9" fill="#c0392b" text-anchor="middle">Outer Membrane</text>
+        <text x="140" y="65" font-size="9" fill="#c0392b" text-anchor="middle">Inner Membrane (Cristae)</text>
+        <text x="140" y="85" font-size="9" fill="#c0392b" text-anchor="middle">Matrix</text>
+        <circle cx="120" cy="80" r="3" fill="#aaa"/><circle cx="140" cy="75" r="3" fill="#aaa"/>
+        <text x="140" y="115" font-size="8" fill="#666" text-anchor="middle">70S Ribosomes + Circular DNA</text>
+      </svg>
+    `,
+    useYes: "✅ Mitochondria structure, function, and semiautonomous nature.",
+    useNo: "❌ Not for chloroplast-specific functions.",
+    examQ: "📌 IAT Style: Cristae are infoldings of (A) Outer membrane (B) Inner membrane (C) Matrix (D) Thylakoid. → Ans: Inner membrane."
+  }
+},
+{
+  number: "13",
+  title: "Plastids · Chloroplast, Chromoplast, Leucoplast",
+  badge: "🍃 PLASTIDS",
+  stripe: "green",
+  formula: "<b>Chloroplast: Chlorophyll (photosynthesis)<br>Chromoplast: Carotenoids (color)<br>Leucoplast: Colorless (storage)</b>",
+  desc: "10‑Second Trick: Chloroplast = green, photosynthesis. Chromoplast = colored (except green), attracts pollinators. Leucoplast = storage (starch, oil, protein).",
+  deepDive: {
+    what: "Plastids are double‑membrane organelles found in plant cells and some protists. Types: Chloroplast (contains chlorophyll, site of photosynthesis), Chromoplast (contains carotenoids, xanthophylls, provides color to flowers/fruits), Leucoplast (colorless, stores starch/amyloplast, oil/elaioplast, protein/aleuroplast).",
+    why: "IAT differentiates between types and their pigments/functions. Chloroplast structure (thylakoids, grana, stroma) is important.",
+    how: "Chloroplast: Thylakoids stacked as grana, stroma for dark reaction. Chromoplast: Carotenoids, xanthophylls. Leucoplast: No pigments, storage.",
+    derivation: "",
+    example: "Which plastid stores starch? Answer: Amyloplast (type of leucoplast).",
+    diagramSvg: `
+      <svg viewBox="0 0 350 130" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="80" cy="60" rx="35" ry="25" fill="#d4efdf" stroke="#1a6b3c" stroke-width="1.5"/>
+        <text x="80" y="50" font-size="9" fill="#1a6b3c" text-anchor="middle">Chloroplast</text>
+        <circle cx="70" cy="65" r="5" fill="#1a6b3c"/><circle cx="85" cy="60" r="5" fill="#1a6b3c"/><circle cx="75" cy="55" r="5" fill="#1a6b3c"/>
+        <ellipse cx="175" cy="60" rx="35" ry="25" fill="#fdedec" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="175" y="50" font-size="9" fill="#c0392b" text-anchor="middle">Chromoplast</text>
+        <circle cx="165" cy="65" r="5" fill="#f1c40f"/><circle cx="185" cy="60" r="5" fill="#e67e22"/>
+        <ellipse cx="270" cy="60" rx="35" ry="25" fill="#ebedef" stroke="#7f8c8d" stroke-width="1.5"/>
+        <text x="270" y="50" font-size="9" fill="#7f8c8d" text-anchor="middle">Leucoplast</text>
+        <circle cx="260" cy="65" r="5" fill="#fff" stroke="#aaa"/><circle cx="280" cy="60" r="5" fill="#fff" stroke="#aaa"/>
+        <text x="175" y="110" font-size="9" fill="#666" text-anchor="middle">All plastids have double membrane and circular DNA</text>
+      </svg>
+    `,
+    useYes: "✅ Plastid types, pigments, and functions. Chloroplast structure.",
+    useNo: "❌ Not for animal cells (no plastids).",
+    examQ: "📌 IAT Style: Tomato gets its red color due to (A) Chloroplast (B) Chromoplast (C) Leucoplast (D) Amyloplast. → Ans: Chromoplast."
+  }
+},
+{
+  number: "14",
+  title: "Chloroplast · Site of Photosynthesis",
+  badge: "☀️ CHLOROPLAST",
+  stripe: "green",
+  formula: "<b>Thylakoids (stacked as grana) → Light reaction<br>Stroma → Dark reaction (Calvin cycle)</b>",
+  desc: "10‑Second Trick: Thylakoid membranes contain chlorophyll and photosystems. Stroma has enzymes for CO₂ fixation and 70S ribosomes, circular DNA.",
+  deepDive: {
+    what: "Chloroplasts are double‑membrane bound organelles with an internal membrane system of thylakoids. Thylakoids stacked form grana. Light reaction occurs in thylakoid membranes; dark reaction in stroma. They contain 70S ribosomes and circular DNA (semiautonomous).",
+    why: "IAT asks about site of light and dark reactions, structure of grana and stroma, and semiautonomous nature.",
+    how: "Grana = stacks of thylakoids (site of light reaction). Stroma = fluid matrix (site of Calvin cycle). Also, chloroplasts in green algae can be cup‑shaped, ribbon‑shaped, etc.",
+    derivation: "",
+    example: "Which part of chloroplast contains enzymes for CO₂ fixation? Answer: Stroma.",
+    diagramSvg: `
+      <svg viewBox="0 0 280 150" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="140" cy="70" rx="60" ry="35" fill="#d4efdf" stroke="#1a6b3c" stroke-width="2"/>
+        <ellipse cx="140" cy="70" rx="45" ry="25" fill="#eafaf1" stroke="#1a6b3c" stroke-width="1.5"/>
+        <rect x="100" y="55" width="20" height="8" fill="#1a6b3c" rx="2"/>
+        <rect x="110" y="48" width="20" height="8" fill="#1a6b3c" rx="2"/>
+        <rect x="120" y="60" width="20" height="8" fill="#1a6b3c" rx="2"/>
+        <text x="140" y="45" font-size="9" fill="#1a6b3c" text-anchor="middle">Grana (Thylakoids)</text>
+        <text x="140" y="85" font-size="9" fill="#1a6b3c" text-anchor="middle">Stroma</text>
+        <circle cx="120" cy="80" r="2" fill="#aaa"/><circle cx="150" cy="75" r="2" fill="#aaa"/>
+        <text x="140" y="115" font-size="8" fill="#666" text-anchor="middle">70S Ribosomes + Circular DNA</text>
+      </svg>
+    `,
+    useYes: "✅ Chloroplast structure and photosynthesis sites.",
+    useNo: "❌ Not for other plastid functions.",
+    examQ: "📌 IAT Style: Light reaction of photosynthesis occurs in (A) Stroma (B) Thylakoid membrane (C) Outer membrane (D) Matrix. → Ans: Thylakoid membrane."
+  }
+},
+{
+  number: "15",
+  title: "Cytoskeleton · Microfilaments, Microtubules, Intermediate Filaments",
+  badge: "🕸️ CYTOSKELETON",
+  stripe: "blue",
+  formula: "<b>Microfilaments: Actin (cytokinesis)<br>Microtubules: Tubulin (spindle, cilia)<br>Intermediate filaments: Keratin (support)</b>",
+  desc: "10‑Second Trick: Microfilaments (actin) help in animal cytokinesis. Microtubules (tubulin) form spindle fibers and cilia/flagella core. Intermediate filaments provide mechanical strength.",
+  deepDive: {
+    what: "Cytoskeleton is a network of protein filaments that provides shape, support, and motility. Three types: Microfilaments (actin, 7 nm, help in cytokinesis and amoeboid movement), Microtubules (tubulin, 25 nm, form spindle, cilia, flagella, centrioles), Intermediate filaments (keratin, 10 nm, anchor organelles).",
+    why: "IAT asks about protein composition and function (e.g., which filament helps in plant cytokinesis? Answer: Microtubules form phragmoplast).",
+    how: "Animal cytokinesis: Actin microfilaments form contractile ring. Plant cytokinesis: Microtubules form phragmoplast guiding cell plate formation.",
+    derivation: "",
+    example: "Which cytoskeletal element is involved in chromosome movement during mitosis? Answer: Microtubules (spindle fibers).",
+    diagramSvg: `
+      <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" font-size="10" fill="#333" font-family="DM Sans,sans-serif" font-weight="600">Cytoskeleton Components</text>
+        <line x1="30" y1="50" x2="100" y2="50" stroke="#2a4494" stroke-width="3"/><text x="65" y="45" font-size="9" fill="#2a4494">Microtubule (Tubulin)</text>
+        <line x1="30" y1="70" x2="100" y2="70" stroke="#c0392b" stroke-width="2"/><text x="65" y="65" font-size="9" fill="#c0392b">Intermediate Filament</text>
+        <line x1="30" y1="90" x2="100" y2="90" stroke="#1a6b3c" stroke-width="1.5"/><text x="65" y="85" font-size="9" fill="#1a6b3c">Microfilament (Actin)</text>
+        <!-- Function list -->
+        <text x="150" y="50" font-size="9" fill="#666">Spindle, cilia, centrioles</text>
+        <text x="150" y="70" font-size="9" fill="#666">Mechanical support</text>
+        <text x="150" y="90" font-size="9" fill="#666">Cytokinesis (animal), amoeboid movement</text>
+      </svg>
+    `,
+    useYes: "✅ Cytoskeleton components, proteins, and functions. Cytokinesis differences.",
+    useNo: "❌ Not for prokaryotic cytoskeleton (different).",
+    examQ: "📌 IAT Style: Contractile ring during animal cytokinesis is made of (A) Tubulin (B) Actin (C) Keratin (D) Myosin. → Ans: Actin."
+  }
+},
+{
+  number: "16",
+  title: "Cilia and Flagella · 9+2 Arrangement",
+  badge: "🌀 CILIA",
+  stripe: "purple",
+  formula: "<b>Eukaryotic cilia/flagella: 9 peripheral doublets + 2 central singlets microtubules</b>",
+  desc: "10‑Second Trick: 9+2 axoneme structure. Cilia are small and numerous; flagella are long and few. Both involved in movement.",
+  deepDive: {
+    what: "Eukaryotic cilia and flagella are hair‑like outgrowths of the plasma membrane. Their core (axoneme) has a characteristic 9+2 arrangement of microtubules: nine peripheral doublets and two central singlets. They are covered by plasma membrane. Basal body has 9+0 arrangement.",
+    why: "IAT frequently asks about the microtubule arrangement in cilia/flagella (9+2) and basal body (9+0). Also differences between cilia and flagella (length, number).",
+    how: "Cilia: shorter, more numerous, beat like oars. Flagella: longer, fewer, whip‑like motion. Both have same internal structure.",
+    derivation: "",
+    example: "What is the arrangement of microtubules in a eukaryotic flagellum? Answer: 9+2.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+        <text x="100" y="20" font-size="10" fill="#333" font-family="DM Sans,sans-serif" text-anchor="middle" font-weight="600">Axoneme (Cilia/Flagella)</text>
+        <circle cx="100" cy="80" r="40" fill="#fff" stroke="#2a4494" stroke-width="2"/>
+        <!-- 9 doublets -->
+        <g fill="#2a4494">
+          <circle cx="100" cy="45" r="4"/><circle cx="126" cy="52" r="4"/><circle cx="137" cy="74" r="4"/><circle cx="126" cy="96" r="4"/><circle cx="100" cy="103" r="4"/><circle cx="74" cy="96" r="4"/><circle cx="63" cy="74" r="4"/><circle cx="74" cy="52" r="4"/><circle cx="113" cy="48" r="4"/>
+        </g>
+        <!-- 2 central -->
+        <circle cx="100" cy="80" r="5" fill="#c0392b"/><circle cx="100" cy="80" r="2" fill="#fff"/>
+        <text x="100" y="130" font-size="9" fill="#666" text-anchor="middle">9+2 Microtubule Arrangement</text>
+      </svg>
+    `,
+    useYes: "✅ Eukaryotic cilia/flagella structure. 9+2 vs 9+0 (basal body).",
+    useNo: "❌ Prokaryotic flagella (different structure).",
+    examQ: "📌 IAT Style: The axoneme of a eukaryotic cilium has microtubule arrangement of (A) 9+0 (B) 9+2 (C) 9+1 (D) 9+3. → Ans: 9+2."
+  }
+},
+{
+  number: "17",
+  title: "Centrosome & Centrioles · 9+0 Arrangement",
+  badge: "⭕ CENTRIOLE",
+  stripe: "blue",
+  formula: "<b>Centrioles: 9 triplets of microtubules (9+0) · Help in cell division (spindle formation)</b>",
+  desc: "10‑Second Trick: Centrosome contains two centrioles perpendicular. Each centriole has 9 peripheral triplets, no central microtubules (9+0).",
+  deepDive: {
+    what: "Centrosome is an organelle near the nucleus in animal cells, consisting of two centrioles. Each centriole is a cylindrical structure with nine triplets of microtubules arranged in a ring (9+0 pattern). They help organize spindle fibers during cell division. Plant cells lack centrioles.",
+    why: "IAT asks about centriole structure (9+0), function (spindle organization), and presence (animal cells only, not in higher plants).",
+    how: "Centrioles replicate during S phase and migrate to poles during mitosis. They are also basal bodies for cilia/flagella.",
+    derivation: "",
+    example: "Which of the following has 9+0 microtubule arrangement? (A) Cilium (B) Flagellum (C) Centriole (D) Spindle fiber. Answer: Centriole.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+        <text x="100" y="20" font-size="10" fill="#333" font-family="DM Sans,sans-serif" text-anchor="middle" font-weight="600">Centriole (9+0)</text>
+        <circle cx="100" cy="80" r="35" fill="#fff" stroke="#2a4494" stroke-width="2"/>
+        <g fill="#2a4494">
+          <circle cx="100" cy="50" r="5"/><circle cx="126" cy="57" r="5"/><circle cx="137" cy="80" r="5"/><circle cx="126" cy="103" r="5"/><circle cx="100" cy="110" r="5"/><circle cx="74" cy="103" r="5"/><circle cx="63" cy="80" r="5"/><circle cx="74" cy="57" r="5"/><circle cx="113" cy="53" r="5"/>
+        </g>
+        <text x="100" y="130" font-size="9" fill="#666" text-anchor="middle">9 Triplets, No central microtubules</text>
+      </svg>
+    `,
+    useYes: "✅ Centriole structure and function. Comparison with cilia/flagella.",
+    useNo: "❌ Not for plant cells (no centrioles).",
+    examQ: "📌 IAT Style: Centrioles are involved in (A) ATP synthesis (B) Spindle formation (C) Protein synthesis (D) Lipid synthesis. → Ans: Spindle formation."
+  }
+},
+{
+  number: "18",
+  title: "Nucleus · Chromatin, Euchromatin, Heterochromatin",
+  badge: "🧬 NUCLEUS",
+  stripe: "red",
+  formula: "<b>Nucleus = Nuclear envelope + Nucleoplasm + Chromatin + Nucleolus</b>",
+  desc: "10‑Second Trick: Heterochromatin = dark, condensed, inactive. Euchromatin = light, loose, active in transcription.",
+  deepDive: {
+    what: "Nucleus is the control center of eukaryotic cell, containing genetic material (DNA + histones = chromatin). Chromatin exists as euchromatin (loosely packed, transcriptionally active) and heterochromatin (tightly packed, inactive). Nucleolus is site of rRNA synthesis.",
+    why: "IAT asks about chromatin types (euchromatin vs heterochromatin), nuclear envelope (double membrane with pores), and nucleolus function.",
+    how: "Euchromatin: light staining, active genes. Heterochromatin: dark staining, inactive genes (e.g., Barr body). Nucleolus: ribosome assembly.",
+    derivation: "",
+    example: "Which region of chromatin is transcriptionally inactive? Answer: Heterochromatin.",
+    diagramSvg: `
+      <svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="140" cy="65" r="45" fill="#fdebd0" stroke="#c0392b" stroke-width="2"/>
+        <circle cx="140" cy="65" r="35" fill="#fff" stroke="#c0392b" stroke-width="1"/>
+        <circle cx="130" cy="55" r="8" fill="#c0392b" opacity="0.8"/><text x="130" y="58" font-size="6" fill="#fff" text-anchor="middle">Nucleolus</text>
+        <!-- Chromatin regions -->
+        <path d="M110 75 Q120 80 130 75" stroke="#2a4494" fill="none"/><text x="105" y="85" font-size="7" fill="#2a4494">Euchromatin</text>
+        <path d="M150 80 Q160 85 170 80" stroke="#333" stroke-width="2" fill="none"/><text x="160" y="95" font-size="7" fill="#333">Heterochromatin</text>
+        <!-- Nuclear pores -->
+        <circle cx="100" cy="40" r="3" fill="#f9e79f"/><circle cx="180" cy="40" r="3" fill="#f9e79f"/><circle cx="140" cy="25" r="3" fill="#f9e79f"/>
+        <text x="140" y="15" font-size="8" fill="#666" text-anchor="middle">Nuclear Pores</text>
+      </svg>
+    `,
+    useYes: "✅ Nucleus structure, chromatin types, nucleolus function.",
+    useNo: "❌ Not for prokaryotic nucleoid.",
+    examQ: "📌 IAT Style: Heterochromatin is (A) Loosely packed and active (B) Tightly packed and inactive (C) Absent in nucleus (D) Found only in prokaryotes. → Ans: Tightly packed and inactive."
+  }
+},
+{
+  number: "19",
+  title: "Peroxisomes & Glyoxysomes · Microbodies",
+  badge: "🧴 MICROBODIES",
+  stripe: "green",
+  formula: "<b>Peroxisomes: Detoxify H₂O₂ (catalase)<br>Glyoxysomes: Convert fats to sugars (plants)</b>",
+  desc: "10‑Second Trick: Peroxisomes contain catalase to break down H₂O₂. Glyoxysomes (in germinating seeds) carry out glyoxylate cycle.",
+  deepDive: {
+    what: "Microbodies are single‑membrane bound organelles. Peroxisomes contain oxidative enzymes (catalase, urate oxidase) that produce and degrade H₂O₂. They are involved in photorespiration. Glyoxysomes are specialized peroxisomes in plant seeds that convert stored lipids into carbohydrates via glyoxylate cycle.",
+    why: "IAT may ask about enzyme content (catalase) or function (photorespiration, gluconeogenesis).",
+    how: "Peroxisomes: present in both plant and animal cells. Glyoxysomes: only in plant cells (germinating seeds).",
+    derivation: "",
+    example: "Which organelle contains catalase enzyme? Answer: Peroxisome.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="80" cy="50" rx="40" ry="25" fill="#e8f0ff" stroke="#2a4494" stroke-width="1.5"/>
+        <text x="80" y="45" font-size="10" fill="#2a4494" text-anchor="middle">Peroxisome</text>
+        <text x="80" y="60" font-size="8" fill="#2a4494" text-anchor="middle">Catalase, H₂O₂ metabolism</text>
+        <ellipse cx="180" cy="50" rx="40" ry="25" fill="#d4efdf" stroke="#1a6b3c" stroke-width="1.5"/>
+        <text x="180" y="45" font-size="10" fill="#1a6b3c" text-anchor="middle">Glyoxysome</text>
+        <text x="180" y="60" font-size="8" fill="#1a6b3c" text-anchor="middle">Glyoxylate cycle, lipid→carb</text>
+      </svg>
+    `,
+    useYes: "✅ Microbodies functions and enzyme content.",
+    useNo: "❌ Not for lysosomes (different enzymes).",
+    examQ: "📌 IAT Style: Glyoxysomes are involved in (A) Photorespiration (B) Gluconeogenesis from fats (C) Protein synthesis (D) DNA replication. → Ans: Gluconeogenesis from fats."
+  }
+},
+{
+  number: "20",
+  title: "Cell Organelles · Quick Match & Functions",
+  badge: "🔍 MATCH",
+  stripe: "purple",
+  formula: "<b>Mitochondria = ATP; Chloroplast = Photosynthesis; Lysosome = Digestion; Golgi = Packaging; ER = Synthesis</b>",
+  desc: "10‑Second Trick: Function‑based matching questions ke liye ye summary yaad rakho.",
+  deepDive: {
+    what: "Summary of major organelle functions for quick matching in IAT questions.",
+    why: "IAT frequently gives match‑the‑column questions linking organelles to functions, structures, or special features.",
+    how: "Use mnemonics: Mito = Powerhouse; Chloro = Kitchen; Lyso = Suicidal bag; RER = Protein factory; SER = Lipid factory; Golgi = Post office; Nucleus = Control room; Ribosome = Protein synthesis.",
+    derivation: "",
+    example: "Match: (A) Mitochondria – (i) ATP production. (B) Chloroplast – (ii) Photosynthesis. (C) Golgi – (iii) Glycosylation. Answer: A‑i, B‑ii, C‑iii.",
+    diagramSvg: `
+      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+        <text x="200" y="15" font-size="10" fill="#333" font-family="DM Sans,sans-serif" text-anchor="middle" font-weight="600">Organelle Functions Quick Recap</text>
+        <rect x="10" y="25" width="120" height="20" fill="#c8d8f8"/><text x="70" y="39" font-size="9" fill="#2a4494" text-anchor="middle">Mitochondria → ATP</text>
+        <rect x="140" y="25" width="120" height="20" fill="#d4efdf"/><text x="200" y="39" font-size="9" fill="#1a6b3c" text-anchor="middle">Chloroplast → Photosynthesis</text>
+        <rect x="270" y="25" width="120" height="20" fill="#fdedec"/><text x="330" y="39" font-size="9" fill="#c0392b" text-anchor="middle">Lysosome → Digestion</text>
+        <rect x="10" y="55" width="120" height="20" fill="#f9e79f"/><text x="70" y="69" font-size="9" fill="#b8860b" text-anchor="middle">Golgi → Packaging</text>
+        <rect x="140" y="55" width="120" height="20" fill="#ebedef"/><text x="200" y="69" font-size="9" fill="#7f8c8d" text-anchor="middle">RER → Protein synthesis</text>
+        <rect x="270" y="55" width="120" height="20" fill="#e8daef"/><text x="330" y="69" font-size="9" fill="#6a2b8a" text-anchor="middle">SER → Lipid synthesis</text>
+        <rect x="10" y="85" width="120" height="20" fill="#d5f5e3"/><text x="70" y="99" font-size="9" fill="#117a65" text-anchor="middle">Nucleus → DNA storage</text>
+        <rect x="140" y="85" width="120" height="20" fill="#fdebd0"/><text x="200" y="99" font-size="9" fill="#c0392b" text-anchor="middle">Ribosome → Translation</text>
+      </svg>
+    `,
+    useYes: "✅ Match‑the‑column questions. Rapid revision.",
+    useNo: "❌ Not for detailed mechanisms.",
+    examQ: "📌 IAT Style: Match the following: (A) SER – (i) Protein synthesis; (B) RER – (ii) Lipid synthesis; (C) Golgi – (iii) Glycosylation. Correct match is: (A) A‑ii, B‑i, C‑iii."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
