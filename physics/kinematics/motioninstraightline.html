@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #7c3aed;
+--accent2: #8b5cf6;
+--accent3: #6d28d9;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #f5f3ff;
+--formula-border: #7c3aed;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(124,58,237,0.10);
+--shadow-hover: 0 12px 40px rgba(124,58,237,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(124,58,237,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139,92,246,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #8b5cf6 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #4c1d95;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Physics";          // e.g., "Chemistry", "Mathematics", "Biology"
+const CHAPTER = "Motion in Straight Line";   // e.g., "Rotational Motion", "Thermodynamics"
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+  // ========== PHYSICS · MOTION IN A STRAIGHT LINE (Cards 01 to 25) ==========
+
+{
+  number: "01",
+  title: "Distance vs Displacement · The Ratio Rule",
+  badge: "📏 BASICS",
+  stripe: "blue",
+  formula: "<b>Distance / |Displacement| ≥ 1</b>",
+  desc: "10‑Second Trick: Distance kabhi displacement se chhoti nahi hoti. Agar direction change nahi hui, to equal ho sakti hai.",
+  deepDive: {
+    what: "Distance is the total path length (scalar). Displacement is the shortest straight‑line distance from start to end (vector). Ratio always ≥1. Equal only if motion is in a straight line without turning back.",
+    why: "IAT frequently asks: 'Can distance be less than displacement?' Answer: No.",
+    how: "Check if direction changed. If yes, distance > |displacement|. If no and straight line, distance = |displacement|.",
+    derivation: "",
+    example: "A particle moves 3 m east, then 4 m north. Distance = 7 m, displacement = 5 m. Ratio = 7/5 = 1.4 > 1.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="120" x2="100" y2="120" stroke="#2a4494" stroke-width="3"/>
+        <text x="65" y="110" font-size="10" fill="#2a4494" text-anchor="middle">3 m</text>
+        <line x1="100" y1="120" x2="100" y2="80" stroke="#2a4494" stroke-width="3"/>
+        <text x="110" y="100" font-size="10" fill="#2a4494">4 m</text>
+        <line x1="30" y1="120" x2="100" y2="80" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="60" y="80" font-size="10" fill="#c0392b">5 m (displacement)</text>
+        <text x="30" y="140" font-size="10" fill="#333">Distance = 7 m > Displacement = 5 m</text>
+      </svg>
+    `,
+    useYes: "✅ Comparing distance and displacement magnitude. Direction change detection.",
+    useNo: "❌ Not for vector displacement direction.",
+    examQ: "📌 IAT Style: A person walks 4 m east, 3 m north, 4 m west. Distance and displacement are? → Dist = 11 m, Disp = 3 m north."
+  }
+},
+{
+  number: "02",
+  title: "Speed vs Velocity · Decrease Rule",
+  badge: "⚡ SPEED",
+  stripe: "red",
+  formula: "<b>Speed never decreases with time; velocity can.</b>",
+  desc: "10‑Second Trick: Speed is scalar, always non‑negative. Velocity is vector, can become negative when direction reverses.",
+  deepDive: {
+    what: "Speed = |velocity|. Even if particle turns back, distance keeps increasing, so average speed never decreases. Instantaneous speed is magnitude of instantaneous velocity, always ≥0.",
+    why: "IAT conceptual: 'Can speed decrease with time?' Answer: Average speed over entire journey never decreases; instantaneous speed can increase or decrease but never negative.",
+    how: "Remember: Distance always increases, so speed ≥ 0. Displacement can decrease, so velocity can be negative.",
+    derivation: "",
+    example: "Ball thrown up: velocity decreases to 0 at top, then becomes negative. Speed first decreases, then increases.",
+    diagramSvg: "",
+    useYes: "✅ Conceptual questions on speed/velocity signs.",
+    useNo: "❌ Not for numerical calculations.",
+    examQ: "📌 IAT Style: Which of the following can be negative? (A) Speed (B) Distance (C) Velocity (D) Time. → Ans: Velocity."
+  }
+},
+{
+  number: "03",
+  title: "Circular Track · Distance & Displacement Hack",
+  badge: "⭕ CIRCULAR",
+  stripe: "green",
+  formula: "<b>Distance = R·θ (rad)<br>|Displacement| = 2R sin(θ/2)</b>",
+  desc: "10‑Second Trick: Circular motion mein angle θ radian mein lo. Displacement chord length hota hai.",
+  deepDive: {
+    what: "For a particle moving along a circular arc of radius R subtending angle θ at center: distance covered = R·θ. Straight‑line displacement magnitude = 2R sin(θ/2).",
+    why: "IAT asks: 'After half round, distance and displacement?' Half round: θ = π rad. Distance = πR, Displacement = 2R.",
+    how: "Convert angle to radians. Use formulas directly.",
+    derivation: "",
+    example: "Radius = 7 m, angle = 60° = π/3 rad. Distance = 7 × π/3 ≈ 7.33 m. Displacement = 2×7×sin(30°) = 14×0.5 = 7 m.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="70" r="40" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <line x1="100" y1="70" x2="140" y2="70" stroke="#2a4494" stroke-width="1.5"/>
+        <line x1="100" y1="70" x2="120" y2="35" stroke="#2a4494" stroke-width="1.5"/>
+        <path d="M 135,65 A 10,10 0 0,0 115,38" fill="none" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="145" y="55" font-size="9" fill="#c0392b">θ</text>
+        <line x1="140" y1="70" x2="120" y2="35" stroke="#1a6b3c" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="135" y="50" font-size="9" fill="#1a6b3c">Chord = |disp|</text>
+      </svg>
+    `,
+    useYes: "✅ Circular motion distance/displacement. Any arc problems.",
+    useNo: "❌ Not for angular velocity/speed.",
+    examQ: "📌 IAT Style: A particle moves 3/4th of a circle of radius R. Distance and displacement magnitude are: → Dist = 1.5πR, Disp = R√2."
+  }
+},
+{
+  number: "04",
+  title: "Average Speed · Equal Time vs Equal Distance",
+  badge: "⏱️ AVG SPEED",
+  stripe: "purple",
+  formula: "<b>Equal times: V<sub>avg</sub> = (v₁+v₂)/2<br>Equal distances: V<sub>avg</sub> = 2v₁v₂/(v₁+v₂)</b>",
+  desc: "10‑Second Trick: Equal time → simple average. Equal distance → harmonic mean. Round trip mein average velocity zero.",
+  deepDive: {
+    what: "Average speed = total distance / total time. If a body moves with speed v₁ for time t and v₂ for equal time t, V_avg = (v₁+v₂)/2. If it covers equal distances d with speeds v₁ and v₂, V_avg = 2v₁v₂/(v₁+v₂).",
+    why: "IAT frequently gives round trip problems: go at v₁, return at v₂. Average speed = 2v₁v₂/(v₁+v₂), average velocity = 0.",
+    how: "Identify whether times are equal or distances are equal. Apply respective formula.",
+    derivation: "Total distance D, times t₁ = d/v₁, t₂ = d/v₂. V_avg = 2d / (d/v₁ + d/v₂) = 2v₁v₂/(v₁+v₂).",
+    example: "Car goes at 60 km/h and returns at 40 km/h. Average speed = 2×60×40/(60+40) = 4800/100 = 48 km/h.",
+    diagramSvg: "",
+    useYes: "✅ Average speed problems with two segments. Round trip calculations.",
+    useNo: "❌ When more than two segments or unequal segments.",
+    examQ: "📌 IAT Style: A person travels half distance at 10 m/s and other half at 20 m/s. Average speed is: → (2×10×20)/(30) = 13.33 m/s."
+  }
+},
+{
+  number: "05",
+  title: "Average Velocity · Round Trip Zero",
+  badge: "🔄 ROUND TRIP",
+  stripe: "blue",
+  formula: "<b>If returns to start: Avg velocity = 0</b>",
+  desc: "10‑Second Trick: Agar body wapas starting point par aa jaye, displacement zero, to average velocity zero. Chahe speed kitni bhi ho.",
+  deepDive: {
+    what: "Average velocity = total displacement / total time. For any closed path (round trip), displacement = 0 ⇒ average velocity = 0. Average speed will be positive.",
+    why: "IAT conceptual: 'A car goes and returns; average velocity is?'",
+    how: "Just check if start and end points are same. If yes, average velocity = 0.",
+    derivation: "",
+    example: "Car goes 100 km east in 2 hr, returns 100 km west in 2 hr. Avg velocity = 0. Avg speed = 200/4 = 50 km/h.",
+    diagramSvg: "",
+    useYes: "✅ Round trip average velocity questions.",
+    useNo: "❌ Not for average speed.",
+    examQ: "📌 IAT Style: An athlete runs 200 m in 20 s and returns back to start in 30 s. Average velocity is: (A) 0 (B) 8 m/s (C) 4 m/s (D) 10 m/s. → Ans: 0."
+  }
+},
+{
+  number: "06",
+  title: "Instantaneous vs Average · Constant vs Accelerated",
+  badge: "📈 INSTANT",
+  stripe: "green",
+  formula: "<b>Constant velocity → avg = instantaneous<br>Accelerated → avg ≠ instantaneous</b>",
+  desc: "10‑Second Trick: Uniform motion mein instantaneous velocity constant hoti hai, to average bhi wahi. Accelerated motion mein alag.",
+  deepDive: {
+    what: "When velocity is constant (magnitude and direction), instantaneous velocity at any time equals average velocity over any interval. When acceleration is non‑zero, they differ.",
+    why: "IAT asks: 'In which motion are average and instantaneous velocities equal?'",
+    how: "Constant velocity motion only.",
+    derivation: "",
+    example: "Car moving at steady 60 km/h: instantaneous and average both 60 km/h. Car accelerating: average speed over a trip differs from speedometer reading.",
+    diagramSvg: "",
+    useYes: "✅ Distinguishing uniform and accelerated motion.",
+    useNo: "❌ Not for calculating values.",
+    examQ: "📌 IAT Style: A body moving with uniform velocity has: (A) Average speed = Instantaneous speed (B) Average speed > Instantaneous (C) Average speed < Instantaneous (D) Varying acceleration. → Ans: A."
+  }
+},
+{
+  number: "07",
+  title: "Calculus Chain · x → v → a",
+  badge: "🧮 CALCULUS",
+  stripe: "red",
+  formula: "<b>v = dx/dt, a = dv/dt = d²x/dt²</b>",
+  desc: "10‑Second Trick: Position differentiate karo → velocity; velocity differentiate karo → acceleration. Integration ulta.",
+  deepDive: {
+    what: "In kinematics, velocity is rate of change of position. Acceleration is rate of change of velocity. Mathematically: v = dx/dt, a = dv/dt. For variable acceleration, use calculus.",
+    why: "IAT gives x(t) and asks for v or a at certain time.",
+    how: "Differentiate x(t) to get v(t). Differentiate v(t) to get a(t). If a is given, integrate to get v, then integrate to get x.",
+    derivation: "",
+    example: "x = t³ − 6t². Find v at t=2. v = 3t² − 12t. At t=2, v = 12 − 24 = −12 m/s.",
+    diagramSvg: "",
+    useYes: "✅ Position, velocity, acceleration relations. Variable acceleration.",
+    useNo: "❌ Constant acceleration ke liye equations of motion better.",
+    examQ: "📌 IAT Style: Position of particle is x = 4t² − t³. Velocity at t=2 is: → v = 8t − 3t², at t=2 → 16 − 12 = 4 m/s."
+  }
+},
+{
+  number: "08",
+  title: "Area Under Graphs · v‑t gives Δx, a‑t gives Δv",
+  badge: "📊 GRAPH AREA",
+  stripe: "blue",
+  formula: "<b>Area under v‑t = displacement<br>Area under a‑t = change in velocity</b>",
+  desc: "10‑Second Trick: Graph ka area nikaalo — v‑t ka area batayega kitna displace hue; a‑t ka area batayega velocity kitni badli.",
+  deepDive: {
+    what: "Integration graphically: area under velocity‑time graph equals displacement (signed). Area under acceleration‑time graph equals change in velocity.",
+    why: "IAT graph‑based questions: 'Area under curve represents?'",
+    how: "For v‑t: positive area = forward displacement, negative area = backward. Net area = displacement. Total area (absolute) = distance.",
+    derivation: "Δx = ∫v dt, Δv = ∫a dt.",
+    example: "v‑t graph is rectangle from t=0 to 5s at v=10 m/s. Area = 50 m = displacement.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,90 30,30 150,30 150,90" fill="#c8d8f8" stroke="#2a4494" stroke-width="1.5"/>
+        <text x="90" y="60" font-size="10" fill="#2a4494" text-anchor="middle">Area = Δx</text>
+        <line x1="20" y1="90" x2="280" y2="90" stroke="#333" stroke-width="1.5"/>
+        <line x1="30" y1="100" x2="30" y2="20" stroke="#333" stroke-width="1.5"/>
+        <text x="280" y="85" font-size="9" fill="#333">t</text>
+        <text x="25" y="25" font-size="9" fill="#333">v</text>
+      </svg>
+    `,
+    useYes: "✅ Graph interpretation. Finding displacement/velocity from graphs.",
+    useNo: "❌ Not for position‑time graph (slope gives velocity).",
+    examQ: "📌 IAT Style: Area under acceleration‑time graph gives: (A) Velocity (B) Displacement (C) Change in velocity (D) Change in displacement. → Ans: Change in velocity."
+  }
+},
+{
+  number: "09",
+  title: "Slope of Graphs · x‑t gives v, v‑t gives a",
+  badge: "📐 SLOPE",
+  stripe: "green",
+  formula: "<b>Slope of x‑t = velocity<br>Slope of v‑t = acceleration</b>",
+  desc: "10‑Second Trick: Graph ka dhalan (steepness) physical quantity deta hai. x‑t ka slope batata hai kitni tezi se position badal rahi.",
+  deepDive: {
+    what: "Instantaneous velocity = slope of tangent to x‑t curve. Instantaneous acceleration = slope of tangent to v‑t curve. Steeper slope = larger magnitude.",
+    why: "IAT asks: 'What does slope of position‑time graph represent?'",
+    how: "Draw tangent at point, find Δx/Δt.",
+    derivation: "v = dx/dt = slope, a = dv/dt = slope.",
+    example: "x‑t graph straight line inclined: constant velocity. v‑t horizontal line: zero acceleration.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="90" x2="220" y2="90" stroke="#333" stroke-width="1.5"/>
+        <line x1="20" y1="90" x2="20" y2="20" stroke="#333" stroke-width="1.5"/>
+        <line x1="20" y1="90" x2="200" y2="30" stroke="#c0392b" stroke-width="2"/>
+        <text x="210" y="25" font-size="9" fill="#c0392b">x‑t</text>
+        <text x="100" y="50" font-size="9" fill="#c0392b">Slope = v</text>
+      </svg>
+    `,
+    useYes: "✅ Graph‑based kinematics. Finding instantaneous values.",
+    useNo: "❌ Not for area interpretation.",
+    examQ: "📌 IAT Style: The slope of velocity‑time graph gives: (A) Displacement (B) Acceleration (C) Speed (D) Distance. → Ans: Acceleration."
+  }
+},
+{
+  number: "10",
+  title: "Equations of Motion · Constant Acceleration Only",
+  badge: "📐 SUVAT",
+  stripe: "purple",
+  formula: "<b>v = u + at · s = ut + ½at² · v² = u² + 2as</b>",
+  desc: "10‑Second Trick: Ye equations sirf tab use karo jab acceleration constant ho. Variable a hai to calculus.",
+  deepDive: {
+    what: "Three kinematic equations for uniformly accelerated motion: (1) v = u + at, (2) s = ut + ½at², (3) v² = u² + 2as. s = displacement, u = initial velocity, v = final velocity, a = constant acceleration, t = time.",
+    why: "IAT problems: given u, a, t find s, etc. Also asked: 'When are these equations valid?'",
+    how: "Identify knowns and unknown. Choose equation without the unwanted variable.",
+    derivation: "From definitions and constant a.",
+    example: "Car starts from rest, a = 2 m/s², t = 5 s. s = 0 + ½×2×25 = 25 m.",
+    diagramSvg: "",
+    useYes: "✅ Uniformly accelerated motion problems.",
+    useNo: "❌ Variable acceleration.",
+    examQ: "📌 IAT Style: A particle starts with 10 m/s and accelerates at 2 m/s² for 4 s. Displacement is: → s = 10×4 + ½×2×16 = 40+16=56 m."
+  }
+},
+{
+  number: "11",
+  title: "Variable Acceleration · a = v dv/dx",
+  badge: "🔄 VAR ACC",
+  stripe: "red",
+  formula: "<b>If a = f(x), use a = v dv/dx</b>",
+  desc: "10‑Second Trick: Jab acceleration position par depend kare (a = f(x)), to a = v dv/dx use karo. v dv = a dx integrate.",
+  deepDive: {
+    what: "When acceleration is given as function of position x, use chain rule: a = dv/dt = (dv/dx)(dx/dt) = v dv/dx. Then separate variables: v dv = a(x) dx, integrate to find velocity as function of x.",
+    why: "IAT asks: 'Find velocity as function of position' when a = kx or similar.",
+    how: "Step 1: a = v dv/dx. Step 2: v dv = a dx. Step 3: Integrate both sides with proper limits.",
+    derivation: "a = dv/dt = (dv/dx)(dx/dt) = v dv/dx.",
+    example: "a = −kx. Then v dv = −kx dx. Integrate: ½v² = −½kx² + C. Find C from initial conditions.",
+    diagramSvg: "",
+    useYes: "✅ Acceleration as function of position. Finding v(x).",
+    useNo: "❌ Acceleration as function of time (direct integration).",
+    examQ: "📌 IAT Style: A particle moves with a = −4x. If at x=0, v=2 m/s, find v at x=1 m. → ∫v dv = ∫−4x dx ⇒ [v²/2] from 2 to v = −4[x²/2] from 0 to 1 ⇒ (v²/2) − 2 = −2(1 − 0) ⇒ v²/2 = 0 ⇒ v = 0 m/s."
+  }
+},
+{
+  number: "12",
+  title: "Direction Change · v = 0 Turning Point",
+  badge: "🔄 TURNING",
+  stripe: "blue",
+  formula: "<b>When v = 0, particle changes direction (if a ≠ 0).</b>",
+  desc: "10‑Second Trick: Velocity zero hone par particle rukta hai aur agar acceleration non‑zero hai to direction reverse karega.",
+  deepDive: {
+    what: "Turning point occurs when instantaneous velocity becomes zero. If acceleration at that moment is non‑zero, particle reverses direction. If acceleration also zero, it remains at rest.",
+    why: "IAT problems ask for time when direction reverses, or distance/displacement when v changes sign.",
+    how: "Find t where v(t) = 0. Check sign of v before and after. If sign changes, direction reversed.",
+    derivation: "",
+    example: "x = t² − 4t + 3. v = 2t − 4 = 0 ⇒ t = 2. At t<2, v negative; t>2, v positive. Direction reversed at t=2.",
+    diagramSvg: "",
+    useYes: "✅ Finding turning points. Splitting motion into segments.",
+    useNo: "❌ Not for constant direction motion.",
+    examQ: "📌 IAT Style: Position x = 3t − t³. Time when particle reverses direction: v = 3 − 3t² = 0 ⇒ t = ±1 s (t>0 ⇒ t=1 s)."
+  }
+},
+{
+  number: "13",
+  title: "Distance from v‑t Graph · Absolute Area",
+  badge: "📊 DISTANCE",
+  stripe: "green",
+  formula: "<b>Distance = total area under |v|‑t graph</b>",
+  desc: "10‑Second Trick: Displacement ke liye signed area, distance ke liye absolute area (saare area positive le kar add).",
+  deepDive: {
+    what: "If velocity changes sign, displacement = (area under v>0) − (area under v<0). Distance = (area under v>0) + (area under v<0).",
+    why: "IAT graph problems: 'Find distance traveled in first 5 seconds' from v‑t graph.",
+    how: "Split time intervals where v has same sign. Compute area of each region (triangles, rectangles). Add them all for distance.",
+    derivation: "Distance = ∫|v| dt.",
+    example: "v‑t graph: 0‑2s: v=+10 (area=20), 2‑4s: v=−5 (area=10). Displacement = 20−10=10 m. Distance = 20+10=30 m.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="90" x2="280" y2="90" stroke="#333"/>
+        <line x1="20" y1="90" x2="20" y2="20" stroke="#333"/>
+        <polygon points="20,90 80,90 80,30 20,30" fill="#c8d8f8"/>
+        <polygon points="80,90 140,90 140,110 80,110" fill="#f5b7b1"/>
+        <text x="50" y="60" font-size="9" fill="#2a4494">+ area</text>
+        <text x="100" y="105" font-size="9" fill="#c0392b">− area</text>
+        <text x="200" y="50" font-size="10" fill="#333">Distance = sum of absolute areas</text>
+      </svg>
+    `,
+    useYes: "✅ Finding distance from v‑t graph with direction changes.",
+    useNo: "❌ Not for displacement.",
+    examQ: "📌 IAT Style: Velocity of particle varies as v = 4 − 2t. Distance in first 3 s: v=0 at t=2. Dist = ∫₀² (4−2t)dt + |∫₂³ (4−2t)dt| = 4 + 1 = 5 m."
+  }
+},
+{
+  number: "14",
+  title: "Stopping Distance · s ∝ u²",
+  badge: "🛑 STOPPING",
+  stripe: "red",
+  formula: "<b>For constant retardation to rest: s ∝ u²</b>",
+  desc: "10‑Second Trick: Brake lagane ya bullet rukne mein distance initial speed ke square ke proportional hota hai.",
+  deepDive: {
+    what: "When a body decelerates uniformly to rest (v=0), from v² = u² + 2as, with a = −a (retardation), 0 = u² − 2as ⇒ s = u²/(2a). Thus stopping distance s ∝ u².",
+    why: "IAT ratio questions: 'If initial speed doubled, stopping distance becomes?' Answer: 4 times.",
+    how: "Use s₁/s₂ = (u₁/u₂)². (Rule: Retardation 'a' must be constant/same in both cases). No need to compute a.",
+    derivation: "v² = u² + 2as; set v=0, a negative ⇒ s = u²/(2a).",
+    example: "Car traveling at 20 m/s stops in 40 m. If speed is 40 m/s, stopping distance = 40 × (40/20)² = 40 × 4 = 160 m.",
+    diagramSvg: "",
+    useYes: "✅ Stopping distance ratio problems. Bullet penetration.",
+    useNo: "❌ When retardation is not constant.",
+    examQ: "📌 IAT Style: A bullet fired into a target loses half its velocity after penetrating 3 cm. How much further will it penetrate? → Use KE loss or s ∝ u²: remaining distance = 1 cm."
+  }
+},
+{
+  number: "15",
+  title: "Kinetic Energy & Penetration · Distance ∝ KE Loss",
+  badge: "💥 PENETRATION",
+  stripe: "purple",
+  formula: "<b>s ∝ loss in KE (for constant resistive force)</b>",
+  desc: "10‑Second Trick: Constant opposing force (like friction in block) ke liye distance, kinetic energy loss ke proportional hota hai.",
+  deepDive: {
+    what: "Work‑Energy theorem: F·s = ΔKE. If retarding force F is constant, penetration distance s ∝ loss in KE. So if initial KE is K and fraction lost, remaining distance can be found by ratio.",
+    why: "IAT bullet‑block problems: 'Bullet loses 1/4th velocity after some distance; how much further?' Use KE ratio.",
+    how: "Let initial KE = K. If velocity becomes v, KE remaining = (v/u)² K. Loss = K − remaining. Distance ∝ loss. Ratio of distances = ratio of KE losses.",
+    derivation: "F·s = ½m(u² − v²). So s ∝ (u² − v²).",
+    example: "Bullet loses 1/3rd velocity after 4 cm. Remaining velocity = 2u/3. KE remaining = 4/9 K. Loss = 5/9 K. Further loss needed = 4/9 K. Distance further = (4/9)/(5/9) × 4 = 3.2 cm.",
+    diagramSvg: "",
+    useYes: "✅ Bullet penetration problems with constant resistance.",
+    useNo: "❌ When force is not constant.",
+    examQ: "📌 IAT Style: A bullet loses 1/4 of its velocity after penetrating 7 cm into a plank. How much further will it penetrate? → v = 3u/4, remaining KE = 9/16, loss = 7/16. Further loss = 9/16. Distance = (9/7)×7 = 9 cm."
+  }
+},
+{
+  number: "16",
+  title: "Galileo's Odd Number Rule · 1 : 3 : 5 : 7...",
+  badge: "🔢 ODD RULE",
+  stripe: "blue",
+  formula: "<b>For u=0, constant a: distances in successive equal time intervals are in ratio 1:3:5:7...</b>",
+  desc: "10‑Second Trick: Rest se start hone par har second mein tay ki gayi dooriyon ka anupat visham sankhya mein hota hai.",
+  deepDive: {
+    what: "If a body starts from rest and moves with uniform acceleration, the distances covered in 1st, 2nd, 3rd, ... seconds are in the ratio 1 : 3 : 5 : 7 : ...",
+    why: "IAT directly asks: 'Ratio of distances in 1st, 2nd, 3rd seconds?'",
+    how: "Use formula for distance in nth second: sₙ = u + (a/2)(2n−1). With u=0, sₙ ∝ (2n−1). So ratios 1:3:5...",
+    derivation: "sₙ = a/2 (2n−1). So s₁:s₂:s₃ = 1:3:5.",
+    example: "Body starts from rest with a = 2 m/s². Distance in 1st sec = 1 m, 2nd sec = 3 m, 3rd sec = 5 m.",
+    diagramSvg: "",
+    useYes: "✅ Uniform acceleration from rest. Time interval distances.",
+    useNo: "❌ If initial velocity not zero.",
+    examQ: "📌 IAT Style: A particle starts from rest with uniform acceleration. Ratio of distances in 1st, 2nd and 3rd seconds is: (A) 1:2:3 (B) 1:3:5 (C) 1:4:9 (D) 1:1:1. → Ans: 1:3:5."
+  }
+},
+{
+  number: "17",
+  title: "Distance in nth Second · sₙ = u + a(2n−1)/2",
+  badge: "⏱️ NTH SECOND",
+  stripe: "green",
+  formula: "<b>s<sub>n</sub> = u + ½a(2n−1)</b>",
+  desc: "10‑Second Trick: 'nth second mein distance' poochhe to seedha formula lagao.",
+  deepDive: {
+    what: "Distance traveled during the nth second (from t=n−1 to t=n) is given by sₙ = u + (a/2)(2n−1).",
+    why: "IAT frequently asks: 'Distance covered in 4th second is?'",
+    how: "Plug u, a, n into formula. Remember: sₙ = distance between t=n−1 and t=n.",
+    derivation: "sₙ = s(n) − s(n−1) = [un + ½an²] − [u(n−1) + ½a(n−1)²] = u + ½a(2n−1).",
+    example: "u=5 m/s, a=2 m/s², n=4. s₄ = 5 + 1×(7) = 12 m.",
+    diagramSvg: "",
+    useYes: "✅ Specific second distance problems.",
+    useNo: "❌ Not for total time distance.",
+    examQ: "📌 IAT Style: A body starts from rest with a=2 m/s². Distance covered in 5th second is: → s₅ = 0 + 1×(9) = 9 m."
+  }
+},
+{
+  number: "18",
+  title: "Mid‑Point Speed · v_mid = √[(u²+v²)/2]",
+  badge: "📍 MIDPOINT",
+  stripe: "red",
+  formula: "<b>v<sub>mid</sub> = √[(u²+v²)/2]</b>",
+  desc: "10‑Second Trick: Constant acceleration mein aadhi doori par speed root mean square type hoti hai.",
+  deepDive: {
+    what: "For uniform acceleration, the speed at the midpoint of the distance (half the total displacement) is v_mid = √[(u²+v²)/2].",
+    why: "IAT questions compare time to cover first half vs second half, or ask midpoint speed.",
+    how: "Use v_mid² = u² + 2a(s/2). Also v² = u² + 2as. Solve to get v_mid.",
+    derivation: "v² = u² + 2as ⇒ 2a = (v²−u²)/s. v_mid² = u² + 2a(s/2) = u² + (v²−u²)/2 = (u²+v²)/2.",
+    example: "u=10 m/s, v=20 m/s. v_mid = √[(100+400)/2] = √250 ≈ 15.81 m/s.",
+    diagramSvg: "",
+    useYes: "✅ Midpoint speed problems. Comparing time halves.",
+    useNo: "❌ Not for midpoint in time (that's average velocity).",
+    examQ: "📌 IAT Style: A car accelerates uniformly from 10 m/s to 30 m/s. Speed at midpoint of distance is: → √[(100+900)/2] = √500 ≈ 22.36 m/s."
+  }
+},
+{
+  number: "19",
+  title: "Gravity Symmetry · Up & Down Speed Same",
+  badge: "🌍 GRAVITY",
+  stripe: "purple",
+  formula: "<b>Speed at same level going up = speed coming down</b>",
+  desc: "10‑Second Trick: Upar phenki gayi ball jis speed se upar gayi, usi speed se wapas aati hai. Direction opposite.",
+  deepDive: {
+    what: "For motion under gravity (no air resistance), the time to go up equals time to come down between same levels. Speed at any height during ascent equals speed at same height during descent.",
+    why: "IAT conceptual: 'Ball thrown up; speed at highest point? (0) Speed when it returns to thrower? (equals initial speed).'",
+    how: "Use v² = u² − 2gh. At same h, v magnitude same.",
+    derivation: "Energy conservation: ½mu² = ½mv² + mgh ⇒ v = √(u²−2gh). Magnitude depends only on h.",
+    example: "Ball thrown up at 20 m/s. At 15 m height, speed = √(400−300)=10 m/s (both up and down).",
+    diagramSvg: "",
+    useYes: "✅ Vertical motion under gravity. Symmetry properties.",
+    useNo: "❌ Not for horizontal projection.",
+    examQ: "📌 IAT Style: A ball is thrown vertically upward. It returns to thrower after 6 s. Initial speed was: → T = 2u/g ⇒ u = gT/2 = 9.8×3 = 29.4 m/s."
+  }
+},
+{
+  number: "20",
+  title: "Gravity Triad · H_max, T_flight, v_ground",
+  badge: "⬆️ PROJECTION",
+  stripe: "blue",
+  formula: "<b>H<sub>max</sub> = u²/2g · T = 2u/g · v<sub>return</sub> = u</b>",
+  desc: "10‑Second Trick: Vertical throw ke teen formula yaad rakho. Sab kuch u aur g se juda hai.",
+  deepDive: {
+    what: "For a body thrown vertically upward with initial speed u: Maximum height H = u²/(2g). Total time of flight T = 2u/g. Speed when returning to launch point = u (downward).",
+    why: "IAT directly asks: 'Time of flight? Max height?'",
+    how: "Use v=0 at top: 0 = u − gt_up ⇒ t_up = u/g. T = 2u/g. H = u·t_up − ½g t_up² = u²/(2g).",
+    derivation: "From equations of motion with a = −g.",
+    example: "u = 20 m/s, g = 10 m/s². H = 400/20 = 20 m. T = 40/10 = 4 s.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+        <line x1="80" y1="150" x2="80" y2="30" stroke="#2a4494" stroke-width="2" stroke-dasharray="4 3"/>
+        <circle cx="80" cy="30" r="5" fill="#c0392b"/>
+        <text x="90" y="35" font-size="9" fill="#c0392b">H_max</text>
+        <line x1="60" y1="150" x2="100" y2="150" stroke="#333"/>
+        <text x="110" y="90" font-size="9" fill="#333">↑ u ↓ v = u</text>
+      </svg>
+    `,
+    useYes: "✅ Vertical motion problems. Finding max height, time of flight.",
+    useNo: "❌ Not for horizontal component.",
+    examQ: "📌 IAT Style: A ball is thrown up with 30 m/s. (g=10) Max height and time of flight are: → H = 900/20 = 45 m, T = 60/10 = 6 s."
+  }
+},
+{
+  number: "21",
+  title: "Moving Frame Rule · Dropped from Moving Platform",
+  badge: "🚁 DROP",
+  stripe: "green",
+  formula: "<b>When dropped from moving body: initial velocity = platform's velocity</b>",
+  desc: "10‑Second Trick: Balloon se drop kiya? Balloon jis speed se ja raha tha, ball bhi usi speed se start hogi.",
+  deepDive: {
+    what: "If an object is released from a moving platform (ascending balloon, helicopter, moving train), it inherits the platform's velocity at the moment of release. Acceleration after release is g downward.",
+    why: "IAT trap: 'A balloon rising at 5 m/s releases a ball. Initial velocity of ball?' Answer: 5 m/s upward.",
+    how: "Just after release, velocity = velocity of platform. Then acceleration = −g (downward).",
+    derivation: "Relative motion: before release, ball moves with platform. At instant of release, no horizontal/vertical impulse, so velocity same.",
+    example: "Balloon ascending at 10 m/s at height 100 m releases ball. Time to reach ground: use s = ut + ½at² with u=+10, a=−10, s=−100.",
+    diagramSvg: "",
+    useYes: "✅ Problems involving release from moving objects.",
+    useNo: "❌ When thrown (not just dropped).",
+    examQ: "📌 IAT Style: A helicopter rising at 10 m/s drops a packet from 40 m height. Time to reach ground: → s = −40, u=+10, a=−10. −40 = 10t − 5t² → t² − 2t − 8 = 0 → (t-4)(t+2) = 0 → t = 4 s."
+  }
+},
+{
+  number: "22",
+  title: "Stopping Distance Ratio · Speed n times ⇒ Distance n² times",
+  badge: "📈 RATIO",
+  stripe: "red",
+  formula: "<b>If u → n·u, stopping distance → n²·s</b>",
+  desc: "10‑Second Trick: Constant retardation se rukne mein agar speed double, to distance four times.",
+  deepDive: {
+    what: "From s = u²/(2a), stopping distance is proportional to square of initial speed. Ratio method fastest.",
+    why: "IAT asks: 'Speed tripled, stopping distance becomes?' Answer: 9 times.",
+    how: "No need to find a. Just s₂/s₁ = (u₂/u₁)².",
+    derivation: "s ∝ u².",
+    example: "Car at 30 km/h stops in 10 m. At 90 km/h, stopping distance = 10 × (90/30)² = 10 × 9 = 90 m.",
+    diagramSvg: "",
+    useYes: "✅ Ratio problems for stopping distance.",
+    useNo: "❌ When comparing different decelerations.",
+    examQ: "📌 IAT Style: A vehicle moving at 40 km/h stops in 20 m. At 80 km/h, stopping distance is: → 20 × (80/40)² = 20 × 4 = 80 m."
+  }
+},
+{
+  number: "23",
+  title: "v‑t Graph as Trapezium · Accelerate‑Constant‑Retard",
+  badge: "📊 TRAPEZIUM",
+  stripe: "blue",
+  formula: "<b>Area of trapezium = total distance</b>",
+  desc: "10‑Second Trick: Agar body accelerate kare, phir constant speed, phir retard kare, to v‑t graph trapezium banega. Area = distance.",
+  deepDive: {
+    what: "Typical journey: accelerate to max speed v, cruise at v, then decelerate to rest. v‑t graph is a trapezium. Total distance = area = ½ × (sum of parallel sides) × height. Also = v × (total time) − ½ (accel time + decel time) × v... simpler to use area of trapezium directly.",
+    why: "IAT problems: 'Car accelerates, moves uniformly, then retards. Find total distance.'",
+    how: "Divide into three phases. v‑t graph: triangle (accel) + rectangle (constant v) + triangle (retard). Total area = ½ t₁ v + t₂ v + ½ t₃ v = v(t₁/2 + t₂ + t₃/2).",
+    derivation: "",
+    example: "Accel 0‑20 m/s in 10 s, constant 20 m/s for 20 s, retard to 0 in 5 s. Distance = ½×10×20 + 20×20 + ½×5×20 = 100+400+50 = 550 m.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,90 50,30 200,30 230,90" fill="#c8d8f8" stroke="#2a4494" stroke-width="1.5"/>
+        <line x1="10" y1="90" x2="250" y2="90" stroke="#333"/>
+        <line x1="20" y1="100" x2="20" y2="20" stroke="#333"/>
+        <text x="125" y="60" font-size="10" fill="#2a4494" text-anchor="middle">Area = Distance</text>
+      </svg>
+    `,
+    useYes: "✅ Three‑phase motion problems. Total distance from v‑t graph.",
+    useNo: "❌ Not for variable acceleration within phases.",
+    examQ: "📌 IAT Style: A car accelerates at 2 m/s² for 10 s, moves uniformly for 20 s, then decelerates at 4 m/s² to rest. Total distance: → v_max = 20 m/s. t_decel = 20/4=5 s. Dist = ½×10×20 + 20×20 + ½×5×20 = 100+400+50 = 550 m."
+  }
+},
+{
+  number: "24",
+  title: "Parabola, Line, Horizontal · Graph Relations",
+  badge: "📈 GRAPHS",
+  stripe: "purple",
+  formula: "<b>x‑t parabola ⇔ v‑t straight line ⇔ a‑t horizontal</b>",
+  desc: "10‑Second Trick: Constant acceleration mein x‑t graph parabola, v‑t straight line, a‑t horizontal line hota hai.",
+  deepDive: {
+    what: "For uniform acceleration: x = ut + ½at² (quadratic, parabola). v = u + at (linear, straight line). a = constant (horizontal line).",
+    why: "IAT graph matching: 'If a‑t is horizontal, v‑t is?' Answer: straight line sloping.",
+    how: "Derivatives: slope of x‑t = v (linear), slope of v‑t = a (constant).",
+    derivation: "From equations of motion.",
+    example: "Constant acceleration 2 m/s²: v‑t line with slope 2; x‑t upward parabola.",
+    diagramSvg: "",
+    useYes: "✅ Graph identification. Relating position, velocity, acceleration graphs.",
+    useNo: "❌ Not for non‑constant acceleration.",
+    examQ: "📌 IAT Style: For uniform non-zero acceleration, the position-time (x-t) graph is always a: (A) Straight line (B) Parabola (C) Circle (D) Horizontal line. → Ans: (B) Parabola."
+  }
+},
+{
+  number: "25",
+  title: "Sign of Acceleration · Curvature of x‑t",
+  badge: "😊 SMILE/SAD",
+  stripe: "green",
+  formula: "<b>x‑t graph: smile (concave up) ⇒ a > 0; sad (concave down) ⇒ a < 0</b>",
+  desc: "10‑Second Trick: Graph ka curvature bataega acceleration ka sign. Upar ki taraf khula (smile) matlab positive acceleration.",
+  deepDive: {
+    what: "The curvature (second derivative) of position‑time graph gives acceleration sign. Concave up (like a smile) ⇒ d²x/dt² > 0 ⇒ acceleration positive. Concave down (like a sad face) ⇒ acceleration negative.",
+    why: "IAT conceptual: 'At point where x‑t graph is concave down, acceleration is?' Answer: Negative.",
+    how: "Draw tangent slopes: if slopes are increasing, concave up (a>0). If slopes decreasing, concave down (a<0).",
+    derivation: "a = d²x/dt². Positive second derivative ⇒ convex (concave up).",
+    example: "x = −t² (inverted parabola). Concave down, a = −2 (negative).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 30,90 Q 120,30 200,90" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <text x="120" y="50" font-size="10" fill="#2a4494" text-anchor="middle">Smile ⇒ a > 0</text>
+        <path d="M 230,30 Q 280,90 320,30" fill="none" stroke="#c0392b" stroke-width="2"/>
+        <text x="275" y="50" font-size="10" fill="#c0392b" text-anchor="middle">Sad ⇒ a < 0</text>
+      </svg>
+    `,
+    useYes: "✅ Determining sign of acceleration from x‑t graph shape.",
+    useNo: "❌ Not for exact magnitude.",
+    examQ: "📌 IAT Style: The x‑t graph of a particle is concave upwards. Its acceleration is: (A) Positive (B) Negative (C) Zero (D) Cannot say. → Ans: Positive."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
