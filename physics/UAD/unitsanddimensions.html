@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #2a4494;
+  --accent2: #c0392b;
+  --accent3: #1a6b3c;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #e8f0ff;
+  --formula-border: #2a4494;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(42,68,148,0.10);
+  --shadow-hover: 0 12px 40px rgba(42,68,148,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(42,68,148,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(192,57,43,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #1a2a5e 0%, #2a4494 60%, #3a5aa4 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #1a2e6e;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Physics";          // e.g., "Chemistry", "Mathematics", "Biology"
+const CHAPTER = "Units & Dimensions";   // e.g., "Rotational Motion", "Thermodynamics"
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+  // ========== PHYSICS · UNITS, DIMENSIONS & ERRORS (Cards 01 to 25) ==========
+
+{
+  number: "01",
+  title: "Unit Conversion Rule · n ∝ 1/u",
+  badge: "🔄 UNIT",
+  stripe: "blue",
+  formula: "<b>n₁u₁ = n₂u₂  ⇒  n ∝ 1/u</b>",
+  desc: "10‑Second Trick: Unit badi hogi to numerical value chhoti hogi. Physical quantity same rahegi.",
+  deepDive: {
+    what: "Kisi physical quantity ka magnitude (n) aur unit (u) ka product constant hota hai. Agar unit badi (e.g., metre se kilometre) karte hain, to numerical value chhoti ho jaati hai.",
+    why: "IAT mein direct conversion poochhte hain: 1 N = 10⁵ dyne, 1 J = 10⁷ erg. Ye ratio yaad rakhna kaafi hai.",
+    how: "Step 1: Q = n₁u₁ = n₂u₂. Step 2: n₂ = n₁ × (u₁/u₂). Agar unit u₂ badi hai, ratio < 1, n₂ chhota. Step 3: MKS to CGS: Length: 1 m = 100 cm; Mass: 1 kg = 1000 g; Time: 1 s = 1 s.",
+    derivation: "",
+    example: "1 Newton = ? dyne.\n→ 1 N = 1 kg·m/s² = (1000 g)×(100 cm)/s² = 10⁵ g·cm/s² = 10⁵ dyne.",
+    diagramSvg: "",
+    useYes: "✅ Unit conversion (MKS ↔ CGS). Numerical value change with unit.",
+    useNo: "❌ Not for dimensionless quantities.",
+    examQ: "📌 IAT Style: Convert 1 joule into erg.\n→ 1 J = 1 kg·m²/s² = 1000 g × (100 cm)² / s² = 10⁷ g·cm²/s² = 10⁷ erg."
+  }
+},
+{
+  number: "02",
+  title: "Base Quantities · 7 Fundamental Units",
+  badge: "📏 BASE",
+  stripe: "red",
+  formula: "<b>Length, Mass, Time, Current, Temperature, Amount of substance, Luminous intensity</b>",
+  desc: "10‑Second Trick: LMTCANL: Length, Mass, Time, Current, Amount, Temperature, Luminous. Baaki sab derived hain.",
+  deepDive: {
+    what: "SI system mein 7 base quantities hain: Length (m), Mass (kg), Time (s), Electric Current (A), Thermodynamic Temperature (K), Amount of Substance (mol), Luminous Intensity (cd). Baaki sab inhi se derive hoti hain.",
+    why: "IAT base vs derived identify karne ko kehta hai. Supplementary quantities (radian, steradian) dimensionless hain.",
+    how: "Mnemonic: 'Large Monkeys Talk Continuously About Tiny Lizards' — Length, Mass, Time, Current, Amount, Temperature, Luminous.",
+    derivation: "",
+    example: "Which of the following is not a base quantity? (A) Mass (B) Force (C) Time (D) Current. Answer: Force (derived).",
+    diagramSvg: `
+      <svg viewBox="0 0 350 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="40" height="20" fill="#c8d8f8"/><text x="30" y="34" font-size="9" fill="#2a4494" text-anchor="middle">L</text>
+        <rect x="55" y="20" width="40" height="20" fill="#c8d8f8"/><text x="75" y="34" font-size="9" fill="#2a4494" text-anchor="middle">M</text>
+        <rect x="100" y="20" width="40" height="20" fill="#c8d8f8"/><text x="120" y="34" font-size="9" fill="#2a4494" text-anchor="middle">T</text>
+        <rect x="145" y="20" width="40" height="20" fill="#c8d8f8"/><text x="165" y="34" font-size="9" fill="#2a4494" text-anchor="middle">I</text>
+        <rect x="190" y="20" width="50" height="20" fill="#c8d8f8"/><text x="215" y="34" font-size="9" fill="#2a4494" text-anchor="middle">Θ (Temp)</text>
+        <rect x="245" y="20" width="40" height="20" fill="#c8d8f8"/><text x="265" y="34" font-size="9" fill="#2a4494" text-anchor="middle">N</text>
+        <rect x="290" y="20" width="40" height="20" fill="#c8d8f8"/><text x="310" y="34" font-size="9" fill="#2a4494" text-anchor="345">J</text>
+        <text x="175" y="65" font-size="10" fill="#333" text-anchor="middle">7 Base Quantities (SI)</text>
+      </svg>
+    `,
+    useYes: "✅ Identifying base vs derived quantities.",
+    useNo: "❌ Not for dimensional analysis.",
+    examQ: "📌 IAT Style: Which of the following is a base SI unit? (A) Newton (B) Pascal (C) Ampere (D) Joule. → Ans: Ampere."
+  }
+},
+{
+  number: "03",
+  title: "Plane Angle & Solid Angle · Dimensionless",
+  badge: "📐 ANGLE",
+  stripe: "green",
+  formula: "<b>Plane angle (rad) and Solid angle (sr) have units but NO dimensions</b>",
+  desc: "10‑Second Trick: Radian aur Steradian supplementary units hain, dimensionless hain. Exam mein trap hota hai.",
+  deepDive: {
+    what: "Plane angle (radian) = arc/radius = L/L = 1 (dimensionless). Solid angle (steradian) = area/(radius)² = L²/L² = 1 (dimensionless). Ye SI units hain par dimensions nahi hain.",
+    why: "IAT poochhta hai: 'Which of the following has unit but no dimension?' Options mein radian, steradian aate hain.",
+    how: "Yaad rakho: Trigonometric functions (sin, cos) ka argument dimensionless hota hai. Isliye angle dimensionless hai.",
+    derivation: "",
+    example: "Which of the following is dimensionless? (A) Force (B) Angle (C) Velocity (D) Mass. Answer: Angle.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="60" r="30" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <line x1="100" y1="60" x2="130" y2="60" stroke="#c0392b" stroke-width="2"/>
+        <line x1="100" y1="60" x2="120" y2="40" stroke="#c0392b" stroke-width="2"/>
+        <path d="M110,50 A 20,20 0 0,1 120,40" fill="none" stroke="#1a6b3c" stroke-width="1.5"/>
+        <text x="80" y="40" font-size="9" fill="#2a4494">θ = s/r (rad)</text>
+        <text x="180" y="60" font-size="10" fill="#333">Unit: rad, sr</text>
+        <text x="180" y="80" font-size="10" fill="#333">Dimension: 1</text>
+      </svg>
+    `,
+    useYes: "✅ Dimensionless quantities with units. Trapping questions.",
+    useNo: "❌ Not for dimensional analysis of other quantities.",
+    examQ: "📌 IAT Style: Steradian is the SI unit of (A) Plane angle (B) Solid angle (C) Force (D) Energy. → Ans: Solid angle."
+  }
+},
+{
+  number: "04",
+  title: "Astronomical Distances · Order to Remember",
+  badge: "🌌 ASTRONOMY",
+  stripe: "purple",
+  formula: "<b>1 AU < 1 ly < 1 pc</b><br>1 AU = 1.5×10¹¹ m · 1 ly = 9.46×10¹⁵ m · 1 pc = 3.26 ly",
+  desc: "10‑Second Trick: AU (Earth‑Sun) < Light Year < Parsec. Parsec sabse bada astronomical distance unit hai.",
+  deepDive: {
+    what: "Astronomical Unit (AU) = Earth‑Sun distance ≈ 1.5×10¹¹ m. Light Year (ly) = distance light travels in one year ≈ 9.46×10¹⁵ m. Parsec (pc) = distance at which 1 AU subtends 1 arcsec ≈ 3.26 ly.",
+    why: "IAT order poochhta hai: smallest to largest — AU < ly < pc. Ya largest kaun si?",
+    how: "1 pc ≈ 3.26 ly ≈ 206265 AU. Yaad rakho: Parsec is king.",
+    derivation: "",
+    example: "Arrange in increasing order: 1 AU, 1 ly, 1 pc. Answer: 1 AU < 1 ly < 1 pc.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="30" width="60" height="30" fill="#c8d8f8"/><text x="50" y="50" font-size="10" fill="#2a4494" text-anchor="middle">1 AU</text>
+        <text x="90" y="50" font-size="14" fill="#333">&lt;</text>
+        <rect x="110" y="30" width="60" height="30" fill="#a5d6a5"/><text x="140" y="50" font-size="10" fill="#1a6b3c" text-anchor="middle">1 ly</text>
+        <text x="180" y="50" font-size="14" fill="#333">&lt;</text>
+        <rect x="200" y="30" width="60" height="30" fill="#f9e79f"/><text x="230" y="50" font-size="10" fill="#b8860b" text-anchor="middle">1 pc</text>
+        <text x="150" y="85" font-size="10" fill="#666" text-anchor="middle">1 pc ≈ 3.26 ly ≈ 206265 AU</text>
+      </svg>
+    `,
+    useYes: "✅ Astronomical distance comparison. Ordering questions.",
+    useNo: "❌ Not for actual numerical conversion unless asked.",
+    examQ: "📌 IAT Style: Which of the following is the largest distance? (A) 1 AU (B) 1 ly (C) 1 pc (D) 1 km. → Ans: 1 pc."
+  }
+},
+{
+  number: "05",
+  title: "Dimensional Twins · Same Dimension Different Quantity",
+  badge: "👯 TWINS",
+  stripe: "blue",
+  formula: "<b>Work = Energy = Torque = [ML²T⁻²]<br>Pressure = Stress = Energy Density = [ML⁻¹T⁻²]<br>Surface Tension = Spring Constant = [MT⁻²]</b>",
+  desc: "10‑Second Trick: Work, Energy, Torque — dimensions same. Pressure, Stress, Energy/Vol — same. Surface Tension, Spring Constant — Force/Length.",
+  deepDive: {
+    what: "Kai physical quantities ke dimensions same hote hain par nature alag. Work (scalar), Torque (vector). Pressure (scalar), Stress (tensor). IAT matching questions mein ye confuse kar sakte hain.",
+    why: "IAT poochhta hai: 'Which pair has same dimensions?' Options mein ye combinations aate hain.",
+    how: "Yaad rakho: Work/Energy/Torque = [ML²T⁻²]; Pressure/Stress/Energy density = [ML⁻¹T⁻²]; Surface tension (Force/Length) = Spring constant = [MT⁻²]; Impulse = Momentum = [MLT⁻¹].",
+    derivation: "",
+    example: "Which of the following pairs have same dimensions? (A) Work and Power (B) Torque and Energy (C) Force and Pressure (D) Velocity and Acceleration. Answer: Torque and Energy.",
+    diagramSvg: `
+      <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" font-size="11" fill="#333" font-weight="600">Dimensional Twins</text>
+        <rect x="10" y="30" width="150" height="20" fill="#c8d8f8"/><text x="85" y="44" font-size="9" fill="#2a4494" text-anchor="middle">Work, Energy, Torque</text>
+        <rect x="10" y="55" width="150" height="20" fill="#a5d6a5"/><text x="85" y="69" font-size="9" fill="#1a6b3c" text-anchor="middle">Pressure, Stress, Energy/Vol</text>
+        <rect x="10" y="80" width="150" height="20" fill="#f9e79f"/><text x="85" y="94" font-size="9" fill="#b8860b" text-anchor="middle">Surface Tension, Spring k</text>
+        <text x="180" y="44" font-size="9" fill="#666">[ML²T⁻²]</text>
+        <text x="180" y="69" font-size="9" fill="#666">[ML⁻¹T⁻²]</text>
+        <text x="180" y="94" font-size="9" fill="#666">[MT⁻²]</text>
+      </svg>
+    `,
+    useYes: "✅ Matching dimensions. Identifying same dimension pairs.",
+    useNo: "❌ Not for deriving exact relationships.",
+    examQ: "📌 IAT Style: Which of the following has the same dimension as that of pressure? (A) Work (B) Energy density (C) Force (D) Power. → Ans: Energy density."
+  }
+},
+{
+  number: "06",
+  title: "Moment of... · Mental Formula Trick",
+  badge: "🔄 MOMENT",
+  stripe: "green",
+  formula: "<b>Moment of Force = Torque [ML²T⁻²]<br>Moment of Momentum = Angular Momentum [ML²T⁻¹]<br>Moment of Inertia = [ML²]</b>",
+  desc: "10‑Second Trick: 'Moment of' matlab multiply by distance (except Moment of Inertia — r²).",
+  deepDive: {
+    what: "Moment of Force = Force × distance = Torque. Moment of Momentum = Momentum × distance = Angular Momentum (mvr). Moment of Inertia = Σmr² (distance squared).",
+    why: "IAT terminology based questions: 'Moment of force is also called?' Torque. Dimensions different hain inke.",
+    how: "Torque: [ML²T⁻²]. Angular momentum: [ML²T⁻¹]. Moment of inertia: [ML²].",
+    derivation: "",
+    example: "The dimensional formula for angular momentum is: [ML²T⁻¹].",
+    diagramSvg: "",
+    useYes: "✅ Terminology and dimensional formulas of moment quantities.",
+    useNo: "❌ Not for calculating actual values.",
+    examQ: "📌 IAT Style: Moment of momentum is also known as (A) Torque (B) Angular momentum (C) Moment of inertia (D) Impulse. → Ans: Angular momentum."
+  }
+},
+{
+  number: "07",
+  title: "Electromagnetism Dimensions · μ₀ε₀ Hack",
+  badge: "⚡ EM DIMENSION",
+  stripe: "red",
+  formula: "<b>μ₀ε₀ = 1/v² = [L⁻²T²]<br>Energy density (½ε₀E²) = [ML⁻¹T⁻²]</b>",
+  desc: "10‑Second Trick: μ₀ aur ε₀ saath aaye to seedha c = 1/√(μ₀ε₀) se dimension nikaalo. Energy density = pressure.",
+  deepDive: {
+    what: "Electromagnetic constants ke dimensions nikaalne ka shortcut: c = 1/√(μ₀ε₀) → μ₀ε₀ = 1/c² = [L⁻²T²]. Electric energy density u = ½ε₀E², aur ye dimensionally pressure ke barabar hai [ML⁻¹T⁻²].",
+    why: "IAT questions: Find dimensions of μ₀ or ε₀ individually. In relations se nikaal sakte hain.",
+    how: "Step 1: μ₀ε₀ = [L⁻²T²]. Step 2: ε₀E² = [ML⁻¹T⁻²] → ε₀ = [ML⁻¹T⁻²]/[E²]. Since E = Force/Charge, aur Charge = Current×Time, dimensions nikaal sakte hain.",
+    derivation: "",
+    example: "Find dimensions of ε₀.\n→ From Coulomb's law: F = (1/4πε₀) q²/r² → ε₀ = q²/(F r²) = [A²T²] / ([MLT⁻²][L²]) = [M⁻¹L⁻³T⁴A²].",
+    diagramSvg: "",
+    useYes: "✅ Finding dimensions of ε₀, μ₀, and related quantities.",
+    useNo: "❌ Not for numerical values.",
+    examQ: "📌 IAT Style: The dimensional formula for μ₀ε₀ is: (A) [LT⁻¹] (B) [L⁻²T²] (C) [L²T⁻²] (D) [M⁻¹L⁻³T⁴]. → Ans: [L⁻²T²]."
+  }
+},
+{
+  number: "08",
+  title: "Coefficient of Viscosity · VIP Dimension",
+  badge: "💧 VISCOSITY",
+  stripe: "purple",
+  formula: "<b>η = [ML⁻¹T⁻¹]</b>",
+  desc: "10‑Second Trick: Viscosity ka dimension yaad rakho — M, L inverse, T inverse. Formula: F = 6πηrv se nikaal sakte ho.",
+  deepDive: {
+    what: "Coefficient of viscosity (η) fluid ke internal friction ko measure karta hai. Stokes' law: F = 6πηrv. Isse η = F/(rv) → [MLT⁻²]/([L][LT⁻¹]) = [ML⁻¹T⁻¹].",
+    why: "IAT mein direct dimension poochhte hain ya formula diya hota hai.",
+    how: "Yaad rakho: [ML⁻¹T⁻¹]. Poise (CGS) = g·cm⁻¹·s⁻¹. 1 Pa·s = 10 Poise.",
+    derivation: "",
+    example: "Dimensional formula of coefficient of viscosity is: [ML⁻¹T⁻¹].",
+    diagramSvg: "",
+    useYes: "✅ Viscosity dimension. Poise to Pa·s conversion.",
+    useNo: "❌ Not for kinematic viscosity (different).",
+    examQ: "📌 IAT Style: The SI unit of coefficient of viscosity is (A) Poise (B) Pascal (C) Poiseuille (D) Newton. → Ans: Poiseuille (Pa·s)."
+  }
+},
+{
+  number: "09",
+  title: "Base Quantity Trap · Force as Base",
+  badge: "⚠️ TRAP",
+  stripe: "red",
+  formula: "<b>If base quantities change, express everything in terms of new bases using standard formula</b>",
+  desc: "10‑Second Trick: Question keh de 'Force, Velocity, Time as base' to dimensions ko inhi ke terms mein likho. e.g., Mass = Force/Acceleration = Force × Time² / Length.",
+  deepDive: {
+    what: "Kabhi kabhi IAT arbitrary base quantities define karta hai (e.g., Force F, Velocity V, Time T ko fundamental maan lo). Tab di gayi quantity ke dimensions inhi new bases ke terms mein nikaalne hote hain.",
+    why: "Aise sawaal checking ke liye aate hain ki tum dimensional analysis ka essence samjhe ho.",
+    how: "Step 1: Standard dimensions likho (e.g., Energy = [ML²T⁻²]). Step 2: New bases ke terms mein M, L, T express karo (e.g., V = L/T → L = VT; F = ML/T² → M = FT²/L = FT/V). Step 3: Substitute karke simplify.",
+    derivation: "",
+    example: "If Force (F), Velocity (V) and Time (T) are fundamental units, dimension of Energy is? → Energy = F¹V¹T¹? Let's check: [F] = MLT⁻², [V] = LT⁻¹, [T] = T. Solve for M,L,T in terms of F,V,T. M = F V⁻¹ T, L = V T. Energy = ML²T⁻² = (F V⁻¹ T) (V² T²) T⁻² = F V T. So [F¹ V¹ T¹].",
+    diagramSvg: "",
+    useYes: "✅ Problems with redefined base quantities.",
+    useNo: "❌ Not for standard SI dimensions.",
+    examQ: "📌 IAT Style: If the units of force, length and time are taken as fundamental, the dimension of mass will be: (A) FL⁻¹T² (B) FL⁻¹T⁻² (C) FLT⁻² (D) F. → Ans: F = MLT⁻² → M = F L⁻¹ T²."
+  }
+},
+{
+  number: "10",
+  title: "Dimensionless Quantities · Trig, Log, Strain",
+  badge: "0️⃣ DIMENSIONLESS",
+  stripe: "green",
+  formula: "<b>sinθ, cosθ, log x, eˣ, strain, refractive index, relative density → Dimensionless</b>",
+  desc: "10‑Second Trick: Trigonometric, exponential, logarithmic functions ke arguments hamesha dimensionless hote hain. Strain, angle, 'relative' terms bhi dimensionless.",
+  deepDive: {
+    what: "Kuch physical quantities ratios hain ya mathematical functions ke arguments hain, isliye unka koi dimension nahi hota. e.g., strain = ΔL/L, refractive index = c/v, angle = arc/radius, etc.",
+    why: "IAT poochhta hai: 'Which is dimensionless?' Options mein angle, strain, refractive index aate hain.",
+    how: "List yaad rakho: Angle (rad), Solid angle (sr), Strain, Poisson's ratio, Refractive index, Relative density/permittivity/permeability, Reynold's number, Trigonometric ratios, log, e^x.",
+    derivation: "",
+    example: "Which of the following is not dimensionless? (A) Strain (B) Angle (C) Refractive index (D) Surface tension. Answer: Surface tension ([MT⁻²]).",
+    diagramSvg: "",
+    useYes: "✅ Identifying dimensionless quantities. Traps in dimensional analysis.",
+    useNo: "❌ Not for dimensional quantities.",
+    examQ: "📌 IAT Style: The dimensional formula of strain is: (A) [M⁰L⁰T⁰] (B) [ML⁻¹T⁻²] (C) [MLT⁻¹] (D) [L²]. → Ans: [M⁰L⁰T⁰]."
+  }
+},
+{
+  number: "11",
+  title: "Principle of Homogeneity · +/− Rule",
+  badge: "⚖️ HOMOGENEITY",
+  stripe: "blue",
+  formula: "<b>Term1 ± Term2 = Term3 ⇒ [Term1] = [Term2] = [Term3]</b>",
+  desc: "10‑Second Trick: Equation mein jo terms add/subtract ho rahe hain, un sabka dimension same hoga.",
+  deepDive: {
+    what: "Principle of homogeneity states that in any valid physical equation, dimensions of all terms being added or equated must be identical.",
+    why: "IAT iska use karta hai: diye hue equation se unknown quantity ka dimension nikaalna, ya options check karna.",
+    how: "Step 1: Equation likho. Step 2: Har term ka dimension LHS ke barabar set karo. Step 3: Unknown dimension solve karo.",
+    derivation: "",
+    example: "In equation F = av² + bv + c, find dimensions of a. → [F] = [a][v²] → [MLT⁻²] = [a][L²T⁻²] → [a] = [ML⁻¹].",
+    diagramSvg: "",
+    useYes: "✅ Finding unknown dimensions in given equation. Checking correctness of equations.",
+    useNo: "❌ Not for numerical calculation.",
+    examQ: "📌 IAT Style: In equation P = a − t²/bx, dimensions of a and b are? → [a] = [P] = [ML⁻¹T⁻²]; [t²/bx] = [P] → [b] = [T²]/([L][ML⁻¹T⁻²]) = [M⁻¹L⁰T⁴]."
+  }
+},
+{
+  number: "12",
+  title: "Derivation Hack · Check Options Dimensions",
+  badge: "🎯 OPTION HACK",
+  stripe: "red",
+  formula: "<b>Never derive with a,b,c powers. Check dimensions of options; match with LHS.</b>",
+  desc: "10‑Second Trick: Formula derive karne ki jagah, har option ka dimension nikaalo aur LHS se match karo. Kaam 5 second mein.",
+  deepDive: {
+    what: "Dimensional analysis ka practical use: agar kisi physical quantity ka formula options mein diya ho, to sirf dimensions match karke correct option choose kar sakte ho, bina poora derive kiye.",
+    why: "IAT speed ke liye ye trick gold hai. Time bachta hai aur calculation mistakes nahi hoti.",
+    how: "Step 1: LHS quantity ka dimension likho. Step 2: Har option mein diye terms ke dimensions nikaal kar overall dimension calculate karo. Step 3: Jo LHS se match kare, wahi answer.",
+    derivation: "",
+    example: "The velocity of a wave on a string depends on tension T and mass per unit length μ. Which formula is correct? Options: (A) √(T/μ) (B) √(μ/T) (C) T/μ (D) μ/T. Check dimensions: [√(T/μ)] = [ (MLT⁻²) / (ML⁻¹) ]¹/² = [L²T⁻²]¹/² = [LT⁻¹] = velocity. Correct.",
+    diagramSvg: "",
+    useYes: "✅ Multiple choice questions with formula options. Dimensional verification.",
+    useNo: "❌ When dimensionless constants (2, π) are involved, or formulas have additive terms.",
+    examQ: "📌 IAT Style: The time period of a simple pendulum might depend on length l and g. Which is correct? Options: (A) 2π√(l/g) (B) 2π√(g/l) (C) 2π(l/g) (D) 2π(g/l). Check dimensions: [√(l/g)] = [L/(LT⁻²)]¹/² = [T²]¹/² = T. So (A)."
+  }
+},
+{
+  number: "13",
+  title: "Wave Velocity Hack · ω/k = v",
+  badge: "🌊 WAVE",
+  stripe: "green",
+  formula: "<b>v = ω/k  ⇒  [ω] = [k] × [v]</b>",
+  desc: "10‑Second Trick: Wave equation mein ω/k term dekhi? Seedha velocity ka dimension [LT⁻¹] laga do.",
+  deepDive: {
+    what: "Wave velocity v = ω/k (angular frequency / wave number). Agar equation mein ω/k aata hai, to uska dimension velocity ke barabar hoga. Alag se derive karne ki zaroorat nahi.",
+    why: "IAT questions: y = A sin(ωt − kx). Argument (ωt − kx) dimensionless hai. Isse [ω] = T⁻¹, [k] = L⁻¹. Phir ω/k = [LT⁻¹].",
+    how: "Dimensionless argument: [ωt] = 1 → [ω] = T⁻¹. [kx] = 1 → [k] = L⁻¹. Then [ω/k] = LT⁻¹ = velocity.",
+    derivation: "",
+    example: "In equation y = a sin(bt − cx), dimensions of b/c are? → [bt] = 1 → [b] = T⁻¹. [cx] = 1 → [c] = L⁻¹. So [b/c] = LT⁻¹ = velocity.",
+    diagramSvg: "",
+    useYes: "✅ Wave equation parameter dimensions. Quick velocity identification.",
+    useNo: "❌ Not for non‑wave contexts.",
+    examQ: "📌 IAT Style: In the relation y = r sin(ωt − kx), the dimensions of ω/k are: (A) [M⁰L⁰T⁰] (B) [M⁰LT⁻¹] (C) [M⁰L⁻¹T] (D) [M⁰LT]. → Ans: [LT⁻¹]."
+  }
+},
+{
+  number: "14",
+  title: "√(uG) Hack · Energy Density × G",
+  badge: "🧠 GRAVITY HACK",
+  stripe: "purple",
+  formula: "<b>√(u × G) has dimensions of acceleration = [LT⁻²]</b>",
+  desc: "10‑Second Trick: Energy density u = [ML⁻¹T⁻²], G = [M⁻¹L³T⁻²]. Multiply: uG = [L²T⁻⁴]. Square root = [LT⁻²] = acceleration.",
+  deepDive: {
+    what: "Agar kisi question mein energy density (u) aur gravitational constant (G) ka square root diya ho, to uska dimension acceleration (ya force/mass) ke barabar hoga. Ye IAT ka favourite combination hai.",
+    why: "Dimensions match karte hain: u = Energy/Volume = [ML²T⁻²]/[L³] = [ML⁻¹T⁻²]. G = [M⁻¹L³T⁻²]. uG = [L²T⁻⁴]. √(uG) = [LT⁻²] = acceleration.",
+    how: "Direct multiplication: [ML⁻¹T⁻²] × [M⁻¹L³T⁻²] = [L²T⁻⁴]. Square root: [LT⁻²].",
+    derivation: "",
+    example: "If u is energy density and G is universal gravitational constant, then √(uG) has dimensions of: (A) Force (B) Acceleration (C) Velocity (D) Pressure. → Ans: Acceleration.",
+    diagramSvg: "",
+    useYes: "✅ Finding dimensions of complex combinations involving u and G.",
+    useNo: "❌ Not for actual values.",
+    examQ: "📌 IAT Style: The quantity √(uG/c⁵) (where u is energy density, G gravitational constant, c speed of light) has dimensions of? (A) Length (B) Mass (C) Time (D) Dimensionless. → Solve: uG = [L²T⁻⁴], /c⁵ = /[L⁵T⁻⁵] = [L⁻³T]. Square root: [L⁻³/² T¹/²] — not standard, but often designed to be length etc."
+  }
+},
+{
+  number: "15",
+  title: "Significant Figures · Leading & Trailing Zero Rules",
+  badge: "🔢 SIG FIG",
+  stripe: "blue",
+  formula: "<b>Leading zeros never count. Trailing zeros count ONLY if decimal present.</b>",
+  desc: "10‑Second Trick: 0.00230 → 3 SF. 450 → 2 SF. 23.00 → 4 SF. Powers of 10 ignore.",
+  deepDive: {
+    what: "Significant figures rules: (1) Non‑zero digits always significant. (2) Leading zeros (left of first non‑zero) never significant. (3) Captive zeros (between non‑zeros) always significant. (4) Trailing zeros (right end) significant only if there is a decimal point.",
+    why: "IAT significant figures based questions aate hain. 'Which has same SF?' 'Round off to 3 SF'.",
+    how: "Count karo: 0.00253 → 3 SF. 1.0003 → 5 SF. 15.0 → 3 SF. 450 → 2 SF (unless written 4.50×10² → 3 SF). Scientific notation best hai.",
+    derivation: "",
+    example: "Number of SF in 0.0230? → Leading zeros no count. Trailing zero after decimal counts. So 2,3,0 → 3 SF.",
+    diagramSvg: "",
+    useYes: "✅ Counting significant figures. Rounding off.",
+    useNo: "❌ Exact numbers (like 5 in 5 books) have infinite SF.",
+    examQ: "📌 IAT Style: The number of significant figures in 0.00340 is: (A) 2 (B) 3 (C) 4 (D) 5. → Ans: 3 (3,4,0)."
+  }
+},
+{
+  number: "16",
+  title: "SF in Calculations · Addition vs Multiplication",
+  badge: "🧮 CALCULATION",
+  stripe: "red",
+  formula: "<b>+/− : least decimal places<br>×/÷ : least significant figures</b>",
+  desc: "10‑Second Trick: Jodte/ghatate waqt decimal places dekho. Guna/bhag mein total SF dekho.",
+  deepDive: {
+    what: "Significant figures ke rules calculation ke liye alag hain: Addition/Subtraction mein result ke decimal places utne hone chahiye jitne sabse kam decimal places wale term mein. Multiplication/Division mein result ke total SF utne hone chahiye jitne sabse kam SF wale term mein.",
+    why: "IAT poochhta hai: 'Calculate with proper SF' ya options mein round off kiya hota hai.",
+    how: "Example: 12.11 + 18.0 + 1.013 = 31.123 → least decimal places 1 (18.0) → round to 31.1. Multiplication: 2.5 × 2.50 = 6.25 → least SF = 2 → answer 6.2.",
+    derivation: "",
+    example: "12.11 + 18.0 + 1.013 = ? (with correct SF) → 31.1.",
+    diagramSvg: "",
+    useYes: "✅ Rounding off results in calculations. Lab data problems.",
+    useNo: "❌ Not for exact numbers.",
+    examQ: "📌 IAT Style: The result of (21.1 + 3.45) × 0.100 with proper SF is: → (24.55) × 0.100 = 2.455. SF: 21.1 (3 SF), 3.45 (3 SF), sum 24.55 (1 decimal → 24.6). Then ×0.100 (3 SF) → 2.46."
+  }
+},
+{
+  number: "17",
+  title: "Rounding Off 5 · Even/Odd Rule",
+  badge: "🎲 ROUNDING",
+  stripe: "green",
+  formula: "<b>If digit before 5 is EVEN → leave it. If ODD → increase by 1.</b>",
+  desc: "10‑Second Trick: Exactly 5 drop karna hai? Pichla digit even hai to same rahega, odd hai to +1.",
+  deepDive: {
+    what: "Jab hume kisi number ko round off karna ho aur drop hone wala digit exactly 5 ho (aur uske aage kuch na ho), to preceding digit par rule lagta hai: agar preceding digit even hai to wahi rehta hai; agar odd hai to 1 badh jaata hai. Isse rounding bias nahi hota.",
+    why: "IAT rounding questions mein ye specific case poochhte hain.",
+    how: "Examples: 2.45 → 2.4 (4 even). 2.35 → 2.4 (3 odd, increase). 2.4501 → 2.5 (kyunki 5 ke aage 01 hai, to normal rounding: 5 ya usse zyada, increase).",
+    derivation: "",
+    example: "Round off 3.45 to one decimal place. → 3.4 (preceding 4 even). Round off 3.75 to one decimal place → 3.8 (preceding 7 odd).",
+    diagramSvg: "",
+    useYes: "✅ Rounding off measurements when next digit is exactly 5.",
+    useNo: "❌ When digits after 5 are non‑zero.",
+    examQ: "📌 IAT Style: 2.745 rounded to two decimal places is: (A) 2.74 (B) 2.75 (C) 2.74 or 2.75 (D) 2.7. → Since drop digit is 5 and preceding 4 even → 2.74."
+  }
+},
+{
+  number: "18",
+  title: "Errors in Measurement · Absolute & Mean Error",
+  badge: "📊 ERRORS",
+  stripe: "purple",
+  formula: "<b>True value = mean of readings<br>Absolute error Δaᵢ = |aᵢ − a_mean|</b>",
+  desc: "10‑Second Trick: True value average hota hai. Errors hamesha positive (absolute) li jaati hain, phir unka mean nikaalte hain.",
+  deepDive: {
+    what: "Kisi measurement ka true value (best estimate) saare observations ka arithmetic mean hota hai. Absolute error = |observed − mean|. Mean absolute error = average of absolute errors. Relative error = mean absolute error / mean. Percentage error = relative error × 100%.",
+    why: "IAT error analysis ke basic definitions poochhta hai.",
+    how: "Step 1: Mean nikaalo. Step 2: Har reading ka absolute error nikaalo. Step 3: Mean absolute error nikaalo. Step 4: Relative/percentage error nikaalo.",
+    derivation: "",
+    example: "Readings: 2.1, 2.2, 2.0. Mean = 2.1. Absolute errors: 0, 0.1, 0.1. Mean absolute error = (0+0.1+0.1)/3 = 0.067 ≈ 0.07.",
+    diagramSvg: "",
+    useYes: "✅ Calculating errors from given data. True value determination.",
+    useNo: "❌ Not for systematic errors.",
+    examQ: "📌 IAT Style: The true value of a physical quantity is best given by: (A) Arithmetic mean of all observations (B) Most repeated value (C) Maximum value (D) Minimum value. → Ans: Arithmetic mean."
+  }
+},
+{
+  number: "19",
+  title: "Error Propagation · Power Rule",
+  badge: "📈 PROPAGATION",
+  stripe: "blue",
+  formula: "<b>For Z = Aˣ Bʸ / Cᶻ, max fractional error: ΔZ/Z = |x|ΔA/A + |y|ΔB/B + |z|ΔC/C</b>",
+  desc: "10‑Second Trick: Errors hamesha add hoti hain, chahe formula mein divide ho ya power negative ho. Absolute values lo.",
+  deepDive: {
+    what: "Jab koi quantity derived ho (e.g., Z = Aˣ Bʸ / Cᶻ), to maximum possible relative error in Z is sum of relative errors of individual quantities multiplied by their powers (absolute value).",
+    why: "IAT questions: 'Find maximum % error in density given % errors in mass and length.'",
+    how: "Formula: ΔZ/Z = |x|(ΔA/A) + |y|(ΔB/B) + |z|(ΔC/C). Percentage ke liye ×100.",
+    derivation: "",
+    example: "Density ρ = mass/volume = m/(l³). % error in mass = 2%, in length = 1%. Max % error in ρ = 2% + 3×1% = 5%.",
+    diagramSvg: "",
+    useYes: "✅ Error analysis in derived quantities. Maximum error calculation.",
+    useNo: "❌ Not for standard deviation type errors.",
+    examQ: "📌 IAT Style: The percentage errors in mass and length of a cube are 1% and 2%. Max % error in density is: → Density = M/L³, % error = 1% + 3×2% = 7%."
+  }
+},
+{
+  number: "20",
+  title: "Vernier Caliper · Reading Formula",
+  badge: "📏 VERNIER",
+  stripe: "green",
+  formula: "<b>Reading = MSR + (Coinciding Division × LC)</b>",
+  desc: "10‑Second Trick: Main scale reading (MSR) + (Vernier division matching × Least Count). Zero error: subtract if positive, add if negative.",
+  deepDive: {
+    what: "Vernier caliper se length measurement: Total reading = Main Scale Reading (MSR) + (Vernier Coinciding Division × Least Count). Least Count = 1 MSD − 1 VSD. Zero error: positive (zero right of main zero) subtract; negative (zero left) add.",
+    why: "IAT practical based questions: find reading from given diagram or calculate LC.",
+    how: "LC = Value of 1 MSD / Number of VSD. Standard LC = 0.01 cm or 0.02 cm. Reading = MSR + (VCD × LC).",
+    derivation: "",
+    example: "MSR = 2.3 cm, 5th VSD matches, 1 MSD = 1 mm, 10 VSD = 9 MSD. LC = 0.01 cm. Reading = 2.3 + 5×0.01 = 2.35 cm.",
+    diagramSvg: "",
+    useYes: "✅ Vernier caliper reading and zero error correction.",
+    useNo: "❌ Not for screw gauge.",
+    examQ: "📌 IAT Style: In a vernier caliper, 1 MSD = 1 mm and 20 VSD = 19 MSD. The least count is: (A) 0.005 cm (B) 0.05 cm (C) 0.01 cm (D) 0.001 cm. → LC = 1 MSD − 1 VSD = 1 mm − (19/20) mm = 0.05 mm = 0.005 cm."
+  }
+},
+{
+  number: "21",
+  title: "Screw Gauge · Pitch & Least Count",
+  badge: "🔩 SCREW GAUGE",
+  stripe: "red",
+  formula: "<b>Pitch = Distance moved / Rotations<br>LC = Pitch / Circular scale divisions</b>",
+  desc: "10‑Second Trick: Pitch = 1 rotation ka linear movement. LC = Pitch / Total divisions on circular scale. Reading = LSR + (CSD × LC).",
+  deepDive: {
+    what: "Screw gauge mein: Pitch = distance moved by screw in one complete rotation. Least Count = Pitch / Number of divisions on circular scale. Total Reading = Linear Scale Reading (LSR) + (Coinciding Circular Scale Division × LC). Zero error: if zero above reference line, negative (add); below, positive (subtract).",
+    why: "IAT screw gauge reading and LC calculation poochhta hai.",
+    how: "Standard screw gauge: Pitch = 1 mm, CSD = 100, LC = 0.01 mm. Reading = LSR (mm) + (CSD × LC) in mm.",
+    derivation: "",
+    example: "LSR = 2.5 mm, 35th CSD matches, pitch=1 mm, CSD=100. LC=0.01 mm. Reading = 2.5 + 35×0.01 = 2.85 mm.",
+    diagramSvg: "",
+    useYes: "✅ Screw gauge reading and least count.",
+    useNo: "❌ Not for vernier caliper.",
+    examQ: "📌 IAT Style: A screw gauge has pitch 0.5 mm and 100 divisions on circular scale. The least count is: (A) 0.05 mm (B) 0.005 mm (C) 0.5 mm (D) 0.0005 mm. → LC = 0.5/100 = 0.005 mm."
+  }
+},
+{
+  number: "22",
+  title: "Zero Error Correction · Vernier & Screw",
+  badge: "⚙️ ZERO ERROR",
+  stripe: "purple",
+  formula: "<b>Positive error (right/below) → subtract<br>Negative error (left/above) → add</b>",
+  desc: "10‑Second Trick: Vernier: zero right of main zero → + error, subtract. Screw: zero below reference → + error, subtract. Negative error always add.",
+  deepDive: {
+    what: "Zero error tab hota hai jab instrument ka zero mark perfectly align nahi hota. Vernier caliper: agar vernier zero main scale zero ke right mein hai, to positive zero error; left mein to negative. Screw gauge: agar circular scale zero reference line ke neeche hai to positive; upar to negative.",
+    why: "IAT practical questions: 'Correct reading if zero error is...'",
+    how: "Correct reading = Observed reading − Zero error (with sign). Yaad rakho: Negative error add hota hai.",
+    derivation: "",
+    example: "Vernier reading = 2.34 cm, zero error = +0.02 cm. Correct reading = 2.34 − 0.02 = 2.32 cm.",
+    diagramSvg: "",
+    useYes: "✅ Correcting zero errors in vernier and screw gauge.",
+    useNo: "❌ Not for digital instruments.",
+    examQ: "📌 IAT Style: A screw gauge has a zero error of −0.003 mm. Observed reading is 5.250 mm. Correct reading is: (A) 5.247 mm (B) 5.253 mm (C) 5.250 mm (D) 5.257 mm. → Add negative error: 5.250 + 0.003 = 5.253 mm."
+  }
+},
+{
+  number: "23",
+  title: "Derivation Limitations · When Dimensional Analysis Fails",
+  badge: "🚫 LIMITS",
+  stripe: "red",
+  formula: "<b>Cannot derive formulas with +/−, trig, log, exponential, or dimensionless constants.</b>",
+  desc: "10‑Second Trick: Dimensional analysis sirf pure product formulas ke liye kaam karta hai. Sum, sin, log, eˣ wale formulas derive nahi kar sakte.",
+  deepDive: {
+    what: "Dimensional analysis ki limitations: (1) Dimensionless constants (2, π, etc.) nahi nikaal sakte. (2) Agar formula me + ya − hai (jaise v = u + at), to ye method fail. (3) Trigonometric, logarithmic, exponential functions wale formulas derive nahi kar sakte. (4) Agar ek se zyada physical quantities same dimension ki ho, to unka exact relation nahi bata sakte.",
+    why: "IAT poochhta hai: 'Which of the following cannot be derived by dimensional analysis?' Options mein v = u + at hota hai.",
+    how: "Yaad rakho: Dimensional analysis keval tab kaam karta hai jab physical quantity kuch fundamental quantities ke product ke form mein ho.",
+    derivation: "",
+    example: "Which of the following can be derived using dimensional analysis? (A) v = u + at (B) s = ut + ½at² (C) F = ma (D) y = a sin(ωt). Answer: F = ma (product form).",
+    diagramSvg: "",
+    useYes: "✅ Identifying where dimensional analysis is applicable.",
+    useNo: "❌ Not applicable.",
+    examQ: "📌 IAT Style: Dimensional analysis cannot be used to derive: (A) Time period of pendulum (B) Stokes' law (C) Equation of motion v = u + at (D) Centripetal force. → Ans: v = u + at."
+  }
+},
+{
+  number: "24",
+  title: "Exact Numbers · Infinite Significant Figures",
+  badge: "♾️ EXACT",
+  stripe: "green",
+  formula: "<b>Counting numbers (5 pens) and defined constants (2 in 2πr) have infinite SF.</b>",
+  desc: "10‑Second Trick: Agar kisi number ko gin sakte ho (5 apples) ya formula mein exact constant hai (½ in ½mv²), to uski infinite SF hoti hain.",
+  deepDive: {
+    what: "Exact numbers are those known with complete certainty. Examples: counted objects (3 books), defined conversion factors (1 inch = 2.54 cm exactly), mathematical constants in formulas (the 2 in 2πr). They do not affect the significant figures of the result.",
+    why: "IAT SF calculation mein exact numbers ko ignore karna hota hai.",
+    how: "Jab multiplication/division karo, exact numbers ki SF count mat karo. Sirf measured values ki SF dekho.",
+    derivation: "",
+    example: "Radius r = 2.5 cm (2 SF). Circumference C = 2πr. 2 aur π exact hain, to C ki SF = r ki SF = 2 SF. C = 16 cm (2 SF).",
+    diagramSvg: "",
+    useYes: "✅ SF calculations involving counted numbers or constants.",
+    useNo: "❌ Not for measured quantities.",
+    examQ: "📌 IAT Style: The radius of a circle is 3.0 cm. The circumference 2πr has SF: (A) 1 (B) 2 (C) 3 (D) Infinite. → Ans: 2 (radius ki SF)."
+  }
+},
+{
+  number: "25",
+  title: "Standard MKS to CGS · Quick Conversions",
+  badge: "🔄 CONVERSION",
+  stripe: "blue",
+  formula: "<b>1 N = 10⁵ dyne · 1 J = 10⁷ erg · 1 Pa = 10 dyne/cm²</b>",
+  desc: "10‑Second Trick: Force: 10⁵, Energy: 10⁷, Pressure: 10. Yaad rakho ye teen magic numbers.",
+  deepDive: {
+    what: "MKS (SI) to CGS conversions: 1 Newton = 10⁵ dyne (kg·m/s² → g·cm/s²). 1 Joule = 10⁷ erg (kg·m²/s² → g·cm²/s²). 1 Pascal = 10 dyne/cm² (N/m² → dyne/cm²).",
+    why: "IAT direct conversion poochhta hai: '1 J = ? erg'.",
+    how: "Length: 1 m = 10² cm; Mass: 1 kg = 10³ g; Time same. Force = MLT⁻² → 10³ × 10² = 10⁵. Energy = ML²T⁻² → 10³ × 10⁴ = 10⁷.",
+    derivation: "",
+    example: "Convert 1 watt into CGS unit. → 1 W = 1 J/s = 10⁷ erg/s.",
+    diagramSvg: "",
+    useYes: "✅ Unit conversion between SI and CGS.",
+    useNo: "❌ Not for other systems.",
+    examQ: "📌 IAT Style: 1 erg is equal to: (A) 10⁻⁷ J (B) 10⁷ J (C) 10⁻⁵ J (D) 10⁵ J. → Ans: 10⁻⁷ J."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
