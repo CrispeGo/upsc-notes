@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #2563eb;
+--accent2: #3b82f6;
+--accent3: #1d4ed8;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #eff6ff;
+--formula-border: #2563eb;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(37,99,235,0.10);
+--shadow-hover: 0 12px 40px rgba(37,99,235,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59,130,246,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #1e3a8a;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Mathematics";
+const CHAPTER = "Quadratic Equations";
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+  // ========== MATHEMATICS · QUADRATIC EQUATIONS (Cards 01 to 25) ==========
+
+{
+  number: "01",
+  title: "Sum & Product of Roots · Vieta's Formulas",
+  badge: "🌱 VIETA",
+  stripe: "blue",
+  formula: "<b>α+β = −b/a &nbsp;&nbsp;|&nbsp;&nbsp; αβ = c/a</b><br>Equation: x² − Sx + P = 0",
+  desc: "10‑Second Trick: Quadratic ke roots ka sum aur product seedha coefficients se nikalta hai. Quadratic banana hai to x² − Sx + P = 0.",
+  deepDive: {
+    what: "For quadratic equation ax² + bx + c = 0, sum of roots S = α+β = −b/a, product P = αβ = c/a. Conversely, if sum and product are known, the quadratic is x² − Sx + P = 0 (when a=1).",
+    why: "IAT frequently asks to find symmetric expressions without computing actual roots.",
+    how: "Identify a, b, c. Compute S and P. Use them to evaluate expressions like α²+β² = S² − 2P.",
+    derivation: "From factorization a(x−α)(x−β) = ax² − a(α+β)x + aαβ = ax² + bx + c. Equate coefficients.",
+    example: "If roots of 2x² − 6x + 3 = 0 are α, β, find α²+β². → S=3, P=1.5. α²+β² = 3² − 2×1.5 = 9 − 3 = 6.",
+    useYes: "✅ Symmetric functions of roots. Forming quadratic from roots.",
+    useNo: "❌ Not for finding individual roots unless simple.",
+    examQ: "📌 IAT Style: If α,β are roots of x² − 5x + 6 = 0, find α²β + αβ². → αβ(α+β) = 6×5 = 30."
+  }
+},
+{
+  number: "02",
+  title: "Difference of Roots · |α−β| = √D / |a|",
+  badge: "📏 DIFFERENCE",
+  stripe: "red",
+  formula: "<b>|α − β| = √(b² − 4ac) / |a|</b>",
+  desc: "10‑Second Trick: Roots ka absolute difference seedha discriminant se nikalta hai. IAT ka favorite direct question.",
+  deepDive: {
+    what: "The absolute difference between roots of ax² + bx + c = 0 is √D / |a|, where D = b² − 4ac. This is derived from (α−β)² = (α+β)² − 4αβ.",
+    why: "IAT asks: 'Find the difference of roots of 2x² − 7x + 3 = 0.' Direct formula fastest.",
+    how: "Compute D = b² − 4ac. Then |α−β| = √D / |a|.",
+    derivation: "(α−β)² = (α+β)² − 4αβ = (−b/a)² − 4(c/a) = (b² − 4ac)/a².",
+    example: "2x² − 7x + 3 = 0. D = 49 − 24 = 25. |α−β| = 5/2 = 2.5.",
+    useYes: "✅ Finding difference of roots. Condition like |α−β| = k.",
+    useNo: "❌ Not for complex roots (then difference is 2i√|D|/|a|).",
+    examQ: "📌 IAT Style: Difference between roots of x² − 6x + 4 = 0 is: → D=36−16=20, diff = √20 = 2√5."
+  }
+},
+{
+  number: "03",
+  title: "Conjugate Root Rule · p ± √q",
+  badge: "🔁 CONJUGATE",
+  stripe: "green",
+  formula: "<b>If a,b,c rational, irrational roots occur in conjugate pairs p ± √q.</b>",
+  desc: "10‑Second Trick: Rational coefficients hain to agar ek root p+√q hai to doosra p−√q hoga. Seedha quadratic bana lo.",
+  deepDive: {
+    what: "For a quadratic with rational coefficients, if one root is of the form p + √q (q not a perfect square), the other root must be its conjugate p − √q. This ensures sum and product are rational.",
+    why: "IAT gives one root and asks the other or the equation.",
+    how: "Sum = 2p, Product = p² − q. Equation: x² − 2p x + (p²−q) = 0.",
+    derivation: "By rational root theorem or simply Vieta.",
+    example: "One root is 2 + √3. Other root is 2 − √3. Equation: x² − 4x + 1 = 0.",
+    useYes: "✅ Finding other root or forming quadratic from one irrational root.",
+    useNo: "❌ Not if coefficients are irrational.",
+    examQ: "📌 IAT Style: If one root of x² + ax + b = 0 is 3 − √5, the other root is: → 3 + √5."
+  }
+},
+{
+  number: "04",
+  title: "Rational Roots · D Must Be Perfect Square",
+  badge: "🔲 PERFECT SQUARE",
+  stripe: "purple",
+  formula: "<b>For rational roots (p/q), D must be a perfect square.</b>",
+  desc: "10‑Second Trick: Quadratic ke roots rational fraction tabhi honge jab discriminant perfect square ho.",
+  deepDive: {
+    what: "If a quadratic with integer coefficients has rational roots, its discriminant D = b² − 4ac must be a perfect square. Otherwise roots are irrational (or complex).",
+    why: "IAT asks: 'For what value of k does equation have rational roots?' Set D = m².",
+    how: "Set D = m² (perfect square). Solve for parameter.",
+    derivation: "Roots = (−b ± √D)/(2a). For this to be rational, √D must be rational ⇒ D must be perfect square.",
+    example: "Find k such that x² + kx + 4 = 0 has rational roots. D = k² − 16 = m² ⇒ (k−m)(k+m)=16. Integer solutions possible.",
+    useYes: "✅ Condition for rational roots.",
+    useNo: "❌ Not for irrational or complex roots.",
+    examQ: "📌 IAT Style: For what integer k does x² − 5x + k = 0 have rational roots? → D = 25 − 4k = perfect square ⇒ 25 − 4k = 1, 9, 16, 25... ⇒ k = 6, 4, etc."
+  }
+},
+{
+  number: "05",
+  title: "Unit Digit Trick · Perfect Square Endings",
+  badge: "🔚 UNIT DIGIT",
+  stripe: "blue",
+  formula: "<b>A perfect square never ends in 2, 3, 7, or 8.</b>",
+  desc: "10‑Second Trick: Discriminant perfect square hai ya nahi, seedha last digit dekh kar options eliminate karo.",
+  deepDive: {
+    what: "Perfect squares can only end in 0, 1, 4, 5, 6, or 9. If D ends in 2, 3, 7, or 8, it cannot be a perfect square, so no rational roots.",
+    why: "IAT multiple choice: quickly eliminate options where D is not a perfect square based on unit digit.",
+    how: "Calculate D mod 10. If 2,3,7,8 → reject.",
+    derivation: "Check squares of 0‑9: 0→0,1→1,2→4,3→9,4→6,5→5,6→6,7→9,8→4,9→1.",
+    example: "x² − 7x + 10 = 0: D = 49 − 40 = 9 (ends in 9, okay, perfect square).",
+    useYes: "✅ Quick perfect square check for rational roots condition.",
+    useNo: "❌ Not sufficient alone (e.g., 14 ends in 4 but not perfect square).",
+    examQ: "📌 IAT Style: Which of the following cannot be a discriminant for rational roots? (A) 144 (B) 225 (C) 242 (D) 361. → 242 ends in 2, not perfect square."
+  }
+},
+{
+  number: "06",
+  title: "Transformation of Roots · Replace x Hack",
+  badge: "🔄 TRANSFORM",
+  stripe: "green",
+  formula: "<b>New roots α+k → replace x by x−k.<br>kα → replace x by x/k.</b>",
+  desc: "10‑Second Trick: Nayi equation banana hai to original equation mein x ko ulta operation karke replace karo.",
+  deepDive: {
+    what: "If roots are transformed by shifting, scaling, or reciprocating, the new equation is obtained by substituting x with the inverse transformation. e.g., roots α+k ⇒ let y = α+k ⇒ α = y−k ⇒ replace x by x−k.",
+    why: "IAT asks: 'Form equation whose roots are 2 more than roots of given quadratic.'",
+    how: "Given f(x)=0. For roots α+k, put x → x−k. For kα, put x → x/k. For 1/α, swap a and c (shortcut).",
+    derivation: "Let new variable y = α + k. Then α = y − k. Since f(α)=0, f(y−k)=0. So replace x by x−k.",
+    example: "Roots of x² − 5x + 6 = 0 are 2,3. Roots increased by 1: new roots 3,4. Equation: (x−1)² −5(x−1)+6 = x² −7x+12 = 0.",
+    useYes: "✅ Forming new equations from transformed roots.",
+    useNo: "❌ Not for non‑linear transformations.",
+    examQ: "📌 IAT Style: Equation whose roots are reciprocals of roots of 2x² − 3x + 5 = 0 is: → Swap a and c: 5x² − 3x + 2 = 0."
+  }
+},
+{
+  number: "07",
+  title: "Symmetric Ratio Roots · α/β & β/α ⇒ a = c",
+  badge: "🔁 RATIO",
+  stripe: "purple",
+  formula: "<b>If roots are α/β and β/α, then product = 1 ⇒ a = c.</b>",
+  desc: "10‑Second Trick: Roots ratio form mein hain aur reciprocal type, to quadratic mein a aur c barabar honge.",
+  deepDive: {
+    what: "If a quadratic has roots of the form r and 1/r, their product is 1. For ax² + bx + c = 0, product = c/a = 1 ⇒ a = c.",
+    why: "IAT gives conditions like 'roots are reciprocal' or 'roots are in ratio k:1/k', then asks for relation between coefficients.",
+    how: "Set c/a = 1 ⇒ a = c.",
+    derivation: "αβ = c/a = 1 ⇒ a = c.",
+    example: "Find k if roots of 3x² − 10x + k = 0 are reciprocal. → Product = k/3 = 1 ⇒ k = 3.",
+    useYes: "✅ Reciprocal roots condition. Ratio roots problems.",
+    useNo: "❌ Not for general ratio without reciprocal.",
+    examQ: "📌 IAT Style: If roots of ax² + bx + c = 0 are reciprocal of each other, then: (A) a=b (B) b=c (C) a=c (D) a=−c. → Ans: a=c."
+  }
+},
+{
+  number: "08",
+  title: "Sum of Cubes · α³+β³ = S³ − 3SP",
+  badge: "🧊 CUBES",
+  stripe: "red",
+  formula: "<b>α³ + β³ = (α+β)³ − 3αβ(α+β) = S³ − 3SP</b>",
+  desc: "10‑Second Trick: Cubes ka sum nikaalne ke liye direct identity use karo, alag se α³ mat nikaalo.",
+  deepDive: {
+    what: "For any two numbers, α³+β³ = (α+β)³ − 3αβ(α+β). Using Vieta, this becomes S³ − 3SP.",
+    why: "IAT frequently asks value of α³+β³ without solving quadratic.",
+    how: "Compute S and P. Plug into S³ − 3SP.",
+    derivation: "(α+β)³ = α³+β³ + 3αβ(α+β).",
+    example: "Roots of x² − 3x + 1 = 0. S=3, P=1. α³+β³ = 27 − 9 = 18.",
+    useYes: "✅ Evaluating α³+β³, α⁴+β⁴ (via recurrence).",
+    useNo: "❌ Not for non‑symmetric expressions.",
+    examQ: "📌 IAT Style: If α,β are roots of x² − x − 1 = 0, find α³+β³. → S=1, P=−1. 1 − 3(1)(−1) = 1+3=4."
+  }
+},
+{
+  number: "09",
+  title: "Identity Hack · More than 2 Roots ⇒ All Coeffs = 0",
+  badge: "🆔 IDENTITY",
+  stripe: "blue",
+  formula: "<b>If quadratic has >2 roots, it's an identity ⇒ a = b = c = 0.</b>",
+  desc: "10‑Second Trick: Quadratic ke 2 se zyada roots hain matlab equation identity hai. Saare coefficients zero karo.",
+  deepDive: {
+    what: "A quadratic equation ax² + bx + c = 0 can have at most 2 distinct roots. If it has 3 or more roots, it must be an identity, meaning a = b = c = 0.",
+    why: "IAT gives conditions like 'equation holds for three values of x' and asks for parameters.",
+    how: "Set a=0, b=0, c=0. Solve for unknowns.",
+    derivation: "Fundamental theorem of algebra: degree n polynomial has at most n roots.",
+    example: "If (p−1)x² + (p²−1)x + (p³−1) = 0 has more than 2 real roots, find p. → Set all coefficients = 0 ⇒ p=1.",
+    useYes: "✅ Equations satisfied by more than 2 values.",
+    useNo: "❌ Not for equations with exactly 2 roots.",
+    examQ: "📌 IAT Style: If a(x+1)² + b(x+1) + c = 0 is satisfied by x=0,1,2, then a+b+c = ? → Since 3 roots, identity ⇒ a=b=c=0 ⇒ sum=0."
+  }
+},
+{
+  number: "10",
+  title: "Fraction Identity · Numerator = Denominator",
+  badge: "➗ FRACTION",
+  stripe: "green",
+  formula: "<b>If (Ax²+Bx+C)/(Dx²+Ex+F) = k has >2 solutions, then A=kD, B=kE, C=kF.</b>",
+  desc: "10‑Second Trick: Fraction equal to constant ke 2 se zyada roots hain? Numerator = k × Denominator.",
+  deepDive: {
+    what: "The equation P(x)/Q(x) = k simplifies to P(x) − k Q(x) = 0, a quadratic. If it has more than 2 roots, it's an identity ⇒ coefficients of P and kQ match.",
+    why: "IAT problems: 'For what k does equation hold for all x?'",
+    how: "Set coefficients of numerator equal to k times denominator coefficients.",
+    derivation: "P(x) − k Q(x) ≡ 0 ⇒ degree ≤2 polynomial has infinite roots ⇒ all coefficients zero.",
+    example: "(x²+ax+b)/(x²+cx+d) = 1 for three x. Then a=c, b=d.",
+    useYes: "✅ Rational function identity conditions.",
+    useNo: "❌ Not for specific root finding.",
+    examQ: "📌 IAT Style: If (x²+px+q)/(x²+rx+s) = 2 has more than 2 roots, then p−2r = ? → Since identity, p=2r ⇒ p−2r=0."
+  }
+},
+{
+  number: "11",
+  title: "Huge Power Hack · Pattern Match x⁴ = −k",
+  badge: "💥 POWER",
+  stripe: "purple",
+  formula: "<b>x² + (4k)¹/⁴ x + √k = 0 ⇒ x⁴ = −k</b>",
+  desc: "10‑Second Trick: Specific pattern dikhe to seedha conclusion yaad rakho, roots nikaalne ki zaroorat nahi.",
+  deepDive: {
+    what: "For equations like x² + (k)^{1/4} x + √k = 0, squaring and manipulating leads to simple relations like x¹² = k³. For x² + (4k)^{1/4} x + √k = 0, we get x⁴ = −k.",
+    why: "IAT gives such patterned equations to test algebraic manipulation. Knowing the shortcut saves time.",
+    how: "Memorize patterns: Pattern A: x² + k^{1/4} x + √k = 0 ⇒ x¹² = k³. Pattern B: x² + (4k)^{1/4} x + √k = 0 ⇒ x⁴ = −k.",
+    derivation: "Square and simplify: x² + √k = − k^{1/4} x ⇒ square both sides → x⁴ + 2√k x² + k = √k x² → x⁴ + √k x² + k = 0. Further manipulation yields result.",
+    example: "If x satisfies x² + 2^{1/4} x + √2 = 0, find x¹². → Pattern A: x¹² = (2)³ = 8.",
+    useYes: "✅ Specific patterned high‑power equations.",
+    useNo: "❌ Not for general quadratics.",
+    examQ: "📌 IAT Style: If x² + (12)^{1/4} x + √3 = 0, then x¹² = ? → k=3, so x¹² = 3³ = 27."
+  }
+},
+{
+  number: "12",
+  title: "Newton's Method · Recurrence for Sₙ = αⁿ+βⁿ",
+  badge: "🔄 NEWTON",
+  stripe: "blue",
+  formula: "<b>aSₙ + bSₙ₋₁ + cSₙ₋₂ = 0, S₀=2, S₁=−b/a</b>",
+  desc: "10‑Second Trick: αⁿ+βⁿ nikaalna hai to recurrence use karo, bar‑bar square mat karo.",
+  deepDive: {
+    what: "For roots of ax²+bx+c=0, let Sₙ = αⁿ+βⁿ. Then aSₙ + bSₙ₋₁ + cSₙ₋₂ = 0 for n≥2. With S₀=2, S₁=−b/a.",
+    why: "IAT asks for α⁵+β⁵ or higher. Direct computation is tedious; recurrence is efficient.",
+    how: "Compute S₀, S₁. Then S₂ = −(bS₁ + cS₀)/a. Continue.",
+    derivation: "Since α,β satisfy aα²+bα+c=0, multiply by αⁿ⁻²: aαⁿ + bαⁿ⁻¹ + cαⁿ⁻² = 0. Same for β. Add.",
+    example: "x² − x − 1 = 0. S₀=2, S₁=1. S₂ = 1·1 + 1·2 = 3. S₃ = 1·3 + 1·1 = 4. S₄ = 1·4 + 1·3 = 7. (Fibonacci!)",
+    useYes: "✅ Finding sum of high powers of roots. α⁵+β⁵, etc.",
+    useNo: "❌ Not for non‑symmetric expressions.",
+    examQ: "📌 IAT Style: If α,β are roots of x² − 2x + 2 = 0, find α⁵+β⁵. → Use recurrence."
+  }
+},
+{
+  number: "13",
+  title: "Quadratic Inequality · Inside & Outside Roots",
+  badge: "📉 INEQUALITY",
+  stripe: "red",
+  formula: "<b>x² < a² ⇒ −a < x < a<br>x² > a² ⇒ x < −a or x > a</b>",
+  desc: "10‑Second Trick: Square inequality mein smaller than means between roots, greater than means outside.",
+  deepDive: {
+    what: "For a>0, x² < a² ⇔ |x| < a ⇔ −a < x < a. x² > a² ⇔ |x| > a ⇔ x < −a or x > a. For quadratic ax²+bx+c > 0, check a sign and discriminant.",
+    why: "IAT basic inequality questions.",
+    how: "Bring to standard form, factor, use wavy curve or sign chart.",
+    derivation: "x² − a² = (x−a)(x+a). Product negative between roots, positive outside.",
+    example: "x² < 9 ⇒ −3 < x < 3. x² > 16 ⇒ x < −4 or x > 4.",
+    useYes: "✅ Simple quadratic inequalities. Base for wavy curve.",
+    useNo: "❌ Not for general polynomial inequalities (use wavy curve).",
+    examQ: "📌 IAT Style: Solution of x² − 5x + 6 < 0 is: → (x−2)(x−3)<0 ⇒ 2<x<3."
+  }
+},
+{
+  number: "14",
+  title: "Minimum/Maximum of Quadratic · −D/4a",
+  badge: "📈 EXTREMA",
+  stripe: "green",
+  formula: "<b>For ax²+bx+c, max/min value = −D/4a at x = −b/2a.</b>",
+  desc: "10‑Second Trick: Quadratic ka vertex value seedha formula se nikaalo. Roots nikalne ki zaroorat nahi.",
+  deepDive: {
+    what: "The quadratic function f(x)=ax²+bx+c has its extreme value at vertex x=−b/2a. The extreme value is f(−b/2a) = −D/4a, where D=b²−4ac. If a>0, minimum; if a<0, maximum.",
+    why: "IAT asks for minimum value of expression reducible to quadratic in some variable.",
+    how: "Complete square or use −D/4a.",
+    derivation: "f(x) = a(x + b/2a)² + (4ac−b²)/4a. Vertex value = (4ac−b²)/4a = −D/4a.",
+    example: "Find minimum of 2x² − 8x + 5. → a=2>0, min at x=2, value = −(64−40)/8 = −24/8 = −3.",
+    useYes: "✅ Finding max/min of quadratic expressions. Optimization problems.",
+    useNo: "❌ Not for higher degree polynomials.",
+    examQ: "📌 IAT Style: Minimum value of x² − 6x + 10 is: → −D/4a = −(36−40)/4 = 1."
+  }
+},
+{
+  number: "15",
+  title: "Huge Odd Power · 1 Real Root Sign Trick",
+  badge: "⚠️ ODD POWER",
+  stripe: "purple",
+  formula: "<b>For axⁿ + bx + c = 0 (n odd), if a and b same sign ⇒ exactly 1 real root.</b>",
+  desc: "10‑Second Trick: Odd power aur linear term ke signs same hain to derivative check mat karo, seedha 1 real root.",
+  deepDive: {
+    what: "Equations like x⁵ + 10x + 2 = 0. Derivative f'(x) = 5x⁴ + 10 > 0 always. So function strictly increasing ⇒ exactly one real root. Shortcut: if n odd and coefficient of xⁿ and x have same sign, f'(x) > 0 for all x.",
+    why: "IAT asks number of real roots of such equations. Calculus shortcut saves time.",
+    how: "Check signs: if both coefficients positive (or both negative after factoring −1), derivative positive ⇒ 1 real root.",
+    derivation: "For odd n, derivative is even power term plus constant. If both terms positive, derivative always positive ⇒ monotonic ⇒ 1 real root.",
+    example: "x⁷ + 7x + 3 = 0. Both coefficients positive ⇒ 1 real root.",
+    useYes: "✅ Quick count of real roots for odd‑degree polynomials.",
+    useNo: "❌ When signs differ, need further analysis.",
+    examQ: "📌 IAT Style: Number of real roots of x⁵ + 15x + 1 = 0 is: (A) 1 (B) 2 (C) 3 (D) 5. → Ans: 1."
+  }
+},
+{
+  number: "16",
+  title: "Calculus Graph Concept · Turning Points & Roots",
+  badge: "📊 TURNING",
+  stripe: "blue",
+  formula: "<b>Roots = x‑intercepts. Find turning points via f'(x)=0, check f(x) signs.</b>",
+  desc: "10‑Second Trick: f'(x)=0 karo, critical points nikalo. Unki heights ke signs dekh kar batao kitni baar x‑axis kaatega.",
+  deepDive: {
+    what: "Number of real roots of polynomial f(x)=0 equals number of times graph crosses x‑axis. Find local extrema by f'(x)=0. Evaluate f at these points. If adjacent extrema have opposite signs, a root lies between them.",
+    why: "IAT cubic/quartic root counting using calculus.",
+    how: "Step 1: f'(x)=0 ⇒ critical points x₁,x₂. Step 2: Compute f(x₁), f(x₂). Step 3: Check signs at extremes (±∞) and between critical points.",
+    derivation: "By Intermediate Value Theorem, sign change implies root.",
+    example: "f(x)=x³ − 3x + 1. f'(x)=3x²−3=0 ⇒ x=±1. f(−∞)<0, f(−1)=3>0 ⇒ root in (−∞,−1). f(1)=−1<0 ⇒ root in (−1,1). f(∞)>0 ⇒ root in (1,∞). Total 3 roots.",
+    useYes: "✅ Finding number of real roots of cubic/quartic.",
+    useNo: "❌ Not for exact root values.",
+    examQ: "📌 IAT Style: Number of real roots of x³ − 6x² + 9x + 1 = 0? → f'=3x²−12x+9=0 ⇒ x=1,3. f(1)=5, f(3)=1. f(−∞)<0, f(1)>0 ⇒ one root. f(3)>0, f(∞)>0 ⇒ no root between. Total 1 root."
+  }
+},
+{
+  number: "17",
+  title: "Critical Point Sign Trick · f(α)×f(β) < 0 ⇒ 3 Real Roots",
+  badge: "🔀 SIGN TRICK",
+  stripe: "green",
+  formula: "<b>For cubic, if f'(x)=0 gives α,β and f(α)f(β) < 0 ⇒ 3 distinct real roots.</b>",
+  desc: "10‑Second Trick: Turning points ki heights opposite sign hain to graph x‑axis ko teen baar kaatega.",
+  deepDive: {
+    what: "For a cubic polynomial, let critical points be α,β (α<β). If f(α) and f(β) have opposite signs, the graph crosses x‑axis three times (since it goes from −∞ to f(α) to f(β) to ∞). If same sign, only 1 real root.",
+    why: "IAT cubic root counting without graphing.",
+    how: "Find f'(x)=0 ⇒ critical points. Compute f(α) and f(β). If product negative ⇒ 3 real; positive ⇒ 1 real; zero ⇒ repeated root (2 distinct).",
+    derivation: "Cubic always has at least 1 real root. Number depends on relative signs of local extrema.",
+    example: "f(x)=2x³ − 9x² + 12x + 1. f'=6x²−18x+12=0 ⇒ x=1,2. f(1)=6, f(2)=5. Both positive ⇒ 1 real root.",
+    useYes: "✅ Quick cubic root count. IAT favorite.",
+    useNo: "❌ Not for non‑differentiable functions.",
+    examQ: "📌 IAT Style: The equation x³ − 3x + k = 0 has three real roots if: (A) |k|>2 (B) |k|<2 (C) k=2 (D) k=−2. → f'=3x²−3=0 ⇒ x=±1. f(−1)=2+k, f(1)=−2+k. For 3 roots, need (2+k)(−2+k)<0 ⇒ k²<4 ⇒ |k|<2."
+  }
+},
+{
+  number: "18",
+  title: "Common Roots · Both Roots Common Ratio",
+  badge: "🔗 COMMON",
+  stripe: "red",
+  formula: "<b>If both roots common: a₁/a₂ = b₁/b₂ = c₁/c₂</b>",
+  desc: "10‑Second Trick: Dono equations identical hain to coefficients proportional honge.",
+  deepDive: {
+    what: "If two quadratic equations a₁x²+b₁x+c₁=0 and a₂x²+b₂x+c₂=0 have both roots identical, then their corresponding coefficients are proportional: a₁/a₂ = b₁/b₂ = c₁/c₂.",
+    why: "IAT asks condition for equations to have same roots.",
+    how: "Set ratios equal. Solve for parameters.",
+    derivation: "Both equations represent same set of roots ⇒ one is scalar multiple of the other.",
+    example: "Find k if x² − 5x + k = 0 and 2x² − 10x + 6 = 0 have same roots. → 1/2 = −5/−10 = k/6 ⇒ 1/2 = k/6 ⇒ k=3.",
+    useYes: "✅ Both roots common condition.",
+    useNo: "❌ Not for one common root.",
+    examQ: "📌 IAT Style: If equations x²+ax+b=0 and x²+cx+d=0 have identical roots, then: (A) a=c, b=d (B) a=−c, b=d (C) a=c, b=−d (D) None. → Ans: a=c, b=d."
+  }
+},
+{
+  number: "19",
+  title: "One Common Root · Subtract to Eliminate x²",
+  badge: "✂️ ONE COMMON",
+  stripe: "purple",
+  formula: "<b>Subtract equations to eliminate x², solve linear for common root.</b>",
+  desc: "10‑Second Trick: Dono equations mein x² ka coefficient barabar karo, ghata do. Jo x mile wahi common root.",
+  deepDive: {
+    what: "If two quadratics share exactly one common root α, then α satisfies both. Multiply equations to make coefficients of x² equal, subtract. The resulting linear equation gives α directly.",
+    why: "IAT common root problems; determinant method is longer.",
+    how: "Step 1: Make a₁ = a₂ (multiply if needed). Step 2: Subtract equations. Step 3: Solve linear equation for x = common root. Step 4: Substitute back to find parameters.",
+    derivation: "Let common root be α. a₁α²+b₁α+c₁=0 and a₂α²+b₂α+c₂=0. Multiply first by a₂, second by a₁, subtract: (a₂b₁−a₁b₂)α + (a₂c₁−a₁c₂)=0 ⇒ α = (a₁c₂−a₂c₁)/(a₂b₁−a₁b₂).",
+    example: "x² − 5x + 6 = 0 and x² − 7x + k = 0 have one common root. Find k. → Subtract: 2x + (6−k)=0 ⇒ x = (k−6)/2. Substitute into first: ((k−6)/2)² −5((k−6)/2)+6=0. Solve for k.",
+    useYes: "✅ Finding common root or parameter for one common root.",
+    useNo: "❌ Not for both common or no common root.",
+    examQ: "📌 IAT Style: If x²+px+q=0 and x²+rx+s=0 have exactly one common root, then (p−r)² = ? → Using condition: (p−r)(qr−ps) = (q−s)²."
+  }
+},
+{
+  number: "20",
+  title: "Imaginary Common Root Trap · Both Roots Common",
+  badge: "⚠️ COMPLEX TRAP",
+  stripe: "red",
+  formula: "<b>If one equation has D<0, common root ⇒ both roots common.</b>",
+  desc: "10‑Second Trick: Imaginary roots hain to conjugate bhi root hoga. Common root ka matlab dono equations identical proportionally.",
+  deepDive: {
+    what: "If a quadratic has complex (non‑real) roots, they occur in conjugate pairs. If it shares 'one common root' with another quadratic with real coefficients, then the conjugate must also be common, forcing both roots common. Thus the equations are proportional.",
+    why: "IAT trap: they say 'one common root' but one equation has D<0. Then answer is both roots common condition.",
+    how: "Check discriminant of one equation. If D<0, apply both roots common ratio condition.",
+    derivation: "Complex roots of real polynomials come in conjugate pairs. If α is common, then ᾱ must also satisfy the other equation (since coefficients real). Thus both roots common.",
+    example: "If x² + x + 1 = 0 and ax² + bx + c = 0 have one common root, then a:b:c = 1:1:1.",
+    useYes: "✅ Identifying trap when complex roots involved.",
+    useNo: "❌ Not if both have real roots.",
+    examQ: "📌 IAT Style: If x² − x + 1 = 0 and ax² + bx + c = 0 have a common root, then: (A) a=b=c (B) a=−b=c (C) a=b=−c (D) a=−b=−c. → D=1−4=−3<0, so both roots common ⇒ 1/a = −1/b = 1/c ⇒ a = −b = c."
+  }
+},
+{
+  number: "21",
+  title: "Location of Roots · Both > k",
+  badge: "📍 LOCATION",
+  stripe: "blue",
+  formula: "<b>For both roots > k: D ≥ 0, a·f(k) > 0, −b/2a > k.</b>",
+  desc: "10‑Second Trick: Three checks: discriminant, sign at k, and vertex position.",
+  deepDive: {
+    what: "Condition for both roots of ax²+bx+c=0 to be greater than a number k: (i) D ≥ 0 (real roots), (ii) a·f(k) > 0 (k lies outside the interval between roots), (iii) vertex −b/(2a) > k (both roots on right side).",
+    why: "IAT asks 'Find m such that both roots are > 2'.",
+    how: "Write inequalities and solve simultaneously.",
+    derivation: "Graph of quadratic: if a>0, roots > k means graph is above x‑axis at x=k (same sign as a) and vertex is to the right of k.",
+    example: "Find m such that both roots of x² − 2mx + m² − 1 = 0 are > 2. → D=4>0. f(2)=4−4m+m²−1=m²−4m+3>0 ⇒ m<1 or m>3. Vertex m>2. Intersection: m>3.",
+    useYes: "✅ Root location conditions relative to a constant.",
+    useNo: "❌ Not for exact root values.",
+    examQ: "📌 IAT Style: If both roots of x² − (k+1)x + k = 0 are greater than 2, then k ∈ ? → Solve D≥0, f(2)>0, sum/2 > 2."
+  }
+},
+{
+  number: "22",
+  title: "Number k Between Roots · a·f(k) < 0",
+  badge: "⚡ BETWEEN",
+  stripe: "green",
+  formula: "<b>If k lies between roots, then a·f(k) < 0.</b>",
+  desc: "10‑Second Trick: k roots ke beech mein hai to a aur f(k) opposite sign honge. No D check needed.",
+  deepDive: {
+    what: "For a quadratic ax²+bx+c=0, a number k lies strictly between the two real roots if and only if a·f(k) < 0. This condition automatically ensures D > 0.",
+    why: "IAT simplest root location condition.",
+    how: "Compute f(k). Multiply by a. If result negative, k is between roots.",
+    derivation: "If roots are α<β, then f(x) = a(x−α)(x−β). For x=k between α and β, (k−α) and (k−β) have opposite signs ⇒ f(k)/a < 0 ⇒ a·f(k)<0.",
+    example: "Find m such that 2 lies between roots of x² − (m+1)x + m = 0. → a=1>0, f(2)=4−2(m+1)+m=2−m. Need f(2)<0 ⇒ 2−m<0 ⇒ m>2.",
+    useYes: "✅ Quick condition for number between roots.",
+    useNo: "❌ Not for both roots on same side of k.",
+    examQ: "📌 IAT Style: For what values of p does 1 lie between roots of x² + (p−2)x + (p−4) = 0? → a=1, f(1)=1+p−2+p−4=2p−5. Need f(1)<0 ⇒ p<2.5."
+  }
+},
+{
+  number: "23",
+  title: "Exactly One Root in Interval · f(k₁)·f(k₂) < 0",
+  badge: "🎯 ONE ROOT",
+  stripe: "purple",
+  formula: "<b>Exactly one root in (k₁,k₂) ⇔ f(k₁)·f(k₂) < 0.</b>",
+  desc: "10‑Second Trick: Interval ke endpoints par function values opposite sign hain to ek root andar hoga.",
+  deepDive: {
+    what: "If a continuous function f(x) changes sign between x=k₁ and x=k₂, then by Intermediate Value Theorem there is at least one root in (k₁,k₂). For quadratic, sign change guarantees exactly one root in the interval (provided no double root at endpoints).",
+    why: "IAT root location in an interval.",
+    how: "Compute f(k₁) and f(k₂). If product < 0, exactly one root in between.",
+    derivation: "Quadratic is continuous. If f(k₁)f(k₂)<0, then f crosses x‑axis an odd number of times in (k₁,k₂). For quadratic, max 2 roots, so exactly 1.",
+    example: "Show that x² − 5x + 6 has exactly one root in (2.5, 3.5). f(2.5)=−0.25, f(3.5)=0.75, product <0 ⇒ yes.",
+    useYes: "✅ Locating roots in intervals. Bisection method basis.",
+    useNo: "❌ Not if both roots in interval (then product positive but still roots).",
+    examQ: "📌 IAT Style: The equation x² − 3x + 1 = 0 has: (A) no root in (0,1) (B) exactly one root in (0,1) (C) both roots in (0,1) (D) none. → f(0)=1, f(1)=−1, product<0 ⇒ exactly one root in (0,1)."
+  }
+},
+{
+  number: "24",
+  title: "Option Elimination · Plug Values from Options",
+  badge: "🎲 ELIMINATE",
+  stripe: "blue",
+  formula: "<b>When solving inequalities, test values from options in original equation.</b>",
+  desc: "10‑Second Trick: Range wale sawaal mein options se values utha kar equation mein daalo. Galat options cut ho jaayenge.",
+  deepDive: {
+    what: "For multiple choice questions with interval answers, pick a test value from each option's interval and plug into the original condition. If it fails, eliminate that option. This avoids solving complex inequalities.",
+    why: "IAT time saver: checking options is faster than full algebraic solution.",
+    how: "Identify a simple number in the interval (avoid boundaries). Plug into inequality/condition. If false, reject option.",
+    derivation: "Direct verification.",
+    example: "Find m such that roots of x² − 2mx + m² − 1 = 0 are > 2. Options: A) m<1, B) m>3, C) 1<m<3, D) m>1. Test m=0 (from A): roots ±1, not >2 ⇒ A out. m=4 (from B): roots 3,5 >2 ⇒ B works.",
+    useYes: "✅ Multiple choice range problems. Quick verification.",
+    useNo: "❌ Not for exact value answers.",
+    examQ: "📌 IAT Style: Solve x² − 5x + 6 < 0. Options: A) (2,3), B) (−∞,2)∪(3,∞), C) (3,∞), D) (−∞,2). Test x=2.5: 6.25−12.5+6=−0.25<0 ⇒ true. So A."
+  }
+},
+{
+  number: "25",
+  title: "Quadratic in Disguise · Substitution to Quadratic",
+  badge: "🎭 DISGUISE",
+  stripe: "red",
+  formula: "<b>If equation has repeated expression, substitute t = expression → quadratic.</b>",
+  desc: "10‑Second Trick: Complex looking equation mein koi pattern repeat ho raha hai to use t maan lo. Quadratic ban jaayegi.",
+  deepDive: {
+    what: "Many equations are not explicitly quadratic but become quadratic after a substitution. e.g., x + 1/x = k, (x²+1)/x = k, 4^x − 2^x + ... ",
+    why: "IAT disguises quadratics as rational, exponential, or radical equations.",
+    how: "Identify repeated expression. Let t = that expression. Solve resulting quadratic in t. Then back‑substitute to find x.",
+    derivation: "Substitution simplifies.",
+    example: "Solve 2^{2x} − 5·2^x + 6 = 0. Let t=2^x. Then t² − 5t + 6 = 0 ⇒ t=2,3 ⇒ x=1, log₂3.",
+    useYes: "✅ Equations reducible to quadratic.",
+    useNo: "❌ Not if no repeated pattern.",
+    examQ: "📌 IAT Style: Solve (x²+1)/x + x/(x²+1) = 2.5. → Let t = (x²+1)/x. Then t + 1/t = 2.5 ⇒ 2t² − 5t + 2 = 0 ⇒ t=2, 1/2. Solve for x."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
