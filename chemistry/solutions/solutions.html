@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #16a34a;
+--accent2: #22c55e;
+--accent3: #15803d;
+
+--formula-bg: #ecfdf5;
+--formula-border: #16a34a;
+
+--dive-bg: #f0fdf4;
+--what-bg: #ecfdf5;
+--why-bg: #fefce8;
+--deriv-bg: #ecfdf5;
+--example-bg: #f0fdf4;
+--use-bg: #ecfdf5;
+--nouse-bg: #fef2f2;
+--exam-bg: #fefce8;
+
+--shadow: 0 4px 24px rgba(22,163,74,0.10);
+--shadow-hover: 0 12px 40px rgba(22,163,74,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(22,163,74,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(34,197,94,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #064e3b 0%, #16a34a 60%, #22c55e 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #14532d;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Chemistry · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Chemistry";          // e.g., "Chemistry", "Mathematics", "Biology"
+const CHAPTER = "Solutions";  // e.g., "Rotational Motion", "Thermodynamics"
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+ // ========== CHEMISTRY · SOLUTIONS (Cards 01 to 26) ==========
+
+{
+  number: "01",
+  title: "Solution Basics · Solvent & Alloy Traps",
+  badge: "🧪 BINARY",
+  stripe: "blue",
+  formula: "<b>Binary solution = 2 components. Solvent = jisme dissolve ho raha hai (final state).</b>",
+  desc: "10‑Second Trick: Solid in solid alloys: Brass = Cu+Zn, Bronze = Cu+Sn, German Silver = Cu+Zn+Ni (Ag=0%).",
+  deepDive: {
+    what: "Solution is a homogeneous mixture of two or more substances. The component present in larger amount (or determining the physical state) is the solvent; others are solutes.",
+    why: "IAT directly asks composition of alloys and phase traps.",
+    how: "Memorize common alloys: Brass (Cu+Zn), Bronze (Cu+Sn), German Silver (Cu+Zn+Ni, NO silver). Amalgam: Hg + metal (liquid in solid). Hydrogen in Palladium: gas in solid.",
+    derivation: "",
+    example: "Which alloy contains Ag? (A) Brass (B) Bronze (C) German Silver (D) None. → German Silver has no silver. Answer: D.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="130" height="25" fill="#c8d8f8" rx="4"/><text x="75" y="37" font-size="10" fill="#2a4494" text-anchor="middle">Brass = Cu + Zn</text>
+        <rect x="150" y="20" width="130" height="25" fill="#a5d6a5" rx="4"/><text x="215" y="37" font-size="10" fill="#1a6b3c" text-anchor="middle">Bronze = Cu + Sn</text>
+        <rect x="10" y="55" width="270" height="25" fill="#f9e79f" rx="4"/><text x="145" y="72" font-size="10" fill="#b8860b" text-anchor="middle">German Silver = Cu + Zn + Ni (Ag = 0%)</text>
+        <rect x="10" y="90" width="130" height="25" fill="#f5b7b1" rx="4"/><text x="75" y="107" font-size="10" fill="#c0392b" text-anchor="middle">Amalgam = Hg + Metal</text>
+        <rect x="150" y="90" width="130" height="25" fill="#e8daef" rx="4"/><text x="215" y="107" font-size="10" fill="#6a2b8a" text-anchor="middle">H₂ in Pd (Gas in Solid)</text>
+      </svg>
+    `,
+    useYes: "✅ Alloy composition questions. Phase identification.",
+    useNo: "❌ Not for concentration calculations.",
+    examQ: "📌 IAT Style: German silver is an alloy of: (A) Cu+Zn+Ag (B) Cu+Ni+Ag (C) Cu+Zn+Ni (D) Cu+Sn+Zn. → Ans: Cu+Zn+Ni."
+  }
+},
+{
+  number: "02",
+  title: "Concentration Terms · Molarity vs Molality",
+  badge: "📊 M vs m",
+  stripe: "red",
+  formula: "<b>M = n×1000 / V(mL) &nbsp;|&nbsp; m = n / mass<sub>solvent</sub>(kg)</b>",
+  desc: "10‑Second Trick: Molarity volume dependent (temp changes); Molality mass dependent (temp independent).",
+  deepDive: {
+    what: "Molarity (M) = moles solute per litre solution. Molality (m) = moles solute per kg solvent. Mole fraction x_A = n_A / (n_A+n_B). For aqueous solutions, M > m for same concentration.",
+    why: "IAT asks: 'Which concentration term is temperature independent?' Answer: Molality, Mole fraction, % w/w.",
+    how: "M = (n × 1000) / V(mL); m = n / mass_solvent(kg). If density given, interconvert.",
+    derivation: "From definitions.",
+    example: "Aqueous solution: which is larger, M or m? → Molarity uses volume of solution (less than volume of solvent + solute volume), so M > m.",
+    diagramSvg: "",
+    useYes: "✅ Temperature dependence of concentration. Interconversion with density.",
+    useNo: "❌ Not for non‑aqueous solvents directly.",
+    examQ: "📌 IAT Style: Which concentration term is independent of temperature? (A) Molarity (B) Normality (C) Molality (D) Formality. → Ans: Molality."
+  }
+},
+{
+  number: "03",
+  title: "Solubility Rules · Like Dissolves Like",
+  badge: "💧 SOLUBILITY",
+  stripe: "green",
+  formula: "<b>Polar dissolves polar; Non‑polar dissolves non‑polar. Exception: Glucose (H‑bonding).</b>",
+  desc: "10‑Second Trick: Ionic/polar in water; organic in benzene. Glucose non‑ionic but highly soluble due to hydrogen bonding.",
+  deepDive: {
+    what: "Solubility depends on intermolecular forces. Polar solvents (water) dissolve polar/ionic solutes. Non‑polar solvents (benzene) dissolve non‑polar solutes. Glucose is non‑ionic but forms H‑bonds with water, so soluble.",
+    why: "IAT conceptual questions on solubility basis.",
+    how: "Check solute polarity. If polar, soluble in water. If non‑polar, soluble in organic solvents.",
+    derivation: "Thermodynamics: ΔG = ΔH − TΔS. Dissolution occurs if ΔG < 0.",
+    example: "Which is most soluble in water? (A) Naphthalene (B) Glucose (C) Benzene (D) CCl₄. → Glucose (H‑bonding).",
+    diagramSvg: "",
+    useYes: "✅ Predicting solubility based on polarity.",
+    useNo: "❌ Not for quantitative solubility.",
+    examQ: "📌 IAT Style: Glucose is highly soluble in water despite being non‑ionic because of: (A) Covalent bonding (B) Hydrogen bonding (C) Ionic bonding (D) van der Waals forces. → Ans: Hydrogen bonding."
+  }
+},
+{
+  number: "04",
+  title: "Solid in Liquid · Temperature Effect",
+  badge: "🌡️ T EFFECT",
+  stripe: "purple",
+  formula: "<b>Endothermic (ΔH>0): T↑ ⇒ solubility↑<br>Exothermic (ΔH<0): T↑ ⇒ solubility↓</b>",
+  desc: "10‑Second Trick: Garam karne par solubility badhi to endothermic; ghati to exothermic.",
+  deepDive: {
+    what: "For solid dissolving in liquid, solubility depends on heat of solution. If dissolution is endothermic (absorbs heat, ΔH>0), increasing temperature increases solubility. If exothermic (releases heat, ΔH<0), increasing temperature decreases solubility.",
+    why: "IAT asks: 'Which salt's solubility decreases with temperature?' e.g., Na₂SO₄, Ce₂(SO₄)₃.",
+    how: "Le Chatelier's principle: For endothermic dissolution, heat is a reactant; T↑ shifts equilibrium right → more solubility.",
+    derivation: "From van't Hoff equation.",
+    example: "Solubility of KNO₃ increases with temperature (endothermic). Solubility of Na₂SO₄ decreases above 32°C (exothermic).",
+    diagramSvg: "",
+    useYes: "✅ Temperature dependence of solid solubility.",
+    useNo: "❌ Not for gas solubility (always decreases with T↑).",
+    examQ: "📌 IAT Style: Which of the following shows decrease in solubility with increase in temperature? (A) KNO₃ (B) NaCl (C) Na₂SO₄ (D) Sugar. → Ans: Na₂SO₄ (after 32°C)."
+  }
+},
+{
+  number: "05",
+  title: "Gas in Liquid · Henry's Law",
+  badge: "💨 HENRY",
+  stripe: "blue",
+  formula: "<b>Solubility ∝ Pressure (P↑ ⇒ solubility↑)<br>T↑ ⇒ solubility↓ (KH↑)</b>",
+  desc: "10‑Second Trick: Cold drink mein zyada gas; garam karoge to gas udegi. Scuba divers use He (low solubility).",
+  deepDive: {
+    what: "Henry's Law: mass of gas dissolved ∝ partial pressure of gas above liquid. m = KH·p. KH increases with temperature, so solubility decreases. Larger molar mass gases have higher solubility (He < H₂ < N₂ < CO₂).",
+    why: "IAT asks about scuba diving (He used to prevent bends due to low solubility), high altitude anoxia (low pO₂).",
+    how: "p ∝ solubility at constant T. T ∝ KH ∝ 1/solubility.",
+    derivation: "Henry's Law empirical.",
+    example: "At high altitudes, partial pressure of O₂ is low ⇒ less O₂ dissolves in blood ⇒ anoxia.",
+    diagramSvg: "",
+    useYes: "✅ Gas solubility vs pressure and temperature. Applications.",
+    useNo: "❌ Not for solid solubility.",
+    examQ: "📌 IAT Style: Scuba divers use Helium in breathing mixture because: (A) It is light (B) It has low solubility in blood (C) It is cheap (D) It is inert. → Ans: Low solubility prevents bends."
+  }
+},
+{
+  number: "06",
+  title: "Henry's Law Quick Calculation · Moles = (p/KH)×55.5",
+  badge: "⚡ 1L WATER",
+  stripe: "green",
+  formula: "<b>For 1 L water: n<sub>gas</sub> = (p / K<sub>H</sub>) × 55.5</b>",
+  desc: "10‑Second Trick: 1 litre water = 55.5 moles. Unit match karo (p aur KH same units), seedha multiply.",
+  deepDive: {
+    what: "Henry's Law: mole fraction of gas x = p / KH. For 1 L water (≈55.5 mol), moles of gas n_gas ≈ x × 55.5 (since n_gas << 55.5). So n_gas = (p/KH) × 55.5.",
+    why: "IAT calculation shortcut.",
+    how: "Ensure p and KH in same units (bar or atm). Compute p/KH, multiply by 55.5.",
+    derivation: "x = n_gas / (n_gas + n_water) ≈ n_gas / n_water ⇒ n_gas = x · n_water.",
+    example: "KH = 0.5 kbar, p = 2 kbar. n_gas = (2/0.5)×55.5 = 4×55.5 = 222 mol.",
+    diagramSvg: "",
+    useYes: "✅ Henry's Law numericals with 1 L water.",
+    useNo: "❌ When water amount is different (scale accordingly).",
+    examQ: "📌 IAT Style: KH for N₂ is 10⁵ atm. pN₂ = 0.8 atm. Moles of N₂ in 1 L water? → n = (0.8/10⁵)×55.5 = 4.44×10⁻⁴ mol."
+  }
+},
+{
+  number: "07",
+  title: "Vapour Pressure · Raoult's Law",
+  badge: "☁️ RAOULT",
+  stripe: "red",
+  formula: "<b>P<sub>total</sub> = P°<sub>A</sub>·x<sub>A</sub> + P°<sub>B</sub>·x<sub>B</sub></b>",
+  desc: "10‑Second Trick: Non‑volatile solute dalne se V.P. girti hai. Raoult's law ideal mixtures ke liye.",
+  deepDive: {
+    what: "Raoult's Law: For a volatile liquid, partial vapour pressure P_A = P°_A · x_A. For a solution with non‑volatile solute, P_solution = P°_solvent · x_solvent. Lowering of V.P. = ΔP = P° − P = P° · x_solute.",
+    why: "IAT asks for total V.P. of mixture, or relative lowering.",
+    how: "Compute mole fractions. Apply Raoult's law. For non‑volatile solute, P_sol = P°_solvent × (1 − x_solute).",
+    derivation: "Empirical law, holds for ideal solutions.",
+    example: "Benzene (P°=100 torr) and Toluene (P°=50 torr) equimolar. P_total = 0.5×100 + 0.5×50 = 75 torr.",
+    diagramSvg: "",
+    useYes: "✅ Vapour pressure of ideal solutions. Relative lowering.",
+    useNo: "❌ Not for non‑ideal solutions (use activity).",
+    examQ: "📌 IAT Style: Vapour pressure of pure water at 20°C is 17.5 mmHg. When 20 g glucose is added to 180 g water, new V.P. is? → x_water = (180/18)/(10+0.111)=? Compute P = 17.5 × x_water."
+  }
+},
+{
+  number: "08",
+  title: "Ideal vs Non‑Ideal · Azeotropes",
+  badge: "⚖️ IDEAL",
+  stripe: "purple",
+  formula: "<b>Ideal: ΔH<sub>mix</sub>=0, ΔV<sub>mix</sub>=0<br>+ve deviation: A‑B < A‑A ⇒ Min BP Azeotrope<br>−ve deviation: A‑B > A‑A ⇒ Max BP Azeotrope</b>",
+  desc: "10‑Second Trick: Ethanol+Water = +ve deviation (Min BP). HNO₃+Water = −ve deviation (Max BP).",
+  deepDive: {
+    what: "Ideal solutions follow Raoult's law, forces between unlike molecules equal to like molecules. Non‑ideal show deviation. Positive deviation (ethanol+water): A‑B weaker ⇒ higher V.P. ⇒ lower BP ⇒ minimum boiling azeotrope. Negative deviation (HNO₃+water): A‑B stronger (H‑bond) ⇒ lower V.P. ⇒ higher BP ⇒ maximum boiling azeotrope.",
+    why: "IAT matches pairs with deviation type or asks azeotrope BP order.",
+    how: "Positive deviation: ΔH>0, ΔV>0. Negative deviation: ΔH<0, ΔV<0. Azeotropes boil at constant temperature and cannot be separated by fractional distillation.",
+    derivation: "From intermolecular forces.",
+    example: "Which forms maximum boiling azeotrope? (A) Ethanol+Water (B) Acetone+Chloroform (C) Benzene+Toluene (D) Hexane+Heptane. → Acetone+Chloroform (H‑bonding, negative deviation).",
+    diagramSvg: `
+      <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" font-size="11" fill="#333" font-weight="600">Azeotropes</text>
+        <rect x="10" y="30" width="160" height="40" fill="#f5b7b1" rx="4"/><text x="90" y="45" font-size="9" fill="#c0392b" text-anchor="middle">+ve Deviation</text><text x="90" y="60" font-size="9" fill="#c0392b" text-anchor="middle">Min BP (Ethanol+H₂O)</text>
+        <rect x="180" y="30" width="160" height="40" fill="#a5d6a5" rx="4"/><text x="260" y="45" font-size="9" fill="#1a6b3c" text-anchor="middle">−ve Deviation</text><text x="260" y="60" font-size="9" fill="#1a6b3c" text-anchor="middle">Max BP (HNO₃+H₂O)</text>
+        <text x="175" y="95" font-size="9" fill="#666" text-anchor="middle">Azeotropes boil at constant temp, cannot be separated by fractional distillation</text>
+      </svg>
+    `,
+    useYes: "✅ Identifying deviation type. Azeotrope properties.",
+    useNo: "❌ Not for ideal solutions.",
+    examQ: "📌 IAT Style: Which of the following shows negative deviation from Raoult's law? (A) Ethanol+Water (B) Acetone+Chloroform (C) n‑Hexane+n‑Heptane (D) Benzene+Toluene. → Ans: Acetone+Chloroform."
+  }
+},
+{
+  number: "09",
+  title: "Colligative Properties · Depend ONLY on number of particles",
+  badge: "🔢 COLLIGATIVE",
+  stripe: "blue",
+  formula: "<b>RLVP: ΔP/P° = x<sub>B</sub><br>ΔT<sub>b</sub> = K<sub>b</sub>·m<br>ΔT<sub>f</sub> = K<sub>f</sub>·m<br>π = CRT</b>",
+  desc: "10‑Second Trick: Colligative properties depend only on moles of solute particles, not their identity.",
+  deepDive: {
+    what: "Relative lowering of vapour pressure (RLVP), elevation in boiling point (ΔTb), depression in freezing point (ΔTf), and osmotic pressure (π) are colligative properties. They depend on number of solute particles (moles) per unit mass/volume of solvent.",
+    why: "IAT asks for relationship between these properties and molar mass, and van't Hoff factor applications.",
+    how: "RLVP uses mole fraction. ΔTb and ΔTf use molality (m). π uses molarity (C). For dilute solutions, m ≈ M.",
+    derivation: "From thermodynamics of ideal solutions.",
+    example: "Which is a colligative property? (A) Density (B) Viscosity (C) Osmotic pressure (D) Surface tension. → Ans: Osmotic pressure.",
+    diagramSvg: "",
+    useYes: "✅ Identifying colligative properties. Molar mass determination.",
+    useNo: "❌ Not for non‑ideal concentrated solutions.",
+    examQ: "📌 IAT Style: The colligative property that depends on temperature is: (A) RLVP (B) ΔTb (C) ΔTf (D) π. → Ans: π (π=CRT, has T)."
+  }
+},
+{
+  number: "10",
+  title: "Van't Hoff Factor (i) · Abnormal Molar Mass",
+  badge: "🧮 i FACTOR",
+  stripe: "red",
+  formula: "<b>i = (Normal Molar Mass) / (Observed Molar Mass)<br>For dissociation: i = 1 + (n−1)α<br>For association: i = 1 − (1−1/n)α</b>",
+  desc: "10‑Second Trick: Dissociation ⇒ i>1; Association ⇒ i<1. i use karke sab colligative formulas modify hoti hain.",
+  deepDive: {
+    what: "When solute dissociates or associates in solution, number of particles changes, causing abnormal colligative property. van't Hoff factor i = observed moles / initial moles. For strong electrolytes, i ≈ n (number of ions).",
+    why: "IAT numericals: find i, degree of dissociation/association, or correct molar mass.",
+    how: "For dissociation: NaCl → Na⁺+Cl⁻, n=2, i=1+α. For association: 2A → A₂, n=2, i=1−α/2. Modified formulas: ΔTb = i·Kb·m, etc.",
+    derivation: "i = 1 + (n−1)α for dissociation; i = 1 − (1−1/n)α for association.",
+    example: "0.1 molal KCl solution freezes at −0.372°C (Kf=1.86). Find i. → ΔTf = i×1.86×0.1 = 0.372 ⇒ i=2.",
+    diagramSvg: "",
+    useYes: "✅ Abnormal molar mass. Degree of dissociation/association.",
+    useNo: "❌ Not for non‑electrolytes (i=1).",
+    examQ: "📌 IAT Style: Benzoic acid dimerizes in benzene. Observed molar mass is 244, normal is 122. Find i. → i = 122/244 = 0.5."
+  }
+},
+{
+  number: "11",
+  title: "RLVP · Relative Lowering of Vapour Pressure",
+  badge: "📉 RLVP",
+  stripe: "green",
+  formula: "<b>(P° − P) / P° = x<sub>solute</sub> = n<sub>B</sub> / (n<sub>A</sub>+n<sub>B</sub>)</b>",
+  desc: "10‑Second Trick: V.P. ka relative lowering direct solute ke mole fraction ke barabar. Molar mass nikaalne ka formula.",
+  deepDive: {
+    what: "For a solution with non‑volatile solute, relative lowering of vapour pressure is equal to the mole fraction of solute. This is used to determine molar mass of solute: (ΔP/P°) = (w_B/M_B) / (w_A/M_A + w_B/M_B) ≈ (w_B/M_B) / (w_A/M_A) for dilute solutions.",
+    why: "IAT frequently asks to find molar mass from V.P. lowering data.",
+    how: "Use formula: M_B = (w_B × M_A × P°) / (w_A × ΔP).",
+    derivation: "From Raoult's law: P = P°·x_A ⇒ P°−P = P°·x_B.",
+    example: "10 g of solute in 90 g water lowers V.P. from 32 mmHg to 31 mmHg. Find M_B. → M_B = (10×18×32)/(90×1) = 64 g/mol.",
+    useYes: "✅ Molar mass from V.P. lowering. Raoult's law applications.",
+    useNo: "❌ For volatile solutes (use total pressure formula).",
+    examQ: "📌 IAT Style: Vapour pressure of water at 20°C is 17.5 mmHg. When 20 g of non‑electrolyte is dissolved in 180 g water, V.P. becomes 17.0 mmHg. Molar mass of solute is: → M = (20×18×17.5)/(180×0.5) = 70 g/mol."
+  }
+},
+{
+  number: "12",
+  title: "Boiling Point Elevation · ΔTb = i·Kb·m",
+  badge: "🌡️ ΔTb",
+  stripe: "purple",
+  formula: "<b>ΔT<sub>b</sub> = i · K<sub>b</sub> · m</b>",
+  desc: "10‑Second Trick: Solute dalne se B.P. badhta hai. Graph right shift. m = molality (moles solute / kg solvent).",
+  deepDive: {
+    what: "Elevation in boiling point ΔTb is directly proportional to molality of solution. Kb is ebullioscopic constant, depends only on solvent. For water, Kb = 0.52 K·kg/mol.",
+    why: "IAT numericals: find molar mass from ΔTb, or find ΔTb given mass.",
+    how: "ΔTb = i·Kb·m. m = (w_B/M_B) × (1000/w_A). Combine: M_B = (i·Kb·w_B×1000) / (ΔTb × w_A).",
+    derivation: "From thermodynamics: ΔTb = (R·Tb²·M_A / ΔH_vap) · m = Kb·m.",
+    example: "3 g urea (M=60) in 100 g water. Kb=0.52. ΔTb = 1×0.52×(3/60)×(1000/100) = 0.52×0.5 = 0.26°C. B.P. = 100.26°C.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="90" x2="260" y2="90" stroke="#333" stroke-width="1.5"/>
+        <line x1="30" y1="90" x2="30" y2="20" stroke="#333" stroke-width="1.5"/>
+        <path d="M 30,90 Q 80,80 150,40 Q 200,20 260,20" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <text x="270" y="25" font-size="9" fill="#2a4494">Pure Solvent</text>
+        <path d="M 30,90 Q 90,85 160,50 Q 210,30 270,30" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="280" y="35" font-size="9" fill="#c0392b">Solution</text>
+        <line x1="30" y1="50" x2="150" y2="50" stroke="#aaa" stroke-width="0.5"/>
+        <text x="40" y="105" font-size="9" fill="#333">ΔTb → B.P. increases</text>
+      </svg>
+    `,
+    useYes: "✅ Molar mass from ΔTb. Boiling point of solutions.",
+    useNo: "❌ Not for volatile solutes.",
+    examQ: "📌 IAT Style: 1.0 g of non‑electrolyte in 100 g water raises B.P. by 0.1°C. Kb=0.52. Molar mass = ? → M = (1×0.52×1000)/(0.1×100) = 52 g/mol."
+  }
+},
+{
+  number: "13",
+  title: "Freezing Point Depression · ΔTf = i·Kf·m",
+  badge: "❄️ ΔTf",
+  stripe: "blue",
+  formula: "<b>ΔT<sub>f</sub> = i · K<sub>f</sub> · m</b>",
+  desc: "10‑Second Trick: Solute dalne se F.P. girti hai. Kf water ke liye 1.86 K·kg/mol. Antifreeze applications.",
+  deepDive: {
+    what: "Depression in freezing point ΔTf is proportional to molality. Kf is cryoscopic constant. For water, Kf = 1.86 K·kg/mol. Used to determine molar mass.",
+    why: "IAT numericals: find molar mass, or depression given mass.",
+    how: "ΔTf = i·Kf·m. M_B = (i·Kf·w_B×1000) / (ΔTf × w_A).",
+    derivation: "From thermodynamics: ΔTf = (R·Tf²·M_A / ΔH_fus) · m = Kf·m.",
+    example: "6 g urea in 500 g water. Kf=1.86. ΔTf = 1×1.86×(6/60)×(1000/500) = 1.86×0.2 = 0.372°C. F.P. = −0.372°C.",
+    diagramSvg: "",
+    useYes: "✅ Molar mass from ΔTf. Antifreeze applications.",
+    useNo: "❌ Not for electrolytes without i.",
+    examQ: "📌 IAT Style: 2.0 g of benzoic acid in 25 g benzene depresses F.P. by 1.62 K. Kf=4.9. Find molar mass. → M = (1×4.9×2×1000)/(1.62×25) = 242 g/mol (dimerization)."
+  }
+},
+{
+  number: "14",
+  title: "Osmotic Pressure · π = i·C·R·T",
+  badge: "🧪 OSMOSIS",
+  stripe: "red",
+  formula: "<b>π = i · C · R · T</b> (C in mol/L)",
+  desc: "10‑Second Trick: Osmotic pressure molarity dependent, temperature dependent. Isotonic means π equal.",
+  deepDive: {
+    what: "Osmotic pressure π is the pressure required to stop osmosis. π = i·C·R·T, where C is molarity. Used to determine molar mass of polymers and proteins.",
+    why: "IAT asks for isotonic conditions, molar mass from π, or direction of osmosis.",
+    how: "π = i·(n/V)·R·T. For dilute solutions, molarity ≈ molality. Isotonic: π₁ = π₂ ⇒ i₁·C₁ = i₂·C₂.",
+    derivation: "From van't Hoff equation for ideal solutions.",
+    example: "0.1 M glucose and 0.05 M NaCl are isotonic? Check π: glucose i=1 ⇒ 0.1RT; NaCl i=2 ⇒ 0.1RT. Equal, so isotonic.",
+    diagramSvg: "",
+    useYes: "✅ Molar mass of macromolecules. Isotonic solutions. Reverse osmosis.",
+    useNo: "❌ Not for non‑ideal concentrated solutions.",
+    examQ: "📌 IAT Style: 0.6 g of a protein in 100 mL water has osmotic pressure 8.2×10⁻³ atm at 300 K. R=0.082. Find molar mass. → M = (w×R×T)/(π×V) = (0.6×0.082×300)/(8.2×10⁻³×0.1) = 18000 g/mol."
+  }
+},
+{
+  number: "15",
+  title: "Isotonic Solutions · Equal π",
+  badge: "⚖️ ISOTONIC",
+  stripe: "green",
+  formula: "<b>i₁·C₁ = i₂·C₂</b> (at same T)",
+  desc: "10‑Second Trick: Isotonic matlab osmotic pressure same. i×C equal karo. Glucose i=1.",
+  deepDive: {
+    what: "Two solutions are isotonic if they have the same osmotic pressure. Since π = i·C·R·T, at same temperature, i₁·C₁ = i₂·C₂.",
+    why: "IAT quick matching: '0.004 M K₂SO₄ isotonic with 0.01 M glucose', find i of K₂SO₄.",
+    how: "Equate i×C. For electrolytes, i known; for unknown, find i.",
+    derivation: "π₁ = π₂ ⇒ i₁·C₁·R·T = i₂·C₂·R·T ⇒ i₁·C₁ = i₂·C₂.",
+    example: "0.004 M K₂SO₄ isotonic with 0.01 M glucose. Find i. → i × 0.004 = 1 × 0.01 ⇒ i = 2.5.",
+    diagramSvg: "",
+    useYes: "✅ Finding i or concentration from isotonic condition.",
+    useNo: "❌ Not if temperatures differ.",
+    examQ: "📌 IAT Style: 0.1 M NaCl is isotonic with: (A) 0.1 M glucose (B) 0.2 M glucose (C) 0.05 M glucose (D) 0.1 M CaCl₂. → i×C: 2×0.1=0.2; glucose 0.2 M gives 0.2. Ans: B."
+  }
+},
+{
+  number: "16",
+  title: "Lowest FP / Highest BP · Compare i×C",
+  badge: "🏆 RANKING",
+  stripe: "purple",
+  formula: "<b>Highest i×C ⇒ Highest BP, Highest π, LOWEST FP, LOWEST VP</b>",
+  desc: "10‑Second Trick: Options diye ho to har ka i×Concentration nikalo. Jiska sabse bada, usi ka FP sabse kam.",
+  deepDive: {
+    what: "Among solutions of different solutes, the one with largest product i×m (or i×C) will show maximum colligative effect: highest boiling point, highest osmotic pressure, lowest freezing point, lowest vapour pressure.",
+    why: "IAT ranking questions: 'Which has lowest freezing point?'",
+    how: "For each option, compute i × concentration (molarity or molality). Highest value wins for lowest FP. Be careful of units.",
+    derivation: "All colligative properties are proportional to i×m (or i×C for π).",
+    example: "Which has lowest FP? (A) 0.1 M glucose (i=1, 0.1) (B) 0.1 M NaCl (i=2, 0.2) (C) 0.1 M CaCl₂ (i=3, 0.3) (D) 0.1 M urea (i=1, 0.1). → CaCl₂ (0.3) lowest FP.",
+    diagramSvg: "",
+    useYes: "✅ Comparing colligative properties without full calculation.",
+    useNo: "❌ When concentrations differ in units (convert to molality for FP/BP).",
+    examQ: "📌 IAT Style: Which aqueous solution has highest boiling point? (A) 0.1 M KCl (B) 0.1 M K₂SO₄ (C) 0.1 M glucose (D) 0.1 M AlCl₃. → i×C: AlCl₃=4×0.1=0.4 (max)."
+  }
+},
+{
+  number: "17",
+  title: "Degree of Dissociation · α = (i−1)/(n−1)",
+  badge: "🔬 α DISSOCIATION",
+  stripe: "blue",
+  formula: "<b>α = (i − 1) / (n − 1)</b> (n = number of ions)",
+  desc: "10‑Second Trick: i nikaalo colligative property se, phir α formula lagao. Strong electrolytes ka i≈n.",
+  deepDive: {
+    what: "For a weak electrolyte that dissociates into n ions, the degree of dissociation α is given by α = (i−1)/(n−1). i is calculated from experimental colligative property.",
+    why: "IAT asks to find % dissociation from ΔTf or ΔTb data.",
+    how: "Step 1: Find i from ΔTf = i·Kf·m. Step 2: Use α = (i−1)/(n−1). For AB type (NaCl), n=2; AB₂ type (CaCl₂), n=3.",
+    derivation: "Initial 1 mole, dissociates α, total moles = 1 − α + nα = 1 + (n−1)α = i.",
+    example: "0.1 m acetic acid freezes at −0.188°C (Kf=1.86). Find α. → ΔTf=0.188 ⇒ i=0.188/(1.86×0.1)=1.01. n=2 (CH₃COOH ⇌ CH₃COO⁻+H⁺). α = (1.01−1)/(2−1)=0.01 (1%).",
+    diagramSvg: "",
+    useYes: "✅ Finding degree of dissociation from colligative data.",
+    useNo: "❌ Not for association.",
+    examQ: "📌 IAT Style: 0.1 molal NaCl solution freezes at −0.372°C. Kf=1.86. i and α are? → ΔTf=0.372 ⇒ i=0.372/(1.86×0.1)=2. α = (2−1)/(2−1)=1 (100%)."
+  }
+},
+{
+  number: "18",
+  title: "Degree of Association · α = (1−i)/(1−1/n)",
+  badge: "🔗 ASSOCIATION",
+  stripe: "red",
+  formula: "<b>For dimerization (n=2): α = 2(1 − i)</b>",
+  desc: "10‑Second Trick: Association mein i<1. Benzoic acid in benzene dimerizes (n=2). α = 2(1−i).",
+  deepDive: {
+    what: "When solute molecules associate (e.g., dimerize), number of particles decreases, i < 1. For association into n‑mer, α = (1−i) / (1−1/n). For dimerization (n=2), α = 2(1−i).",
+    why: "IAT benzoic acid problems: observed molar mass double of normal ⇒ i=0.5.",
+    how: "Calculate i = normal M / observed M. Then α = (1−i)/(1−1/n). For dimer, n=2, α = 2(1−i).",
+    derivation: "Initial 1 mole, α fraction associates, moles = 1 − α + α/n = 1 − α(1−1/n) = i.",
+    example: "Benzoic acid (M=122) in benzene shows M=244. i = 122/244 = 0.5. Dimerization n=2 ⇒ α = 2(1−0.5)=1 (100%).",
+    diagramSvg: "",
+    useYes: "✅ Association problems, especially dimerization in benzene.",
+    useNo: "❌ Not for dissociation.",
+    examQ: "📌 IAT Style: Acetic acid in benzene shows molar mass 120 (normal 60). Find degree of association (dimer). → i=60/120=0.5. α = 2(1−0.5)=1."
+  }
+},
+{
+  number: "19",
+  title: "Molality from Mole Fraction · Bridge Formula",
+  badge: "🌉 BRIDGE",
+  stripe: "green",
+  formula: "<b>m = (x<sub>B</sub> × 1000) / (x<sub>A</sub> × M<sub>A</sub>)</b>",
+  desc: "10‑Second Trick: Mole fraction diya ho to molality seedha is formula se. Water ke liye 1000/18 = 55.55 yaad rakho.",
+  deepDive: {
+    what: "Relationship between mole fraction of solute (x_B) and molality (m): m = (x_B × 1000) / (x_A × M_A), where x_A is mole fraction of solvent, M_A is molar mass of solvent.",
+    why: "IAT conversion between concentration terms.",
+    how: "For water, M_A=18, so m = (x_B / x_A) × 55.55. Quick mental math.",
+    derivation: "m = n_B / (mass_A in kg) = n_B / (n_A·M_A/1000) = (n_B/n_A) × (1000/M_A) = (x_B/x_A) × (1000/M_A).",
+    example: "x_solute = 0.2, x_solvent = 0.8. M_solvent = 18. m = (0.2/0.8)×(1000/18) = 0.25×55.55 = 13.89 mol/kg.",
+    diagramSvg: "",
+    useYes: "✅ Converting mole fraction to molality quickly.",
+    useNo: "❌ Not for non‑aqueous without M_A.",
+    examQ: "📌 IAT Style: Mole fraction of glucose in water is 0.01. Molality is: → m = (0.01/0.99)×(1000/18) ≈ 0.56 mol/kg."
+  }
+},
+{
+  number: "20",
+  title: "Important Molar Masses · Urea, Glucose, Sucrose",
+  badge: "📦 MOLAR MASS",
+  stripe: "purple",
+  formula: "<b>Urea = 60 · Glucose = 180 · Sucrose (Sugar) = 342</b>",
+  desc: "10‑Second Trick: Ye teen values rat lo. Exam mein time bachega.",
+  deepDive: {
+    what: "Common non‑electrolyte solutes in IAT problems: Urea (NH₂CONH₂) = 60 g/mol, Glucose (C₆H₁₂O₆) = 180 g/mol, Sucrose (C₁₂H₂₂O₁₁) = 342 g/mol. i=1 for all.",
+    why: "IAT frequently uses these as solutes. Knowing molar mass saves calculation time.",
+    how: "Direct recall.",
+    derivation: "Sum atomic masses: Urea: 14+4+12+16+14+2 = 60; Glucose: 6×12+12+6×16 = 180; Sucrose: 12×12+22+11×16 = 342.",
+    example: "Mass of 0.2 mol sucrose = 0.2 × 342 = 68.4 g.",
+    diagramSvg: "",
+    useYes: "✅ Quick molar mass for common solutes.",
+    useNo: "❌ Not for other solutes.",
+    examQ: "📌 IAT Style: Molar mass of urea is: (A) 60 (B) 180 (C) 342 (D) 58.5. → Ans: 60."
+  }
+},
+{
+  number: "21",
+  title: "PPM Calculation · Mass of Solution in Denominator",
+  badge: "📊 PPM",
+  stripe: "blue",
+  formula: "<b>ppm = (mass of solute / mass of SOLUTION) × 10⁶</b>",
+  desc: "10‑Second Trick: PPM mein niche total solution ka mass aata hai, sirf solvent ka nahi.",
+  deepDive: {
+    what: "Parts per million (ppm) = (mass of solute / total mass of solution) × 10⁶. For dilute aqueous solutions, mass of solution ≈ mass of water, but exact formula uses solution mass.",
+    why: "IAT trap: students often put solvent mass in denominator.",
+    how: "Always use total mass of solution. If solute mass is negligible, approximate.",
+    derivation: "Definition of ppm.",
+    example: "2 g salt in 1000 g water. ppm = (2 / 1002) × 10⁶ ≈ 1996 ppm.",
+    diagramSvg: "",
+    useYes: "✅ PPM, PPB calculations.",
+    useNo: "❌ Not for molarity, molality.",
+    examQ: "📌 IAT Style: 0.5 g of a pollutant in 500 g water. ppm is: → (0.5/500.5)×10⁶ ≈ 1000 ppm."
+  }
+},
+{
+  number: "22",
+  title: "Raoult's vs Henry's Law · Special Case",
+  badge: "⚖️ LAW LINK",
+  stripe: "green",
+  formula: "<b>Raoult's law is Henry's law with K<sub>H</sub> = P°</b>",
+  desc: "10‑Second Trick: Ideal solution mein solvent follows Raoult's (K_H = P°), solute follows Henry's law.",
+  deepDive: {
+    what: "In an ideal solution, the solvent obeys Raoult's law (P_A = P°_A·x_A) and the solute obeys Henry's law (P_B = K_H·x_B). Raoult's law is a special case of Henry's law where the proportionality constant equals the vapour pressure of pure component.",
+    why: "IAT conceptual linking of laws.",
+    how: "For solvent, K_H = P°; for solute, K_H is Henry's constant.",
+    derivation: "At x_A → 1, P_A → P°_A·x_A. At x_B → 0, P_B → K_H·x_B.",
+    example: "In benzene‑toluene mixture, both follow Raoult's law. For CO₂ in water, Henry's law applies.",
+    diagramSvg: "",
+    useYes: "✅ Conceptual questions linking Raoult's and Henry's laws.",
+    useNo: "❌ Not for non‑ideal solutions.",
+    examQ: "📌 IAT Style: Raoult's law is a special case of Henry's law when: (A) K_H = 1 (B) K_H = P° (C) K_H = 0 (D) x=0. → Ans: K_H = P°."
+  }
+},
+{
+  number: "23",
+  title: "Dilute Aqueous Approximation · M ≈ m",
+  badge: "💧 DILUTE",
+  stripe: "purple",
+  formula: "<b>For dilute aqueous solutions, Molarity ≈ Molality</b>",
+  desc: "10‑Second Trick: Water density ≈ 1 g/mL. 1 L solution ≈ 1 kg water. M ≈ m.",
+  deepDive: {
+    what: "In very dilute aqueous solutions, the volume of solution in litres is approximately equal to the mass of solvent in kg, because the density of water is ~1 g/mL and solute mass is negligible. Thus Molarity (mol/L) ≈ Molality (mol/kg).",
+    why: "IAT questions where options differ by small amounts; this approximation helps eliminate.",
+    how: "If solution is dilute (<0.1 M) and aqueous, assume M ≈ m.",
+    derivation: "Volume of solution (L) ≈ mass of solvent (kg).",
+    example: "0.01 M glucose: molality ≈ 0.01 m.",
+    diagramSvg: "",
+    useYes: "✅ Approximate relations in dilute solutions.",
+    useNo: "❌ Not for concentrated solutions or non‑aqueous.",
+    examQ: "📌 IAT Style: In dilute aqueous solution, which is true? (A) M > m (B) M ≈ m (C) M < m (D) M = 2m. → Ans: M ≈ m."
+  }
+},
+{
+  number: "24",
+  title: "Osmosis Direction · Solvent to High Conc",
+  badge: "💧 OSMOSIS",
+  stripe: "red",
+  formula: "<b>Solvent flows from low solute conc to high solute conc across SPM.</b>",
+  desc: "10‑Second Trick: Paani udhar jaata hai jahan pyas (solute) zyada ho.",
+  deepDive: {
+    what: "Osmosis is the net movement of solvent molecules through a semipermeable membrane from a region of lower solute concentration to a region of higher solute concentration. It tends to equalize concentrations.",
+    why: "IAT asks direction of flow or which side level rises.",
+    how: "Compare i×C of two solutions. Solvent moves from lower i×C to higher i×C.",
+    derivation: "Osmotic pressure difference drives flow.",
+    example: "0.1 M glucose (side A) and 0.1 M NaCl (side B) separated by SPM. NaCl has higher i×C (0.2 vs 0.1). Water flows from A to B.",
+    diagramSvg: "",
+    useYes: "✅ Direction of osmosis. Osmotic pressure applications.",
+    useNo: "❌ Not for reverse osmosis (pressure applied).",
+    examQ: "📌 IAT Style: A semipermeable membrane separates 0.1 M sugar and 0.1 M KCl. Water will flow: (A) From sugar to KCl (B) From KCl to sugar (C) No flow (D) Both ways equally. → Ans: Sugar to KCl (higher i×C)."
+  }
+},
+{
+  number: "25",
+  title: "Reverse Osmosis · Desalination",
+  badge: "🔄 REVERSE OSMOSIS",
+  stripe: "blue",
+  formula: "<b>Apply pressure > π to reverse natural osmosis flow.</b>",
+  desc: "10‑Second Trick: Pani ko high conc se low conc bhejna hai to osmotic pressure se zyada pressure lagao.",
+  deepDive: {
+    what: "Reverse osmosis (RO) occurs when a pressure greater than the osmotic pressure is applied to the high concentration side, forcing solvent molecules to move to the low concentration side. Used in desalination of seawater.",
+    why: "IAT application questions: 'RO is used for?'",
+    how: "Apply P > π on concentrated side.",
+    derivation: "π = CRT. For seawater (~0.6 M), π ≈ 15 atm. Apply >15 atm to get fresh water.",
+    example: "Desalination plants use reverse osmosis to obtain fresh water from seawater.",
+    diagramSvg: "",
+    useYes: "✅ Reverse osmosis principle and applications.",
+    useNo: "❌ Not for forward osmosis.",
+    examQ: "📌 IAT Style: Reverse osmosis is used for: (A) Water purification (B) Desalination of seawater (C) Both (D) None. → Ans: Both."
+  }
+},
+{
+  number: "26",
+  title: "IAT Ultimate Cheat Sheet · Solutions",
+  badge: "🏁 CHEAT SHEET",
+  stripe: "gold",
+  formula: "<b>i×C compare for ranking · Molar masses 60,180,342 · m = (x_B/x_A)×(1000/M_A)</b>",
+  desc: "10‑Second Trick: Exam hall mein ye summary yaad rakho. Saare important numbers aur relations.",
+  deepDive: {
+    what: "Summary of all high‑yield formulas and numbers for the Solutions chapter.",
+    why: "Quick revision before exam.",
+    how: "Memorize this card.",
+    derivation: "Consolidation.",
+    example: "If in doubt, check this card.",
+    diagramSvg: `
+      <svg viewBox="0 0 350 180" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="330" height="160" fill="#fffcf7" stroke="#b8860b" stroke-width="2" rx="8"/>
+        <text x="175" y="30" font-size="11" fill="#b8860b" text-anchor="middle" font-weight="600">⚡ SOLUTIONS QUICK REFERENCE ⚡</text>
+        <text x="20" y="50" font-size="9" fill="#333">• M = n×1000/V(mL) [Temp dep]</text>
+        <text x="20" y="65" font-size="9" fill="#333">• m = n / kg solvent [Temp indep]</text>
+        <text x="20" y="80" font-size="9" fill="#333">• ΔTb = i·Kb·m, ΔTf = i·Kf·m, π = i·C·R·T</text>
+        <text x="20" y="95" font-size="9" fill="#333">• Isotonic: i₁·C₁ = i₂·C₂</text>
+        <text x="20" y="110" font-size="9" fill="#333">• Highest i×C → Lowest FP, Highest BP, Highest π</text>
+        <text x="20" y="125" font-size="9" fill="#333">• Urea=60, Glucose=180, Sucrose=342</text>
+        <text x="20" y="140" font-size="9" fill="#333">• 1 L water = 55.5 mol, m = (x_B/x_A)×(1000/M_A)</text>
+        <text x="20" y="155" font-size="9" fill="#c0392b">• α_diss = (i−1)/(n−1), α_assoc = 2(1−i) [for dimer]</text>
+      </svg>
+    `,
+    useYes: "✅ Last minute revision.",
+    useNo: "❌ Not for detailed derivation.",
+    examQ: "📌 IAT Style: This card is your mental summary."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
