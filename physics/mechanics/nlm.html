@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #7c3aed;
+--accent2: #8b5cf6;
+--accent3: #6d28d9;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #f5f3ff;
+--formula-border: #7c3aed;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(124,58,237,0.10);
+--shadow-hover: 0 12px 40px rgba(124,58,237,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(124,58,237,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139,92,246,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #8b5cf6 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #4c1d95;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Physics";          // e.g., "Chemistry", "Mathematics", "Biology"
+const CHAPTER = "Newton’s Laws of Motion";   // e.g., "Rotational Motion", "Thermodynamics"
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+ // ========== PHYSICS · NEWTON'S LAWS OF MOTION (Cards 01 to 28) ==========
+
+{
+  number: "01",
+  title: "Newton's First Law · Inertia & Equilibrium",
+  badge: "⚖️ 1ST LAW",
+  stripe: "blue",
+  formula: "<b>If F<sub>net</sub> = 0 ⇒ v = constant (or rest)</b>",
+  desc: "10‑Second Trick: Agar velocity constant di hai, to net force zero. Tension = mg, friction = 0.",
+  deepDive: {
+    what: "Newton's first law states that an object remains at rest or in uniform motion unless acted upon by a net external force. It defines inertia.",
+    why: "IAT asks: 'If velocity is constant, what is net force?' Answer: Zero.",
+    how: "If v = const, a = 0 ⇒ F_net = 0. All forces balance.",
+    derivation: "From definition of equilibrium.",
+    example: "Block moving at constant 2 m/s on rough surface. Friction = applied force, not μN.",
+    diagramSvg: "",
+    useYes: "✅ Identifying equilibrium conditions. Constant velocity problems.",
+    useNo: "❌ Not when acceleration is non‑zero.",
+    examQ: "📌 IAT Style: A body moves with constant velocity. Net force on it is: (A) Zero (B) mg (C) F_applied (D) Variable. → Ans: Zero."
+  }
+},
+{
+  number: "02",
+  title: "Newton's Second Law · F = dp/dt",
+  badge: "⚡ 2ND LAW",
+  stripe: "red",
+  formula: "<b>F = dp/dt = m(dv/dt) + v(dm/dt)</b>",
+  desc: "10‑Second Trick: Variable mass (rocket) mein dono terms. Constant mass mein F = ma.",
+  deepDive: {
+    what: "The rate of change of momentum of a body is directly proportional to the applied force. For constant mass, F = m·a. For variable mass (e.g., rocket), F = m(dv/dt) + v(dm/dt).",
+    why: "IAT variable mass problems: rocket thrust, chain falling.",
+    how: "For constant mass, F = ma. For variable mass, use product rule.",
+    derivation: "p = mv, dp/dt = m dv/dt + v dm/dt.",
+    example: "Rocket ejects mass at rate 2 kg/s with relative velocity 500 m/s. Thrust = 500 × 2 = 1000 N.",
+    diagramSvg: "",
+    useYes: "✅ Finding acceleration, variable mass systems.",
+    useNo: "❌ Not for relativistic speeds.",
+    examQ: "📌 IAT Style: A machine gun fires 10 bullets/s each of mass 20 g at 400 m/s. Force required: → Δp/Δt = 10×0.02×400 = 80 N."
+  }
+},
+{
+  number: "03",
+  title: "Newton's Third Law · Action‑Reaction",
+  badge: "🔄 3RD LAW",
+  stripe: "green",
+  formula: "<b>F<sub>AB</sub> = −F<sub>BA</sub></b>",
+  desc: "10‑Second Trick: Action‑reaction different bodies par lagte hain, cancel nahi hote.",
+  deepDive: {
+    what: "For every action, there is an equal and opposite reaction. These forces act on two different objects, so they do not cancel each other.",
+    why: "IAT conceptual: 'Action and reaction cancel?' Answer: No, because they act on different bodies.",
+    how: "Identify pair: A pushes B, B pushes A back with equal force.",
+    derivation: "From momentum conservation of isolated system.",
+    example: "Book on table: book pushes table down (action), table pushes book up (reaction).",
+    diagramSvg: "",
+    useYes: "✅ Identifying action‑reaction pairs. Contact forces.",
+    useNo: "❌ Not for net force on single object.",
+    examQ: "📌 IAT Style: A man pulls a rope. The reaction force acts on: (A) Man (B) Rope (C) Ground (D) Both man and rope. → Ans: Rope (pulls man back)."
+  }
+},
+{
+  number: "04",
+  title: "Impulse · Area under F‑t Graph",
+  badge: "💥 IMPULSE",
+  stripe: "purple",
+  formula: "<b>J = ∫F dt = Δp = m(v−u)</b>",
+  desc: "10‑Second Trick: Sudden blow — impulse = change in momentum. Graph mein area = J.",
+  deepDive: {
+    what: "Impulse is the product of average force and time interval over which it acts. It equals change in momentum. Graphically, area under F‑t curve.",
+    why: "IAT asks for impulse from graph, or force from impulse.",
+    how: "J = F_avg × Δt = m(v−u).",
+    derivation: "From F = dp/dt ⇒ ∫F dt = Δp.",
+    example: "Ball mass 0.5 kg, speed changes from 10 to 20 m/s in 0.1 s. Impulse = 0.5×(20−10)=5 N·s. Avg force = 5/0.1=50 N.",
+    diagramSvg: "",
+    useYes: "✅ Impulse from force‑time graph. Sudden collision problems.",
+    useNo: "❌ Not for steady forces.",
+    examQ: "📌 IAT Style: A force F=2t N acts on 1 kg for 3 s from rest. Final velocity: → Impulse = ∫₀³ 2t dt = [t²]₀³ = 9 N·s. v = 9 m/s."
+  }
+},
+{
+  number: "05",
+  title: "KE‑Momentum Relation · p = √(2mK)",
+  badge: "🔗 p & K",
+  stripe: "blue",
+  formula: "<b>K = p²/(2m) &nbsp;|&nbsp; p = √(2mK)</b>",
+  desc: "10‑Second Trick: Same KE mein heavy body ka momentum zyada (p ∝ √m).",
+  deepDive: {
+    what: "Kinetic energy K and momentum p are related by K = p²/(2m). For same K, p ∝ √m. For same p, K ∝ 1/m.",
+    why: "IAT comparison: 'Two bodies have same KE; ratio of momenta?'",
+    how: "p = √(2mK). Ratio p₁/p₂ = √(m₁/m₂) if K same.",
+    derivation: "K = ½mv², p = mv ⇒ p² = m²v² = 2m(½mv²) = 2mK.",
+    example: "Masses 40 kg and 60 kg, same KE. p₁/p₂ = √(40/60) = √(2/3).",
+    diagramSvg: "",
+    useYes: "✅ Comparing momenta/KE for equal KE/momentum.",
+    useNo: "❌ Not for relativistic.",
+    examQ: "📌 IAT Style: Two particles have equal momentum. Ratio of their KE if masses 1:4? → K ∝ 1/m ⇒ K₁:K₂ = 4:1."
+  }
+},
+{
+  number: "06",
+  title: "Contact Force Between Blocks · Single Force",
+  badge: "🧱 CONTACT",
+  stripe: "red",
+  formula: "<b>Contact = F × (mass ahead) / (total mass)</b>",
+  desc: "10‑Second Trick: Force sirf ek side se hai to contact force = F × (mass aage wala)/total.",
+  deepDive: {
+    what: "For blocks in a line pushed from one end, the contact force between any two blocks equals the applied force multiplied by the mass of blocks ahead divided by total mass.",
+    why: "IAT: 'Find force between 2kg and 3kg' without full FBD.",
+    how: "Contact = F_applied × (sum of masses on far side) / (total mass).",
+    derivation: "Common acceleration a = F/M_total. For blocks ahead, force = m_ahead × a = F × m_ahead / M_total.",
+    example: "50 N on 2 kg, then 3 kg, then 5 kg. Force between 2 and 3: pushes 3+5=8 kg. Contact = 50×8/10 = 40 N.",
+    diagramSvg: "",
+    useYes: "✅ Quick contact force in linear arrangement with single push.",
+    useNo: "❌ If multiple forces act.",
+    examQ: "📌 IAT Style: Three blocks 1kg,2kg,3kg pushed by 12 N. Force between 1kg and 2kg: → pushes 2+3=5kg, contact = 12×5/6=10 N."
+  }
+},
+{
+  number: "07",
+  title: "Contact Force · Two Opposing Forces",
+  badge: "⚔️ TWO FORCES",
+  stripe: "green",
+  formula: "<b>Contact = (F_left × m_right + F_right × m_left) / M_total</b>",
+  desc: "10‑Second Trick: Dono taraf force hai to cross‑multiply: left force × right mass + right force × left mass, divide by total.",
+  deepDive: {
+    what: "When blocks are pushed from both ends, the contact force at any junction is a weighted average of the two applied forces based on masses on either side.",
+    why: "IAT problems with forces on both ends.",
+    how: "N = (F_L × M_R + F_R × M_L) / M_total.",
+    derivation: "Let acceleration a = (F_R − F_L)/M_total (assuming F_R > F_L). For contact, N − F_L = m_L·a ⇒ N = F_L + m_L·a = (F_L(m_L+m_R) + m_L(F_R−F_L))/M_total = (F_L·m_R + F_R·m_L)/M_total.",
+    example: "50 N left, 30 N right, masses 2kg,5kg,3kg. Contact between 2 and 5: left mass=2, right mass=8. N = (50×8 + 30×2)/10 = (400+60)/10 = 46 N.",
+    diagramSvg: "",
+    useYes: "✅ Contact forces with forces on both ends.",
+    useNo: "❌ Not for non‑linear arrangements.",
+    examQ: "📌 IAT Style: Blocks 4kg,6kg. Left force 20 N, right force 8 N. Contact force: → N = (20×6 + 8×4)/10 = (120+32)/10 = 15.2 N."
+  }
+},
+{
+  number: "08",
+  title: "Pseudo Force · Non‑Inertial Frame",
+  badge: "🎭 PSEUDO",
+  stripe: "purple",
+  formula: "<b>F<sub>pseudo</sub> = −m·a<sub>frame</sub></b>",
+  desc: "10‑Second Trick: Accelerating frame mein opposite direction mein ma laga do. Phir Newton's laws apply.",
+  deepDive: {
+    what: "In a non‑inertial (accelerating) frame, Newton's laws don't hold unless we introduce a fictitious force = −m·a_frame. This force acts on every mass in opposite direction to frame's acceleration.",
+    why: "IAT wedge‑block, lift problems.",
+    how: "Identify frame acceleration a_0. Add force m·a_0 opposite to a_0 on each object. Then solve normally.",
+    derivation: "From transformation of coordinates.",
+    example: "Wedge accelerating right with a. Block on wedge feels pseudo force m·a leftward. For block at rest relative to wedge, a = g tanθ.",
+    diagramSvg: "",
+    useYes: "✅ Problems in accelerating frames (lift, wedge, car).",
+    useNo: "❌ In inertial frames.",
+    examQ: "📌 IAT Style: A block rests on wedge of angle θ accelerating right. Condition for block not to slip: → a = g tanθ (if smooth)."
+  }
+},
+{
+  number: "09",
+  title: "Lift & Monkey · Apparent Weight",
+  badge: "🛗 LIFT",
+  stripe: "blue",
+  formula: "<b>W<sub>app</sub> = m(g ± a)</b>",
+  desc: "10‑Second Trick: Up jaate (+a) bhari feel, down jaate (−a) halka. Free fall: a=g ⇒ weightless.",
+  deepDive: {
+    what: "In an accelerating lift, the apparent weight (normal force) is N = m(g+a) when accelerating upward, N = m(g−a) when accelerating downward.",
+    why: "IAT lift and monkey rope problems.",
+    how: "Direction of acceleration determines sign.",
+    derivation: "From N − mg = ±ma.",
+    example: "Monkey climbing up rope with acceleration a: Tension T = m(g+a). Max acceleration before rope breaks: a_max = (T_max/m) − g.",
+    diagramSvg: "",
+    useYes: "✅ Apparent weight in lifts. Monkey climbing tension.",
+    useNo: "❌ Not for horizontal acceleration.",
+    examQ: "📌 IAT Style: A 50 kg man in lift accelerating up at 2 m/s² (g=10). Apparent weight: → 50×(10+2)=600 N."
+  }
+},
+{
+  number: "10",
+  title: "String vs Spring Cutting Rule",
+  badge: "✂️ CUT",
+  stripe: "red",
+  formula: "<b>String cut → T=0 instantly<br>Spring cut (support) → force unchanged just after</b>",
+  desc: "10‑Second Trick: Rassi bewafa (T zero instantly), Spring wafadaar (force remains same initially).",
+  deepDive: {
+    what: "If a string is cut, its tension drops to zero immediately. If a spring's support is cut, the spring force does not change instantaneously; it stays at the value just before cutting.",
+    why: "IAT favorite trap: 'Find acceleration just after cutting string/spring.'",
+    how: "Just after cut: for string, set T=0; for spring, keep old kx value. Then apply F=ma.",
+    derivation: "String can't sustain force without connection; spring force depends on deformation which hasn't changed yet.",
+    example: "Block hanging from spring. Cut string above spring? Spring force still = mg initially, so block acceleration = 0.",
+    diagramSvg: "",
+    useYes: "✅ Acceleration just after cutting constraints.",
+    useNo: "❌ Long after cutting (new equilibrium).",
+    examQ: "📌 IAT Style: A mass m hangs from ceiling via spring and string in parallel. String cut. Initial acceleration: → Spring force still mg upward, gravity mg down ⇒ a=0."
+  }
+},
+{
+  number: "11",
+  title: "Spring Constant · Length Dependence",
+  badge: "🌀 SPRING",
+  stripe: "green",
+  formula: "<b>k ∝ 1/L &nbsp;|&nbsp; Series: 1/k = Σ1/kᵢ &nbsp;|&nbsp; Parallel: k = Σkᵢ</b>",
+  desc: "10‑Second Trick: Spring aadhi kato to k double. Series mein k ghata, parallel mein badhta.",
+  deepDive: {
+    what: "Spring constant k is inversely proportional to natural length. For identical springs: series combination reduces k, parallel increases k.",
+    why: "IAT asks effective k of combination or new k after cutting.",
+    how: "k_new = k_orig × (L_orig / L_new). Series: 1/k_eq = 1/k₁ + 1/k₂. Parallel: k_eq = k₁ + k₂.",
+    derivation: "From Hooke's law and series/parallel force‑extension.",
+    example: "Spring of length L, k=100 N/m cut to L/2. New k = 200 N/m.",
+    diagramSvg: "",
+    useYes: "✅ Spring combinations. Effect of cutting on k.",
+    useNo: "❌ Not for non‑linear springs.",
+    examQ: "📌 IAT Style: Two identical springs k each in series. Equivalent k: → 1/k_eq = 1/k+1/k ⇒ k_eq = k/2."
+  }
+},
+{
+  number: "12",
+  title: "Friction · Static vs Kinetic Trap",
+  badge: "⚠️ FRICTION",
+  stripe: "purple",
+  formula: "<b>f<sub>s,max</sub> = μ<sub>s</sub>N &nbsp;|&nbsp; f<sub>k</sub> = μ<sub>k</sub>N</b>",
+  desc: "10‑Second Trick: Pehle check karo F_applied > μ_s N? Nahi to friction = F_applied (self‑adjusting).",
+  deepDive: {
+    what: "Static friction adjusts to prevent motion up to a maximum μ_s N. Once motion starts, kinetic friction μ_k N acts (constant, usually less than max static).",
+    why: "IAT trap: students directly use μN without checking if motion occurs.",
+    how: "Compare applied force with f_s,max. If less, f_s = applied force. If greater, use f_k = μ_k N.",
+    derivation: "Experimental laws of friction.",
+    example: "Block mass 10 kg, μ_s=0.5, μ_k=0.4. Applied force 40 N. f_s,max = 0.5×100=50 N. Since 40<50, friction = 40 N, block doesn't move.",
+    diagramSvg: "",
+    useYes: "✅ Determining if block moves. Friction value in static case.",
+    useNo: "❌ When motion is already known.",
+    examQ: "📌 IAT Style: A 2 kg block on rough surface (μ_s=0.4, μ_k=0.3). Horizontal force 6 N applied. Friction: → f_s,max = 0.4×20=8 N > 6 ⇒ f = 6 N."
+  }
+},
+{
+  number: "13",
+  title: "Angle of Repose · tanθ = μ_s",
+  badge: "📐 REPOSE",
+  stripe: "blue",
+  formula: "<b>tanθ<sub>R</sub> = μ<sub>s</sub></b>",
+  desc: "10‑Second Trick: Incline ka angle μ_s ke barabar hone par block slide karega.",
+  deepDive: {
+    what: "Angle of repose is the maximum angle of an inclined plane for which a block remains at rest without sliding. tanθ_R = μ_s.",
+    why: "IAT asks: 'At what angle does block start sliding?'",
+    how: "If θ < θ_R, block at rest; if θ > θ_R, block slides.",
+    derivation: "mg sinθ = μ_s mg cosθ ⇒ tanθ = μ_s.",
+    example: "μ_s=0.75, θ_R = tan⁻¹(0.75) ≈ 37°. For θ=30°, block at rest; θ=45°, slides.",
+    diagramSvg: "",
+    useYes: "✅ Determining if block slides on incline.",
+    useNo: "❌ When motion is already known or kinetic friction needed.",
+    examQ: "📌 IAT Style: Block on incline with μ_s=1/√3. At what angle does it start sliding? → tanθ=1/√3 ⇒ θ=30°."
+  }
+},
+{
+  number: "14",
+  title: "Two Blocks Moving Together · Max Force",
+  badge: "🧱 TOGETHER",
+  stripe: "red",
+  formula: "<b>F<sub>max</sub> = μ<sub>s</sub>(m₁+m₂)g (if force on lower block)</b>",
+  desc: "10‑Second Trick: Upper block friction se accelerate hota hai. Max force jisse dono sath chalein.",
+  deepDive: {
+    what: "When a force is applied on the lower block, the upper block accelerates due to friction. Maximum force without slipping occurs when friction reaches μ_s m_upper g. Then F_max = μ_s (m₁+m₂)g.",
+    why: "IAT: 'Find max force so blocks move together.'",
+    how: "Common acceleration a = μ_s g (upper block limit). For system: F = (m₁+m₂)a = μ_s(m₁+m₂)g.",
+    derivation: "For upper block: f_s,max = μ_s m₂ g = m₂ a ⇒ a = μ_s g.",
+    example: "m₁=4 kg (lower), m₂=2 kg (upper), μ_s=0.5. F_max = 0.5×6×10=30 N.",
+    diagramSvg: "",
+    useYes: "✅ Maximum force for no slipping between blocks.",
+    useNo: "❌ If force applied on upper block (different formula).",
+    examQ: "📌 IAT Style: Lower block 3 kg, upper 2 kg, μ=0.4. Max force on lower block: → F=0.4×5×10=20 N."
+  }
+},
+{
+  number: "15",
+  title: "Constrained Motion · Virtual Work",
+  badge: "🔗 CONSTRAINT",
+  stripe: "green",
+  formula: "<b>Σ T·a = 0 &nbsp;|&nbsp; Movable pulley: a = 2a<sub>fixed</sub></b>",
+  desc: "10‑Second Trick: Rassi ka total work zero. Pulley move kare to string length constant rakh kar differentiate.",
+  deepDive: {
+    what: "In constrained systems (pulleys, strings), the accelerations of connected bodies are related. The principle of virtual work: sum of tension dot acceleration = 0. For movable pulley, its acceleration is half/twice of others.",
+    why: "IAT: 'Find acceleration of block in pulley system.'",
+    how: "Write constraint equation for string length. Differentiate twice w.r.t time to get a‑relation.",
+    derivation: "L = x₁ + 2x₂ + ... = constant ⇒ v₁ + 2v₂ = 0 ⇒ a₁ + 2a₂ = 0.",
+    example: "Simple movable pulley: block goes up by x, free end pulled by 2x. a_block = a_pull / 2.",
+    diagramSvg: "",
+    useYes: "✅ Finding acceleration relations in pulley systems.",
+    useNo: "❌ Not for unconstrained motion.",
+    examQ: "📌 IAT Style: In a system with one fixed and one movable pulley, if free end accelerates at 4 m/s², load accelerates at: → a_load = 4/2 = 2 m/s²."
+  }
+},
+{
+  number: "16",
+  title: "System Acceleration · Pulley Hack",
+  badge: "⚙️ PULLEY",
+  stripe: "purple",
+  formula: "<b>a = (F<sub>driving</sub> − F<sub>opposing</sub>) / M<sub>total</sub></b>",
+  desc: "10‑Second Trick: Pure system ko single mass maan lo. Net driving force / total mass = acceleration.",
+  deepDive: {
+    what: "For connected bodies moving together, treat the entire system as one mass. Net force in direction of motion minus opposing forces, divided by total mass, gives common acceleration.",
+    why: "IAT: Quick acceleration without individual FBDs.",
+    how: "Identify forces causing motion (driving) and resisting (opposing). Difference / total mass.",
+    derivation: "From ΣF = M_total·a.",
+    example: "Atwood machine: m₁>m₂. Driving = m₁g, opposing = m₂g. a = (m₁−m₂)g/(m₁+m₂).",
+    diagramSvg: "",
+    useYes: "✅ Acceleration of connected systems. Atwood machine.",
+    useNo: "❌ If accelerations are different.",
+    examQ: "📌 IAT Style: Two masses 5kg and 3kg connected over pulley. Acceleration (g=10): → a = (5−3)×10/(5+3) = 20/8 = 2.5 m/s²."
+  }
+},
+{
+  number: "17",
+  title: "Massless Force Trap · Pulley with Extra Force",
+  badge: "⚠️ TRAP",
+  stripe: "red",
+  formula: "<b>Extra force on pulley: increases pull, not mass.</b>",
+  desc: "10‑Second Trick: Pulley par extra force lagane se acceleration badhta hai, lekin mass nahi badhta.",
+  deepDive: {
+    what: "If an external force F is applied to a movable pulley, it increases the tension in the string but does not add to the inertial mass of the system. So acceleration is higher compared to adding a hanging mass equal to F/g.",
+    why: "IAT conceptual: 'Which system has higher acceleration?'",
+    how: "Compare: hanging mass m = F/g adds inertia (mass increases). Direct force F does not add mass.",
+    derivation: "For direct force: a = F / M_total. For hanging mass: a = mg / (M_total + m) = F / (M_total + m) < F/M_total.",
+    example: "Same pull: direct force gives larger acceleration than hanging equivalent weight.",
+    diagramSvg: "",
+    useYes: "✅ Comparing accelerations with force vs hanging mass.",
+    useNo: "❌ Not for static cases.",
+    examQ: "📌 IAT Style: Two identical systems; one has extra force F on pulley, other has extra mass m=F/g hanging. Which accelerates more? → System with direct force."
+  }
+},
+{
+  number: "18",
+  title: "Boat Jump · Equal Mass Concept",
+  badge: "🚤 BOAT",
+  stripe: "blue",
+  formula: "<b>Momentum conserved → Always use relative velocity carefully</b>",
+  desc: "10-Second Trick: Boat problems me directly formula mat lagao — relative velocity + momentum conservation hi king hai.",
+  
+  deepDive: {
+    what: "Person aur boat system isolated hota hai → total momentum conserved rehta hai har step me.",
+    
+    why: "IAT me sabse bada trap hota hai: relative velocity vs ground velocity confusion.",
+    
+    how: "Step 1: Frame fix karo (ground ya boat)\nStep 2: Momentum conserve karo\nStep 3: Relative velocity properly apply karo",
+    
+    derivation: "Case: Equal mass (m, m)\n\nIf person jumps with velocity v (wrt ground):\nInitial momentum = 0\nFinal: m·v + m·v_boat = 0\n⇒ v_boat = −v\n\n👉 Matlab boat opposite direction me same speed se jayegi (NOT 2v)",
+    
+    example: "m = 50kg, boat = 50kg\nPerson jumps at 4 m/s\n⇒ Boat speed = −4 m/s\n\n👉 Equal mass → equal speed opposite",
+    
+    diagramSvg: "",
+    
+    useYes: "✅ Jab relative velocity clearly given ho (wrt ground ya boat)\n✅ Stepwise jump problems",
+    
+    useNo: "❌ Direct 'double speed' type shortcut use mat kar\n❌ Frame confuse ho toh galat answer pakka",
+    
+    examQ: "📌 IAT: Equal mass boat aur man. Man ground ke respect me v se jump karta hai. Boat ki speed?\n👉 Direct: v_boat = −v"
+  }
+},
+{
+  number: "19",
+  title: "Force Triangle · 3‑Force Equilibrium",
+  badge: "🔺 TRIANGLE",
+  stripe: "green",
+  formula: "<b>If 3 forces, Lami's theorem or sine rule.</b>",
+  desc: "10‑Second Trick: Agar ek horizontal aur ek vertical force hai, to tanθ = opposite/adjacent se seedha nikaalo.",
+  deepDive: {
+    what: "When three forces keep a particle in equilibrium, they can be represented as sides of a triangle (head‑to‑tail). Lami's theorem: F₁/sinα = F₂/sinβ = F₃/sinγ, where α is angle opposite F₁.",
+    why: "IAT: Find tension in strings at angles.",
+    how: "If one force is vertical (weight) and one horizontal, use tanθ = horizontal/vertical directly without Lami's.",
+    derivation: "From sine rule in force triangle.",
+    example: "Weight 10√3 N, string at 60° to horizontal. T₂ (horizontal) = ? tan60° = (10√3)/T₂ ⇒ T₂ = 10 N.",
+    diagramSvg: "",
+    useYes: "✅ Equilibrium of three forces. Tension problems.",
+    useNo: "❌ More than three forces.",
+    examQ: "📌 IAT Style: A mass 5 kg hangs from two strings making 30° and 60° with horizontal. Tensions? → Use Lami's or components."
+  }
+},
+{
+  number: "20",
+  title: "Banking of Roads · Optimum Speed",
+  badge: "🛣️ BANKING",
+  stripe: "blue",
+  formula: "<b>v<sub>opt</sub> = √(rg tanθ) &nbsp;|&nbsp; v<sub>max</sub> = √(rg (μ+tanθ)/(1−μ tanθ))</b>",
+  desc: "10‑Second Trick: Bina friction optimum speed. Friction ke sath max speed formula.",
+  deepDive: {
+    what: "On a banked road, the optimum speed without relying on friction is v = √(rg tanθ). With friction, maximum safe speed is higher.",
+    why: "IAT: 'Find safe speed on banked curve.'",
+    how: "For no friction: N sinθ = mv²/r, N cosθ = mg ⇒ v = √(rg tanθ).",
+    derivation: "From horizontal and vertical force balance.",
+    example: "r=40 m, θ=30°, g=10. v_opt = √(40×10×tan30) = √(400/√3) ≈ 15.2 m/s.",
+    diagramSvg: "",
+    useYes: "✅ Banked curve speed calculations.",
+    useNo: "❌ Unbanked curves (use μ only).",
+    examQ: "📌 IAT Style: A circular road of radius 50 m is banked at 37°. Optimum speed (g=10): → v = √(50×10×0.75) = √375 ≈ 19.4 m/s."
+  }
+},
+{
+  number: "21",
+  title: "Bending of Cyclist · tanθ = v²/(rg)",
+  badge: "🚴 CYCLIST",
+  stripe: "red",
+  formula: "<b>tanθ = v²/(rg)</b>",
+  desc: "10‑Second Trick: Cyclist bend angle ka formula banking jaisa hi hai.",
+  deepDive: {
+    what: "A cyclist negotiating a turn leans inward. The angle with vertical satisfies tanθ = v²/(rg).",
+    why: "IAT: 'Find angle of bending.'",
+    how: "Balance torque about center of mass: N·h·sinθ = f·h·cosθ, with f = mv²/r, N=mg ⇒ tanθ = v²/(rg).",
+    derivation: "From moment equilibrium.",
+    example: "v=10 m/s, r=20 m, g=10. tanθ = 100/(200)=0.5 ⇒ θ≈26.6°.",
+    diagramSvg: "",
+    useYes: "✅ Cyclist bending angle. Same as banking angle.",
+    useNo: "❌ Not for vehicles with more than two wheels.",
+    examQ: "📌 IAT Style: A cyclist takes a turn of radius 30 m at 54 km/h (15 m/s). Angle with vertical: tanθ = 225/(300)=0.75 ⇒ θ≈37°."
+  }
+},
+{
+  number: "22",
+  title: "Centripetal Acceleration · a_c = v²/r = ω²r",
+  badge: "🎡 CENTRIPETAL",
+  stripe: "purple",
+  formula: "<b>a<sub>c</sub> = v²/r = ω²r</b>",
+  desc: "10‑Second Trick: Uniform circular motion mein bhi acceleration hota hai — center ki taraf.",
+  deepDive: {
+    what: "In uniform circular motion, speed is constant but direction changes, resulting in centripetal acceleration directed toward center. Magnitude a_c = v²/r = ω²r.",
+    why: "IAT: 'Find centripetal force or acceleration.'",
+    how: "Given v and r, or ω and r.",
+    derivation: "From geometry of velocity vector change.",
+    example: "Mass 2 kg, speed 4 m/s, radius 2 m. a_c = 16/2=8 m/s², F_c = 2×8=16 N.",
+    diagramSvg: "",
+    useYes: "✅ Circular motion acceleration and force.",
+    useNo: "❌ If speed is changing (then add tangential).",
+    examQ: "📌 IAT Style: A particle moves in circle radius 0.5 m at 10 m/s. Centripetal acceleration: → 100/0.5=200 m/s²."
+  }
+},
+{
+  number: "23",
+  title: "Tangential Acceleration · a_t = dv/dt = αr",
+  badge: "📈 TANGENTIAL",
+  stripe: "green",
+  formula: "<b>a<sub>t</sub> = dv/dt = αr &nbsp;|&nbsp; a<sub>net</sub> = √(a_c² + a_t²)</b>",
+  desc: "10‑Second Trick: Speed change ho rahi hai to tangential acceleration bhi hota hai.",
+  deepDive: {
+    what: "In non‑uniform circular motion, speed changes, so there is tangential acceleration a_t = dv/dt = αr (α is angular acceleration). Net acceleration is vector sum of centripetal and tangential.",
+    why: "IAT: 'Find net acceleration when speed is changing.'",
+    how: "Compute a_c from current speed, a_t from rate of change of speed. Magnitude = √(a_c² + a_t²).",
+    derivation: "From polar coordinates.",
+    example: "Car speeds up from 10 to 20 m/s in 5 s on curve r=50 m. At v=15 m/s: a_c=225/50=4.5, a_t=2, a_net=√(20.25+4)=√24.25≈4.92 m/s².",
+    diagramSvg: "",
+    useYes: "✅ Net acceleration in non‑uniform circular motion.",
+    useNo: "❌ Uniform circular motion (a_t=0).",
+    examQ: "📌 IAT Style: Particle speed increases at 3 m/s² on circle radius 2 m. At v=4 m/s, net acceleration: a_c=16/2=8, a_t=3, net=√(64+9)=√73≈8.54 m/s²."
+  }
+},
+{
+  number: "24",
+  title: "Conical Pendulum · v = √(rg tanθ)",
+  badge: "⏳ CONICAL",
+  stripe: "blue",
+  formula: "<b>v = √(rg tanθ) &nbsp;|&nbsp; T = 2π√(L cosθ/g)</b>",
+  desc: "10‑Second Trick: Conical pendulum ka speed formula banking jaisa. Period keval vertical height par depend karta hai.",
+  deepDive: {
+    what: "A conical pendulum consists of a mass revolving in a horizontal circle at constant speed, suspended by a string of length L making angle θ with vertical. Speed v = √(rg tanθ) where r = L sinθ. Period T = 2π√(L cosθ/g).",
+    why: "IAT: 'Find period or tension in conical pendulum.'",
+    how: "Vertical: T cosθ = mg; Horizontal: T sinθ = mv²/r. Divide: tanθ = v²/(rg).",
+    derivation: "From force balance.",
+    example: "L=1 m, θ=30°, g=10. r=0.5 m. v = √(0.5×10×tan30) = √(5×0.577) ≈ 1.7 m/s. T_period = 2π√(1×cos30/10)=2π√(0.0866)≈1.85 s.",
+    diagramSvg: "",
+    useYes: "✅ Conical pendulum speed, period, tension.",
+    useNo: "❌ Not for simple pendulum.",
+    examQ: "📌 IAT Style: A conical pendulum has length 2 m, angle 60°. Period (g=10): → T = 2π√(2×0.5/10) = 2π√(0.1) ≈ 1.99 s."
+  }
+},
+{
+  number: "25",
+  title: "Rocket Propulsion · Thrust Force",
+  badge: "🚀 ROCKET",
+  stripe: "red",
+  formula: "<b>F<sub>thrust</sub> = v<sub>rel</sub> (dm/dt)</b>",
+  desc: "10‑Second Trick: Gas nikalne ki relative speed × mass rate = thrust. Net acceleration a = (Thrust − mg)/m.",
+  deepDive: {
+    what: "Rocket propulsion: thrust force = exhaust velocity (relative to rocket) × rate of mass ejection. Equation of motion: m(dv/dt) = v_rel (dm/dt) − mg (if vertical).",
+    why: "IAT: 'Find acceleration of rocket given exhaust speed and fuel burn rate.'",
+    how: "Thrust = v_rel × (dm/dt). Net force = Thrust − weight. a = (Thrust − mg)/m.",
+    derivation: "From momentum conservation of rocket + ejected gas.",
+    example: "Rocket mass 5000 kg, ejects 50 kg/s at 2000 m/s. Thrust = 2000×50 = 100,000 N. Initial a = (100,000 − 5000×10)/5000 = 50,000/5000 = 10 m/s².",
+    diagramSvg: "",
+    useYes: "✅ Rocket acceleration, thrust calculation.",
+    useNo: "❌ Not for constant mass systems.",
+    examQ: "📌 IAT Style: A rocket ejects gas at 1000 m/s relative, rate 20 kg/s. Initial mass 1000 kg. Initial acceleration (g=10): → a = (1000×20)/1000 − 10 = 20 − 10 = 10 m/s²."
+  }
+},
+{
+  number: "26",
+  title: "Variable Force · Integration Rule",
+  badge: "∫ VAR FORCE",
+  stripe: "purple",
+  formula: "<b>If F(t): m dv/dt = F(t)<br>If F(x): mv dv/dx = F(x)</b>",
+  desc: "10‑Second Trick: Force time pe depend kare to F= m dv/dt; position pe depend kare to F = mv dv/dx.",
+  deepDive: {
+    what: "For variable force, use calculus. If force is a function of time, integrate a = F/m w.r.t time. If force is function of position, use a = v dv/dx and integrate v dv = (F/m) dx.",
+    why: "IAT: 'Find velocity as function of position/time.'",
+    how: "F(t): ∫dv = ∫(F(t)/m) dt. F(x): ∫v dv = ∫(F(x)/m) dx.",
+    derivation: "Chain rule: a = dv/dt = (dv/dx)(dx/dt) = v dv/dx.",
+    example: "F = 6x N, m=2 kg. Find v(x) if v=0 at x=0. → v dv = (6x/2)dx = 3x dx ⇒ v²/2 = (3/2)x² ⇒ v = √3 x.",
+    diagramSvg: "",
+    useYes: "✅ Variable force problems.",
+    useNo: "❌ Constant force.",
+    examQ: "📌 IAT Style: Force F = 3t N on 1 kg from rest. Velocity at t=2 s: → a=3t, ∫dv = ∫3t dt ⇒ v = 1.5t². At t=2, v=6 m/s."
+  }
+},
+{
+  number: "27",
+  title: "Equilibrium of Three Forces · Lami's Theorem",
+  badge: "🔺 LAMI'S",
+  stripe: "green",
+  formula: "<b>F₁/sinα = F₂/sinβ = F₃/sinγ</b>",
+  desc: "10‑Second Trick: Teen forces equilibrium mein hain to Lami's lagao. Angle opposite force ke samne wala.",
+  deepDive: {
+    what: "When three coplanar, concurrent forces are in equilibrium, each force is proportional to the sine of the angle between the other two.",
+    why: "IAT: 'Find tension in strings with given angles.'",
+    how: "Identify the three forces and the three angles opposite them. Set up ratios.",
+    derivation: "From sine rule in force triangle.",
+    example: "Weight W, tensions T₁, T₂ at angles 120°, 120°, 120°? Then all equal to W.",
+    diagramSvg: "",
+    useYes: "✅ Three‑force equilibrium problems.",
+    useNo: "❌ More than three forces.",
+    examQ: "📌 IAT Style: A mass 10 kg hangs by two strings making 90° with each other and equal angles with vertical. Tension in each: → Each supports 10×10/2cos45? Actually vertical: 2T cos45 = 100 ⇒ T = 50√2 N."
+  }
+},
+{
+  number: "28",
+  title: "IAT NLM Cheat Sheet · Summary",
+  badge: "🏁 CHEAT",
+  stripe: "gold",
+  formula: "<b>F=ma, p=mv, J=Δp, f≤μN, a_c=v²/r, pseudo=−ma₀</b>",
+  desc: "10‑Second Trick: Last minute revision — saare key formulas ek jagah.",
+  deepDive: {
+    what: "Summary card for Newton's Laws of Motion chapter.",
+    why: "Quick revision before exam.",
+    how: "Memorize these formulas and tricks.",
+    derivation: "",
+    example: "",
+    diagramSvg: `
+      <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="380" height="160" fill="#fffcf7" stroke="#b8860b" stroke-width="2" rx="8"/>
+        <text x="200" y="30" font-size="11" fill="#b8860b" text-anchor="middle" font-weight="600">⚡ NLM QUICK REFERENCE ⚡</text>
+        <text x="20" y="50" font-size="9" fill="#333">• 1st Law: F_net=0 ⇔ v const</text>
+        <text x="20" y="65" font-size="9" fill="#333">• 2nd Law: F = dp/dt; const mass → F=ma</text>
+        <text x="20" y="80" font-size="9" fill="#333">• Impulse J = Δp = area under F‑t</text>
+        <text x="20" y="95" font-size="9" fill="#333">• Friction: static ≤ μ_sN; kinetic = μ_kN</text>
+        <text x="20" y="110" font-size="9" fill="#333">• Pseudo force: F_p = −m a_frame</text>
+        <text x="20" y="125" font-size="9" fill="#333">• Circular: a_c = v²/r; Banking: v=√(rg tanθ)</text>
+        <text x="20" y="140" font-size="9" fill="#c0392b">• Contact force: F_contact = F×(mass ahead)/total</text>
+        <text x="20" y="155" font-size="9" fill="#1a6b3c">• Spring cut: force unchanged just after</text>
+      </svg>
+    `,
+    useYes: "✅ Last minute glance.",
+    useNo: "❌ Not for detailed derivation.",
+    examQ: "📌 IAT Style: Use this as mental summary."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
