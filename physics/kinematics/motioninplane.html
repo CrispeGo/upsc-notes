@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #7c3aed;
+--accent2: #8b5cf6;
+--accent3: #6d28d9;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #f5f3ff;
+--formula-border: #7c3aed;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(124,58,237,0.10);
+--shadow-hover: 0 12px 40px rgba(124,58,237,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(124,58,237,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139,92,246,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #8b5cf6 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #4c1d95;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Physics";          // e.g., "Chemistry", "Mathematics", "Biology"
+const CHAPTER = "Motion in Plane";   // e.g., "Rotational Motion", "Thermodynamics"
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+ // ========== PHYSICS · MOTION IN A PLANE (Cards 01 to 25) ==========
+
+{
+  number: "01",
+  title: "Orthogonal Vectors · Dot Product = 0",
+  badge: "📐 ORTHOGONAL",
+  stripe: "blue",
+  formula: "<b>If A ⟂ B, then A·B = 0</b>",
+  desc: "10‑Second Trick: Exam mein 'orthogonal' likha ho to seedha dot product zero karo. Component nikalne ki zaroorat nahi.",
+  deepDive: {
+    what: "Two vectors are orthogonal (perpendicular) if the angle between them is 90°. Their dot product is zero because A·B = |A||B|cos90° = 0.",
+    why: "IAT favorite keyword: 'orthogonal'. Condition lagake unknown nikalna.",
+    how: "If A = a₁i + a₂j and B = b₁i + b₂j, then A·B = a₁b₁ + a₂b₂ = 0.",
+    derivation: "Dot product definition.",
+    example: "Find k such that A=2i+3j and B=ki−2j are orthogonal. → 2k −6 = 0 ⇒ k=3.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="90" x2="100" y2="40" stroke="#2a4494" stroke-width="3"/>
+        <text x="60" y="60" font-size="10" fill="#2a4494">A</text>
+        <line x1="20" y1="90" x2="100" y2="90" stroke="#c0392b" stroke-width="3"/>
+        <text x="60" y="85" font-size="10" fill="#c0392b">B</text>
+        <path d="M 80,70 A 20,20 0 0,0 80,90" fill="none" stroke="#333" stroke-width="1.5"/>
+        <text x="85" y="85" font-size="10" fill="#333">90°</text>
+      </svg>
+    `,
+    useYes: "✅ Condition for perpendicular vectors.",
+    useNo: "❌ Not for parallel/anti‑parallel vectors.",
+    examQ: "📌 IAT Style: If vectors 2i−j+k and i+λj+3k are orthogonal, find λ. → 2(1)+(−1)λ+1(3)=0 ⇒ 2−λ+3=0 ⇒ λ=5."
+  }
+},
+{
+  number: "02",
+  title: "Collinear Vectors · Cross Product = 0",
+  badge: "📏 COLLINEAR",
+  stripe: "red",
+  formula: "<b>If A ∥ B, then A × B = 0</b>",
+  desc: "10‑Second Trick: 'Parallel' ya 'collinear' vector dikhe to cross product zero. Ratio of components equal.",
+  deepDive: {
+    what: "Collinear vectors have angle 0° or 180°. Their cross product is zero vector. Also component ratios are equal: a₁/a₂ = b₁/b₂.",
+    why: "IAT asks condition for parallel vectors.",
+    how: "Cross product magnitude |A×B| = |A||B|sinθ = 0 when θ=0° or 180°. In 2D: A×B = (a₁b₂ − a₂b₁)k = 0 ⇒ a₁/a₂ = b₁/b₂.",
+    derivation: "Cross product definition.",
+    example: "Find λ such that A=2i+3j and B=4i+λj are parallel. → 2/4 = 3/λ ⇒ λ=6.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="50" x2="150" y2="50" stroke="#2a4494" stroke-width="3"/>
+        <text x="80" y="40" font-size="10" fill="#2a4494">A</text>
+        <line x1="20" y1="70" x2="150" y2="70" stroke="#c0392b" stroke-width="3"/>
+        <text x="80" y="85" font-size="10" fill="#c0392b">B</text>
+      </svg>
+    `,
+    useYes: "✅ Condition for parallel/collinear vectors.",
+    useNo: "❌ Not for perpendicular vectors.",
+    examQ: "📌 IAT Style: For what value of p are vectors 3i−2j and −6i+pj collinear? → 3/−6 = −2/p ⇒ p=4."
+  }
+},
+{
+  number: "03",
+  title: "Unit Vectors · Cross Product Cyclic Rule",
+  badge: "🔄 i,j,k",
+  stripe: "green",
+  formula: "<b>i×j = k, j×k = i, k×i = j<br>j×i = −k, etc.</b>",
+  desc: "10‑Second Trick: i→j→k→i cycle mein positive; ulta cycle negative.",
+  deepDive: {
+    what: "Right‑handed coordinate system: i, j, k are mutually perpendicular unit vectors. Cross product follows cyclic order: i×j=k, j×k=i, k×i=j. Reverse order gives negative.",
+    why: "IAT cross product calculations require these.",
+    how: "Memorize the cycle: i→j→k→i. If you go forward, positive; backward, negative.",
+    derivation: "From definition of cross product.",
+    example: "Simplify (i×j)×k. → i×j=k, then k×k=0.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="70" r="40" fill="none" stroke="#333" stroke-width="1.5"/>
+        <text x="100" y="30" font-size="14" fill="#2a4494" font-weight="600">i</text>
+        <text x="150" y="70" font-size="14" fill="#c0392b" font-weight="600">j</text>
+        <text x="50" y="70" font-size="14" fill="#1a6b3c" font-weight="600">k</text>
+        <path d="M 110,40 A 30,30 0 0,1 140,60" fill="none" stroke="#b8860b" stroke-width="2" marker-end="url(#arrow)"/>
+        <defs><marker id="arrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="#b8860b"/></marker></defs>
+        <text x="145" y="45" font-size="9" fill="#b8860b">+ve cycle</text>
+      </svg>
+    `,
+    useYes: "✅ Cross product of unit vectors. Vector algebra.",
+    useNo: "❌ Not for dot product.",
+    examQ: "📌 IAT Style: i·(j×k) = ? → j×k=i, i·i = 1."
+  }
+},
+{
+  number: "04",
+  title: "Vector Resolution · Component with Cos",
+  badge: "📐 RESOLUTION",
+  stripe: "purple",
+  formula: "<b>Along angle θ → F cosθ ; Perpendicular → F sinθ</b>",
+  desc: "10‑Second Trick: Jis direction ke saath angle θ hai, wahan cosθ; perpendicular wahan sinθ.",
+  deepDive: {
+    what: "Resolving a vector of magnitude F at angle θ with horizontal: Horizontal component = F cosθ, Vertical = F sinθ. If angle is with vertical, swap.",
+    why: "IAT projectile and inclined plane problems require quick resolution.",
+    how: "Identify axis with angle θ. That component gets cosθ. The other gets sinθ.",
+    derivation: "From right triangle: adjacent = hyp·cosθ, opposite = hyp·sinθ.",
+    example: "Force 10 N at 30° above horizontal. Horizontal = 10cos30 = 8.66 N, Vertical = 10sin30 = 5 N.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="120" x2="150" y2="40" stroke="#2a4494" stroke-width="3"/>
+        <text x="90" y="70" font-size="10" fill="#2a4494">F</text>
+        <line x1="20" y1="120" x2="150" y2="120" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="80" y="115" font-size="9" fill="#c0392b">F cosθ</text>
+        <line x1="150" y1="120" x2="150" y2="40" stroke="#1a6b3c" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="155" y="80" font-size="9" fill="#1a6b3c">F sinθ</text>
+        <path d="M 40,110 A 30,30 0 0,0 70,90" fill="none" stroke="#333" stroke-width="1"/>
+        <text x="55" y="105" font-size="9">θ</text>
+      </svg>
+    `,
+    useYes: "✅ Resolving any vector quickly.",
+    useNo: "❌ Not for vector addition directly.",
+    examQ: "📌 IAT Style: A velocity of 20 m/s makes 37° with horizontal. Horizontal component is: → 20 × 0.8 = 16 m/s."
+  }
+},
+{
+  number: "05",
+  title: "Relative Motion · Shortest Distance Shortcut",
+  badge: "🚢 RELATIVE",
+  stripe: "blue",
+  formula: "<b>If v₁=v₂ and perpendicular, time to closest approach = d/(2v)</b>",
+  desc: "10‑Second Trick: Do bodies same speed, perpendicular paths? Initial distance d? Seedha t = d/2v.",
+  deepDive: {
+    what: "Two bodies moving with equal speeds v in mutually perpendicular directions, starting at distance d apart. Minimum separation occurs at t = d/(2v).",
+    why: "IAT asks time to closest approach without lengthy relative velocity derivation.",
+    how: "Direct formula. Works when initial positions and velocities form right triangle geometry.",
+    derivation: "Relative velocity magnitude = v√2. Component along line joining initial positions gives t = d/(2v).",
+    example: "Ships 10 km apart move perpendicular at 5 km/h. Time to closest = 10/(2×5) = 1 h.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="5" fill="#2a4494"/><text x="30" y="30" font-size="9" fill="#2a4494">A</text>
+        <line x1="40" y1="40" x2="100" y2="40" stroke="#2a4494" stroke-width="1.5" marker-end="url(#arr)"/>
+        <circle cx="200" cy="120" r="5" fill="#c0392b"/><text x="210" y="110" font-size="9" fill="#c0392b">B</text>
+        <line x1="200" y1="120" x2="200" y2="70" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="40" y1="40" x2="200" y2="120" stroke="#333" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="120" y="80" font-size="9">d</text>
+        <defs><marker id="arr" markerWidth="6" markerHeight="4" refX="6" refY="2"><polygon points="0 0,6 2,0 4" fill="#333"/></marker></defs>
+        <text x="80" y="140" font-size="9" fill="#666">t_min = d / (2v)</text>
+      </svg>
+    `,
+    useYes: "✅ Time to closest approach for perpendicular equal speeds.",
+    useNo: "❌ If speeds unequal or directions not perpendicular.",
+    examQ: "📌 IAT Style: Two particles 20 m apart move perpendicular with 5 m/s each. Minimum distance time: t = 20/(2×5) = 2 s."
+  }
+},
+{
+  number: "06",
+  title: "Horizontal Projectile · Perpendicular Velocity Time",
+  badge: "🎯 HORIZONTAL",
+  stripe: "red",
+  formula: "<b>Two projectiles thrown opp: t = √(u₁u₂)/g if diff speeds; t = u/g if same speed.</b>",
+  desc: "10‑Second Trick: Velocities perpendicular hone ka time: same speed → t = u/g; different → t = √(u₁u₂)/g.",
+  deepDive: {
+    what: "Two particles thrown horizontally in opposite directions from same height. Their velocity vectors become perpendicular at time t = u/g (if same speed u) or t = √(u₁u₂)/g (if speeds u₁, u₂).",
+    why: "IAT special case shortcut.",
+    how: "Use dot product of velocity vectors: v₁·v₂ = 0 at that instant.",
+    derivation: "v₁ = u₁ i − gt j; v₂ = −u₂ i − gt j. v₁·v₂ = −u₁u₂ + g²t² = 0 ⇒ t = √(u₁u₂)/g.",
+    example: "Two balls thrown horizontally at 20 m/s and 45 m/s from same height. Time when perpendicular: t = √(20×45)/10 = √900/10 = 30/10 = 3 s.",
+    diagramSvg: "",
+    useYes: "✅ Time when velocities become perpendicular in horizontal projection.",
+    useNo: "❌ Not for oblique projection.",
+    examQ: "📌 IAT Style: Two particles projected horizontally in opposite directions with 10 m/s each. Time when velocities perpendicular: t = 10/10 = 1 s."
+  }
+},
+{
+  number: "07",
+  title: "Projectile Motion · Velocity at Top",
+  badge: "🏹 PROJECTILE",
+  stripe: "green",
+  formula: "<b>At highest point: v_y = 0, v_x = u cosθ</b>",
+  desc: "10‑Second Trick: Top par projectile rukta nahi! Horizontal velocity constant rehti hai.",
+  deepDive: {
+    what: "In projectile motion, acceleration is only vertical (g downward). Horizontal velocity remains constant. At highest point, vertical velocity becomes zero, but horizontal velocity = u cosθ persists.",
+    why: "IAT trap: many think velocity is zero at top. Answer is u cosθ.",
+    how: "Always remember: a_x = 0 ⇒ v_x constant; a_y = −g ⇒ v_y decreases to 0 at top.",
+    derivation: "v_x = u cosθ; v_y = u sinθ − gt. At top, v_y=0.",
+    example: "Projectile fired at 50 m/s, 37°. Speed at highest point = 50 × cos37° = 50 × 0.8 = 40 m/s.",
+    diagramSvg: `
+      <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 20,120 Q 150,20 280,120" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <circle cx="150" cy="45" r="5" fill="#c0392b"/>
+        <line x1="150" y1="45" x2="200" y2="45" stroke="#c0392b" stroke-width="2" marker-end="url(#ar)"/>
+        <text x="210" y="45" font-size="9" fill="#c0392b">v = u cosθ</text>
+        <text x="130" y="35" font-size="9" fill="#333">v_y = 0</text>
+        <defs><marker id="ar" markerWidth="6" markerHeight="4" refX="6" refY="2"><polygon points="0 0,6 2,0 4" fill="#c0392b"/></marker></defs>
+      </svg>
+    `,
+    useYes: "✅ Finding speed at highest point. Understanding projectile motion.",
+    useNo: "❌ Not for air resistance cases.",
+    examQ: "📌 IAT Style: A ball is thrown at 20 m/s, 60° with horizontal. Speed at highest point is: → 20 × cos60° = 10 m/s."
+  }
+},
+{
+  number: "08",
+  title: "Equation of Trajectory · y = x tanθ − (gx²)/(2u²cos²θ)",
+  badge: "📈 TRAJECTORY",
+  stripe: "purple",
+  formula: "<b>y = x tanθ − gx² / (2u² cos²θ)</b>",
+  desc: "10‑Second Trick: Time na diya ho to position nikalne ke liye trajectory equation use karo.",
+  deepDive: {
+    what: "The path of a projectile is parabolic. Equation relates x and y directly without time.",
+    why: "IAT asks: 'Find height at horizontal distance x', or 'Angle for given point'.",
+    how: "Substitute known u, θ, g, and x to find y, or vice versa.",
+    derivation: "x = u cosθ · t ⇒ t = x/(u cosθ). Substitute in y = u sinθ·t − ½gt².",
+    example: "u=20 m/s, θ=30°. Find y at x=10 m. y = 10×tan30 − (10×10²)/(2×400×cos²30) = 10×0.577 − 1000/(800×0.75) = 5.77 − 1.67 = 4.1 m.",
+    diagramSvg: "",
+    useYes: "✅ Position at given x. Determining if point lies on path.",
+    useNo: "❌ Not for time‑dependent questions.",
+    examQ: "📌 IAT Style: Projectile with u=10 m/s, θ=45°. Height at x=5 m: y = 5×1 − (10×25)/(2×100×0.5) = 5 − 250/100 = 2.5 m."
+  }
+},
+{
+  number: "09",
+  title: "Complementary Angles · Same Range",
+  badge: "🎯 RANGE",
+  stripe: "blue",
+  formula: "<b>For θ and 90°−θ, R₁ = R₂; R = 4√(H₁H₂)</b>",
+  desc: "10‑Second Trick: Complementary angles ki range same hoti hai. Heights di ho to R = 4√(H₁H₂).",
+  deepDive: {
+    what: "Projectiles launched with same speed u at angles θ and 90°−θ have equal range. Their maximum heights H₁ = u²sin²θ/(2g) and H₂ = u²cos²θ/(2g). Then R = 4√(H₁H₂).",
+    why: "IAT gives H₁, H₂ and asks range without u or θ.",
+    how: "Multiply H₁ and H₂, take square root, multiply by 4.",
+    derivation: "H₁H₂ = (u⁴ sin²θ cos²θ)/(4g²). R = u² sin2θ/g = 2u² sinθ cosθ/g. Then 4√(H₁H₂) = 4×(u² sinθ cosθ)/(2g) = 2u² sinθ cosθ/g = R.",
+    example: "H₁=5 m, H₂=20 m. R = 4√(100) = 40 m.",
+    diagramSvg: "",
+    useYes: "✅ Range from maximum heights of complementary projections.",
+    useNo: "❌ If angles not complementary.",
+    examQ: "📌 IAT Style: Two projectiles have H_max 10 m and 40 m. If their ranges are equal, find R. → R = 4√(400) = 80 m."
+  }
+},
+{
+  number: "10",
+  title: "Horizontal Projectile from Tower · Time of Fall",
+  badge: "🏢 TOWER",
+  stripe: "red",
+  formula: "<b>t = √(2h/g) independent of horizontal speed</b>",
+  desc: "10‑Second Trick: Building se drop karo ya horizontal feko — zameen tak pahunchne ka time same.",
+  deepDive: {
+    what: "For a body projected horizontally from height h, time to hit ground depends only on vertical motion. Since initial vertical velocity = 0, t = √(2h/g). Horizontal speed does not affect fall time.",
+    why: "IAT conceptual: 'Which hits first?' Answer: Both at same time if dropped horizontally and vertically from same height.",
+    how: "Use y = ½gt² ⇒ t = √(2h/g).",
+    derivation: "Vertical motion: h = ½gt² (since u_y=0).",
+    example: "From a 45 m high tower, time to ground = √(2×45/10) = √9 = 3 s, regardless of horizontal speed.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="40" height="100" fill="#aaa"/>
+        <circle cx="60" cy="30" r="4" fill="#2a4494"/>
+        <path d="M 60,30 Q 150,80 200,120" fill="none" stroke="#2a4494" stroke-width="1.5"/>
+        <line x1="60" y1="30" x2="60" y2="120" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="100" y="140" font-size="9">Both take same time to fall!</text>
+      </svg>
+    `,
+    useYes: "✅ Time of fall from height. Comparing horizontal vs drop.",
+    useNo: "❌ If initial vertical velocity not zero.",
+    examQ: "📌 IAT Style: A bullet is fired horizontally from a height of 80 m. Time to hit ground (g=10): → t = √(2×80/10) = 4 s."
+  }
+},
+{
+  number: "11",
+  title: "Projectile on Inclined Plane · Component of g",
+  badge: "📐 INCLINE",
+  stripe: "green",
+  formula: "<b>Along incline: a<sub>x</sub> = −g sinα ; Perpendicular: a<sub>y</sub> = −g cosα</b>",
+  desc: "10‑Second Trick: Incline par axes ghumao. Gravity ke components α ke saath cos/sin.",
+  deepDive: {
+    what: "For projectile on an inclined plane of angle α, take axes along and perpendicular to incline. Then acceleration components: along incline a_x = −g sinα, perpendicular a_y = −g cosα.",
+    why: "IAT inclined plane problems require this resolution.",
+    how: "Identify α (inclination). a_x = g sinα down the incline; a_y = g cosα perpendicular.",
+    derivation: "From geometry: component of g parallel to incline = g sinα, perpendicular = g cosα.",
+    example: "Incline α=30°. a_x = −g sin30 = −g/2; a_y = −g cos30 = −g√3/2.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="120" x2="200" y2="40" stroke="#333" stroke-width="3"/>
+        <text x="110" y="90" font-size="9" fill="#333">α</text>
+        <line x1="20" y1="120" x2="150" y2="120" stroke="#aaa" stroke-width="1"/>
+        <line x1="80" y1="60" x2="80" y2="100" stroke="#c0392b" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="60" y="80" font-size="9" fill="#c0392b">g cosα</text>
+        <line x1="80" y1="60" x2="130" y2="90" stroke="#2a4494" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="120" y="75" font-size="9" fill="#2a4494">g sinα</text>
+        <defs><marker id="arr" markerWidth="6" markerHeight="4" refX="6" refY="2"><polygon points="0 0,6 2,0 4" fill="#333"/></marker></defs>
+      </svg>
+    `,
+    useYes: "✅ Inclined plane projectile. Time of flight, range on incline.",
+    useNo: "❌ Not for horizontal ground.",
+    examQ: "📌 IAT Style: A projectile is fired up an incline of 30° with speed u perpendicular to incline. Time of flight? → T = 2u/(g cos30°)."
+  }
+},
+{
+  number: "12",
+  title: "River Boat · Shortest Time",
+  badge: "🚣 RIVER",
+  stripe: "blue",
+  formula: "<b>Shortest time: point boat straight across. t<sub>min</sub> = d / v<sub>b</sub></b>",
+  desc: "10‑Second Trick: Nadi paar karne ka minimum time boat ko perpendicular rakhne par milta hai. Drift hogi.",
+  deepDive: {
+    what: "To cross a river of width d in minimum time, the boat should be directed perpendicular to the river flow. The river velocity causes drift downstream, but crossing time t = d / v_b (boat speed).",
+    why: "IAT asks 'time to cross' or 'drift' in shortest time case.",
+    how: "Time = width / v_b. Drift = v_r × t = v_r × (d/v_b).",
+    derivation: "Velocity component across river = v_b. Time = d / v_b.",
+    example: "River width 100 m, v_b=5 m/s, v_r=3 m/s. Shortest time = 100/5=20 s. Drift = 3×20=60 m.",
+    diagramSvg: `
+      <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="30" width="230" height="80" fill="#e0f2fe"/>
+        <line x1="10" y1="30" x2="240" y2="30" stroke="#333"/><line x1="10" y1="110" x2="240" y2="110" stroke="#333"/>
+        <text x="120" y="25" font-size="9">River width d</text>
+        <circle cx="30" cy="70" r="5" fill="#2a4494"/>
+        <line x1="30" y1="70" x2="100" y2="70" stroke="#2a4494" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="50" y="60" font-size="9" fill="#2a4494">v_b</text>
+        <line x1="100" y1="70" x2="180" y2="70" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr)"/>
+        <text x="140" y="60" font-size="9" fill="#c0392b">v_r</text>
+        <path d="M 30,70 L 180,100" stroke="#333" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="120" y="120" font-size="9">t = d / v_b (min time)</text>
+      </svg>
+    `,
+    useYes: "✅ Minimum crossing time. Drift calculation.",
+    useNo: "❌ Not for shortest path (zero drift).",
+    examQ: "📌 IAT Style: Boat speed 4 m/s, river 2 m/s, width 80 m. Minimum crossing time: → t = 80/4 = 20 s."
+  }
+},
+{
+  number: "13",
+  title: "River Boat · Shortest Path (Zero Drift)",
+  badge: "🎯 ZERO DRIFT",
+  stripe: "red",
+  formula: "<b>Condition: v<sub>b</sub> > v<sub>r</sub> and sinθ = v<sub>r</sub>/v<sub>b</sub></b>",
+  desc: "10‑Second Trick: Drift zero chahiye to boat ko upar ki taraf angle par daudao. v_b > v_r zaroori.",
+  deepDive: {
+    what: "To cross the river perpendicularly (zero drift), the boat must head upstream at an angle θ such that v_b sinθ = v_r. This is only possible if v_b > v_r. Then crossing time t = d / (v_b cosθ).",
+    why: "IAT asks for angle to cross straight, or time for shortest path.",
+    how: "sinθ = v_r / v_b. Then time = d / √(v_b² − v_r²).",
+    derivation: "Resultant velocity perpendicular: v_perp = √(v_b² − v_r²).",
+    example: "v_b=5 m/s, v_r=3 m/s, d=100 m. sinθ=3/5⇒θ=37°. Time = 100/4 = 25 s.",
+    diagramSvg: "",
+    useYes: "✅ Shortest path (zero drift) condition and time.",
+    useNo: "❌ If v_b ≤ v_r, drift can't be zero.",
+    examQ: "📌 IAT Style: Boat speed 10 m/s, river 6 m/s. Angle to cross straight: sinθ=0.6⇒θ=37°. Time to cross 200 m = 200/8 = 25 s."
+  }
+},
+{
+  number: "14",
+  title: "Rain-Man · Relative Velocity",
+  badge: "☔ RAIN",
+  stripe: "purple",
+  formula: "<b>v<sub>rain,man</sub> = v<sub>rain</sub> − v<sub>man</sub></b>",
+  desc: "10‑Second Trick: Man ko rest mein lao — rain ka relative velocity nikaalo. Umbrella usi direction mein pakdo.",
+  deepDive: {
+    what: "To a moving observer, rain appears to come from a different direction. Relative velocity of rain w.r.t. man = v_rain − v_man. Angle with vertical = tan⁻¹(v_man / v_rain).",
+    why: "IAT asks for angle to hold umbrella.",
+    how: "Draw vectors: v_rain vertical down, v_man horizontal. Relative velocity = resultant.",
+    derivation: "v_rel = v_rain + (−v_man).",
+    example: "Rain 5 m/s vertical, man walks 5 m/s. Angle with vertical = tan⁻¹(5/5)=45°.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+        <line x1="100" y1="40" x2="100" y2="100" stroke="#2a4494" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="80" y="70" font-size="9" fill="#2a4494">v_r</text>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#c0392b" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="130" y="95" font-size="9" fill="#c0392b">−v_m</text>
+        <line x1="100" y1="40" x2="160" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="140" y="65" font-size="9" fill="#333">v_rel</text>
+        <text x="110" y="120" font-size="9">θ = tan⁻¹(v_m/v_r)</text>
+      </svg>
+    `,
+    useYes: "✅ Rain umbrella problems. Apparent direction of rain.",
+    useNo: "❌ Not for wind‑plane without similar setup.",
+    examQ: "📌 IAT Style: Rain falls at 12 m/s vertically. Man runs at 5 m/s. Angle of umbrella with vertical: → tanθ=5/12 ⇒ θ≈22.6°."
+  }
+},
+{
+  number: "15",
+  title: "Average Speed in Race · Constant vs Accelerated",
+  badge: "🏁 RACE",
+  stripe: "green",
+  formula: "<b>Constant speed v vs start from rest to v: average speed = v/2</b>",
+  desc: "10‑Second Trick: Ek constant speed se, doosra rest se accelerate karke v tak — pehla double distance cover karega same time mein.",
+  deepDive: {
+    what: "A body moving with constant speed v covers distance s = v·t. A body accelerating uniformly from rest to speed v has average speed v/2, covering distance s' = (v/2)·t = s/2.",
+    why: "IAT race problems: 'Who wins?' or 'distance ratio'.",
+    how: "Constant speed: avg = v. Uniform acceleration from rest to v: avg = (0+v)/2 = v/2.",
+    derivation: "Average speed = total distance / total time. For constant acceleration from rest, distance = ½at², v = at ⇒ s = ½vt, avg = s/t = v/2.",
+    example: "Car A at constant 20 m/s, Car B starts from rest accelerating to 20 m/s. In same time, A covers twice B's distance.",
+    diagramSvg: "",
+    useYes: "✅ Race comparisons. Distance covered in same time.",
+    useNo: "❌ If acceleration is not uniform.",
+    examQ: "📌 IAT Style: Two cars start together; one at constant 10 m/s, other accelerates from rest at 2 m/s². Distance ratio after 5 s: → A: 50 m, B: ½×2×25=25 m. Ratio 2:1."
+  }
+},
+{
+  number: "16",
+  title: "Angular Velocity · ω = v/r",
+  badge: "🔄 ω",
+  stripe: "blue",
+  formula: "<b>ω = v / r = 2π / T = 2πf</b>",
+  desc: "10‑Second Trick: Circular motion mein linear speed aur radius se ω nikaalo. Period T diya to 2π/T.",
+  deepDive: {
+    what: "Angular velocity ω is the rate of change of angle. For uniform circular motion, ω = v/r, where v is linear speed. Also ω = 2π/T = 2πf.",
+    why: "IAT circular motion basics.",
+    how: "Identify v and r, or T.",
+    derivation: "Arc length s = rθ ⇒ v = r dθ/dt = rω.",
+    example: "Particle moves in circle radius 2 m with speed 4 m/s. ω = 4/2 = 2 rad/s.",
+    diagramSvg: "",
+    useYes: "✅ Relating linear and angular speed. Finding period.",
+    useNo: "❌ Not for non‑uniform circular motion.",
+    examQ: "📌 IAT Style: A wheel rotates at 120 rpm. Angular velocity in rad/s: → f=2 Hz, ω=2π×2=4π rad/s."
+  }
+},
+{
+  number: "17",
+  title: "Centripetal Acceleration · a_c = v²/r = ω²r",
+  badge: "🎡 CENTRIPETAL",
+  stripe: "red",
+  formula: "<b>a<sub>c</sub> = v²/r = ω²r</b>",
+  desc: "10‑Second Trick: Circular motion mein acceleration center ki taraf hoti hai. Magnitude v²/r.",
+  deepDive: {
+    what: "For uniform circular motion, the acceleration is directed toward the center with magnitude a_c = v²/r = ω²r. It changes direction of velocity, not speed.",
+    why: "IAT asks for centripetal force or acceleration magnitude.",
+    how: "Given v and r, or ω and r.",
+    derivation: "From geometry: Δv/v = Δs/r ⇒ a = v²/r.",
+    example: "Car turns on curve radius 50 m at 10 m/s. a_c = 100/50 = 2 m/s².",
+    diagramSvg: `
+      <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="75" cy="75" r="40" fill="none" stroke="#333" stroke-width="2"/>
+        <circle cx="115" cy="75" r="5" fill="#2a4494"/>
+        <line x1="115" y1="75" x2="75" y2="75" stroke="#c0392b" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="90" y="65" font-size="9" fill="#c0392b">a_c</text>
+        <line x1="115" y1="75" x2="130" y2="60" stroke="#2a4494" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="135" y="55" font-size="9" fill="#2a4494">v</text>
+        <defs><marker id="arr" markerWidth="6" markerHeight="4" refX="6" refY="2"><polygon points="0 0,6 2,0 4" fill="#333"/></marker></defs>
+      </svg>
+    `,
+    useYes: "✅ Centripetal acceleration magnitude. Circular motion dynamics.",
+    useNo: "❌ Not for tangential acceleration.",
+    examQ: "📌 IAT Style: A particle moves in circle radius 2 m with ω=3 rad/s. a_c = 3²×2 = 18 m/s²."
+  }
+},
+{
+  number: "18",
+  title: "Tangential & Radial Acceleration · Non‑Uniform Circular",
+  badge: "📈 NON‑UNIFORM",
+  stripe: "purple",
+  formula: "<b>a<sub>t</sub> = dv/dt = αr ; a<sub>c</sub> = v²/r</b>",
+  desc: "10‑Second Trick: Speed badh rahi hai to tangential acceleration bhi hoti hai. Net a = √(a_t² + a_c²).",
+  deepDive: {
+    what: "In non‑uniform circular motion, speed changes, so there is tangential acceleration a_t = αr (α is angular acceleration). Radial (centripetal) acceleration a_c = v²/r still exists. Net acceleration magnitude = √(a_t² + a_c²).",
+    why: "IAT asks for net acceleration when speed is changing.",
+    how: "Find a_c from current speed. Find a_t from rate of change of speed or α. Combine.",
+    derivation: "a = d(v_θ)/dt û_θ + (v²/r) û_r.",
+    example: "Car speeds up from 10 to 20 m/s in 5 s on curve r=50 m. At v=15 m/s: a_c=225/50=4.5, a_t=(20-10)/5=2. a_net=√(4.5²+2²)≈4.92 m/s².",
+    diagramSvg: "",
+    useYes: "✅ Net acceleration in non‑uniform circular motion.",
+    useNo: "❌ Not for uniform circular motion.",
+    examQ: "📌 IAT Style: A particle moves in circle radius 1 m. Its speed increases at 2 m/s². When v=2 m/s, net acceleration: a_c=4, a_t=2, net=√20≈4.47 m/s²."
+  }
+},
+{
+  number: "19",
+  title: "Projectile Range · Maximum at 45°",
+  badge: "🎯 MAX RANGE",
+  stripe: "green",
+  formula: "<b>R<sub>max</sub> = u²/g at θ = 45°</b>",
+  desc: "10‑Second Trick: Same initial speed ke liye maximum range 45° par milti hai.",
+  deepDive: {
+    what: "For a given initial speed u, horizontal range R = (u² sin2θ)/g. Maximum value occurs when sin2θ = 1 ⇒ 2θ = 90° ⇒ θ = 45°. R_max = u²/g.",
+    why: "IAT asks for angle for maximum range, or maximum range value.",
+    how: "θ = 45° gives R_max.",
+    derivation: "R = u² sin2θ / g. sin2θ ≤ 1.",
+    example: "u=20 m/s, g=10. R_max = 400/10 = 40 m at 45°.",
+    diagramSvg: "",
+    useYes: "✅ Angle for maximum range. Maximum range calculation.",
+    useNo: "❌ Not for inclined plane.",
+    examQ: "📌 IAT Style: A cricketer can throw ball at 30 m/s. Maximum range (g=10): → 900/10 = 90 m."
+  }
+},
+{
+  number: "20",
+  title: "Time of Flight & Maximum Height · Standard Formulas",
+  badge: "⏱️ T & H",
+  stripe: "blue",
+  formula: "<b>T = 2u sinθ / g &nbsp;|&nbsp; H = u² sin²θ / (2g)</b>",
+  desc: "10‑Second Trick: Time of flight vertical motion se; max height bhi vertical component se.",
+  deepDive: {
+    what: "For ground‑to‑ground projectile, time of flight T = 2u sinθ / g. Maximum height H = u² sin²θ / (2g).",
+    why: "IAT basic projectile calculations.",
+    how: "Use u_y = u sinθ.",
+    derivation: "At top v_y=0 ⇒ t = u sinθ/g. Total T = 2t. H = (u sinθ)²/(2g).",
+    example: "u=50 m/s, θ=30°. T = 2×50×0.5/10 = 5 s. H = (50×0.5)²/20 = 625/20 = 31.25 m.",
+    diagramSvg: "",
+    useYes: "✅ Standard projectile calculations.",
+    useNo: "❌ If launch and landing heights differ.",
+    examQ: "📌 IAT Style: Ball thrown at 40 m/s, 60°. Time of flight (g=10): → T = 2×40×sin60/10 = 8×0.866 = 6.93 s."
+  }
+},
+{
+  number: "21",
+  title: "Horizontal Range Formula · R = u² sin2θ / g",
+  badge: "📏 RANGE",
+  stripe: "red",
+  formula: "<b>R = u² sin2θ / g</b>",
+  desc: "10‑Second Trick: Range ke liye seedha formula. Complementary angles same range.",
+  deepDive: {
+    what: "Horizontal range R = (u² sin2θ)/g. Derived from R = (u cosθ) × T.",
+    why: "IAT range calculations.",
+    how: "Plug u, θ, g.",
+    derivation: "R = u_x · T = u cosθ × (2u sinθ/g) = u² sin2θ/g.",
+    example: "u=25 m/s, θ=37° (sin74°≈0.96). R = 625×0.96/10 = 60 m.",
+    diagramSvg: "",
+    useYes: "✅ Range calculation for ground‑to‑ground.",
+    useNo: "❌ If launch/land heights different.",
+    examQ: "📌 IAT Style: A projectile has u=20 m/s, θ=45°. Range: → R=400×1/10=40 m."
+  }
+},
+{
+  number: "22",
+  title: "Relative Velocity · V_AB = V_A − V_B",
+  badge: "🔄 RELATIVE",
+  stripe: "green",
+  formula: "<b>v<sub>A/B</sub> = v<sub>A</sub> − v<sub>B</sub></b>",
+  desc: "10‑Second Trick: Ek ko rest mein lao — doosre ki velocity se ghata do.",
+  deepDive: {
+    what: "Velocity of A relative to B is v_A/B = v_A − v_B. Magnitude of relative velocity is √(v_A² + v_B² − 2v_A v_B cosθ).",
+    why: "IAT relative motion problems.",
+    how: "Vector subtraction. If perpendicular, magnitude = √(v_A² + v_B²).",
+    derivation: "From frame transformation.",
+    example: "Car A 30 m/s east, Car B 40 m/s north. Relative speed = √(30²+40²)=50 m/s.",
+    diagramSvg: "",
+    useYes: "✅ Finding relative velocity magnitude and direction.",
+    useNo: "❌ Not for accelerated frames.",
+    examQ: "📌 IAT Style: Two cars move perpendicular at 60 km/h and 80 km/h. Relative speed: √(3600+6400)=100 km/h."
+  }
+},
+{
+  number: "23",
+  title: "Cross Product Magnitude · |A×B| = AB sinθ",
+  badge: "✖️ CROSS",
+  stripe: "purple",
+  formula: "<b>|A × B| = AB sinθ</b>",
+  desc: "10‑Second Trick: Cross product ka magnitude area of parallelogram ke barabar.",
+  deepDive: {
+    what: "Magnitude of cross product of two vectors is |A||B|sinθ, where θ is angle between them. Direction perpendicular to both (right‑hand rule).",
+    why: "IAT asks for area of parallelogram or torque magnitude.",
+    how: "|A×B| = AB sinθ.",
+    derivation: "From geometry: base × height = AB sinθ.",
+    example: "A=5, B=6, θ=30°. |A×B| = 30×0.5 = 15.",
+    diagramSvg: "",
+    useYes: "✅ Magnitude of cross product. Area of parallelogram.",
+    useNo: "❌ Not for dot product.",
+    examQ: "📌 IAT Style: Find area of parallelogram formed by vectors 3i+4j and i+2j. → Cross = (3×2 − 4×1)k = 2k. Magnitude = 2."
+  }
+},
+{
+  number: "24",
+  title: "Dot Product · A·B = AB cosθ",
+  badge: "🔵 DOT",
+  stripe: "blue",
+  formula: "<b>A · B = |A||B| cosθ = a₁b₁ + a₂b₂</b>",
+  desc: "10‑Second Trick: Dot product work done jaisa — component along direction.",
+  deepDive: {
+    what: "Dot product of two vectors gives a scalar. A·B = |A||B|cosθ. In components: a₁b₁ + a₂b₂ + a₃b₃.",
+    why: "IAT work, angle between vectors, projection.",
+    how: "Use component form if given, or magnitude‑angle form.",
+    derivation: "Projection of A on B times |B|.",
+    example: "A=3i+4j, B=i+2j. A·B = 3×1 + 4×2 = 11.",
+    diagramSvg: "",
+    useYes: "✅ Angle between vectors. Work calculation. Projection.",
+    useNo: "❌ Not for cross product applications.",
+    examQ: "📌 IAT Style: Find angle between A=2i+2j and B=2i. A·B=4, |A|=√8, |B|=2. cosθ=4/(2√8)=1/√2 ⇒ θ=45°."
+  }
+},
+{
+  number: "25",
+  title: "Uniform Circular Motion · Time Period & Frequency",
+  badge: "⭕ UCM",
+  stripe: "green",
+  formula: "<b>T = 2πr/v = 2π/ω &nbsp;|&nbsp; f = 1/T</b>",
+  desc: "10‑Second Trick: Ek chakkar ka time = circumference / speed.",
+  deepDive: {
+    what: "For uniform circular motion, period T is time for one revolution. T = 2πr/v = 2π/ω. Frequency f = 1/T.",
+    why: "IAT relates linear speed, radius, and period.",
+    how: "Given v and r, T = 2πr/v.",
+    derivation: "Distance in one rev = 2πr, speed v ⇒ T = distance/speed.",
+    example: "Radius 0.5 m, speed 2 m/s. T = 2π×0.5/2 = π/2 ≈ 1.57 s.",
+    diagramSvg: "",
+    useYes: "✅ Period and frequency in circular motion.",
+    useNo: "❌ Not for non‑uniform motion.",
+    examQ: "📌 IAT Style: A particle moves in circle radius 7 m with speed 22 m/s. Time period: T = 2×22/7×7 / 22 = 2 s."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
