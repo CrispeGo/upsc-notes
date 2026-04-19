@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #2563eb;
+--accent2: #3b82f6;
+--accent3: #1d4ed8;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #eff6ff;
+--formula-border: #2563eb;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(37,99,235,0.10);
+--shadow-hover: 0 12px 40px rgba(37,99,235,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59,130,246,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #1e3a8a;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Mathematics";
+const CHAPTER = "Sequence and Series";
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+// ========== MATHEMATICS · SEQUENCE AND SERIES (Cards 01 to 32) ==========
+
+{
+  number: "01",
+  title: "Arithmetic Progression (AP) · Core Formulas",
+  badge: "📈 AP",
+  stripe: "blue",
+  formula: "<b>T<sub>n</sub> = a + (n−1)d &nbsp;|&nbsp; S<sub>n</sub> = n/2 [2a + (n−1)d]</b>",
+  desc: "10‑Second Trick: AP hai to nᵗʰ term aur sum ke liye seedha formula. d = T₂−T₁.",
+  deepDive: {
+    what: "An arithmetic progression (AP) is a sequence where the difference between consecutive terms is constant (common difference d). General term T_n = a + (n−1)d. Sum of first n terms S_n = n/2 [2a + (n−1)d] = n/2 (a + l).",
+    why: "IAT frequently asks for specific term, sum, or number of terms.",
+    how: "Identify a = first term, d = common difference. Use formulas.",
+    derivation: "S_n = n/2 (a + l) where l = a + (n−1)d.",
+    example: "AP: 3, 7, 11,... Find 10th term and sum of 10 terms. a=3, d=4. T₁₀ = 3+9×4 = 39. S₁₀ = 10/2 (3+39) = 210.",
+    useYes: "✅ Finding terms, sums, n in AP.",
+    useNo: "❌ If sequence is not AP.",
+    examQ: "📌 IAT Style: How many terms of AP 2, 5, 8,... sum to 610? → n/2[4+(n−1)3]=610 ⇒ n(3n+1)=1220 ⇒ n=20."
+  }
+},
+{
+  number: "02",
+  title: "Arithmetic Mean (AM) · Insertion",
+  badge: "🔢 AM",
+  stripe: "red",
+  formula: "<b>A = (a+b)/2 &nbsp;|&nbsp; n AMs between a and b: d = (b−a)/(n+1)</b>",
+  desc: "10‑Second Trick: Do numbers ke beech AM = average. n AMs insert karne ho to common difference = (last − first)/(n+1).",
+  deepDive: {
+    what: "Arithmetic mean between a and b is (a+b)/2. To insert n arithmetic means between a and b, the total terms become n+2. Common difference d = (b−a)/(n+1).",
+    why: "IAT: 'Insert 4 AMs between 3 and 23' type questions.",
+    how: "d = (b−a)/(n+1). Then means are a+d, a+2d, ..., a+nd.",
+    derivation: "b = a + (n+1)d ⇒ d = (b−a)/(n+1).",
+    example: "Insert 4 AMs between 5 and 25. d = (25−5)/5 = 4. Means: 9, 13, 17, 21.",
+    useYes: "✅ Inserting arithmetic means. Finding middle terms.",
+    useNo: "❌ Not for geometric means.",
+    examQ: "📌 IAT Style: If 7 AMs are inserted between 2 and 50, the middle mean is? → Total terms=9, middle is 5th term = a+4d. d=(50−2)/8=6, so term=2+24=26."
+  }
+},
+{
+  number: "03",
+  title: "AP Properties · Common Terms & Ratio",
+  badge: "🔗 AP PROPS",
+  stripe: "green",
+  formula: "<b>If a,b,c in AP ⇒ 2b = a+c</b>",
+  desc: "10‑Second Trick: Three terms AP mein hain to middle term ka double = sum of extremes.",
+  deepDive: {
+    what: "Three numbers a, b, c are in AP if and only if 2b = a + c. For common terms of two APs, the common difference of the common terms is LCM of individual common differences.",
+    why: "IAT: 'Find number of common terms in two APs'.",
+    how: "First common term find karo, then common difference = LCM(d₁, d₂). Then find n such that term ≤ last term.",
+    derivation: "b − a = c − b ⇒ 2b = a + c.",
+    example: "AP1: 1,6,11,... d=5; AP2: 9,16,23,... d=7. Common diff = 35. First common term = 16. Then terms: 16, 51, 86,...",
+    useYes: "✅ Checking AP condition. Common terms of two APs.",
+    useNo: "❌ Not for GP.",
+    examQ: "📌 IAT Style: Number of common terms in AP 3,7,11,... upto 100 terms and AP 5,9,13,... upto 80 terms? → d₁=4, d₂=4, LCM=4. First common term? 7? Actually 3,7,11,15,19,23,... and 5,9,13,17,21,25,... Common: 7,11,15,... d=4. Solve."
+  }
+},
+{
+  number: "04",
+  title: "Sum of AP · Relation with n",
+  badge: "🧮 S_n",
+  stripe: "purple",
+  formula: "<b>S<sub>n</sub> = An² + Bn (quadratic in n)</b>",
+  desc: "10‑Second Trick: AP ke sum ka expression hamesha n² term hota hai. Constant term zero hota hai.",
+  deepDive: {
+    what: "Sum of first n terms of an AP is a quadratic polynomial in n without constant term: S_n = (d/2)n² + (a − d/2)n. This helps identify AP and find a and d.",
+    why: "IAT: 'If S_n = 3n² + 5n, find a and d.'",
+    how: "Compare with (d/2)n² + (a − d/2)n. d/2 = coeff of n², a = coeff of n + d/2.",
+    derivation: "S_n = n/2[2a + (n−1)d] = (d/2)n² + (a − d/2)n.",
+    example: "S_n = 2n² + 3n. Then d/2 = 2 ⇒ d=4. a − 2 = 3 ⇒ a=5.",
+    useYes: "✅ Finding a, d from S_n expression.",
+    useNo: "❌ If constant term present (not AP).",
+    examQ: "📌 IAT Style: Sum of n terms of an AP is 4n² + 2n. Common difference is: → d/2=4 ⇒ d=8."
+  }
+},
+{
+  number: "05",
+  title: "Geometric Progression (GP) · Core Formulas",
+  badge: "📉 GP",
+  stripe: "blue",
+  formula: "<b>T<sub>n</sub> = ar<sup>n−1</sup> &nbsp;|&nbsp; S<sub>n</sub> = a(r<sup>n</sup>−1)/(r−1), r≠1</b>",
+  desc: "10‑Second Trick: GP mein har term previous × r. Sum formula denominator mein (r−1) ya (1−r).",
+  deepDive: {
+    what: "A geometric progression has constant ratio r between consecutive terms. General term T_n = ar^{n−1}. Sum of n terms S_n = a(r^n − 1)/(r − 1) for r>1, or a(1 − r^n)/(1 − r) for r<1.",
+    why: "IAT asks for specific term, sum, or infinite sum.",
+    how: "Identify a, r. Use formulas.",
+    derivation: "S_n = a + ar + ar² + ... + ar^{n−1}. Multiply by r and subtract.",
+    example: "GP: 2, 6, 18,... Find 6th term and S_6. a=2, r=3. T_6 = 2×3⁵ = 486. S_6 = 2(3⁶−1)/(3−1) = 2(729−1)/2 = 728.",
+    useYes: "✅ GP term, sum, infinite sum.",
+    useNo: "❌ Not for AP.",
+    examQ: "📌 IAT Style: In a GP, 3rd term is 24 and 6th term is 192. Find 10th term. → ar²=24, ar⁵=192 ⇒ r³=8 ⇒ r=2, a=6. T₁₀ = 6×2⁹ = 3072."
+  }
+},
+{
+  number: "06",
+  title: "Infinite GP Sum · |r|<1",
+  badge: "♾️ SUM ∞",
+  stripe: "red",
+  formula: "<b>S<sub>∞</sub> = a / (1 − r) &nbsp; for |r| < 1</b>",
+  desc: "10‑Second Trick: GP infinite sum tabhi nikal sakte hain jab |r|<1. Seedha a/(1−r).",
+  deepDive: {
+    what: "For an infinite geometric series with |r| < 1, the sum converges to S_∞ = a / (1 − r).",
+    why: "IAT questions: 'Sum of infinite series 1 + 1/2 + 1/4 + ...'",
+    how: "Check |r|<1. Apply formula.",
+    derivation: "lim n→∞ S_n = a/(1−r) as r^n → 0.",
+    example: "Series: 2 + 1 + 0.5 + ... a=2, r=0.5. S_∞ = 2/(1−0.5) = 4.",
+    useYes: "✅ Infinite geometric series sum.",
+    useNo: "❌ If |r| ≥ 1 (diverges).",
+    examQ: "📌 IAT Style: Sum to infinity of 1 + 2r + 3r² + ... (AGP) is 9/4. Find r. → Use AGP sum formula."
+  }
+},
+{
+  number: "07",
+  title: "Geometric Mean (GM) · Insertion",
+  badge: "📐 GM",
+  stripe: "green",
+  formula: "<b>G = √(ab) &nbsp;|&nbsp; n GMs: r = (b/a)^{1/(n+1)}</b>",
+  desc: "10‑Second Trick: Do positive numbers ke beech GM = √(ab). n GMs insert karne ho to r = (b/a)^(1/(n+1)).",
+  deepDive: {
+    what: "Geometric mean between a and b is √(ab). To insert n geometric means, common ratio r = (b/a)^{1/(n+1)}. Then means are ar, ar², ..., ar^n.",
+    why: "IAT: 'Insert 3 GMs between 2 and 162.'",
+    how: "r = (b/a)^{1/(n+1)}.",
+    derivation: "b = a r^{n+1} ⇒ r = (b/a)^{1/(n+1)}.",
+    example: "Insert 3 GMs between 2 and 162. r = (162/2)^{1/4} = 81^{1/4} = 3. Means: 6, 18, 54.",
+    useYes: "✅ Inserting geometric means.",
+    useNo: "❌ If numbers negative (GM defined for positive).",
+    examQ: "📌 IAT Style: If 5 GMs are inserted between 1 and 64, the 3rd GM is? → r = 64^{1/6} = 2. Means: 2,4,8,16,32. 3rd = 8."
+  }
+},
+{
+  number: "08",
+  title: "AGP · Arithmetico‑Geometric Progression",
+  badge: "🔀 AGP",
+  stripe: "purple",
+  formula: "<b>S<sub>n</sub> = [a − (a+(n−1)d)rⁿ]/(1−r) + dr(1−rⁿ⁻¹)/(1−r)²</b>",
+  desc: "10‑Second Trick: AGP term = (AP term) × (GP term). Sum nikalne ke liye standard trick: S_n likho, r se multiply karo, subtract karo.",
+  deepDive: {
+    what: "An AGP is a series where each term is product of corresponding terms of an AP and a GP. e.g., a + (a+d)r + (a+2d)r² + ... Sum formula can be derived by shifting and subtracting.",
+    why: "IAT: 'Sum of 1 + 2·2 + 3·2² + ...'",
+    how: "Let S = a + (a+d)r + (a+2d)r² + ... + (a+(n−1)d)r^{n−1}. Multiply by r, subtract, use GP sum.",
+    derivation: "S − rS = a + dr + dr² + ... + dr^{n−1} − (a+(n−1)d)rⁿ.",
+    example: "1 + 3·2 + 5·2² + ... 10 terms. a=1, d=2, r=2. Use formula or stepwise.",
+    useYes: "✅ AGP sum. Infinite AGP sum for |r|<1.",
+    useNo: "❌ Not for simple AP or GP.",
+    examQ: "📌 IAT Style: Sum to infinity of 1 + 2/2 + 3/4 + 4/8 + ... → a=1, d=1, r=1/2. S_∞ = a/(1−r) + dr/(1−r)² = 1/(0.5) + 1·0.5/(0.5)² = 2 + 2 = 4."
+  }
+},
+{
+  number: "09",
+  title: "Special Series · Sum of n Natural Numbers",
+  badge: "🔢 Σn",
+  stripe: "blue",
+  formula: "<b>Σn = n(n+1)/2</b>",
+  desc: "10‑Second Trick: 1 se n tak numbers ka sum = n(n+1)/2. Yaad rakho, bahut kaam aata hai.",
+  deepDive: {
+    what: "Sum of first n natural numbers: 1 + 2 + 3 + ... + n = n(n+1)/2.",
+    why: "IAT frequently uses this in special series and telescopic sums.",
+    how: "Direct formula.",
+    derivation: "Pair first and last: (1+n) + (2+n−1) + ... = n/2 (n+1).",
+    example: "1+2+...+100 = 100×101/2 = 5050.",
+    useYes: "✅ Finding sum of natural numbers. Base for other series.",
+    useNo: "❌ Not for squares or cubes.",
+    examQ: "📌 IAT Style: Sum of first 50 natural numbers is: → 50×51/2 = 1275."
+  }
+},
+{
+  number: "10",
+  title: "Sum of Squares · Σn²",
+  badge: "🔲 Σn²",
+  stripe: "red",
+  formula: "<b>Σn² = n(n+1)(2n+1)/6</b>",
+  desc: "10‑Second Trick: 1²+2²+...+n² = n(n+1)(2n+1)/6. Yaad rakho, special series ki jaan hai.",
+  deepDive: {
+    what: "Sum of squares of first n natural numbers: 1² + 2² + ... + n² = n(n+1)(2n+1)/6.",
+    why: "IAT special series questions rely on this formula.",
+    how: "Memorise.",
+    derivation: "Using identity (k+1)³ − k³ = 3k² + 3k + 1, sum telescopically.",
+    example: "1²+2²+...+10² = 10×11×21/6 = 385.",
+    useYes: "✅ Sum of squares. Special series.",
+    useNo: "❌ Not for cubes.",
+    examQ: "📌 IAT Style: Sum of 1²+2²+...+15² is: → 15×16×31/6 = 1240."
+  }
+},
+{
+  number: "11",
+  title: "Sum of Cubes · Σn³",
+  badge: "🧊 Σn³",
+  stripe: "green",
+  formula: "<b>Σn³ = [n(n+1)/2]² = (Σn)²</b>",
+  desc: "10‑Second Trick: 1³+2³+...+n³ = (1+2+...+n)². Natural numbers ke sum ka square!",
+  deepDive: {
+    what: "Sum of cubes of first n natural numbers equals the square of the sum of first n natural numbers: 1³+2³+...+n³ = [n(n+1)/2]².",
+    why: "IAT loves this identity. Direct questions: 'Prove Σn³ = (Σn)²' or use in series.",
+    how: "Formula yaad rakho.",
+    derivation: "By induction or telescoping with (k(k+1)/2)² − ((k−1)k/2)² = k³.",
+    example: "1³+2³+...+10³ = (55)² = 3025.",
+    useYes: "✅ Sum of cubes. Comparing with Σn.",
+    useNo: "❌ Not for higher powers.",
+    examQ: "📌 IAT Style: The value of 1³+2³+...+12³ is: → (12×13/2)² = 78² = 6084."
+  }
+},
+{
+  number: "12",
+  title: "Telescopic Series · Vedic Subtraction",
+  badge: "🔭 TELESCOPIC",
+  stripe: "purple",
+  formula: "<b>Write T<sub>n</sub> = f(n) − f(n+1) or similar</b>",
+  desc: "10‑Second Trick: Term ko difference of two expressions mein tod do. Sum karte waqt cancellation ho jaati hai.",
+  deepDive: {
+    what: "A telescoping series is one where each term can be expressed as a difference, so that consecutive terms cancel. e.g., 1/(n(n+1)) = 1/n − 1/(n+1).",
+    why: "IAT questions: 'Sum of 1/(1·2) + 1/(2·3) + ...'",
+    how: "Factor denominator, use partial fractions. Write T_n = A/n − B/(n+1).",
+    derivation: "1/(n(n+1)) = (n+1−n)/(n(n+1)) = 1/n − 1/(n+1).",
+    example: "Sum 1/(1·2) + 1/(2·3) + ... n terms. S_n = 1 − 1/(n+1) = n/(n+1).",
+    useYes: "✅ Rational series with product denominators.",
+    useNo: "❌ Not for non‑telescoping.",
+    examQ: "📌 IAT Style: Sum to n terms: 1/(1·2·3) + 1/(2·3·4) + ... → T_n = 1/2 [1/(n(n+1)) − 1/((n+1)(n+2))]. S_n = 1/4 − 1/(2(n+1)(n+2))."
+  }
+},
+{
+  number: "13",
+  title: "Vn Method · Difference of Series",
+  badge: "📊 Vn",
+  stripe: "blue",
+  formula: "<b>If T<sub>n</sub> = V<sub>n</sub> − V<sub>n−1</sub>, then ΣT<sub>n</sub> = V<sub>n</sub> − V<sub>0</sub></b>",
+  desc: "10‑Second Trick: Agar term ko do consecutive expressions ke difference ki tarah likh sako, sum seedha last minus first.",
+  deepDive: {
+    what: "The method of differences (Vn method) is used when T_n can be expressed as V_n − V_{n−1}. Then sum of first n terms telescopes to V_n − V_0.",
+    why: "IAT: Special series where differences are AP or GP.",
+    how: "Find pattern in differences. Assume V_n as polynomial of appropriate degree, find coefficients.",
+    derivation: "Σ (V_k − V_{k−1}) = V_n − V_0.",
+    example: "Series: 3, 5, 7, 9,... T_n = 2n+1. This is not V_n−V_{n−1} directly, but for series like 1·2 + 2·3 + 3·4, T_n = n(n+1) = [n(n+1)(n+2)/3] − [(n−1)n(n+1)/3].",
+    useYes: "✅ Summation of product series, special polynomial series.",
+    useNo: "❌ Not for simple AP/GP.",
+    examQ: "📌 IAT Style: Sum of 1·2·3 + 2·3·4 + ... n terms = n(n+1)(n+2)(n+3)/4."
+  }
+},
+{
+  number: "14",
+  title: "Arithmetic Mean ≥ Geometric Mean (AM‑GM)",
+  badge: "📈 AM≥GM",
+  stripe: "red",
+  formula: "<b>For positive numbers: (a₁+...+aₙ)/n ≥ (a₁·...·aₙ)^{1/n}</b>",
+  desc: "10‑Second Trick: AM hamesha GM se bada ya barabar. Equality tab jab sab numbers equal.",
+  deepDive: {
+    what: "For any set of positive real numbers, the arithmetic mean is always greater than or equal to the geometric mean. Equality holds iff all numbers are equal.",
+    why: "IAT inequality problems: 'Find minimum value of sum given product fixed' or vice versa.",
+    how: "To minimize sum for fixed product, make all terms equal. To maximize product for fixed sum, make all terms equal.",
+    derivation: "By induction or convexity of log.",
+    example: "Find minimum value of x + 1/x for x>0. By AM‑GM, (x + 1/x)/2 ≥ √(x·1/x)=1 ⇒ x+1/x ≥ 2.",
+    useYes: "✅ Optimization with positive variables. Proving inequalities.",
+    useNo: "❌ Not for negative numbers.",
+    examQ: "📌 IAT Style: If a,b,c>0 and a+b+c=1, maximum value of abc is: → By AM‑GM, (a+b+c)/3 ≥ (abc)^{1/3} ⇒ 1/3 ≥ (abc)^{1/3} ⇒ abc ≤ 1/27."
+  }
+},
+{
+  number: "15",
+  title: "Harmonic Progression (HP) · Relation with AP",
+  badge: "🎵 HP",
+  stripe: "green",
+  formula: "<b>If a,b,c in HP ⇒ 1/a, 1/b, 1/c in AP</b>",
+  desc: "10‑Second Trick: HP ke terms ke reciprocals AP mein hote hain. HP questions ko AP mein convert karo.",
+  deepDive: {
+    what: "A sequence is in harmonic progression if the reciprocals of its terms are in arithmetic progression. No direct formula for sum; work with reciprocals.",
+    why: "IAT: 'If a,b,c are in HP, find value of...'",
+    how: "Convert to AP of reciprocals. Use AP formulas, then take reciprocal back.",
+    derivation: "Definition.",
+    example: "If a,b,c in HP, then 1/a, 1/b, 1/c in AP ⇒ 2/b = 1/a + 1/c ⇒ b = 2ac/(a+c).",
+    useYes: "✅ HP term relations. Harmonic mean.",
+    useNo: "❌ Not for direct sum.",
+    examQ: "📌 IAT Style: If x,y,z are in HP, then (x+z)/y = ? → 1/x,1/y,1/z AP ⇒ 2/y = 1/x+1/z ⇒ (x+z)/y = 2 + x/z + z/x? Actually (x+z)/y = 2 + (x²+z²)/xz? Better: 2/y = (x+z)/(xz) ⇒ y = 2xz/(x+z). Then (x+z)/y = (x+z)²/(2xz)."
+  }
+},
+{
+  number: "16",
+  title: "Harmonic Mean (HM) · Formula",
+  badge: "🎶 HM",
+  stripe: "purple",
+  formula: "<b>HM = 2ab/(a+b) for two numbers</b>",
+  desc: "10‑Second Trick: Do numbers ka HM = 2ab/(a+b). AM ≥ GM ≥ HM yaad rakho.",
+  deepDive: {
+    what: "Harmonic mean between a and b is 2ab/(a+b). For n numbers, HM = n / (1/a₁ + ... + 1/a_n).",
+    why: "IAT: 'If AM and GM of two numbers are given, find HM.' Relation: GM² = AM × HM.",
+    how: "HM = 2ab/(a+b). Relation: AM × HM = GM².",
+    derivation: "From definition.",
+    example: "AM=9, GM=6 for two positive numbers. HM = GM²/AM = 36/9 = 4.",
+    useYes: "✅ Finding HM. AM‑GM‑HM relation.",
+    useNo: "❌ Not for non‑positive numbers.",
+    examQ: "📌 IAT Style: The HM of two numbers is 4, their AM is 9. GM is: → GM = √(AM×HM) = √36 = 6."
+  }
+},
+{
+  number: "17",
+  title: "AM‑GM‑HM Inequality Chain",
+  badge: "📊 INEQUALITY",
+  stripe: "blue",
+  formula: "<b>AM ≥ GM ≥ HM (for positive numbers)</b>",
+  desc: "10‑Second Trick: AM sabse bada, HM sabse chhota. GM beech mein.",
+  deepDive: {
+    what: "For any set of positive numbers, Arithmetic Mean ≥ Geometric Mean ≥ Harmonic Mean. Equality holds when all numbers are equal.",
+    why: "IAT conceptual: 'Which is largest among AM, GM, HM?'",
+    how: "Remember order.",
+    derivation: "From AM‑GM and GM‑HM relation.",
+    example: "For 4 and 9: AM=6.5, GM=6, HM=72/13≈5.54. 6.5 ≥ 6 ≥ 5.54.",
+    useYes: "✅ Comparing means. Quick inequalities.",
+    useNo: "❌ Not for negative numbers.",
+    examQ: "📌 IAT Style: For distinct positive numbers, the correct inequality is: (A) AM > GM > HM (B) AM < GM < HM (C) AM = GM = HM (D) None. → Ans: AM > GM > HM."
+  }
+},
+{
+  number: "18",
+  title: "Sum of First n Odd Numbers · n²",
+  badge: "🔷 ODD SUM",
+  stripe: "red",
+  formula: "<b>1 + 3 + 5 + ... + (2n−1) = n²</b>",
+  desc: "10‑Second Trick: First n odd numbers ka sum n² hota hai. Yaad rakho, special series ka part.",
+  deepDive: {
+    what: "The sum of the first n odd natural numbers is n².",
+    why: "IAT: 'Sum of first 20 odd numbers?'",
+    how: "Use n² directly.",
+    derivation: "AP with a=1, d=2, n terms. S = n/2[2+(n−1)2] = n².",
+    example: "1+3+5+...+19 (10 terms) = 10² = 100.",
+    useYes: "✅ Quick sum of odd numbers.",
+    useNo: "❌ Not for even numbers.",
+    examQ: "📌 IAT Style: Sum of all odd numbers between 1 and 100 is: → 1+3+...+99 (50 terms) = 50² = 2500."
+  }
+},
+{
+  number: "19",
+  title: "Sum of First n Even Numbers · n(n+1)",
+  badge: "🔶 EVEN SUM",
+  stripe: "green",
+  formula: "<b>2 + 4 + 6 + ... + 2n = n(n+1)</b>",
+  desc: "10‑Second Trick: First n even numbers ka sum n(n+1).",
+  deepDive: {
+    what: "Sum of first n even natural numbers is n(n+1).",
+    why: "IAT quick calculation.",
+    how: "AP with a=2, d=2. S_n = n/2[4+(n−1)2] = n(n+1).",
+    derivation: "Factor 2: 2(1+2+...+n) = 2·n(n+1)/2 = n(n+1).",
+    example: "2+4+6+8+10 (5 terms) = 5×6 = 30.",
+    useYes: "✅ Quick sum of even numbers.",
+    useNo: "❌ Not for odd.",
+    examQ: "📌 IAT Style: Sum of first 25 even numbers is: → 25×26 = 650."
+  }
+},
+{
+  number: "20",
+  title: "Grouped Series · First Term of nth Group",
+  badge: "📦 GROUPED",
+  stripe: "purple",
+  formula: "<b>Group n has (2n−1) terms (if odd count) or pattern specific</b>",
+  desc: "10‑Second Trick: Groups mein terms ka pattern pehchano. Usually group n mein 2n−1 terms hote hain.",
+  deepDive: {
+    what: "Natural numbers grouped as (1), (2,3,4), (5,6,7,8,9), ... Group n contains (2n−1) terms. First term of nth group = (n−1)² + 1. Last term = n².",
+    why: "IAT: 'Find first term of 11th group.'",
+    how: "Group n has (2n−1) terms. Total terms before nth group = (n−1)². So first term = (n−1)² + 1.",
+    derivation: "Sum of first (n−1) odd numbers = (n−1)².",
+    example: "11th group first term = 10² + 1 = 101.",
+    useYes: "✅ Grouped natural number problems.",
+    useNo: "❌ If grouping pattern different.",
+    examQ: "📌 IAT Style: In grouping {1}, {2,3,4}, {5,6,7,8,9},..., the first term of 10th group is: → 9²+1=82."
+  }
+},
+{
+  number: "21",
+  title: "Inserting AMs & GMs · Mixed Problems",
+  badge: "🔀 AM‑GM",
+  stripe: "blue",
+  formula: "<b>If A and G are AM and GM between a,b, then a,b = A ± √(A²−G²)</b>",
+  desc: "10‑Second Trick: AM aur GM diye ho to quadratic bana kar numbers nikaal sakte ho.",
+  deepDive: {
+    what: "Given arithmetic mean A and geometric mean G between two positive numbers a and b, the numbers are roots of x² − 2Ax + G² = 0.",
+    why: "IAT: 'AM=10, GM=8, find numbers.'",
+    how: "a+b=2A, ab=G². Solve quadratic.",
+    derivation: "a,b = A ± √(A²−G²).",
+    example: "A=10, G=8 ⇒ a,b = 10 ± √(100−64) = 10 ± 6 = 16 and 4.",
+    useYes: "✅ Finding numbers from AM and GM.",
+    useNo: "❌ If numbers not positive.",
+    examQ: "📌 IAT Style: The AM and GM of two numbers are 13 and 12. The numbers are: → 13 ± √(169−144)=13±5 ⇒ 18,8."
+  }
+},
+{
+  number: "22",
+  title: "Relation between AM, GM, HM · GM² = AM × HM",
+  badge: "🔗 RELATION",
+  stripe: "red",
+  formula: "<b>G² = A × H</b>",
+  desc: "10‑Second Trick: Do positive numbers ke liye GM² = AM × HM. Koi do diye ho to teesra nikaal lo.",
+  deepDive: {
+    what: "For two positive numbers, the geometric mean is the geometric mean of arithmetic mean and harmonic mean: GM² = AM × HM.",
+    why: "IAT direct formula questions.",
+    how: "If AM and HM known, GM = √(AM×HM).",
+    derivation: "A = (a+b)/2, G = √(ab), H = 2ab/(a+b). Multiply A×H = ab = G².",
+    example: "AM=9, HM=4 ⇒ GM = √(9×4)=6.",
+    useYes: "✅ Finding one mean from other two.",
+    useNo: "❌ More than two numbers.",
+    examQ: "📌 IAT Style: If AM and HM of two numbers are 25 and 9, then GM is: → √(25×9)=15."
+  }
+},
+{
+  number: "23",
+  title: "Sum of Series with AP in Numerator/Denominator",
+  badge: "🧮 AP/AP",
+  stripe: "green",
+  formula: "<b>Break into simpler fractions or use Vn method</b>",
+  desc: "10‑Second Trick: Series mein numerator AP, denominator constant? Factor out. Denominator AP? Vn method.",
+  deepDive: {
+    what: "Series like (3/1²) + (5/(1²+2²)) + ... require expressing T_n in terms of n using sum formulas, then breaking into partial fractions or telescoping.",
+    why: "IAT DPP questions: Q7, Q8.",
+    how: "Find formula for denominator (sum of squares). Write T_n = (2n+1)/(Σk²) = (2n+1)/[n(n+1)(2n+1)/6] = 6/(n(n+1)). Then telescoping.",
+    derivation: "Σk² = n(n+1)(2n+1)/6.",
+    example: "T_n = (2n+1)/(1²+2²+...+n²) = 6/(n(n+1)) = 6(1/n − 1/(n+1)). S_n = 6(1 − 1/(n+1)) = 6n/(n+1).",
+    useYes: "✅ Series where denominator is sum of squares/cubes.",
+    useNo: "❌ Not for non‑standard.",
+    examQ: "📌 IAT Style: Sum to n terms: 3/1² + 5/(1²+2²) + 7/(1²+2²+3²) + ... = 6n/(n+1)."
+  }
+},
+{
+  number: "24",
+  title: "Sum of Products of Consecutive Integers",
+  badge: "✖️ PRODUCT",
+  stripe: "purple",
+  formula: "<b>Σ k(k+1) = n(n+1)(n+2)/3</b>",
+  desc: "10‑Second Trick: Consecutive products ke sum ke liye Vn method. Yaad rakho: 1·2 + 2·3 + ... = n(n+1)(n+2)/3.",
+  deepDive: {
+    what: "Sum of products of consecutive integers: Σ k(k+1) = n(n+1)(n+2)/3. Σ k(k+1)(k+2) = n(n+1)(n+2)(n+3)/4.",
+    why: "IAT DPP Q6: 1·2·3 + 2·3·4 + ... = n(n+1)(n+2)(n+3)/4.",
+    how: "Use identity: k(k+1) = [k(k+1)(k+2) − (k−1)k(k+1)]/3. Telescope.",
+    derivation: "Vn method.",
+    example: "1·2 + 2·3 + ... + 10·11 = 10×11×12/3 = 440.",
+    useYes: "✅ Sum of product series.",
+    useNo: "❌ Not for non‑consecutive.",
+    examQ: "📌 IAT Style: Sum of series 1·2·3 + 2·3·4 + ... n terms = n(n+1)(n+2)(n+3)/4."
+  }
+},
+{
+  number: "25",
+  title: "Repeated Digits Sum · 0.7+0.77+0.777...",
+  badge: "🔁 REPEATING",
+  stripe: "blue",
+  formula: "<b>Factor out 7/9 and use 0.9+0.99+... = n − (1−10⁻ⁿ)/9</b>",
+  desc: "10‑Second Trick: 0.7+0.77+... = 7/9 (0.9+0.99+...). 0.9+0.99+... n terms = n − (1−10⁻ⁿ)/9.",
+  deepDive: {
+    what: "Series like 0.7 + 0.77 + 0.777 + ... n terms. Write 0.777... = 7/9 (0.999...) = 7/9 (1 − 10⁻ᵏ). Sum = 7/9 [n − (1−10⁻ⁿ)/9].",
+    why: "IAT L3 notes question.",
+    how: "Factor 7/9. Sum of 0.9, 0.99, ... = Σ(1 − 10⁻ᵏ) = n − 10⁻¹(1−10⁻ⁿ)/(1−10⁻¹) = n − (1−10⁻ⁿ)/9.",
+    derivation: "Geometric series.",
+    example: "0.7+0.77+0.777 (3 terms) = 7/9 [3 − (1−0.001)/9] = 7/9 [3 − 0.111] = 7/9 × 2.888... ≈ 2.2469.",
+    useYes: "✅ Sum of repeated digit decimals.",
+    useNo: "❌ Not for non‑repeating.",
+    examQ: "📌 IAT Style: Sum of first 20 terms of 0.7+0.77+0.777+... = 7/81 (179 − 10⁻²⁰)."
+  }
+},
+{
+  number: "26",
+  title: "Method of Differences · When ΔTₙ is AP/GP",
+  badge: "📈 Δ METHOD",
+  stripe: "red",
+  formula: "<b>If ΔTₙ = Tₙ₊₁ − Tₙ is AP or GP, express Tₙ as polynomial</b>",
+  desc: "10‑Second Trick: Series ke terms ka difference AP/GP hai to Tₙ quadratic ya exponential form mein hoga.",
+  deepDive: {
+    what: "If the difference between consecutive terms of a series forms an AP, then the nth term is a quadratic polynomial. If the difference forms a GP, T_n involves exponential.",
+    why: "IAT L2 notes: series 6,13,22,33,... differences 7,9,11,... AP. T_n = an²+bn+c.",
+    how: "Assume T_n = an²+bn+c. Find a,b,c using first three terms. Then sum.",
+    derivation: "If ΔT_n is linear, T_n is quadratic.",
+    example: "6,13,22,33,... Δ:7,9,11,... AP. Assume T_n=an²+bn+c. n=1⇒a+b+c=6; n=2⇒4a+2b+c=13; n=3⇒9a+3b+c=22. Solve: a=1,b=4,c=1? Check: 1+4+1=6; 4+8+1=13; 9+12+1=22. T_n = n²+4n+1.",
+    useYes: "✅ Series where differences are AP/GP.",
+    useNo: "❌ If differences not simple.",
+    examQ: "📌 IAT Style: Sum to n terms of 6+13+22+33+... → T_n=n²+4n+1, sum = Σn²+4Σn+Σ1 = n(n+1)(2n+1)/6 + 2n(n+1) + n."
+  }
+},
+{
+  number: "27",
+  title: "Sum of Series with Alternate Signs",
+  badge: "➕➖ ALTERNATE",
+  stripe: "green",
+  formula: "<b>Separate odd and even terms, or use (1−x) factor</b>",
+  desc: "10‑Second Trick: Alternate signs ho to series ko do alag sums mein tod lo (positive and negative).",
+  deepDive: {
+    what: "For series like 1² − 2² + 3² − 4² + ... n terms, group as (1²−2²) + (3²−4²) + ... = −(1+2) − (3+4) ... = −Σ(odd+even). Or use formula for sum of squares with sign.",
+    why: "IAT sometimes gives such series.",
+    how: "If n even, group pairs. If n odd, handle last term separately. Use identities: k² − (k+1)² = −(2k+1).",
+    derivation: "Pairing.",
+    example: "1²−2²+3²−4²+5²−6² = (1−4)+(9−16)+(25−36) = −3−7−11 = −21.",
+    useYes: "✅ Alternating sign series.",
+    useNo: "❌ Not for non‑alternating.",
+    examQ: "📌 IAT Style: Sum of 1²−2²+3²−4²+... upto 2n terms = −n(2n+1)."
+  }
+},
+{
+  number: "28",
+  title: "Summation of Series using Binomial Coefficients",
+  badge: "🔢 C(n,k)",
+  stripe: "purple",
+  formula: "<b>Σ k·C(n,k) = n·2ⁿ⁻¹, etc.</b>",
+  desc: "10‑Second Trick: Series involving combinations ko binomial theorem se sum karo.",
+  deepDive: {
+    what: "Many series sums can be derived using binomial expansions and differentiation/integration. e.g., Σ k C(n,k) = n 2^{n−1}.",
+    why: "IAT advanced series problems.",
+    how: "Use (1+x)ⁿ = Σ C(n,k) xᵏ. Differentiate or integrate, then put x=1 or −1.",
+    derivation: "Differentiate (1+x)ⁿ = Σ C(n,k) xᵏ: n(1+x)ⁿ⁻¹ = Σ k C(n,k) xᵏ⁻¹. Put x=1 ⇒ n 2ⁿ⁻¹ = Σ k C(n,k).",
+    example: "Find Σ k² C(n,k). Use x(1+x)ⁿ derivative twice.",
+    useYes: "✅ Summation involving binomial coefficients.",
+    useNo: "❌ Not for non‑binomial.",
+    examQ: "📌 IAT Style: The value of Σ_{k=1}^{n} k C(n,k) = n 2^{n−1}."
+  }
+},
+{
+  number: "29",
+  title: "Infinite Series Sum · Using Integration",
+  badge: "∫ SUM",
+  stripe: "blue",
+  formula: "<b>lim_{n→∞} (1/n) Σ f(k/n) = ∫₀¹ f(x) dx</b>",
+  desc: "10‑Second Trick: Sum ko Riemann sum ki tarah treat karo agar form Σ f(k/n)/n hai.",
+  deepDive: {
+    what: "Limit of sum of the form (1/n) Σ_{k=1}^{n} f(k/n) equals ∫₀¹ f(x) dx. Useful for infinite series that look like Riemann sums.",
+    why: "IAT: 'Find lim_{n→∞} (1/n) Σ √(k/n)' etc.",
+    how: "Identify f(x). Write as (1/n) Σ f(k/n). Then integrate from 0 to 1.",
+    derivation: "Definition of definite integral as limit of Riemann sum.",
+    example: "lim_{n→∞} (1/n) [sin(π/n) + sin(2π/n) + ... + sin(π)] = (1/π) ∫₀^π sin x dx = 2/π.",
+    useYes: "✅ Infinite series convertible to integrals.",
+    useNo: "❌ Not for discrete sums without n→∞.",
+    examQ: "📌 IAT Style: lim_{n→∞} (1/n) Σ_{k=1}^{n} (k/n)² = ∫₀¹ x² dx = 1/3."
+  }
+},
+{
+  number: "30",
+  title: "Common Ratio and Term Problems in GP",
+  badge: "🔁 GP TRICKS",
+  stripe: "red",
+  formula: "<b>If terms given, take ratio to find r</b>",
+  desc: "10‑Second Trick: GP mein kisi do terms ka ratio = r^(difference in positions).",
+  deepDive: {
+    what: "In GP, T_m / T_n = r^{m−n}. Useful to find r and a quickly.",
+    why: "IAT: '3rd term=12, 6th term=96, find first term.'",
+    how: "Divide T_6 by T_3: ar⁵ / ar² = r³ = 96/12 = 8 ⇒ r=2. Then a = 12/4=3.",
+    derivation: "T_m = ar^{m−1}.",
+    example: "T_4=54, T_7=1458. r³=1458/54=27 ⇒ r=3. a=54/27=2.",
+    useYes: "✅ Finding a, r from given terms.",
+    useNo: "❌ Not for AP.",
+    examQ: "📌 IAT Style: The 5th term of a GP is 81 and 8th term is 2187. Common ratio is: → r³=2187/81=27 ⇒ r=3."
+  }
+},
+{
+  number: "31",
+  title: "Properties of GP · Product of Terms",
+  badge: "✖️ GP PROPS",
+  stripe: "green",
+  formula: "<b>In GP, product of terms equidistant from ends is constant</b>",
+  desc: "10‑Second Trick: GP mein first×last = second×second last = ... = a²r^{n−1}.",
+  deepDive: {
+    what: "In a finite GP, the product of terms equidistant from the beginning and end is constant and equals the product of first and last term.",
+    why: "IAT: 'If product of three terms in GP is 216, find middle term.'",
+    how: "For three terms: let a/r, a, ar. Product = a³. If given, a = (product)^{1/3}.",
+    derivation: "T_k · T_{n+1−k} = a r^{k−1} · a r^{n−k} = a² r^{n−1} = T_1 · T_n.",
+    example: "Product of three consecutive terms in GP is 64. Middle term = ∛64 = 4.",
+    useYes: "✅ GP product properties. Choosing terms.",
+    useNo: "❌ Not for sum.",
+    examQ: "📌 IAT Style: Three numbers in GP have product 512. Middle number is: → 8."
+  }
+},
+{
+  number: "32",
+  title: "Sequence and Series Cheat Sheet · All Formulas",
+  badge: "🏁 CHEAT",
+  stripe: "gold",
+  formula: "<b>AP: Tₙ=a+(n−1)d, Sₙ=n/2(2a+(n−1)d)<br>GP: Tₙ=arⁿ⁻¹, Sₙ=a(rⁿ−1)/(r−1)<br>Σn=n(n+1)/2, Σn²=n(n+1)(2n+1)/6, Σn³=(Σn)²</b>",
+  desc: "10‑Second Trick: Last minute revision — saare key formulas ek jagah.",
+  deepDive: {
+    what: "Summary card for Sequence and Series chapter.",
+    why: "Quick revision before exam.",
+    how: "Memorize these formulas and tricks.",
+    derivation: "",
+    example: "",
+    diagramSvg: `
+      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="380" height="180" fill="#fffcf7" stroke="#b8860b" stroke-width="2" rx="8"/>
+        <text x="200" y="30" font-size="11" fill="#b8860b" text-anchor="middle" font-weight="600">⚡ SEQUENCE & SERIES CHEAT SHEET ⚡</text>
+        <text x="20" y="50" font-size="9" fill="#333">AP: Tₙ = a+(n−1)d, Sₙ = n/2[2a+(n−1)d]</text>
+        <text x="20" y="65" font-size="9" fill="#333">GP: Tₙ = arⁿ⁻¹, Sₙ = a(rⁿ−1)/(r−1), S∞ = a/(1−r) (|r|<1)</text>
+        <text x="20" y="80" font-size="9" fill="#333">Σn = n(n+1)/2, Σn² = n(n+1)(2n+1)/6, Σn³ = [n(n+1)/2]²</text>
+        <text x="20" y="95" font-size="9" fill="#333">Telescopic: Tₙ = f(n)−f(n+1) ⇒ Sₙ = f(1)−f(n+1)</text>
+        <text x="20" y="110" font-size="9" fill="#333">AGP: S = a/(1−r) + dr/(1−r)² (for infinite, |r|<1)</text>
+        <text x="20" y="125" font-size="9" fill="#333">AM ≥ GM ≥ HM, GM² = AM × HM (for two numbers)</text>
+        <text x="20" y="140" font-size="9" fill="#c0392b">Odd sum = n², Even sum = n(n+1)</text>
+        <text x="20" y="155" font-size="9" fill="#1a6b3c">Grouped: nth group has (2n−1) terms, first term = (n−1)²+1</text>
+        <text x="200" y="175" font-size="9" fill="#b8860b" text-anchor="middle">⭐ All formulas from NCERT & IAT PYQs!</text>
+      </svg>
+    `,
+    useYes: "✅ Last minute glance.",
+    useNo: "❌ Not for detailed derivation.",
+    examQ: "📌 IAT Style: Use this as mental summary."
+  }
+},
+// ========== MATHEMATICS · SEQUENCE AND SERIES (Cards 33 to 34) ==========
+
+{
+  number: "33",
+  title: "Tₙ from Sₙ · The Instant Term Finder",
+  badge: "⚡ Tₙ = Sₙ − Sₙ₋₁",
+  stripe: "blue",
+  formula: "<b>T<sub>n</sub> = S<sub>n</sub> − S<sub>n−1</sub></b>",
+  desc: "10‑Second Trick: Sum of n terms diya ho aur kisi specific term ki value chahiye? Seedha Sₙ − Sₙ₋₁ karo. a aur d nikalne ki zaroorat nahi!",
+  deepDive: {
+    what: "Kisi bhi sequence mein nᵗʰ term (Tₙ) ko sum of first n terms (Sₙ) aur sum of first (n−1) terms (Sₙ₋₁) ke difference se nikaal sakte hain: Tₙ = Sₙ − Sₙ₋₁.",
+    why: "IAT mein Sₙ ka expression dekar 10th, 50th, ya kisi specific term ki value poochhi jaati hai. a aur d nikaalne mein time waste hota hai; ye trick 5 second mein answer deti hai.",
+    how: "Step 1: Diye gaye Sₙ expression mein n aur n−1 put karo. Step 2: Sₙ − Sₙ₋₁ karo. Step 3: Simplify karo — yahi Tₙ hai. Agar kisi specific term ki value chahiye, to direct n put karo.",
+    derivation: "Sₙ = T₁ + T₂ + ... + Tₙ; Sₙ₋₁ = T₁ + T₂ + ... + Tₙ₋₁. Subtract karne par Sₙ − Sₙ₋₁ = Tₙ.",
+    example: "If Sₙ = 2n² + 3n, find 10th term.\n→ T₁₀ = S₁₀ − S₉ = (2×100 + 30) − (2×81 + 27) = 230 − 189 = 41.\n(Note: a=5, d=4, T₁₀ = 5+36=41 — matches!)",
+    diagramSvg: `
+      <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="150" height="40" fill="#c8d8f8" rx="6"/>
+        <text x="95" y="45" font-size="12" fill="#2a4494" text-anchor="middle" font-weight="600">Sₙ = 2n² + 3n</text>
+        <text x="180" y="45" font-size="16" fill="#333">→</text>
+        <rect x="200" y="20" width="130" height="40" fill="#a5d6a5" rx="6"/>
+        <text x="265" y="45" font-size="12" fill="#1a6b3c" text-anchor="middle" font-weight="600">T₁₀ = S₁₀ − S₉</text>
+        <text x="175" y="85" font-size="11" fill="#c0392b" text-anchor="middle" font-weight="600">= 230 − 189 = 41</text>
+        <text x="175" y="105" font-size="10" fill="#666" text-anchor="middle">No need to find a and d!</text>
+      </svg>
+    `,
+    useYes: "✅ When Sₙ is given as a function of n. Finding any specific term quickly. Checking if a sequence is AP/GP (Tₙ will be linear for AP, exponential for GP).",
+    useNo: "❌ When Sₙ is not given or only a few terms are known.",
+    examQ: "📌 IAT Style: The sum of n terms of a sequence is Sₙ = 3n² − n. Find the 15th term.\n→ T₁₅ = S₁₅ − S₁₄ = (3×225 − 15) − (3×196 − 14) = (675−15) − (588−14) = 660 − 574 = 86."
+  }
+},
+{
+  number: "34",
+  title: "Selection of Terms in AP & GP · The Variable Killer",
+  badge: "🎯 SMART SELECT",
+  stripe: "red",
+  formula: "<b>AP 3 terms: a−d, a, a+d<br>GP 3 terms: a/r, a, ar</b>",
+  desc: "10‑Second Trick: Sum diya ho to AP mein a−d,a,a+d lo (d cancel). Product diya ho to GP mein a/r,a,ar lo (r cancel).",
+  deepDive: {
+    what: "Jab kisi problem mein AP ya GP ke 3 terms ka sum ya product diya ho, to terms ko is tarah select karo ki variables kam ho jaayein. AP ke liye: (a−d), a, (a+d) — inka sum 3a hota hai, d cancel. GP ke liye: a/r, a, ar — inka product a³ hota hai, r cancel.",
+    why: "IAT frequently asks: 'Find three numbers in AP whose sum is 15 and product is 105.' Smart selection se a turant mil jaata hai, phir d nikaalna easy.",
+    how: "Step 1: For AP, let terms = a−d, a, a+d. Sum = 3a ⇒ a = sum/3. Step 2: Use product condition to find d. For GP, let terms = a/r, a, ar. Product = a³ ⇒ a = ∛product. Step 3: Use sum condition to find r.",
+    derivation: "AP: (a−d) + a + (a+d) = 3a. GP: (a/r) × a × (ar) = a³.",
+    example: "Find three numbers in AP whose sum is 12 and product is 48.\n→ a = 12/3 = 4. Terms: 4−d, 4, 4+d. Product = 4(16−d²) = 48 ⇒ 16−d² = 12 ⇒ d² = 4 ⇒ d = ±2. Numbers: 2,4,6 (or 6,4,2).",
+    diagramSvg: `
+      <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="180" height="50" fill="#c8d8f8" rx="6"/>
+        <text x="100" y="30" font-size="11" fill="#2a4494" text-anchor="middle" font-weight="600">AP: (a−d), a, (a+d)</text>
+        <text x="100" y="48" font-size="10" fill="#2a4494" text-anchor="middle">Sum = 3a (d cancels)</text>
+        <rect x="210" y="10" width="180" height="50" fill="#f9e79f" rx="6"/>
+        <text x="300" y="30" font-size="11" fill="#b8860b" text-anchor="middle" font-weight="600">GP: a/r, a, ar</text>
+        <text x="300" y="48" font-size="10" fill="#b8860b" text-anchor="middle">Product = a³ (r cancels)</text>
+        <text x="200" y="90" font-size="10" fill="#1a6b3c" text-anchor="middle">⭐ 4 terms in AP: a−3d, a−d, a+d, a+3d (common diff 2d)</text>
+        <text x="200" y="110" font-size="10" fill="#1a6b3c" text-anchor="middle">⭐ 4 terms in GP: a/r³, a/r, ar, ar³ (common ratio r²)</text>
+      </svg>
+    `,
+    useYes: "✅ Problems involving sum/product of consecutive terms in AP/GP. Reducing number of variables.",
+    useNo: "❌ When number of terms is even — use different selection (e.g., 4 terms AP: a−3d, a−d, a+d, a+3d; common diff = 2d).",
+    examQ: "📌 IAT Style: The sum of three numbers in GP is 13 and their product is 27. Find the numbers.\n→ a³ = 27 ⇒ a = 3. Terms: 3/r, 3, 3r. Sum = 3/r + 3 + 3r = 13 ⇒ 3(1/r + 1 + r) = 13 ⇒ r + 1/r = 10/3 ⇒ 3r² − 10r + 3 = 0 ⇒ r = 3 or 1/3. Numbers: 1, 3, 9."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
