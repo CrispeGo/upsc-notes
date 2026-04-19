@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #dc2626;
+--accent2: #ef4444;
+--accent3: #b91c1c;
+
+--formula-bg: #fef2f2;
+--formula-border: #dc2626;
+
+--dive-bg: #fef2f2;
+--what-bg: #fee2e2;
+--why-bg: #fef9c3;
+--deriv-bg: #fee2e2;
+--example-bg: #ffe4e6;
+--use-bg: #fee2e2;
+--nouse-bg: #fef2f2;
+--exam-bg: #fef9c3;
+
+--shadow: 0 4px 24px rgba(220,38,38,0.10);
+--shadow-hover: 0 12px 40px rgba(220,38,38,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(220,38,38,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(239,68,68,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 60%, #ef4444 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #7f1d1d;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Biology";
+const CHAPTER = "Animal Kingdom";
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+ // ========== BIOLOGY · ANIMAL KINGDOM (Cards 01 to 26) ==========
+
+{
+  number: "01",
+  title: "Levels of Organisation · Cellular to Organ‑System",
+  badge: "📊 LEVELS",
+  stripe: "blue",
+  formula: "<b>Cellular → Tissue → Organ → Organ‑System</b>",
+  desc: "10‑Second Trick: Sponges = cellular; Cnidaria/Ctenophora = tissue; Platyhelminthes = organ; Annelida onwards = organ‑system.",
+  deepDive: {
+    what: "Animals exhibit different grades of organisation: cellular (loose aggregates), tissue (cells performing same function together), organ (tissues form organs), and organ‑system (organs work together for a function).",
+    why: "IAT frequently matches phylum with level of organisation.",
+    how: "Memorise: Porifera – cellular; Coelenterata & Ctenophora – tissue; Platyhelminthes – organ; Aschelminthes to Chordata – organ‑system.",
+    derivation: "",
+    example: "Which phylum shows organ level of organisation? → Platyhelminthes.",
+    diagramSvg: `
+      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="30" width="80" height="40" fill="#c8d8f8"/><text x="50" y="55" font-size="9" fill="#2a4494" text-anchor="middle">Cellular (Porifera)</text>
+        <text x="95" y="55" font-size="14">→</text>
+        <rect x="110" y="30" width="80" height="40" fill="#a5d6a5"/><text x="150" y="55" font-size="9" fill="#1a6b3c" text-anchor="middle">Tissue (Cnidaria)</text>
+        <text x="195" y="55" font-size="14">→</text>
+        <rect x="210" y="30" width="80" height="40" fill="#f9e79f"/><text x="250" y="55" font-size="9" fill="#b8860b" text-anchor="middle">Organ (Platyhelminthes)</text>
+        <text x="295" y="55" font-size="14">→</text>
+        <rect x="310" y="30" width="80" height="40" fill="#f5b7b1"/><text x="350" y="55" font-size="9" fill="#c0392b" text-anchor="middle">Organ‑System (Annelida onwards)</text>
+      </svg>
+    `,
+    useYes: "✅ Matching phyla with organisation level.",
+    useNo: "❌ Not for embryological features.",
+    examQ: "📌 IAT Style: Which of the following has tissue level of organisation? (A) Sponges (B) Hydra (C) Tapeworm (D) Earthworm. → Ans: Hydra (Coelenterata)."
+  }
+},
+{
+  number: "02",
+  title: "Symmetry · Asymmetry, Radial, Bilateral",
+  badge: "🔷 SYMMETRY",
+  stripe: "red",
+  formula: "<b>Porifera: mostly asymmetrical<br>Radiata: Cnidaria, Ctenophora, Echinodermata (adult)<br>Bilateria: Platyhelminthes to Chordata</b>",
+  desc: "10‑Second Trick: Radial symmetry = multiple planes divide equally; Bilateral = only one plane (left/right). Echinoderm larvae bilateral, adult radial.",
+  deepDive: {
+    what: "Symmetry refers to body plan. Asymmetrical: no plane divides equally (most sponges). Radial: any plane through central axis divides into equal halves (cnidarians, ctenophores, adult echinoderms). Bilateral: single plane divides into mirror left/right halves (most animals).",
+    why: "IAT asks: 'Which phylum shows radial symmetry in adult but bilateral in larva?' Answer: Echinodermata.",
+    how: "Remember exceptions: Sponges mostly asymmetrical. Echinoderms secondarily radial.",
+    derivation: "",
+    example: "Radial symmetry is found in: (A) Earthworm (B) Starfish (C) Tapeworm (D) Cockroach. → Starfish (adult Echinoderm).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="30" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <line x1="30" y1="60" x2="90" y2="60" stroke="#c0392b" stroke-width="1.5"/>
+        <line x1="60" y1="30" x2="60" y2="90" stroke="#c0392b" stroke-width="1.5"/>
+        <line x1="38" y1="38" x2="82" y2="82" stroke="#c0392b" stroke-width="1.5"/>
+        <line x1="82" y1="38" x2="38" y2="82" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="60" y="105" font-size="9" text-anchor="middle">Radial</text>
+        <circle cx="220" cy="60" r="30" fill="none" stroke="#2a4494" stroke-width="2"/>
+        <line x1="190" y1="60" x2="250" y2="60" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="220" y="105" font-size="9" text-anchor="middle">Bilateral</text>
+      </svg>
+    `,
+    useYes: "✅ Symmetry identification. Larval vs adult symmetry.",
+    useNo: "❌ Not for body cavity.",
+    examQ: "📌 IAT Style: Which group is radially symmetrical? (A) Mollusca (B) Echinodermata (C) Arthropoda (D) Annelida. → Ans: Echinodermata."
+  }
+},
+{
+  number: "03",
+  title: "Germ Layers · Diploblastic vs Triploblastic",
+  badge: "🟢 DIPLO",
+  stripe: "green",
+  formula: "<b>Diploblastic: Ectoderm + Endoderm (Cnidaria, Ctenophora)<br>Triploblastic: + Mesoderm (Platyhelminthes to Chordata)</b>",
+  desc: "10‑Second Trick: Diploblastic = 2 layers, no mesoderm. Triploblastic = 3 layers, mesoderm present.",
+  deepDive: {
+    what: "Animals with two embryonic layers (ectoderm, endoderm) are diploblastic; an undifferentiated mesoglea may be present. Those with three layers (ectoderm, mesoderm, endoderm) are triploblastic.",
+    why: "IAT matches phyla to germ layer condition.",
+    how: "Porifera – neither diplo nor triplo (cellular). Cnidaria & Ctenophora – diploblastic. Platyhelminthes onwards – triploblastic.",
+    derivation: "",
+    example: "Which is diploblastic? (A) Ascaris (B) Hydra (C) Earthworm (D) Starfish. → Hydra (Cnidaria).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="100" height="80" fill="#e8f0ff" stroke="#2a4494" rx="5"/>
+        <text x="70" y="40" font-size="10" fill="#2a4494" text-anchor="middle">Ectoderm</text>
+        <text x="70" y="60" font-size="10" fill="#2a4494" text-anchor="middle">Endoderm</text>
+        <text x="70" y="80" font-size="10" fill="#2a4494" text-anchor="middle">(Mesoglea)</text>
+        <text x="70" y="105" font-size="10" fill="#2a4494" text-anchor="middle">Diploblastic</text>
+        <rect x="180" y="20" width="100" height="80" fill="#fdebd0" stroke="#c0392b" rx="5"/>
+        <text x="230" y="35" font-size="10" fill="#c0392b" text-anchor="middle">Ectoderm</text>
+        <text x="230" y="55" font-size="10" fill="#c0392b" text-anchor="middle">Mesoderm</text>
+        <text x="230" y="75" font-size="10" fill="#c0392b" text-anchor="middle">Endoderm</text>
+        <text x="230" y="105" font-size="10" fill="#c0392b" text-anchor="middle">Triploblastic</text>
+      </svg>
+    `,
+    useYes: "✅ Germ layer classification.",
+    useNo: "❌ Not for coelom type.",
+    examQ: "📌 IAT Style: Triploblastic organisation first appeared in: (A) Porifera (B) Cnidaria (C) Platyhelminthes (D) Annelida. → Ans: Platyhelminthes."
+  }
+},
+{
+  number: "04",
+  title: "Body Cavity · Coelomates, Pseudocoelomates, Acoelomates",
+  badge: "🥚 COELOM",
+  stripe: "purple",
+  formula: "<b>Acoelomate: Platyhelminthes<br>Pseudocoelomate: Aschelminthes<br>Coelomate: Annelida to Chordata</b>",
+  desc: "10‑Second Trick: Flatworms = no cavity; Roundworms = false cavity; Segmented worms onwards = true coelom.",
+  deepDive: {
+    what: "Coelom is body cavity lined by mesoderm. Acoelomates lack cavity. Pseudocoelomates have cavity not lined by mesoderm. Coelomates have true coelom.",
+    why: "IAT frequently asks coelom type for each phylum.",
+    how: "Memorise: Platyhelminthes – acoelomate; Aschelminthes – pseudocoelomate; Annelida, Arthropoda, Mollusca, Echinodermata, Hemichordata, Chordata – coelomate.",
+    derivation: "",
+    example: "Pseudocoelom is characteristic of: (A) Earthworm (B) Roundworm (C) Tapeworm (D) Leech. → Roundworm (Aschelminthes).",
+    diagramSvg: `
+      <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="100" height="60" fill="#f5b7b1"/><text x="60" y="55" font-size="9" fill="#c0392b" text-anchor="middle">Acoelomate (Platy)</text>
+        <rect x="120" y="20" width="120" height="60" fill="#f9e79f"/><text x="180" y="55" font-size="9" fill="#b8860b" text-anchor="middle">Pseudocoelomate (Aschelminthes)</text>
+        <rect x="250" y="20" width="130" height="60" fill="#a5d6a5"/><text x="315" y="55" font-size="9" fill="#1a6b3c" text-anchor="middle">Coelomate (Annelida onwards)</text>
+      </svg>
+    `,
+    useYes: "✅ Coelom type identification.",
+    useNo: "❌ Not for segmentation.",
+    examQ: "📌 IAT Style: Which of the following is acoelomate? (A) Ascaris (B) Fasciola (C) Nereis (D) Pheretima. → Ans: Fasciola (Platyhelminthes)."
+  }
+},
+{
+  number: "05",
+  title: "Segmentation · Metamerism",
+  badge: "🔗 SEGMENTS",
+  stripe: "blue",
+  formula: "<b>True metamerism: Annelida, Arthropoda, Chordata</b>",
+  desc: "10‑Second Trick: Body externally and internally divided into repeating segments = metamerism.",
+  deepDive: {
+    what: "Metameric segmentation is serial repetition of body parts. True metamerism seen in Annelida, Arthropoda, and Chordates (e.g., vertebrae, muscles).",
+    why: "IAT asks: 'In which phylum metameric segmentation first appears?' Answer: Annelida.",
+    how: "Annelida: homonomous metamerism; Arthropoda & Chordata: heteronomous.",
+    derivation: "",
+    example: "Metameric segmentation is characteristic of: (A) Earthworm (B) Roundworm (C) Tapeworm (D) Jellyfish. → Earthworm (Annelida).",
+    diagramSvg: `
+      <svg viewBox="0 0 250 80" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/><rect x="40" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/><rect x="60" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/><rect x="80" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/><rect x="100" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/><rect x="120" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/><rect x="140" y="30" width="20" height="20" fill="#c8d8f8" stroke="#2a4494"/>
+        <text x="100" y="75" font-size="10" fill="#2a4494" text-anchor="middle">Metameric Segments (Annelida)</text>
+      </svg>
+    `,
+    useYes: "✅ Identifying segmented phyla.",
+    useNo: "❌ Not for pseudosegmentation (tapeworm proglottids).",
+    examQ: "📌 IAT Style: Metamerism first evolved in: (A) Platyhelminthes (B) Aschelminthes (C) Annelida (D) Mollusca. → Ans: Annelida."
+  }
+},
+{
+  number: "06",
+  title: "Notochord · Chordates vs Non‑Chordates",
+  badge: "🎵 NOTOCHORD",
+  stripe: "red",
+  formula: "<b>Notochord present at some stage = Chordate</b>",
+  desc: "10‑Second Trick: Notochord = dorsal rod. Porifera to Hemichordata lack notochord (Non‑Chordates).",
+  deepDive: {
+    what: "Notochord is a mesodermal rod present at some stage in all chordates. Non‑chordates lack it.",
+    why: "IAT distinguishes chordates and non‑chordates.",
+    how: "Chordata: notochord, dorsal hollow nerve cord, pharyngeal gill slits, post‑anal tail.",
+    derivation: "",
+    example: "Which of the following is a chordate? (A) Starfish (B) Amphioxus (C) Earthworm (D) Octopus. → Amphioxus (Cephalochordata).",
+    diagramSvg: "",
+    useYes: "✅ Distinguishing chordates from non‑chordates.",
+    useNo: "❌ Not for vertebrate classes.",
+    examQ: "📌 IAT Style: Notochord is derived from: (A) Ectoderm (B) Mesoderm (C) Endoderm (D) Mesoglea. → Ans: Mesoderm."
+  }
+},
+{
+  number: "07",
+  title: "Phylum Porifera · Sponges",
+  badge: "🧽 SPONGES",
+  stripe: "blue",
+  formula: "<b>Cellular level; Asymmetrical; Canal system; Choanocytes; Hermaphrodite; Indirect development</b>",
+  desc: "10‑Second Trick: Pore bearing, water enters ostia → spongocoel → osculum. Digestion intracellular.",
+  deepDive: {
+    what: "Porifera are primitive multicellular animals with cellular organisation. They have a water canal system. Choanocytes (collar cells) line the spongocoel. Skeleton of spicules or spongin. Hermaphrodite, internal fertilisation, indirect development (larva).",
+    why: "IAT asks unique features: choanocytes, canal system, spongin fibres.",
+    how: "Examples: Sycon (Scypha), Spongilla (freshwater), Euspongia (bath sponge).",
+    derivation: "",
+    example: "Which of the following is a freshwater sponge? → Spongilla.",
+    diagramSvg: `
+      <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="70" rx="40" ry="50" fill="#e8f0ff" stroke="#2a4494" stroke-width="2"/>
+        <path d="M 60,70 Q 80,30 100,40 Q 120,30 140,70" fill="none" stroke="#2a4494" stroke-width="1.5"/>
+        <text x="100" y="40" font-size="9" fill="#2a4494" text-anchor="middle">Osculum</text>
+        <line x1="70" y1="90" x2="70" y2="110" stroke="#2a4494" stroke-width="1"/><text x="60" y="125" font-size="8">Ostia</text>
+        <line x1="130" y1="90" x2="130" y2="110" stroke="#2a4494" stroke-width="1"/>
+        <text x="100" y="145" font-size="9" text-anchor="middle">Spongocoel</text>
+      </svg>
+    `,
+    useYes: "✅ Porifera characteristics and examples.",
+    useNo: "❌ Not for Cnidaria.",
+    examQ: "📌 IAT Style: Choanocytes are characteristic of: (A) Cnidaria (B) Porifera (C) Annelida (D) Mollusca. → Ans: Porifera."
+  }
+},
+{
+  number: "08",
+  title: "Phylum Cnidaria (Coelenterata) · Stinging Animals",
+  badge: "🎐 CNIDARIA",
+  stripe: "red",
+  formula: "<b>Tissue level; Radial; Diploblastic; Cnidoblasts; Polyp & Medusa; Metagenesis</b>",
+  desc: "10‑Second Trick: Cnidoblasts/nematocysts for defense/prey. Obelia shows alternation of generations.",
+  deepDive: {
+    what: "Cnidarians are aquatic, radially symmetrical, diploblastic with tissue level. They possess cnidocytes containing nematocysts. Two body forms: polyp (sessile) and medusa (free‑swimming). Digestion extracellular and intracellular. Examples: Hydra, Obelia, Physalia, Aurelia.",
+    why: "IAT: 'Which phylum exhibits metagenesis?' Answer: Cnidaria (Obelia).",
+    how: "Polyp produces medusa asexually; medusa produces polyp sexually. Corals have CaCO₃ skeleton.",
+    derivation: "",
+    example: "Portuguese man‑of‑war belongs to: → Physalia (Cnidaria).",
+    diagramSvg: `
+      <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="80" height="40" fill="#c8d8f8"/><text x="60" y="45" font-size="9" fill="#2a4494" text-anchor="middle">Polyp (Hydra)</text>
+        <text x="110" y="45" font-size="14">↔</text>
+        <ellipse cx="200" cy="40" rx="40" ry="20" fill="#f9e79f"/><text x="200" y="45" font-size="9" fill="#b8860b" text-anchor="middle">Medusa (Aurelia)</text>
+        <text x="150" y="80" font-size="9" fill="#333" text-anchor="middle">Metagenesis in Obelia</text>
+      </svg>
+    `,
+    useYes: "✅ Cnidaria features, polymorphism, metagenesis.",
+    useNo: "❌ Not for Ctenophora.",
+    examQ: "📌 IAT Style: Which of the following shows alternation of generations? (A) Spongilla (B) Obelia (C) Planaria (D) Ascaris. → Ans: Obelia."
+  }
+},
+{
+  number: "09",
+  title: "Phylum Ctenophora · Comb Jellies",
+  badge: "✨ CTENOPHORA",
+  stripe: "green",
+  formula: "<b>Marine; Radial; Diploblastic; 8 ciliated comb plates; Bioluminescence</b>",
+  desc: "10‑Second Trick: Comb plates for locomotion. Only sexual reproduction. Pleurobrachia, Ctenoplana.",
+  deepDive: {
+    what: "Ctenophores (sea walnuts/comb jellies) are exclusively marine, radially symmetrical, diploblastic. They have eight rows of ciliated comb plates. Bioluminescence is well‑marked. Hermaphrodite, external fertilisation, indirect development.",
+    why: "IAT asks distinguishing features from Cnidaria: comb plates, no cnidoblasts, bioluminescence.",
+    how: "Examples: Pleurobrachia, Ctenoplana.",
+    derivation: "",
+    example: "Which of the following exhibits bioluminescence? → Ctenophora.",
+    diagramSvg: "",
+    useYes: "✅ Ctenophora unique features.",
+    useNo: "❌ Not for Cnidaria.",
+    examQ: "📌 IAT Style: Comb plates are characteristic of: (A) Cnidaria (B) Ctenophora (C) Platyhelminthes (D) Annelida. → Ans: Ctenophora."
+  }
+},
+{
+  number: "10",
+  title: "Phylum Platyhelminthes · Flatworms",
+  badge: "🪱 FLATWORMS",
+  stripe: "purple",
+  formula: "<b>Organ level; Bilateral; Triploblastic; Acoelomate; Flame cells; Hermaphrodite</b>",
+  desc: "10‑Second Trick: Dorsoventrally flattened; parasitic forms have hooks/suckers. Tapeworm, Liver fluke.",
+  deepDive: {
+    what: "Platyhelminthes are flatworms, mostly endoparasites. Organ level of organisation, bilateral symmetry, triploblastic, acoelomate. Flame cells for excretion/osmoregulation. Hermaphrodite, internal fertilisation, indirect development (many larvae). Planaria has high regeneration.",
+    why: "IAT asks for parasitic examples and flame cells.",
+    how: "Examples: Taenia (tapeworm), Fasciola (liver fluke). Planaria (free‑living, regeneration).",
+    derivation: "",
+    example: "Excretory structures of flatworms are: → Flame cells / Protonephridia.",
+    diagramSvg: "",
+    useYes: "✅ Platyhelminthes characteristics and examples.",
+    useNo: "❌ Not for roundworms.",
+    examQ: "📌 IAT Style: Which of the following is an acoelomate? (A) Ascaris (B) Taenia (C) Earthworm (D) Starfish. → Ans: Taenia."
+  }
+},
+{
+  number: "11",
+  title: "Phylum Aschelminthes · Roundworms",
+  badge: "🥨 ROUNDWORMS",
+  stripe: "blue",
+  formula: "<b>Organ‑system; Bilateral; Triploblastic; Pseudocoelomate; Complete gut; Dioecious</b>",
+  desc: "10‑Second Trick: Circular cross‑section; pseudocoelom; sexes separate (female longer). Ascaris, Wuchereria, Ancylostoma.",
+  deepDive: {
+    what: "Aschelminthes (Nematoda) are roundworms, free‑living or parasitic. Organ‑system level, bilateral, triploblastic, pseudocoelomate. Complete digestive tract with muscular pharynx. Dioecious, internal fertilisation, direct or indirect development.",
+    why: "IAT: 'Which phylum has pseudocoelom?' Answer: Aschelminthes.",
+    how: "Examples: Ascaris (roundworm), Wuchereria (filaria), Ancylostoma (hookworm).",
+    derivation: "",
+    example: "Filaria worm belongs to: → Aschelminthes (Wuchereria).",
+    diagramSvg: "",
+    useYes: "✅ Aschelminthes features and parasitic examples.",
+    useNo: "❌ Not for annelids.",
+    examQ: "📌 IAT Style: Pseudocoelom is present in: (A) Platyhelminthes (B) Aschelminthes (C) Annelida (D) Mollusca. → Ans: Aschelminthes."
+  }
+},
+{
+  number: "12",
+  title: "Phylum Annelida · Segmented Worms",
+  badge: "🪱 ANNELIDA",
+  stripe: "red",
+  formula: "<b>Organ‑system; Bilateral; Triploblastic; Coelomate; Metamerism; Closed circulation; Nephridia</b>",
+  desc: "10‑Second Trick: Body segments (metameres). Aquatic forms have parapodia. Earthworm, Leech, Nereis.",
+  deepDive: {
+    what: "Annelids are segmented worms with true coelom. They have organ‑system organisation, bilateral symmetry, triploblastic, metamerically segmented. Closed circulatory system, nephridia for excretion. Locomotion by setae/parapodia. Monoecious or dioecious.",
+    why: "IAT: 'First phylum with closed circulation?' Answer: Annelida.",
+    how: "Examples: Pheretima (earthworm), Hirudinaria (leech), Nereis (clam worm).",
+    derivation: "",
+    example: "Parapodia are present in: → Nereis (aquatic annelid).",
+    diagramSvg: "",
+    useYes: "✅ Annelida characteristics and examples.",
+    useNo: "❌ Not for Arthropoda.",
+    examQ: "📌 IAT Style: Closed circulatory system first appears in: (A) Platyhelminthes (B) Aschelminthes (C) Annelida (D) Arthropoda. → Ans: Annelida."
+  }
+},
+{
+  number: "13",
+  title: "Phylum Arthropoda · Jointed Legs",
+  badge: "🦋 ARTHROPODA",
+  stripe: "green",
+  formula: "<b>Largest phylum; Chitinous exoskeleton; Jointed appendages; Open circulation; Malpighian tubules</b>",
+  desc: "10‑Second Trick: Body: head, thorax, abdomen. Respiration: gills/book lungs/trachea. Insects, spiders, crustaceans.",
+  deepDive: {
+    what: "Arthropoda is the largest phylum. Organ‑system level, bilateral, triploblastic, coelomate, segmented. Chitinous exoskeleton. Jointed appendages. Open circulatory system. Excretion by Malpighian tubules. Sensory organs: antennae, compound eyes.",
+    why: "IAT: 'Which phylum has Malpighian tubules?' Answer: Arthropoda.",
+    how: "Examples: Apis (honey bee), Bombyx (silkworm), Limulus (king crab – living fossil), Anopheles (mosquito).",
+    derivation: "",
+    example: "Living fossil Limulus belongs to: → Arthropoda.",
+    diagramSvg: "",
+    useYes: "✅ Arthropod features, examples, economic importance.",
+    useNo: "❌ Not for Mollusca.",
+    examQ: "📌 IAT Style: Malpighian tubules are excretory organs of: (A) Earthworm (B) Cockroach (C) Starfish (D) Snail. → Ans: Cockroach (Arthropoda)."
+  }
+},
+{
+  number: "14",
+  title: "Phylum Mollusca · Soft‑Bodied Animals",
+  badge: "🐚 MOLLUSCA",
+  stripe: "purple",
+  formula: "<b>Second largest phylum; Calcareous shell; Mantle cavity; Radula; Open circulation</b>",
+  desc: "10‑Second Trick: Body: head, muscular foot, visceral hump. Radula for feeding. Pearl oyster, Octopus, Snail.",
+  deepDive: {
+    what: "Molluscs are terrestrial or aquatic with organ‑system organisation, bilateral symmetry, triploblastic, coelomate. Body covered by calcareous shell. Mantle cavity with gills. Radula is a rasping organ. Mostly dioecious, indirect development.",
+    why: "IAT: 'Which phylum has radula?' Answer: Mollusca.",
+    how: "Examples: Pila (apple snail), Pinctada (pearl oyster), Sepia (cuttlefish), Octopus (devil fish).",
+    derivation: "",
+    example: "Pearl oyster belongs to: → Mollusca (Pinctada).",
+    diagramSvg: "",
+    useYes: "✅ Mollusca features and examples.",
+    useNo: "❌ Not for Echinodermata.",
+    examQ: "📌 IAT Style: Radula is present in: (A) Earthworm (B) Snail (C) Starfish (D) Tapeworm. → Ans: Snail (Mollusca)."
+  }
+},
+{
+  number: "15",
+  title: "Phylum Echinodermata · Spiny Skinned",
+  badge: "⭐ ECHINODERMATA",
+  stripe: "blue",
+  formula: "<b>Marine; Adult radial, larva bilateral; Water vascular system; Tube feet; Endoskeleton</b>",
+  desc: "10‑Second Trick: Spiny skin, calcareous ossicles. Water vascular system for locomotion. Starfish, Sea urchin.",
+  deepDive: {
+    what: "Echinoderms are exclusively marine. Organ‑system level. Adult radially symmetrical, larvae bilaterally symmetrical. Triploblastic, coelomate. Water vascular system with tube feet. Complete digestive tract. External fertilisation, indirect development.",
+    why: "IAT: 'Which phylum has water vascular system?' Answer: Echinodermata.",
+    how: "Examples: Asterias (starfish), Echinus (sea urchin), Cucumaria (sea cucumber), Antedon (sea lily).",
+    derivation: "",
+    example: "Water vascular system is characteristic of: → Echinodermata.",
+    diagramSvg: "",
+    useYes: "✅ Echinodermata unique features and examples.",
+    useNo: "❌ Not for Hemichordata.",
+    examQ: "📌 IAT Style: Which of the following is radially symmetrical as adult but bilateral as larva? (A) Starfish (B) Earthworm (C) Snail (D) Hydra. → Ans: Starfish."
+  }
+},
+{
+  number: "16",
+  title: "Phylum Hemichordata · Acorn Worms",
+  badge: "🪱 HEMICHORDATA",
+  stripe: "red",
+  formula: "<b>Marine; Worm‑like; Proboscis, collar, trunk; Stomochord; Open circulation</b>",
+  desc: "10‑Second Trick: Earlier sub‑phylum of Chordata, now separate phylum. Stomochord similar to notochord.",
+  deepDive: {
+    what: "Hemichordates are marine, bilaterally symmetrical, triploblastic, coelomate. Body divided into proboscis, collar, and trunk. Stomochord (buccal diverticulum) in collar region. Open circulation, respiration by gills, excretion by proboscis gland. External fertilisation, indirect development.",
+    why: "IAT: 'Stomochord is present in?' Answer: Hemichordata (e.g., Balanoglossus).",
+    how: "Examples: Balanoglossus, Saccoglossus.",
+    derivation: "",
+    example: "Balanoglossus belongs to: → Hemichordata.",
+    diagramSvg: "",
+    useYes: "✅ Hemichordata features and examples.",
+    useNo: "❌ Not for Chordata.",
+    examQ: "📌 IAT Style: Stomochord is found in: (A) Balanoglossus (B) Amphioxus (C) Ascidia (D) Petromyzon. → Ans: Balanoglossus."
+  }
+},
+{
+  number: "17",
+  title: "Phylum Chordata · Key Features",
+  badge: "🐟 CHORDATA",
+  stripe: "green",
+  formula: "<b>Notochord; Dorsal hollow nerve cord; Pharyngeal gill slits; Post‑anal tail; Closed circulation</b>",
+  desc: "10‑Second Trick: All chordates have these 4 features at some life stage.",
+  deepDive: {
+    what: "Chordates are characterised by notochord, dorsal hollow nerve cord, pharyngeal gill slits, and post‑anal tail. Bilateral, triploblastic, coelomate, organ‑system level, closed circulatory system.",
+    why: "IAT: 'Which feature distinguishes chordates from non‑chordates?'",
+    how: "Subphyla: Urochordata (notochord only in larval tail), Cephalochordata (notochord persistent), Vertebrata (notochord replaced by vertebral column).",
+    derivation: "",
+    example: "Which of the following is not a chordate? (A) Ascidia (B) Balanoglossus (C) Branchiostoma (D) Petromyzon. → Balanoglossus (Hemichordata).",
+    diagramSvg: "",
+    useYes: "✅ Chordate characteristics. Distinguishing subphyla.",
+    useNo: "❌ Not for invertebrate phyla.",
+    examQ: "📌 IAT Style: Which of the following is true for all chordates? (A) Notochord present throughout life (B) Pharyngeal gill slits present at some stage (C) Ventral heart (D) All. → Ans: Pharyngeal gill slits at some stage."
+  }
+},
+{
+  number: "18",
+  title: "Subphylum Urochordata & Cephalochordata",
+  badge: "🐠 PROTOCHORDATES",
+  stripe: "purple",
+  formula: "<b>Urochordata: Notochord only in larval tail (Ascidia)<br>Cephalochordata: Notochord head to tail, persistent (Amphioxus)</b>",
+  desc: "10‑Second Trick: Uro = tail; Cephalo = head. Both marine, no vertebral column.",
+  deepDive: {
+    what: "Protochordates are exclusively marine. Urochordata (tunicates) have notochord only in larval tail (retrogressive metamorphosis). Cephalochordata (lancelets) have notochord extending to head, persistent throughout life.",
+    why: "IAT: 'Notochord persists throughout life in?' Answer: Cephalochordata.",
+    how: "Examples: Urochordata – Ascidia, Salpa; Cephalochordata – Branchiostoma (Amphioxus).",
+    derivation: "",
+    example: "Which protochordate has notochord only in larval tail? → Ascidia.",
+    diagramSvg: "",
+    useYes: "✅ Distinguishing protochordates.",
+    useNo: "❌ Not for Vertebrata.",
+    examQ: "📌 IAT Style: In which group notochord is present only in larval tail? (A) Cyclostomata (B) Urochordata (C) Cephalochordata (D) Chondrichthyes. → Ans: Urochordata."
+  }
+},
+{
+  number: "19",
+  title: "Class Cyclostomata · Jawless Vertebrates",
+  badge: "🐍 CYCLOSTOMATA",
+  stripe: "blue",
+  formula: "<b>Jawless; Circular sucking mouth; Ectoparasites; 6‑15 gill slits; Cartilaginous skeleton</b>",
+  desc: "10‑Second Trick: Lamprey and Hagfish. No scales, no paired fins. Migrate to freshwater to spawn, die after.",
+  deepDive: {
+    what: "Cyclostomes are jawless fishes (Agnatha). Elongated body, circular mouth, parasitic. Gill slits 6‑15 pairs. Cartilaginous cranium and vertebral column. Closed circulation. Marine but spawn in freshwater. Larvae metamorphose and return to sea.",
+    why: "IAT: 'Which vertebrates lack jaws?' Answer: Cyclostomata.",
+    how: "Examples: Petromyzon (lamprey), Myxine (hagfish).",
+    derivation: "",
+    example: "Which of the following is jawless? (A) Shark (B) Lamprey (C) Rohu (D) Frog. → Lamprey.",
+    diagramSvg: "",
+    useYes: "✅ Cyclostomata characteristics and examples.",
+    useNo: "❌ Not for jawed fishes.",
+    examQ: "📌 IAT Style: Petromyzon belongs to class: (A) Chondrichthyes (B) Osteichthyes (C) Cyclostomata (D) Amphibia. → Ans: Cyclostomata."
+  }
+},
+{
+  number: "20",
+  title: "Class Chondrichthyes · Cartilaginous Fishes",
+  badge: "🦈 CHONDRICHTHYES",
+  stripe: "red",
+  formula: "<b>Cartilaginous skeleton; Ventral mouth; Placoid scales; No operculum; No air bladder; Internal fertilisation</b>",
+  desc: "10‑Second Trick: Sharks, rays. Swim constantly to avoid sinking. Electric organ (Torpedo), poison sting (Trygon).",
+  deepDive: {
+    what: "Chondrichthyes are marine cartilaginous fishes. Streamlined body, ventral mouth. Notochord persistent. Gill slits separate, no operculum. Placoid scales (modified teeth). No air bladder. Two‑chambered heart, poikilothermic. Claspers in males, internal fertilisation, many viviparous.",
+    why: "IAT: 'Which fish lacks operculum?' Answer: Chondrichthyes.",
+    how: "Examples: Scoliodon (dogfish), Pristis (sawfish), Carcharodon (great white), Trygon (stingray), Torpedo (electric ray).",
+    derivation: "",
+    example: "Which of the following is viviparous? → Some sharks (Chondrichthyes).",
+    diagramSvg: "",
+    useYes: "✅ Chondrichthyes features and examples.",
+    useNo: "❌ Not for bony fishes.",
+    examQ: "📌 IAT Style: Which of the following is a cartilaginous fish? (A) Catla (B) Hippocampus (C) Scoliodon (D) Labeo. → Ans: Scoliodon."
+  }
+},
+{
+  number: "21",
+  title: "Class Osteichthyes · Bony Fishes",
+  badge: "🐟 OSTEICHTHYES",
+  stripe: "green",
+  formula: "<b>Bony skeleton; Terminal mouth; Operculum present; Air bladder; External fertilisation; Oviparous</b>",
+  desc: "10‑Second Trick: Cycloid/ctenoid scales. Marine and freshwater. Examples: Rohu, Catla, Seahorse, Flying fish.",
+  deepDive: {
+    what: "Osteichthyes are bony fishes, marine and freshwater. Bony endoskeleton. Mouth terminal. Four pairs of gills covered by operculum. Air bladder for buoyancy. Two‑chambered heart, poikilothermic. External fertilisation, mostly oviparous, direct development.",
+    why: "IAT: 'Air bladder is present in?' Answer: Osteichthyes.",
+    how: "Examples: Marine – Exocoetus (flying fish), Hippocampus (seahorse); Freshwater – Labeo (rohu), Catla; Aquarium – Betta (fighting fish).",
+    derivation: "",
+    example: "Which fish is known as 'flying fish'? → Exocoetus.",
+    diagramSvg: "",
+    useYes: "✅ Osteichthyes characteristics and examples.",
+    useNo: "❌ Not for cartilaginous fishes.",
+    examQ: "📌 IAT Style: Operculum is present in: (A) Shark (B) Ray (C) Rohu (D) Lamprey. → Ans: Rohu (Osteichthyes)."
+  }
+},
+{
+  number: "22",
+  title: "Class Amphibia · Dual Life",
+  badge: "🐸 AMPHIBIA",
+  stripe: "purple",
+  formula: "<b>Moist skin, no scales; Tympanum; Cloaca; Respiration by gills/lungs/skin; 3‑chambered heart; External fertilisation</b>",
+  desc: "10‑Second Trick: Live in water and land. Larva (tadpole) aquatic. Examples: Frog, Toad, Salamander, Ichthyophis (limbless).",
+  deepDive: {
+    what: "Amphibians can live in aquatic and terrestrial habitats. Body divisible into head and trunk. Skin moist without scales. Eyes with eyelids. Tympanum represents ear. Cloaca present. Respiration by gills, lungs, and skin. Three‑chambered heart, poikilothermic. External fertilisation, oviparous, indirect development.",
+    why: "IAT: 'Which class has three‑chambered heart and external fertilisation?' Answer: Amphibia.",
+    how: "Examples: Bufo (toad), Rana (frog), Hyla (tree frog), Salamandra (salamander), Ichthyophis (limbless amphibian).",
+    derivation: "",
+    example: "Limbless amphibian is: → Ichthyophis.",
+    diagramSvg: "",
+    useYes: "✅ Amphibia characteristics and examples.",
+    useNo: "❌ Not for Reptilia.",
+    examQ: "📌 IAT Style: Which of the following has a three‑chambered heart? (A) Crocodile (B) Frog (C) Pigeon (D) Dog. → Ans: Frog."
+  }
+},
+{
+  number: "23",
+  title: "Class Reptilia · Creeping Animals",
+  badge: "🦎 REPTILIA",
+  stripe: "blue",
+  formula: "<b>Dry cornified skin, epidermal scales; Tympanum; 3‑chambered heart (4 in crocodile); Internal fertilisation; Oviparous</b>",
+  desc: "10‑Second Trick: Poikilothermic. Snakes shed skin. Examples: Turtle, Tortoise, Lizard, Crocodile, Cobra, Krait.",
+  deepDive: {
+    what: "Reptiles are mostly terrestrial, creeping. Body covered by dry cornified skin, epidermal scales/scutes. No external ear openings. Tympanum represents ear. Heart usually three‑chambered, four‑chambered in crocodiles. Poikilothermic. Internal fertilisation, oviparous, direct development.",
+    why: "IAT: 'Which reptile has four‑chambered heart?' Answer: Crocodile.",
+    how: "Examples: Chelone (turtle), Testudo (tortoise), Hemidactylus (wall lizard), Naja (cobra), Bangarus (krait), Vipera (viper).",
+    derivation: "",
+    example: "Four‑chambered heart is present in: (A) Frog (B) Lizard (C) Crocodile (D) Snake. → Crocodile.",
+    diagramSvg: "",
+    useYes: "✅ Reptilia features and exceptions.",
+    useNo: "❌ Not for Aves.",
+    examQ: "📌 IAT Style: Which of the following is a poisonous snake? (A) Python (B) Naja (C) Typhlops (D) Eryx. → Ans: Naja (Cobra)."
+  }
+},
+{
+  number: "24",
+  title: "Class Aves · Birds",
+  badge: "🐦 AVES",
+  stripe: "red",
+  formula: "<b>Feathers; Forelimbs wings; Beak; Pneumatic bones; 4‑chambered heart; Homoiothermic; Oviparous</b>",
+  desc: "10‑Second Trick: Warm‑blooded. Crop and gizzard. Air sacs. Examples: Crow, Pigeon, Parrot, Ostrich, Penguin.",
+  deepDive: {
+    what: "Aves are characterised by feathers, beak, and modified forelimbs (wings). Hindlimbs with scales. Skin dry except oil gland. Endoskeleton fully ossified, long bones hollow (pneumatic). Digestive tract has crop and gizzard. Four‑chambered heart, homoiothermic (warm‑blooded). Lungs with air sacs. Internal fertilisation, oviparous, direct development.",
+    why: "IAT: 'Pneumatic bones are found in?' Answer: Aves.",
+    how: "Examples: Corvus (crow), Columba (pigeon), Struthio (ostrich – flightless), Aptenodytes (penguin).",
+    derivation: "",
+    example: "Flightless bird is: → Struthio (ostrich).",
+    diagramSvg: "",
+    useYes: "✅ Aves features and examples.",
+    useNo: "❌ Not for Mammalia.",
+    examQ: "📌 IAT Style: Which of the following is characteristic of birds? (A) Pneumatic bones (B) Mammary glands (C) Scales (D) Cloaca. → Ans: Pneumatic bones."
+  }
+},
+{
+  number: "25",
+  title: "Class Mammalia · Milk‑Producing Animals",
+  badge: "🐘 MAMMALIA",
+  stripe: "green",
+  formula: "<b>Mammary glands; Hair; Pinnae; Heterodont teeth; 4‑chambered heart; Viviparous (except Platypus)</b>",
+  desc: "10‑Second Trick: Warm‑blooded. Diaphragm present. Examples: Platypus (oviparous), Kangaroo, Whale, Tiger.",
+  deepDive: {
+    what: "Mammals possess mammary glands to nourish young. Skin has hair. External ears (pinnae). Heterodont dentition (incisors, canines, premolars, molars). Four‑chambered heart, homoiothermic. Respiration by lungs. Viviparous except Ornithorhynchus (platypus) which is oviparous. Direct development.",
+    why: "IAT: 'Which mammal lays eggs?' Answer: Platypus (Ornithorhynchus).",
+    how: "Examples: Ornithorhynchus (platypus), Macropus (kangaroo), Rattus (rat), Canis (dog), Panthera (tiger/lion), Balaenoptera (blue whale).",
+    derivation: "",
+    example: "Oviparous mammal is: → Platypus.",
+    diagramSvg: "",
+    useYes: "✅ Mammalia features, exceptions, and examples.",
+    useNo: "❌ Not for other vertebrates.",
+    examQ: "📌 IAT Style: Which of the following is an egg‑laying mammal? (A) Kangaroo (B) Dolphin (C) Platypus (D) Bat. → Ans: Platypus."
+  }
+},
+{
+  number: "26",
+  title: "Animal Kingdom Cheat Sheet · Phylum Examples",
+  badge: "🏁 CHEAT",
+  stripe: "gold",
+  formula: "<b>Porifera: Sycon; Cnidaria: Hydra, Aurelia; Platyhelminthes: Taenia; Aschelminthes: Ascaris; Annelida: Earthworm; Arthropoda: Cockroach; Mollusca: Snail; Echinodermata: Starfish; Chordata: All vertebrates</b>",
+  desc: "10‑Second Trick: Common examples for each phylum — exam ke liye must remember.",
+  deepDive: {
+    what: "Quick reference of representative examples for each major phylum.",
+    why: "IAT matching questions ask to identify phylum from example.",
+    how: "Use mnemonics or visual memory.",
+    derivation: "",
+    example: "",
+    diagramSvg: `
+      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="380" height="180" fill="#fffcf7" stroke="#b8860b" stroke-width="2" rx="8"/>
+        <text x="200" y="30" font-size="11" fill="#b8860b" text-anchor="middle" font-weight="600">🐾 ANIMAL KINGDOM QUICK EXAMPLES</text>
+        <text x="20" y="50" font-size="9" fill="#333">Porifera: Sycon, Spongilla | Cnidaria: Hydra, Aurelia, Physalia</text>
+        <text x="20" y="65" font-size="9" fill="#333">Ctenophora: Pleurobrachia | Platyhelminthes: Taenia, Fasciola</text>
+        <text x="20" y="80" font-size="9" fill="#333">Aschelminthes: Ascaris, Wuchereria | Annelida: Pheretima, Nereis</text>
+        <text x="20" y="95" font-size="9" fill="#333">Arthropoda: Apis, Limulus, Anopheles | Mollusca: Pila, Octopus</text>
+        <text x="20" y="110" font-size="9" fill="#333">Echinodermata: Asterias, Cucumaria | Hemichordata: Balanoglossus</text>
+        <text x="20" y="125" font-size="9" fill="#333">Chordata: Ascidia, Amphioxus, Petromyzon, Scoliodon, Rohu</text>
+        <text x="20" y="140" font-size="9" fill="#333">Amphibia: Rana, Bufo | Reptilia: Naja, Crocodilus</text>
+        <text x="20" y="155" font-size="9" fill="#333">Aves: Columba, Struthio | Mammalia: Ornithorhynchus, Panthera</text>
+        <text x="200" y="175" font-size="9" fill="#c0392b" text-anchor="middle">⭐ All examples from NCERT — IAT favourite!</text>
+      </svg>
+    `,
+    useYes: "✅ Last minute example recall.",
+    useNo: "❌ Not for characteristics.",
+    examQ: "📌 IAT Style: Match the following: (A) Physalia (i) Mollusca; (B) Limulus (ii) Arthropoda; (C) Pinctada (iii) Cnidaria. → A-iii, B-ii, C-i."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
