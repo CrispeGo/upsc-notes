@@ -631,20 +631,20 @@ const cardsData = [
 },
 {
   number: "12",
-  title: "Telescopic Series · Vedic Subtraction",
+  title: "Telescopic Series · The Domino Cancellation",
   badge: "🔭 TELESCOPIC",
   stripe: "purple",
-  formula: "<b>Sum = (1/Gap) × [1/First − 1/Last] &nbsp;|&nbsp; T<sub>n</sub> = f(n) − f(n+1)</b>",
-  desc: "⭐ 10‑Second Trick (Puri Malai): Seedha (1/Gap) × [1/First - 1/Last] lagao. (Base Concept: Term ko difference of two expressions mein tod do jisse cancellation ho).",
+  formula: "<b>Sum = (1/Gap) × [1/(First Factor) − 1/(Last Factor)]</b>",
+  desc: "⭐ 10‑Second Trick: Beech ke terms kaatne mein time waste mat karo! Neeche numbers ka Gap dekho, series ka sabse Pehla number uthao, aur sabse Aakhiri number uthao. Seedha formula lagao aur answer nikaalo.",
   deepDive: {
-    what: "A telescoping series is one where each term can be expressed as a difference, so that consecutive terms cancel. e.g., 1/(n(n+1)) = 1/n − 1/(n+1).",
-    why: "IAT questions: 'Sum of 1/(1·2) + 1/(2·3) + ...' to check if you can cancel intermediate terms.",
-    how: "⚡ IAT SPEED TRICK: Sum = (1/Gap) × [1/(First Factor) − 1/(Last Factor)]. \n📚 CONCEPTUAL METHOD (Backup): Factor denominator, use partial fractions. Write T_n = A/n − B/(n+1).",
-    derivation: "1/(n(n+1)) = (n+1−n)/(n(n+1)) = 1/n − 1/(n+1).",
-    example: "Sum 1/(1·2) + 1/(2·3) + ... n terms. S_n = 1 − 1/(n+1) = n/(n+1).",
-    useYes: "✅ Rational series with product denominators.",
-    useNo: "❌ Not for non‑telescoping series where terms don't cancel.",
-    examQ: "📌 IAT Style: Sum to n terms: 1/(1·2·3) + 1/(2·3·4) + ... → T_n = 1/2 [1/(n(n+1)) − 1/((n+1)(n+2))]. S_n = 1/4 − 1/(2(n+1)(n+2))."
+    what: "Like a folding telescope, all intermediate terms in this series cancel each other out (e.g., +1/2 and -1/2 cancel). Only the very first part and the very last part survive.",
+    why: "IAT sets up scary-looking fractional series to panic students. This trick bypasses the whole 'partial fraction' derivation process.",
+    how: "⚡ SPEED METHOD:\n1. Find the 'Gap' between multiplied factors in the denominator.\n2. Identify the 'First Factor' of the first term.\n3. Identify the 'Last Factor' of the last term.\n4. Apply: (1/Gap) × [1/First - 1/Last].",
+    derivation: "1/(n(n+d)) = (1/d) × [(n+d - n)/(n(n+d))] = (1/d) × [1/n - 1/(n+d)]. Summing these causes consecutive terms to cancel.",
+    example: "Find sum of 1/(1·2) + 1/(2·3) + ... + 1/(99·100).\nGap = 1. First Factor = 1. Last Factor = 100.\nSum = (1/1) × [1/1 - 1/100] = 99/100.",
+    useYes: "✅ Series where denominators have multiplying factors in AP (like 1x3, 3x5, 5x7).",
+    useNo: "❌ Do not use if the factors in denominator are not in a continuous AP.",
+    examQ: "📌 IAT Style (3 Terms Trap): Sum of 1/(1·2·3) + 1/(2·3·4) + ... to infinity. \n→ TRICK FOR 3 TERMS: Gap is (Last factor of term 1 - First factor of term 1) = 3-1 = 2. \nFirst factor set = 1·2. Last = Infinity.\nSum = (1/2) × [1/(1·2) - 1/∞] = (1/2) × (1/2 - 0) = 1/4."
   }
 },
 {
@@ -851,34 +851,34 @@ const cardsData = [
   badge: "✖️ PRODUCT",
   stripe: "purple",
   formula: "<b>Σ k(k+1) = n(n+1)(n+2)/3</b>",
-  desc: "10‑Second Trick: Consecutive products ke sum ke liye Vn method. Yaad rakho: 1·2 + 2·3 + ... = n(n+1)(n+2)/3.",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Aam baccho ki tarah Σn² + Σn mat lagana! Trick: Last term uthao, usme ek agla consecutive number multiply karo, aur total jitne numbers ban gaye, usse divide kar do!",
   deepDive: {
-    what: "Sum of products of consecutive integers: Σ k(k+1) = n(n+1)(n+2)/3. Σ k(k+1)(k+2) = n(n+1)(n+2)(n+3)/4.",
-    why: "IAT DPP Q6: 1·2·3 + 2·3·4 + ... = n(n+1)(n+2)(n+3)/4.",
-    how: "Use identity: k(k+1) = [k(k+1)(k+2) − (k−1)k(k+1)]/3. Telescope.",
-    derivation: "Vn method.",
-    example: "1·2 + 2·3 + ... + 10·11 = 10×11×12/3 = 440.",
-    useYes: "✅ Sum of product series.",
-    useNo: "❌ Not for non‑consecutive.",
-    examQ: "📌 IAT Style: Sum of series 1·2·3 + 2·3·4 + ... n terms = n(n+1)(n+2)(n+3)/4."
+    what: "Summing products of consecutive integers like 1·2 + 2·3 ... avoids using long summation expansion by using the Vn difference method.",
+    why: "IAT tests if you know the direct result or if you waste 3 minutes expanding k(k+1) into k² + k and applying standard formulas.",
+    how: "⚡ SPEED TRICK: For 2 factors (n(n+1)), answer has 3 factors divided by 3. For 3 factors (n(n+1)(n+2)), answer has 4 factors divided by 4. \n📚 CONCEPT: k(k+1) = [k(k+1)(k+2) − (k−1)k(k+1)]/3.",
+    derivation: "Using Vn method: write T_k = V_k - V_{k-1}. The terms telescope and only the last term V_n remains.",
+    example: "1·2 + 2·3 + ... + 10·11. Last term is 10·11. Next is 12. Sum = (10·11·12)/3 = 440.",
+    useYes: "✅ Summing series where each term is a product of consecutive integers.",
+    useNo: "❌ Does not work if integers are NOT consecutive (like 1·3 + 2·4).",
+    examQ: "📌 IAT Style: Sum of series 1·2·3 + 2·3·4 + ... to n terms. → TRICK: Last is n(n+1)(n+2). Add next factor (n+3) and divide by 4. Ans: n(n+1)(n+2)(n+3)/4."
   }
 },
 {
   number: "25",
-  title: "Repeated Digits Sum · 0.7+0.77+0.777...",
+  title: "Repeated Digits Sum · The 'Magic of 9' Series",
   badge: "🔁 REPEATING",
   stripe: "blue",
-  formula: "<b>Factor out 7/9 and use 0.9+0.99+... = n − (1−10⁻ⁿ)/9</b>",
-  desc: "10‑Second Trick: 0.7+0.77+... = 7/9 (0.9+0.99+...). 0.9+0.99+... n terms = n − (1−10⁻ⁿ)/9.",
+  formula: "<b>Convert to 9s: 0.9 + 0.99... = n - (1-10⁻ⁿ)/9</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Lamba formula exam mein bhool jaoge! BOMB TRICK: Options mein seedha n=1 put karo. Jis formula se series ka pehla term (jaise 0.7 ya 5) aa jaye, wahi right answer hai!",
   deepDive: {
-    what: "Series like 0.7 + 0.77 + 0.777 + ... n terms. Write 0.777... = 7/9 (0.999...) = 7/9 (1 − 10⁻ᵏ). Sum = 7/9 [n − (1−10⁻ⁿ)/9].",
-    why: "IAT L3 notes question.",
-    how: "Factor 7/9. Sum of 0.9, 0.99, ... = Σ(1 − 10⁻ᵏ) = n − 10⁻¹(1−10⁻ⁿ)/(1−10⁻¹) = n − (1−10⁻ⁿ)/9.",
-    derivation: "Geometric series.",
-    example: "0.7+0.77+0.777 (3 terms) = 7/9 [3 − (1−0.001)/9] = 7/9 [3 − 0.111] = 7/9 × 2.888... ≈ 2.2469.",
-    useYes: "✅ Sum of repeated digit decimals.",
-    useNo: "❌ Not for non‑repeating.",
-    examQ: "📌 IAT Style: Sum of first 20 terms of 0.7+0.77+0.777+... = 7/81 (179 − 10⁻²⁰)."
+    what: "Series like 0.7 + 0.77 + 0.777 + ... are neither AP nor GP. By taking 7 common and multiplying/dividing by 9, we convert it to (1-0.1) + (1-0.01)... which is n minus a GP.",
+    why: "IAT gives 4 complex formulas in the options. Students waste 3 minutes doing the algebraic sum. Smart students put n=1 to eliminate options in 10 seconds.",
+    how: "⚡ SPEED TRICK: To check options, plug in n=1. The result MUST equal the first term. If two options match, plug in n=2 (result must equal First + Second term). \n📚 CONCEPT: Factor d/9. Sum of 0.9, 0.99 = Σ(1 − 10⁻ᵏ).",
+    derivation: "S = d/9 [ (1-10⁻¹) + (1-10⁻²) + ... ] = d/9 [ n - Σ 10⁻ᵏ ] = d/9 [ n - (1-10⁻ⁿ)/9 ].",
+    example: "0.7+0.77+0.777 (n=3 terms). Option trick: sum must be 2.247. Put n=3 in formula to verify.",
+    useYes: "✅ Sum of repeated digit sequences (both decimal like 0.33... and integers like 333...).",
+    useNo: "❌ Do not use for randomly changing digits.",
+    examQ: "📌 IAT Style: Sum of n terms of 4+44+444... is? → TRICK: Don't derive! Check which option gives '4' when n=1. Done in 5s."
   }
 },
 {
@@ -886,17 +886,17 @@ const cardsData = [
   title: "Method of Differences · When ΔTₙ is AP/GP",
   badge: "📈 Δ METHOD",
   stripe: "red",
-  formula: "<b>If ΔTₙ = Tₙ₊₁ − Tₙ is AP or GP, express Tₙ as polynomial</b>",
-  desc: "10‑Second Trick: Series ke terms ka difference AP/GP hai to Tₙ quadratic ya exponential form mein hoga.",
+  formula: "<b>If ΔTₙ is AP -> Tₙ = an² + bn + c &nbsp;|&nbsp; a = (Common Diff of Gap)/2</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Series ke differences nikaalo. Agar woh AP banayein, toh T_n ek quadratic equation (an² + bn + c) hogi. Trick: 'a' hamesha AP ke common difference ka AADHA hota hai! Baaki ke liye options mein n=1, 2 daal kar check kar lo.",
   deepDive: {
-    what: "If the difference between consecutive terms of a series forms an AP, then the nth term is a quadratic polynomial. If the difference forms a GP, T_n involves exponential.",
-    why: "IAT L2 notes: series 6,13,22,33,... differences 7,9,11,... AP. T_n = an²+bn+c.",
-    how: "Assume T_n = an²+bn+c. Find a,b,c using first three terms. Then sum.",
-    derivation: "If ΔT_n is linear, T_n is quadratic.",
-    example: "6,13,22,33,... Δ:7,9,11,... AP. Assume T_n=an²+bn+c. n=1⇒a+b+c=6; n=2⇒4a+2b+c=13; n=3⇒9a+3b+c=22. Solve: a=1,b=4,c=1? Check: 1+4+1=6; 4+8+1=13; 9+12+1=22. T_n = n²+4n+1.",
-    useYes: "✅ Series where differences are AP/GP.",
-    useNo: "❌ If differences not simple.",
-    examQ: "📌 IAT Style: Sum to n terms of 6+13+22+33+... → T_n=n²+4n+1, sum = Σn²+4Σn+Σ1 = n(n+1)(2n+1)/6 + 2n(n+1) + n."
+    what: "When the sequence itself is not AP/GP, but the difference between consecutive terms (ΔTₙ) forms an AP, the general term Tₙ is a polynomial of degree 2 (quadratic).",
+    why: "IAT sets up scary series. Students try to find standard formulas and waste time. Finding Tₙ is the first step to finding Sₙ (using Σn² and Σn).",
+    how: "⚡ SPEED TRICK: Calculate gaps. Find the common difference of those gaps (say 'd'). The coefficient 'a' in your quadratic Tₙ is exactly d/2. Then use Option Elimination (put n=1) to find the correct Tₙ instantly. \n📚 CONCEPT: Assume T_n = an²+bn+c. Find a,b,c using first three terms.",
+    derivation: "If ΔT_n is linear (degree 1), then T_n must be quadratic (degree 2) because taking a difference reduces the degree of a polynomial by 1 (similar to differentiation).",
+    example: "6,13,22,33,... Gaps: 7,9,11 (d=2). Therefore a=2/2=1. Tₙ starts with n². Substitute n=1,2 to get Tₙ = n² + 4n + 1.",
+    useYes: "✅ Series where differences of consecutive terms form a clear AP or GP.",
+    useNo: "❌ If the second-level differences are still not constant (you might need a cubic polynomial, but that's rare).",
+    examQ: "📌 IAT Style: n-th term of 6+13+22+... → TRICK: Put n=1 in options. The one that gives '6' is correct. If tied, put n=2 to get '13'."
   }
 },
 {
@@ -904,17 +904,17 @@ const cardsData = [
   title: "Sum of Series with Alternate Signs",
   badge: "➕➖ ALTERNATE",
   stripe: "green",
-  formula: "<b>Separate odd and even terms, or use (1−x) factor</b>",
-  desc: "10‑Second Trick: Alternate signs ho to series ko do alag sums mein tod lo (positive and negative).",
+  formula: "<b>1² − 2² + 3² − 4² ... = −(1+2+3+4...)</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Odd-Even alag karne mein time waste mat karo. 2-2 ke jode banao. a²-b² lagane par hamesha minus bahar aayega aur andar natural numbers ka sum bachega! Agar series Odd term par ruki hai, toh Even tak trick lagao aur last term alag se add kar do.",
   deepDive: {
-    what: "For series like 1² − 2² + 3² − 4² + ... n terms, group as (1²−2²) + (3²−4²) + ... = −(1+2) − (3+4) ... = −Σ(odd+even). Or use formula for sum of squares with sign.",
-    why: "IAT sometimes gives such series.",
-    how: "If n even, group pairs. If n odd, handle last term separately. Use identities: k² − (k+1)² = −(2k+1).",
-    derivation: "Pairing.",
-    example: "1²−2²+3²−4²+5²−6² = (1−4)+(9−16)+(25−36) = −3−7−11 = −21.",
-    useYes: "✅ Alternating sign series.",
-    useNo: "❌ Not for non‑alternating.",
-    examQ: "📌 IAT Style: Sum of 1²−2²+3²−4²+... upto 2n terms = −n(2n+1)."
+    what: "For series like 1² − 2² + 3² − 4² + ... we group consecutive terms. Using a²-b² = (a-b)(a+b), since (a-b) is always -1, the series collapses into the negative sum of consecutive integers.",
+    why: "IAT checks if you use standard long grouping formulas or if you know the quick algebraic collapse trick.",
+    how: "⚡ SPEED TRICK: If the series ends on an EVEN term (like -20²), the sum is simply -(1+2+...+20). If it ends on an ODD term (like +21²), find the sum up to -20² and manually add 21². \n📚 CONCEPT: k² − (k+1)² = −(2k+1).",
+    derivation: "(1-2)(1+2) + (3-4)(3+4) = -1(1+2) - 1(3+4) = -(1+2+3+4).",
+    example: "1²−2²+3²−4²+5²−6² = -(1+2+3+4+5+6) = -21. Solved in 2 seconds!",
+    useYes: "✅ Alternating sign series of squares.",
+    useNo: "❌ Do not use if powers are cubes or higher without re-deriving the collapse.",
+    examQ: "📌 IAT Style: Sum of 1²−2²+3²−4²+... upto 2n terms → TRICK: Ends on even. Sum = -(1+2+...+2n) = -2n(2n+1)/2 = -n(2n+1)."
   }
 },
 {
