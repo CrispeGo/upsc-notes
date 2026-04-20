@@ -437,13 +437,13 @@ const cardsData = [
   badge: "📈 AP",
   stripe: "blue",
   formula: "<b>T<sub>n</sub> = a + (n−1)d &nbsp;|&nbsp; S<sub>n</sub> = n/2 [2a + (n−1)d]</b>",
-  desc: "10‑Second Trick: AP hai to nᵗʰ term aur sum ke liye seedha formula. d = T₂−T₁.",
+  desc: "10‑Second Trick: AP hai to nᵗʰ term aur sum ke liye seedha formula. d = T₂−T₁. ⭐ TRICK: Agar Sn = An² + Bn diya ho, toh common difference d = 2A aur first term a = A + B.",
   deepDive: {
     what: "An arithmetic progression (AP) is a sequence where the difference between consecutive terms is constant (common difference d). General term T_n = a + (n−1)d. Sum of first n terms S_n = n/2 [2a + (n−1)d] = n/2 (a + l).",
     why: "IAT frequently asks for specific term, sum, or number of terms.",
-    how: "Identify a = first term, d = common difference. Use formulas.",
+    how: "Identify a = first term, d = common difference. Use formulas. If sum is in An²+Bn form, use direct shortcut.",
     derivation: "S_n = n/2 (a + l) where l = a + (n−1)d.",
-    example: "AP: 3, 7, 11,... Find 10th term and sum of 10 terms. a=3, d=4. T₁₀ = 3+9×4 = 39. S₁₀ = 10/2 (3+39) = 210.",
+    example: "AP: 3, 7, 11,... Find 10th term and sum of 10 terms. a=3, d=4. T₁₀ = 3+9×4 = 39. S₁₀ = 10/2 (3+39) = 210. TRICK EX: Sn = 5n² + 2n ➔ a = 7, d = 10.",
     useYes: "✅ Finding terms, sums, n in AP.",
     useNo: "❌ If sequence is not AP.",
     examQ: "📌 IAT Style: How many terms of AP 2, 5, 8,... sum to 610? → n/2[4+(n−1)3]=610 ⇒ n(3n+1)=1220 ⇒ n=20."
@@ -455,34 +455,34 @@ const cardsData = [
   badge: "🔢 AM",
   stripe: "red",
   formula: "<b>A = (a+b)/2 &nbsp;|&nbsp; n AMs between a and b: d = (b−a)/(n+1)</b>",
-  desc: "10‑Second Trick: Do numbers ke beech AM = average. n AMs insert karne ho to common difference = (last − first)/(n+1).",
+  desc: "10‑Second Trick: Do numbers ke beech AM = average. n AMs insert karne ho to d = (last − first)/(n+1). ⭐ TRICK: Middle AM = (a+b)/2. Sum of all n AMs = n × (a+b)/2.",
   deepDive: {
     what: "Arithmetic mean between a and b is (a+b)/2. To insert n arithmetic means between a and b, the total terms become n+2. Common difference d = (b−a)/(n+1).",
     why: "IAT: 'Insert 4 AMs between 3 and 23' type questions.",
-    how: "d = (b−a)/(n+1). Then means are a+d, a+2d, ..., a+nd.",
+    how: "d = (b−a)/(n+1). Then means are a+d, a+2d, ..., a+nd. Use n × (a+b)/2 for sum of means.",
     derivation: "b = a + (n+1)d ⇒ d = (b−a)/(n+1).",
-    example: "Insert 4 AMs between 5 and 25. d = (25−5)/5 = 4. Means: 9, 13, 17, 21.",
-    useYes: "✅ Inserting arithmetic means. Finding middle terms.",
+    example: "Insert 4 AMs between 5 and 25. d = (25−5)/5 = 4. Means: 9, 13, 17, 21. TRICK: Sum of these 4 means = 4 × (5+25)/2 = 60.",
+    useYes: "✅ Inserting arithmetic means. Finding middle terms and sum.",
     useNo: "❌ Not for geometric means.",
-    examQ: "📌 IAT Style: If 7 AMs are inserted between 2 and 50, the middle mean is? → Total terms=9, middle is 5th term = a+4d. d=(50−2)/8=6, so term=2+24=26."
+    examQ: "📌 IAT Style: If 7 AMs are inserted between 2 and 50, the middle mean is? → Total terms=9, middle is 5th term = a+4d. d=(50−2)/8=6, so term=2+24=26. (⚡ TRICK: Middle mean = (2+50)/2 = 26. 1 second!)"
   }
 },
 {
   number: "03",
-  title: "AP Properties · Common Terms & Ratio",
+  title: "AP Properties · Common Terms",
   badge: "🔗 AP PROPS",
   stripe: "green",
-  formula: "<b>If a,b,c in AP ⇒ 2b = a+c</b>",
-  desc: "10‑Second Trick: Three terms AP mein hain to middle term ka double = sum of extremes.",
+  formula: "<b>If a,b,c in AP ⇒ 2b = a+c &nbsp;|&nbsp; 3 Terms: a−d, a, a+d</b>",
+  desc: "10‑Second Trick: Variables wale questions mein a=1, b=2, c=3 daalo. Common terms ki AP ka D = LCM(d₁, d₂).",
   deepDive: {
-    what: "Three numbers a, b, c are in AP if and only if 2b = a + c. For common terms of two APs, the common difference of the common terms is LCM of individual common differences.",
-    why: "IAT: 'Find number of common terms in two APs'.",
-    how: "First common term find karo, then common difference = LCM(d₁, d₂). Then find n such that term ≤ last term.",
-    derivation: "b − a = c − b ⇒ 2b = a + c.",
-    example: "AP1: 1,6,11,... d=5; AP2: 9,16,23,... d=7. Common diff = 35. First common term = 16. Then terms: 16, 51, 86,...",
-    useYes: "✅ Checking AP condition. Common terms of two APs.",
-    useNo: "❌ Not for GP.",
-    examQ: "📌 IAT Style: Number of common terms in AP 3,7,11,... upto 100 terms and AP 5,9,13,... upto 80 terms? → d₁=4, d₂=4, LCM=4. First common term? 7? Actually 3,7,11,15,19,23,... and 5,9,13,17,21,25,... Common: 7,11,15,... d=4. Solve."
+    what: "Three numbers a, b, c are in AP if 2b = a + c. Jab do APs ke common terms nikalne hon, toh ek nayi AP banti hai jiska common difference dono APs ke d ka LCM hota hai.",
+    why: "IAT frequently asks to find the number of common terms in two finite APs.",
+    how: "1. First common term (A) dhoondo. 2. Naya D = LCM(d₁, d₂). 3. 🚨 SUPER TRICK: Nayi AP ka T_n ≤ MIN(Last term AP1, Last term AP2). Limit humesha chote last term se set hogi!",
+    derivation: "Common terms appear at intervals that are multiples of both individual differences, hence the LCM.",
+    example: "AP1: 1,6,11... (d=5). AP2: 9,16,23... (d=7). First common = 16. Naya D = LCM(5,7) = 35. Nayi AP: 16, 51, 86...",
+    useYes: "✅ Common terms counting, reducing variable equations using 1,2,3.",
+    useNo: "❌ Never take limit as the larger last term in common AP questions.",
+    examQ: "📌 IAT Style: Common terms in AP1: 1,6,11... (50 terms) & AP2: 2,6,10... (60 terms)? → L₁=246, L₂=238. Limit=238! A=6, D=LCM(5,4)=20. Eq: 6+(n−1)20 ≤ 238 ⇒ (n−1)20 ≤ 232 ⇒ n ≤ 12.6. Total terms = 12."
   }
 },
 {
@@ -490,17 +490,17 @@ const cardsData = [
   title: "Sum of AP · Relation with n",
   badge: "🧮 S_n",
   stripe: "purple",
-  formula: "<b>S<sub>n</sub> = An² + Bn (quadratic in n)</b>",
-  desc: "10‑Second Trick: AP ke sum ka expression hamesha n² term hota hai. Constant term zero hota hai.",
+  formula: "<b>S<sub>n</sub> = An² + Bn &nbsp;|&nbsp; T<sub>n</sub> = 2An + (B−A)</b>",
+  desc: "10‑Second Trick: d = 2A, a = A + B. AP sum always quadratic WITHOUT a constant term.",
   deepDive: {
-    what: "Sum of first n terms of an AP is a quadratic polynomial in n without constant term: S_n = (d/2)n² + (a − d/2)n. This helps identify AP and find a and d.",
-    why: "IAT: 'If S_n = 3n² + 5n, find a and d.'",
-    how: "Compare with (d/2)n² + (a − d/2)n. d/2 = coeff of n², a = coeff of n + d/2.",
-    derivation: "S_n = n/2[2a + (n−1)d] = (d/2)n² + (a − d/2)n.",
-    example: "S_n = 2n² + 3n. Then d/2 = 2 ⇒ d=4. a − 2 = 3 ⇒ a=5.",
-    useYes: "✅ Finding a, d from S_n expression.",
-    useNo: "❌ If constant term present (not AP).",
-    examQ: "📌 IAT Style: Sum of n terms of an AP is 4n² + 2n. Common difference is: → d/2=4 ⇒ d=8."
+    what: "Sum of n terms of an AP is a quadratic polynomial: S_n = An² + Bn. Constant term MUST be zero. Trap: If constant term exists (e.g., An² + Bn + C), it's NOT an AP from the 1st term.",
+    why: "IAT traps students with S_n expressions to waste their time finding a, d, or T_n.",
+    how: "NEVER use long comparison. Use TRICK: d = double of n² coeff (2A). a = sum of coeffs (A+B). For general term, direct use T_n = 2An + (B−A).",
+    derivation: "S_n = (d/2)n² + (a − d/2)n. Let A = d/2 and B = a - d/2. Thus d = 2A and a = A+B.",
+    example: "S_n = 2n² + 3n. A=2, B=3. d = 2(2) = 4. a = 2+3 = 5. Direct T_n = 2(2)n + (3-2) = 4n + 1.",
+    useYes: "✅ Instantly finding a, d, and T_n from S_n expression.",
+    useNo: "❌ If S_n has a constant term (e.g., 3n² + 2n + 5), do not apply blindly for 1st term.",
+    examQ: "📌 IAT Style: S_n = 7n² − 3n. Find general term T_n. → A=7, B=−3. Trick: T_n = 2(7)n + (−3−7) = 14n − 10. Solved in 5 seconds!"
   }
 },
 {
@@ -508,35 +508,35 @@ const cardsData = [
   title: "Geometric Progression (GP) · Core Formulas",
   badge: "📉 GP",
   stripe: "blue",
-  formula: "<b>T<sub>n</sub> = ar<sup>n−1</sup> &nbsp;|&nbsp; S<sub>n</sub> = a(r<sup>n</sup>−1)/(r−1), r≠1</b>",
-  desc: "10‑Second Trick: GP mein har term previous × r. Sum formula denominator mein (r−1) ya (1−r).",
+  formula: "<b>T<sub>n</sub> = ar<sup>n−1</sup> &nbsp;|&nbsp; S<sub>n</sub> = a(r<sup>n</sup>−1)/(r−1) &nbsp;|&nbsp; 3 Terms: a/r, a, ar</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): (1) Direct Jump: Gap in position = Power of r (e.g., T₆/T₃ = r³). (2) Product of 3 terms given? ALWAYS take a/r, a, ar (r turant cancel hoga).",
   deepDive: {
-    what: "A geometric progression has constant ratio r between consecutive terms. General term T_n = ar^{n−1}. Sum of n terms S_n = a(r^n − 1)/(r − 1) for r>1, or a(1 − r^n)/(1 − r) for r<1.",
-    why: "IAT asks for specific term, sum, or infinite sum.",
-    how: "Identify a, r. Use formulas.",
-    derivation: "S_n = a + ar + ar² + ... + ar^{n−1}. Multiply by r and subtract.",
-    example: "GP: 2, 6, 18,... Find 6th term and S_6. a=2, r=3. T_6 = 2×3⁵ = 486. S_6 = 2(3⁶−1)/(3−1) = 2(729−1)/2 = 728.",
-    useYes: "✅ GP term, sum, infinite sum.",
-    useNo: "❌ Not for AP.",
-    examQ: "📌 IAT Style: In a GP, 3rd term is 24 and 6th term is 192. Find 10th term. → ar²=24, ar⁵=192 ⇒ r³=8 ⇒ r=2, a=6. T₁₀ = 6×2⁹ = 3072."
+    what: "A geometric progression has a constant ratio r. General term T_n = ar^{n−1}. Sum of n terms S_n = a(r^n − 1)/(r − 1).",
+    why: "IAT asks for specific terms or product-based questions to waste your calculation time.",
+    how: "NEVER make long equations. Use Direct Jump: (Badi Term / Choti Term) = r^(unke index ka difference). Use a/r, a, ar for product questions.",
+    derivation: "S_n = a + ar + ar² + ... + ar^{n−1}. Multiply by r and subtract from original.",
+    example: "GP: 2, 6, 18,... T_6 = 2×3⁵ = 486. S_6 = 2(3⁶−1)/(3−1) = 728. (Magic Rule Ex: Product of 3 terms is 27 ⇒ (a/r)(a)(ar) = 27 ⇒ a³=27 ⇒ a=3).",
+    useYes: "✅ Fast r calculation using gaps, instant 'a' finding using magic terms.",
+    useNo: "❌ Never take a, ar, ar² if product of 3 terms is given.",
+    examQ: "📌 IAT Style: 3rd term is 24, 6th term is 192. Find 10th term. → TRICK (Mentally): Gap = 6-3 = 3. Division = 192/24 = 8. So r³=8 ⇒ r=2. a(2)²=24 ⇒ a=6. T₁₀ = 6×2⁹ = 3072. Solved in 5 seconds!"
   }
 },
 {
   number: "06",
-  title: "Infinite GP Sum · |r|<1",
+  title: "Infinite GP & AGP Sum",
   badge: "♾️ SUM ∞",
   stripe: "red",
-  formula: "<b>S<sub>∞</sub> = a / (1 − r) &nbsp; for |r| < 1</b>",
-  desc: "10‑Second Trick: GP infinite sum tabhi nikal sakte hain jab |r|<1. Seedha a/(1−r).",
+  formula: "<b>S<sub>∞</sub> = a/(1−r) &nbsp;|&nbsp; AGP S<sub>∞</sub> = a/(1−r) + dr/(1−r)²</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Simple Inf GP = a/(1−r). Agar AP×GP mix (AGP) aaye, toh bada formula lagao. BOMB TRICK: '1 + 2x + 3x²...' wali series ka sum hamesha 1/(1−x)² hota hai!",
   deepDive: {
-    what: "For an infinite geometric series with |r| < 1, the sum converges to S_∞ = a / (1 − r).",
-    why: "IAT questions: 'Sum of infinite series 1 + 1/2 + 1/4 + ...'",
-    how: "Check |r|<1. Apply formula.",
-    derivation: "lim n→∞ S_n = a/(1−r) as r^n → 0.",
-    example: "Series: 2 + 1 + 0.5 + ... a=2, r=0.5. S_∞ = 2/(1−0.5) = 4.",
-    useYes: "✅ Infinite geometric series sum.",
-    useNo: "❌ If |r| ≥ 1 (diverges).",
-    examQ: "📌 IAT Style: Sum to infinity of 1 + 2r + 3r² + ... (AGP) is 9/4. Find r. → Use AGP sum formula."
+    what: "Infinite GP sum converges only if |r| < 1. AGP (Arithmetico-Geometric) is when AP terms multiply with GP terms. Their infinite sum uses the special 2-part formula.",
+    why: "IAT traps students by hiding an AP inside a GP's fractions (e.g., 1, 4/5, 7/25...).",
+    how: "Numerator se AP ka 'd' nikalo, denominator se GP ka 'r' nikalo. Formula mein values dalo. Agar 1+2x+3x²... pattern ho, seedha 1/(1−x)² use karo.",
+    derivation: "AGP sum derived by multiplying S by r, shifting one term, and subtracting (S - rS).",
+    example: "S = 1 + 4/5 + 7/25 +... Here a=1, d=3, r=1/5. S_∞ = 1/(4/5) + (3×1/5)/(16/25) = 5/4 + 15/16 = 35/16.",
+    useYes: "✅ Instantly solving infinite AGPs without long subtraction methods.",
+    useNo: "❌ Never use infinite formulas if |r| ≥ 1 (series will diverge to infinity).",
+    examQ: "📌 IAT Style: 1 + 2r + 3r² + ... = 9/4. Find r. → TRICK (Mentally): Standard series sum is 1/(1−r)². So, 1/(1−r)² = 9/4 ⇒ 1−r = 2/3 ⇒ r = 1/3. Solved in 5 seconds!"
   }
 },
 {
@@ -545,34 +545,34 @@ const cardsData = [
   badge: "📐 GM",
   stripe: "green",
   formula: "<b>G = √(ab) &nbsp;|&nbsp; n GMs: r = (b/a)^{1/(n+1)}</b>",
-  desc: "10‑Second Trick: Do positive numbers ke beech GM = √(ab). n GMs insert karne ho to r = (b/a)^(1/(n+1)).",
+  desc: "⭐ 10‑Second Trick (Puri Malai): n GMs insert karne ho to r = (b/a)^(1/(n+1)). SUPER TRICKS: (1) Middle GM = √(ab). (2) Product of all n GMs = (√(ab))ⁿ.",
   deepDive: {
-    what: "Geometric mean between a and b is √(ab). To insert n geometric means, common ratio r = (b/a)^{1/(n+1)}. Then means are ar, ar², ..., ar^n.",
-    why: "IAT: 'Insert 3 GMs between 2 and 162.'",
-    how: "r = (b/a)^{1/(n+1)}.",
-    derivation: "b = a r^{n+1} ⇒ r = (b/a)^{1/(n+1)}.",
-    example: "Insert 3 GMs between 2 and 162. r = (162/2)^{1/4} = 81^{1/4} = 3. Means: 6, 18, 54.",
-    useYes: "✅ Inserting geometric means.",
-    useNo: "❌ If numbers negative (GM defined for positive).",
-    examQ: "📌 IAT Style: If 5 GMs are inserted between 1 and 64, the 3rd GM is? → r = 64^{1/6} = 2. Means: 2,4,8,16,32. 3rd = 8."
+    what: "Geometric mean between a and b is √(ab). To insert n GMs, use common ratio formula. Then means are ar, ar², ..., ar^n. Note: They form a proper GP.",
+    why: "IAT asks for specific inserted means or product of all means to waste your time in calculation.",
+    how: "Use basic formula for r if a random GM is asked. But ALWAYS check if they are asking the middle GM or the product of all GMs—use direct tricks for those!",
+    derivation: "b is the (n+2)th term, so b = a r^{n+1} ⇒ r = (b/a)^{1/(n+1)}.",
+    example: "Insert 3 GMs between 2 and 162. r = (162/2)^{1/4} = 81^{1/4} = 3. Means: 6, 18, 54. (Trick: Product of these 3 GMs = (√324)³ = 18³ = 5832).",
+    useYes: "✅ Inserting geometric means, finding middle terms, and products.",
+    useNo: "❌ If numbers are negative (GM is strictly defined for positive numbers).",
+    examQ: "📌 IAT Style: If 5 GMs are inserted between 1 and 64, the 3rd GM is? → TRICK (Mentally): 3rd GM out of 5 is exactly in the middle. So, Middle GM = √(1 × 64) = √64 = 8. Solved in 2 seconds!"
   }
 },
 {
   number: "08",
   title: "AGP · Arithmetico‑Geometric Progression",
-  badge: "🔀 AGP",
+  badge: "🧮 AGP",
   stripe: "purple",
-  formula: "<b>S<sub>n</sub> = [a − (a+(n−1)d)rⁿ]/(1−r) + dr(1−rⁿ⁻¹)/(1−r)²</b>",
-  desc: "10‑Second Trick: AGP term = (AP term) × (GP term). Sum nikalne ke liye standard trick: S_n likho, r se multiply karo, subtract karo.",
+  formula: "<b>S<sub>∞</sub> = a/(1−r) + dr/(1−r)² &nbsp;|&nbsp; Standard AGP: 1/(1−x)²</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): (1) Finite Sum? Options mein n=1, n=2 daalkar match karo. (2) Infinite Sum (1+2x+3x²...)? Seedha 1/(1−x)² lagao. Monster formula ko goli maaro!",
   deepDive: {
-    what: "An AGP is a series where each term is product of corresponding terms of an AP and a GP. e.g., a + (a+d)r + (a+2d)r² + ... Sum formula can be derived by shifting and subtracting.",
-    why: "IAT: 'Sum of 1 + 2·2 + 3·2² + ...'",
-    how: "Let S = a + (a+d)r + (a+2d)r² + ... + (a+(n−1)d)r^{n−1}. Multiply by r, subtract, use GP sum.",
-    derivation: "S − rS = a + dr + dr² + ... + dr^{n−1} − (a+(n−1)d)rⁿ.",
-    example: "1 + 3·2 + 5·2² + ... 10 terms. a=1, d=2, r=2. Use formula or stepwise.",
-    useYes: "✅ AGP sum. Infinite AGP sum for |r|<1.",
-    useNo: "❌ Not for simple AP or GP.",
-    examQ: "📌 IAT Style: Sum to infinity of 1 + 2/2 + 3/4 + 4/8 + ... → a=1, d=1, r=1/2. S_∞ = a/(1−r) + dr/(1−r)² = 1/(0.5) + 1·0.5/(0.5)² = 2 + 2 = 4."
+    what: "AGP matlab (AP term) × (GP term). e.g., 1, 2r, 3r², 4r³... Iska sum nikalne ka standard tarika 'Shift and Subtract' (S − rS) hota hai.",
+    why: "IAT aise lambe calculations deta hai taaki tu formula mein ulajh kar time waste kare. Shortcuts hi rank banayenge.",
+    how: "1. Finite: n=1, 2 se option elimination. 2. Infinite: Identify a, d, r and use the formula. 3. Special Case: Agar 1+2x+3x²... dikhe toh bina soche 1/(1-x)² apply karo.",
+    derivation: "[NOT IMPORTANT FOR IAT] Monster Formula is too long. Use S − rS logic: Write S, write rS (shifted), subtract both.",
+    example: "S = 1 + 2(1/3) + 3(1/3)² + ... Here a=1, d=1, r=1/3. Sum = 1/(1 − 1/3)² = 1/(2/3)² = 1/(4/9) = 9/4.",
+    useYes: "✅ When options are in terms of 'n'. When series is infinite and |r|<1.",
+    useNo: "❌ Do NOT use the long formula in exam; derivation is safer but shortcuts are fastest.",
+    examQ: "📌 IAT Style: Sum of n terms of 1 + 2(2) + 3(2²) + ...? → TRICK: n=1 daalo toh Sum=1. n=2 daalo toh Sum=5. Only option [(n−1)2ⁿ + 1] satisfies this! Done in 10 seconds."
   }
 },
 {
@@ -580,17 +580,17 @@ const cardsData = [
   title: "Special Series · Sum of n Natural Numbers",
   badge: "🔢 Σn",
   stripe: "blue",
-  formula: "<b>Σn = n(n+1)/2</b>",
-  desc: "10‑Second Trick: 1 se n tak numbers ka sum = n(n+1)/2. Yaad rakho, bahut kaam aata hai.",
+  formula: "<b>Σn = n(n+1)/2 &nbsp;|&nbsp; Σ(Odd) = n² &nbsp;|&nbsp; Σ(Even) = n(n+1)</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Σ10=55, Σ100=5050 (Ratt lo!). First n ODD numbers ka sum seedha n² hota hai. Agar series beech se start ho (multiples etc.), toh use (n/2)(a+l).",
   deepDive: {
-    what: "Sum of first n natural numbers: 1 + 2 + 3 + ... + n = n(n+1)/2.",
-    why: "IAT frequently uses this in special series and telescopic sums.",
-    how: "Direct formula.",
-    derivation: "Pair first and last: (1+n) + (2+n−1) + ... = n/2 (n+1).",
-    example: "1+2+...+100 = 100×101/2 = 5050.",
-    useYes: "✅ Finding sum of natural numbers. Base for other series.",
-    useNo: "❌ Not for squares or cubes.",
-    examQ: "📌 IAT Style: Sum of first 50 natural numbers is: → 50×51/2 = 1275."
+    what: "Sum of first n natural numbers (1+2+3...+n). It is an AP with a=1 and d=1. Most fundamental formula in Algebra.",
+    why: "IAT uses this in multi-step problems, counting (handshakes), and as a base for Telescopic series.",
+    how: "Check if series starts from 1. If yes, use formula. If it's multiples (3, 6, 9...), take 3 common to get Σn inside. If it's a middle-start series, use (n/2) × (First + Last).",
+    derivation: "Pairing method (Gauss): (1+n) repeated n/2 times. Result: (n/2)(n+1).",
+    example: "Sum of multiples of 3 between 100-200: a=102, l=198, n=33. Sum = (33/2)(102+198) = 33 × 150 = 4950.",
+    useYes: "✅ Natural numbers, handshakes, sum of first n multiples.",
+    useNo: "❌ Never use for squares (Σn²) or cubes (Σn³); unka alag formula hai.",
+    examQ: "📌 IAT Style: Sum of first 50 natural numbers? → TRICK: (50 × 51)/2 = 25 × 51 = 1275. (Mental: 25×50 + 25 = 1275)."
   }
 },
 {
@@ -598,15 +598,15 @@ const cardsData = [
   title: "Sum of Squares · Σn²",
   badge: "🔲 Σn²",
   stripe: "red",
-  formula: "<b>Σn² = n(n+1)(2n+1)/6</b>",
-  desc: "10‑Second Trick: 1²+2²+...+n² = n(n+1)(2n+1)/6. Yaad rakho, special series ki jaan hai.",
+  formula: "<b>Σn² = n(n+1)(2n+1)/6 &nbsp;|&nbsp; Odd/Even Sq: N(N+1)(N+2)/6</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Σ10² = 385 ratt lo. Agar consecutive Even ya Odd squares hon, toh lamba method nahi, seedha N(N+1)(N+2)/6 lagao (Jahan N = Last Term).",
   deepDive: {
     what: "Sum of squares of first n natural numbers: 1² + 2² + ... + n² = n(n+1)(2n+1)/6.",
-    why: "IAT special series questions rely on this formula.",
-    how: "Memorise.",
+    why: "IAT special series questions rely on this formula, specially asking odd/even sequences to waste your calculation time.",
+    how: "Memorise base formula. Always check if the series is continuous (use n) or strictly Even/Odd (use N-trick).",
     derivation: "Using identity (k+1)³ − k³ = 3k² + 3k + 1, sum telescopically.",
-    example: "1²+2²+...+10² = 10×11×21/6 = 385.",
-    useYes: "✅ Sum of squares. Special series.",
+    example: "1²+2²+...+10² = 10×11×21/6 = 385. (Even Sq Trick: 2²+...+10² → N=10 → 10×11×12/6 = 220).",
+    useYes: "✅ Sum of continuous squares, special series, and odd/even square sums.",
     useNo: "❌ Not for cubes.",
     examQ: "📌 IAT Style: Sum of 1²+2²+...+15² is: → 15×16×31/6 = 1240."
   }
@@ -617,16 +617,16 @@ const cardsData = [
   badge: "🧊 Σn³",
   stripe: "green",
   formula: "<b>Σn³ = [n(n+1)/2]² = (Σn)²</b>",
-  desc: "10‑Second Trick: 1³+2³+...+n³ = (1+2+...+n)². Natural numbers ke sum ka square!",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Σ10³ = 3025 ratt lo. Cubes ka sum humesha natural numbers ke sum ka perfect square hota hai. (Reverse Trick: Agar Σn³ diya ho, pehle uska Square Root lo, fir n nikalo).",
   deepDive: {
     what: "Sum of cubes of first n natural numbers equals the square of the sum of first n natural numbers: 1³+2³+...+n³ = [n(n+1)/2]².",
-    why: "IAT loves this identity. Direct questions: 'Prove Σn³ = (Σn)²' or use in series.",
-    how: "Formula yaad rakho.",
+    why: "IAT loves this identity. Direct questions: 'Find n if Σn³ is given' or used directly inside limit and sequence problems.",
+    how: "Formula yaad rakho. Calculation speed badhane ke liye 55² = 3025 jaise squares mentally yaad rakho.",
     derivation: "By induction or telescoping with (k(k+1)/2)² − ((k−1)k/2)² = k³.",
     example: "1³+2³+...+10³ = (55)² = 3025.",
-    useYes: "✅ Sum of cubes. Comparing with Σn.",
-    useNo: "❌ Not for higher powers.",
-    examQ: "📌 IAT Style: The value of 1³+2³+...+12³ is: → (12×13/2)² = 78² = 6084."
+    useYes: "✅ Sum of cubes. Finding n when sum of cubes is given (using square root first).",
+    useNo: "❌ Not for higher powers (like power 4).",
+    examQ: "📌 IAT Style: The value of 1³+2³+...+12³ is: → TRICK: Σ12 = 12×13/2 = 78. Answer = 78² = 6084. (Mentally solved in seconds!)"
   }
 },
 {
@@ -634,16 +634,16 @@ const cardsData = [
   title: "Telescopic Series · Vedic Subtraction",
   badge: "🔭 TELESCOPIC",
   stripe: "purple",
-  formula: "<b>Write T<sub>n</sub> = f(n) − f(n+1) or similar</b>",
-  desc: "10‑Second Trick: Term ko difference of two expressions mein tod do. Sum karte waqt cancellation ho jaati hai.",
+  formula: "<b>Sum = (1/Gap) × [1/First − 1/Last] &nbsp;|&nbsp; T<sub>n</sub> = f(n) − f(n+1)</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Seedha (1/Gap) × [1/First - 1/Last] lagao. (Base Concept: Term ko difference of two expressions mein tod do jisse cancellation ho).",
   deepDive: {
     what: "A telescoping series is one where each term can be expressed as a difference, so that consecutive terms cancel. e.g., 1/(n(n+1)) = 1/n − 1/(n+1).",
-    why: "IAT questions: 'Sum of 1/(1·2) + 1/(2·3) + ...'",
-    how: "Factor denominator, use partial fractions. Write T_n = A/n − B/(n+1).",
+    why: "IAT questions: 'Sum of 1/(1·2) + 1/(2·3) + ...' to check if you can cancel intermediate terms.",
+    how: "⚡ IAT SPEED TRICK: Sum = (1/Gap) × [1/(First Factor) − 1/(Last Factor)]. \n📚 CONCEPTUAL METHOD (Backup): Factor denominator, use partial fractions. Write T_n = A/n − B/(n+1).",
     derivation: "1/(n(n+1)) = (n+1−n)/(n(n+1)) = 1/n − 1/(n+1).",
     example: "Sum 1/(1·2) + 1/(2·3) + ... n terms. S_n = 1 − 1/(n+1) = n/(n+1).",
     useYes: "✅ Rational series with product denominators.",
-    useNo: "❌ Not for non‑telescoping.",
+    useNo: "❌ Not for non‑telescoping series where terms don't cancel.",
     examQ: "📌 IAT Style: Sum to n terms: 1/(1·2·3) + 1/(2·3·4) + ... → T_n = 1/2 [1/(n(n+1)) − 1/((n+1)(n+2))]. S_n = 1/4 − 1/(2(n+1)(n+2))."
   }
 },
@@ -652,17 +652,17 @@ const cardsData = [
   title: "Vn Method · Difference of Series",
   badge: "📊 Vn",
   stripe: "blue",
-  formula: "<b>If T<sub>n</sub> = V<sub>n</sub> − V<sub>n−1</sub>, then ΣT<sub>n</sub> = V<sub>n</sub> − V<sub>0</sub></b>",
-  desc: "10‑Second Trick: Agar term ko do consecutive expressions ke difference ki tarah likh sako, sum seedha last minus first.",
+  formula: "<b>ΣT<sub>n</sub> = V<sub>n</sub> − V<sub>0</sub> &nbsp;|&nbsp; BOMB TRICK: [Last Term × Next Factor] / Total Factors</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Agar 1·2 + 2·3... jaisi numerator series ho, toh Aakhiri term mein ek agla number multiply karo, aur total terms ke count se divide kar do! (Base: T_n = V_n - V_{n-1}).",
   deepDive: {
     what: "The method of differences (Vn method) is used when T_n can be expressed as V_n − V_{n−1}. Then sum of first n terms telescopes to V_n − V_0.",
-    why: "IAT: Special series where differences are AP or GP.",
-    how: "Find pattern in differences. Assume V_n as polynomial of appropriate degree, find coefficients.",
+    why: "IAT traps you into expanding the polynomial (n² + n) and using Σn² and Σn. That wastes 3 minutes.",
+    how: "⚡ IAT SPEED TRICK: Last term pakdo -> Ek agla factor multiply karo -> Naye factor count se divide karo. \n📚 CONCEPTUAL METHOD: Find pattern in differences. Assume V_n as polynomial.",
     derivation: "Σ (V_k − V_{k−1}) = V_n − V_0.",
-    example: "Series: 3, 5, 7, 9,... T_n = 2n+1. This is not V_n−V_{n−1} directly, but for series like 1·2 + 2·3 + 3·4, T_n = n(n+1) = [n(n+1)(n+2)/3] − [(n−1)n(n+1)/3].",
-    useYes: "✅ Summation of product series, special polynomial series.",
-    useNo: "❌ Not for simple AP/GP.",
-    examQ: "📌 IAT Style: Sum of 1·2·3 + 2·3·4 + ... n terms = n(n+1)(n+2)(n+3)/4."
+    example: "Series: 1·2 + 2·3 + 3·4... T_n = n(n+1). Trick -> Last term is n(n+1), next is (n+2). Divide by 3 -> [n(n+1)(n+2)]/3.",
+    useYes: "✅ Summation of product series of consecutive integers starting from 1.",
+    useNo: "❌ Not for simple AP/GP or when denominator series is given (use Gap trick there).",
+    examQ: "📌 IAT Style: Sum of 1·2·3 + 2·3·4 + ... n terms? → Trick: Last term has 3 factors (n, n+1, n+2). Add next (n+3) and divide by 4. Ans = n(n+1)(n+2)(n+3)/4. Solved in 2 secs!"
   }
 },
 {
@@ -670,17 +670,17 @@ const cardsData = [
   title: "Arithmetic Mean ≥ Geometric Mean (AM‑GM)",
   badge: "📈 AM≥GM",
   stripe: "red",
-  formula: "<b>For positive numbers: (a₁+...+aₙ)/n ≥ (a₁·...·aₙ)^{1/n}</b>",
-  desc: "10‑Second Trick: AM hamesha GM se bada ya barabar. Equality tab jab sab numbers equal.",
+  formula: "<b>AM ≥ GM &nbsp;|&nbsp; Equality holds when a₁ = a₂ = ... = aₙ</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): (1) Sum fixed, max product chahiye -> sabko equal kardo. (2) x + 1/x ki min value hamesha 2. (3) Variables cancel hone chahiye GM mein, warna terms ko split karo!",
   deepDive: {
-    what: "For any set of positive real numbers, the arithmetic mean is always greater than or equal to the geometric mean. Equality holds iff all numbers are equal.",
-    why: "IAT inequality problems: 'Find minimum value of sum given product fixed' or vice versa.",
-    how: "To minimize sum for fixed product, make all terms equal. To maximize product for fixed sum, make all terms equal.",
-    derivation: "By induction or convexity of log.",
+    what: "For any set of strictly positive real numbers, the arithmetic mean is always greater than or equal to the geometric mean. Equality holds iff all numbers are equal.",
+    why: "IAT trap questions ask for minimum/maximum values of algebraic expressions. AM-GM saves you from using long calculus (differentiation).",
+    how: "⚡ SPEED TRICKS: Ensure variables cancel out in the product (GM side). If they don't, split the terms (e.g., break 2/x into 1/x + 1/x). \n📚 CONCEPT: To minimize sum for fixed product, make terms equal. To maximize product for fixed sum, make terms equal.",
+    derivation: "By induction or convexity of log function (Jensen's inequality).",
     example: "Find minimum value of x + 1/x for x>0. By AM‑GM, (x + 1/x)/2 ≥ √(x·1/x)=1 ⇒ x+1/x ≥ 2.",
-    useYes: "✅ Optimization with positive variables. Proving inequalities.",
-    useNo: "❌ Not for negative numbers.",
-    examQ: "📌 IAT Style: If a,b,c>0 and a+b+c=1, maximum value of abc is: → By AM‑GM, (a+b+c)/3 ≥ (abc)^{1/3} ⇒ 1/3 ≥ (abc)^{1/3} ⇒ abc ≤ 1/27."
+    useYes: "✅ Optimization (min/max) problems with POSITIVE variables. Algebraic inequalities.",
+    useNo: "❌ NEVER use for negative numbers. If x < 0, AM-GM fails (GM becomes imaginary).",
+    examQ: "📌 IAT Style: If a,b,c>0 and a+b+c=1, max value of abc? → TRICK: Sabko equal kar do! a=b=c=1/3. So abc = (1/3)³ = 1/27. Solved in 2 seconds!"
   }
 },
 {
@@ -688,35 +688,35 @@ const cardsData = [
   title: "Harmonic Progression (HP) · Relation with AP",
   badge: "🎵 HP",
   stripe: "green",
-  formula: "<b>If a,b,c in HP ⇒ 1/a, 1/b, 1/c in AP</b>",
-  desc: "10‑Second Trick: HP ke terms ke reciprocals AP mein hote hain. HP questions ko AP mein convert karo.",
+  formula: "<b>a,b,c in HP ⇒ b = 2ac/(a+c) &nbsp;|&nbsp; 1/a, 1/b, 1/c in AP</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): HP ki apni koi aukaat nahi. Terms ko ulta karo, AP se solve karo, aur answer ko wapas ulta karo. ALGEBRA HACK: Assume a=2, b=3, c=6 for variables in HP.",
   deepDive: {
-    what: "A sequence is in harmonic progression if the reciprocals of its terms are in arithmetic progression. No direct formula for sum; work with reciprocals.",
-    why: "IAT: 'If a,b,c are in HP, find value of...'",
-    how: "Convert to AP of reciprocals. Use AP formulas, then take reciprocal back.",
-    derivation: "Definition.",
-    example: "If a,b,c in HP, then 1/a, 1/b, 1/c in AP ⇒ 2/b = 1/a + 1/c ⇒ b = 2ac/(a+c).",
-    useYes: "✅ HP term relations. Harmonic mean.",
-    useNo: "❌ Not for direct sum.",
-    examQ: "📌 IAT Style: If x,y,z are in HP, then (x+z)/y = ? → 1/x,1/y,1/z AP ⇒ 2/y = 1/x+1/z ⇒ (x+z)/y = 2 + x/z + z/x? Actually (x+z)/y = 2 + (x²+z²)/xz? Better: 2/y = (x+z)/(xz) ⇒ y = 2xz/(x+z). Then (x+z)/y = (x+z)²/(2xz)."
+    what: "A sequence is in HP if reciprocals of its terms are in AP. No formula exists for direct sum of HP.",
+    why: "IAT tests if you know how to map HP back to AP, or if you waste time trying to find an HP sum formula (which doesn't exist).",
+    how: "⚡ SPEED TRICK: For algebraic expressions like 'If a,b,c are in HP, find...', just substitute a=2, b=3, c=6. \n📚 CONCEPT: Convert to AP, use AP formulas.",
+    derivation: "Since 1/a, 1/b, 1/c are in AP -> 2/b = 1/a + 1/c -> b = 2ac/(a+c).",
+    example: "If 1/2, 1/5, 1/8 are in AP, then 2, 5, 8 are in HP.",
+    useYes: "✅ HP term relations. Converting to AP. Harmonic mean.",
+    useNo: "❌ NEVER try to find the sum of an HP directly. There is no formula.",
+    examQ: "📌 IAT Style: If x,y,z are in HP, then (x+z)/y = ? → TRICK: Put x=2, y=3, z=6. Then (2+6)/3 = 8/3. (Check options to see which gives 8/3). Solved without messy algebra!"
   }
 },
 {
   number: "16",
-  title: "Harmonic Mean (HM) · Formula",
+  title: "Harmonic Mean (HM) · Formula & Relations",
   badge: "🎶 HM",
   stripe: "purple",
-  formula: "<b>HM = 2ab/(a+b) for two numbers</b>",
-  desc: "10‑Second Trick: Do numbers ka HM = 2ab/(a+b). AM ≥ GM ≥ HM yaad rakho.",
+  formula: "<b>HM = 2ab/(a+b) &nbsp;|&nbsp; GM² = AM × HM</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): AM ≥ GM ≥ HM yaad rakho. Physics Hack: Same distance, different speeds (v1, v2) ki Average Speed seedha HM = 2v1v2/(v1+v2) hoti hai. Aur haan, A, G, H khud ek GP banate hain!",
   deepDive: {
-    what: "Harmonic mean between a and b is 2ab/(a+b). For n numbers, HM = n / (1/a₁ + ... + 1/a_n).",
-    why: "IAT: 'If AM and GM of two numbers are given, find HM.' Relation: GM² = AM × HM.",
-    how: "HM = 2ab/(a+b). Relation: AM × HM = GM².",
-    derivation: "From definition.",
+    what: "Harmonic mean of two numbers a and b is 2ab/(a+b). For n numbers, it's n / (1/a₁ + ... + 1/a_n).",
+    why: "IAT directly mixes Quadratic Equations with AM, GM, HM relations to test your algebraic speed.",
+    how: "Use HM = 2ab/(a+b). Remember relation: AM × HM = GM² to quickly jump between the three means.",
+    derivation: "G² = (√ab)² = ab. A×H = [(a+b)/2] × [2ab/(a+b)] = ab. Therefore, G² = AH.",
     example: "AM=9, GM=6 for two positive numbers. HM = GM²/AM = 36/9 = 4.",
-    useYes: "✅ Finding HM. AM‑GM‑HM relation.",
-    useNo: "❌ Not for non‑positive numbers.",
-    examQ: "📌 IAT Style: The HM of two numbers is 4, their AM is 9. GM is: → GM = √(AM×HM) = √36 = 6."
+    useYes: "✅ Finding relationships between means. Physics average speed problems. Finding min/max.",
+    useNo: "❌ Don't use if the numbers can be negative.",
+    examQ: "📌 IAT Style: The AM of two numbers is 10 and their GM is 8. Find HM. → Mentally: H = G²/A = 64/10 = 6.4. Done!"
   }
 },
 {
@@ -724,17 +724,17 @@ const cardsData = [
   title: "AM‑GM‑HM Inequality Chain",
   badge: "📊 INEQUALITY",
   stripe: "blue",
-  formula: "<b>AM ≥ GM ≥ HM (for positive numbers)</b>",
-  desc: "10‑Second Trick: AM sabse bada, HM sabse chhota. GM beech mein.",
+  formula: "<b>AM ≥ GM ≥ HM &nbsp;|&nbsp; Distinct ho toh strictly AM > GM > HM</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): AM sabse bada (King), HM sabse chhota. BOMB TRICK: Agar AM=GM dikhe, seedha samajh lo saare numbers aapas mein EQUAL hain!",
   deepDive: {
-    what: "For any set of positive numbers, Arithmetic Mean ≥ Geometric Mean ≥ Harmonic Mean. Equality holds when all numbers are equal.",
-    why: "IAT conceptual: 'Which is largest among AM, GM, HM?'",
-    how: "Remember order.",
-    derivation: "From AM‑GM and GM‑HM relation.",
-    example: "For 4 and 9: AM=6.5, GM=6, HM=72/13≈5.54. 6.5 ≥ 6 ≥ 5.54.",
-    useYes: "✅ Comparing means. Quick inequalities.",
+    what: "For any set of positive numbers, Arithmetic Mean ≥ Geometric Mean ≥ Harmonic Mean. Equality holds ONLY when all numbers are identical.",
+    why: "IAT conceptual traps: They play with the word 'distinct'. If numbers are distinct, you cannot use the '=' sign.",
+    how: "⚡ SPEED TRICK: Read the question carefully. Distinct = use '>'. If an equation says AM = GM, immediately set a = b = c... and solve.",
+    derivation: "From AM‑GM relation and GM² = AM × HM. Since AM ≥ GM, HM must be ≤ GM.",
+    example: "For 4 and 9: AM=6.5, GM=6, HM=72/13≈5.54. Hence 6.5 > 6 > 5.54.",
+    useYes: "✅ Comparing means. Identifying if numbers are equal (when AM=GM).",
     useNo: "❌ Not for negative numbers.",
-    examQ: "📌 IAT Style: For distinct positive numbers, the correct inequality is: (A) AM > GM > HM (B) AM < GM < HM (C) AM = GM = HM (D) None. → Ans: AM > GM > HM."
+    examQ: "📌 IAT Style: For distinct positive numbers, the correct inequality is? → TRICK: 'Distinct' word is present. Ans: Strictly AM > GM > HM (no equal sign)."
   }
 },
 {
@@ -743,16 +743,16 @@ const cardsData = [
   badge: "🔷 ODD SUM",
   stripe: "red",
   formula: "<b>1 + 3 + 5 + ... + (2n−1) = n²</b>",
-  desc: "10‑Second Trick: First n odd numbers ka sum n² hota hai. Yaad rakho, special series ka part.",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Pehle n odd numbers ka sum seedha n² hota hai. BOMB TRICK: Agar last term diya ho, toh n = (Last Term + 1) / 2 dimaag mein karo!",
   deepDive: {
-    what: "The sum of the first n odd natural numbers is n².",
-    why: "IAT: 'Sum of first 20 odd numbers?'",
-    how: "Use n² directly.",
-    derivation: "AP with a=1, d=2, n terms. S = n/2[2+(n−1)2] = n².",
-    example: "1+3+5+...+19 (10 terms) = 10² = 100.",
-    useYes: "✅ Quick sum of odd numbers.",
-    useNo: "❌ Not for even numbers.",
-    examQ: "📌 IAT Style: Sum of all odd numbers between 1 and 100 is: → 1+3+...+99 (50 terms) = 50² = 2500."
+    what: "The sum of the first n consecutive odd natural numbers starting from 1 is always exactly n².",
+    why: "IAT traps you by giving the last term (like 99) instead of the number of terms (n). Students waste time finding n using AP formula.",
+    how: "⚡ SPEED TRICK: To find n quickly: Add 1 to the last term and divide by 2. Then just square it! \n📚 CONCEPT: AP with a=1, d=2, n terms. S = n/2[2+(n−1)2] = n².",
+    derivation: "S_n = n/2 [2(1) + (n-1)2] = n/2 [2 + 2n - 2] = n/2 [2n] = n².",
+    example: "1+3+5+...+73. n = (73+1)/2 = 37. Sum = 37² = 1369.",
+    useYes: "✅ Quick sum of consecutive odd numbers starting from 1.",
+    useNo: "❌ Not for even numbers or series starting from a random number (without subtracting the missing part).",
+    examQ: "📌 IAT Style: Sum of all odd numbers between 1 and 100 is: → Last odd is 99. Mentally: n = (99+1)/2 = 50 terms. Answer = 50² = 2500. Solved in 5s!"
   }
 },
 {
@@ -761,16 +761,16 @@ const cardsData = [
   badge: "🔶 EVEN SUM",
   stripe: "green",
   formula: "<b>2 + 4 + 6 + ... + 2n = n(n+1)</b>",
-  desc: "10‑Second Trick: First n even numbers ka sum n(n+1).",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Even numbers ka sum n(n+1) hota hai. BOMB TRICK: n nikalne ke liye last term ko half karo. Calculation hack: n(n+1) = n² + n.",
   deepDive: {
-    what: "Sum of first n even natural numbers is n(n+1).",
-    why: "IAT quick calculation.",
-    how: "AP with a=2, d=2. S_n = n/2[4+(n−1)2] = n(n+1).",
-    derivation: "Factor 2: 2(1+2+...+n) = 2·n(n+1)/2 = n(n+1).",
-    example: "2+4+6+8+10 (5 terms) = 5×6 = 30.",
-    useYes: "✅ Quick sum of even numbers.",
-    useNo: "❌ Not for odd.",
-    examQ: "📌 IAT Style: Sum of first 25 even numbers is: → 25×26 = 650."
+    what: "Sum of first n consecutive even natural numbers is n(n+1).",
+    why: "IAT checks your calculation speed. If you use AP formulas to find n and then the sum, you waste a minute.",
+    how: "⚡ SPEED TRICK: Divide the last even term by 2 to get 'n'. Then do n² + n mentally! \n📚 CONCEPT: Factor out 2: 2(1+2+...+n) = 2·n(n+1)/2 = n(n+1).",
+    derivation: "AP with a=2, d=2. S_n = n/2[4+(n−1)2] = n(n+1).",
+    example: "2+4+6+8+10. Last term 10 -> n=5. Sum = 5×6 = 30.",
+    useYes: "✅ Quick sum of consecutive even numbers starting from 2.",
+    useNo: "❌ Not for odd numbers or random jumps.",
+    examQ: "📌 IAT Style: Sum of first 25 even numbers is: → TRICK: Mentally do 25² + 25 = 625 + 25 = 650. Done in 3 seconds!"
   }
 },
 {
@@ -778,17 +778,17 @@ const cardsData = [
   title: "Grouped Series · First Term of nth Group",
   badge: "📦 GROUPED",
   stripe: "purple",
-  formula: "<b>Group n has (2n−1) terms (if odd count) or pattern specific</b>",
-  desc: "10‑Second Trick: Groups mein terms ka pattern pehchano. Usually group n mein 2n−1 terms hote hain.",
+  formula: "<b>First Term = (n−1)² + 1 &nbsp;|&nbsp; Last Term = n²</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Kisi bhi n-th group ka last number hamesha n² hota hai. Toh n-th group ka pehla number nikalne ke liye: pichle group (n-1) ka square karo aur 1 jod do!",
   deepDive: {
-    what: "Natural numbers grouped as (1), (2,3,4), (5,6,7,8,9), ... Group n contains (2n−1) terms. First term of nth group = (n−1)² + 1. Last term = n².",
-    why: "IAT: 'Find first term of 11th group.'",
-    how: "Group n has (2n−1) terms. Total terms before nth group = (n−1)². So first term = (n−1)² + 1.",
-    derivation: "Sum of first (n−1) odd numbers = (n−1)².",
-    example: "11th group first term = 10² + 1 = 101.",
-    useYes: "✅ Grouped natural number problems.",
-    useNo: "❌ If grouping pattern different.",
-    examQ: "📌 IAT Style: In grouping {1}, {2,3,4}, {5,6,7,8,9},..., the first term of 10th group is: → 9²+1=82."
+    what: "Natural numbers grouped as {1}, {2,3,4}, {5,6,7,8,9}, ... Group n contains (2n−1) terms. First term of nth group = (n−1)² + 1. Last term = n².",
+    why: "IAT checks your pattern recognition. They ask for the first term or sum of a specific large group to see if you waste time writing it out.",
+    how: "⚡ SPEED TRICK: Don't look at the whole group. Focus on the LAST term of each group (1, 4, 9, 16...). \n📚 CONCEPT: First term of Group n is simply (Last term of Group n-1) + 1.",
+    derivation: "Total terms up to (n-1) groups is the sum of first (n-1) odd numbers = (n-1)². So the next term starting the nth group is (n-1)² + 1.",
+    example: "11th group first term -> Previous group is 10. Last term of 10th group is 100. So 11th group starts at 100 + 1 = 101.",
+    useYes: "✅ Grouped natural number problems with odd-length sequences.",
+    useNo: "❌ If grouping pattern is different (e.g., each group has 'n' terms instead of '2n-1').",
+    examQ: "📌 IAT Style: In grouping {1}, {2,3,4}, {5,6,7,8,9},..., the first term of 10th group is: → TRICK: Previous group is 9. 9² = 81. Answer = 81 + 1 = 82."
   }
 },
 {
@@ -796,17 +796,17 @@ const cardsData = [
   title: "Inserting AMs & GMs · Mixed Problems",
   badge: "🔀 AM‑GM",
   stripe: "blue",
-  formula: "<b>If A and G are AM and GM between a,b, then a,b = A ± √(A²−G²)</b>",
-  desc: "10‑Second Trick: AM aur GM diye ho to quadratic bana kar numbers nikaal sakte ho.",
+  formula: "<b>Numbers = A ± √(A²−G²)</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Quadratic equation banane ki zaroorat nahi! Seedha A ± √(A²−G²) dimaag mein calculate karo. Ya fir seedha Option Elimination use karo (Check Sum=2A and Product=G²).",
   deepDive: {
     what: "Given arithmetic mean A and geometric mean G between two positive numbers a and b, the numbers are roots of x² − 2Ax + G² = 0.",
-    why: "IAT: 'AM=10, GM=8, find numbers.'",
-    how: "a+b=2A, ab=G². Solve quadratic.",
-    derivation: "a,b = A ± √(A²−G²).",
+    why: "IAT asks this directly or inside a larger word problem. Forming the quadratic equation wastes 1-2 minutes.",
+    how: "⚡ SPEED TRICK: Calculate difference of squares (A² - G²), take square root, and do A + root and A - root. \n📚 CONCEPT: a+b=2A, ab=G². Solve quadratic.",
+    derivation: "Quadratic formula on x² − 2Ax + G² = 0 gives x = (2A ± √(4A²−4G²))/2 = A ± √(A²−G²).",
     example: "A=10, G=8 ⇒ a,b = 10 ± √(100−64) = 10 ± 6 = 16 and 4.",
-    useYes: "✅ Finding numbers from AM and GM.",
-    useNo: "❌ If numbers not positive.",
-    examQ: "📌 IAT Style: The AM and GM of two numbers are 13 and 12. The numbers are: → 13 ± √(169−144)=13±5 ⇒ 18,8."
+    useYes: "✅ Finding two numbers when their AM and GM are given.",
+    useNo: "❌ Does not apply directly for more than two numbers or if numbers can be negative.",
+    examQ: "📌 IAT Style: The AM and GM of two numbers are 13 and 12. The numbers are: → TRICK: Mentally do 13 ± √(169−144) = 13 ± 5. Answer: 18 and 8."
   }
 },
 {
@@ -814,17 +814,17 @@ const cardsData = [
   title: "Relation between AM, GM, HM · GM² = AM × HM",
   badge: "🔗 RELATION",
   stripe: "red",
-  formula: "<b>G² = A × H</b>",
-  desc: "10‑Second Trick: Do positive numbers ke liye GM² = AM × HM. Koi do diye ho to teesra nikaal lo.",
+  formula: "<b>G² = A × H &nbsp;|&nbsp; Ratio Trick: A/G = G/H</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): GM² = AM × HM sirf TWO numbers ke liye valid hai! Iska matlab A, G, aur H humesha GP (Geometric Progression) mein hote hain. Jo ratio A:G ka hoga, wahi G:H ka hoga.",
   deepDive: {
-    what: "For two positive numbers, the geometric mean is the geometric mean of arithmetic mean and harmonic mean: GM² = AM × HM.",
-    why: "IAT direct formula questions.",
-    how: "If AM and HM known, GM = √(AM×HM).",
-    derivation: "A = (a+b)/2, G = √(ab), H = 2ab/(a+b). Multiply A×H = ab = G².",
+    what: "For exactly TWO positive numbers, the geometric mean is the geometric mean of arithmetic mean and harmonic mean: GM² = AM × HM.",
+    why: "IAT traps students by asking this relation for 3 numbers (where it fails) or gives ratio questions to waste time.",
+    how: "⚡ SPEED TRICK: If ratio A/G is given as x/y, directly write G/H = x/y without finding the numbers. \n📚 CONCEPT: A = (a+b)/2, G = √(ab), H = 2ab/(a+b). Multiply A×H = ab = G².",
+    derivation: "A = (a+b)/2, H = 2ab/(a+b). A × H = (a+b)/2 × 2ab/(a+b) = ab = G².",
     example: "AM=9, HM=4 ⇒ GM = √(9×4)=6.",
-    useYes: "✅ Finding one mean from other two.",
-    useNo: "❌ More than two numbers.",
-    examQ: "📌 IAT Style: If AM and HM of two numbers are 25 and 9, then GM is: → √(25×9)=15."
+    useYes: "✅ Finding one mean from other two. Solving ratio problems quickly.",
+    useNo: "❌ NEVER use this formula if there are MORE than two numbers.",
+    examQ: "📌 IAT Style: If AM and HM of two numbers are 25 and 9, then GM is: → TRICK: G = √(25×9) = 5×3 = 15. Done!"
   }
 },
 {
@@ -832,17 +832,17 @@ const cardsData = [
   title: "Sum of Series with AP in Numerator/Denominator",
   badge: "🧮 AP/AP",
   stripe: "green",
-  formula: "<b>Break into simpler fractions or use Vn method</b>",
-  desc: "10‑Second Trick: Series mein numerator AP, denominator constant? Factor out. Denominator AP? Vn method.",
+  formula: "<b>Write T_n using Σ formulas -> Cancel terms -> Use Telescopic Method</b>",
+  desc: "⭐ 10‑Second Trick (Puri Malai): Jab numerator AP aur denominator Σn² ho, toh (2n+1) humesha cancel hota hai! T_n seedha 6/(n(n+1)) banta hai. Fir seedha apni Card 12 wali Telescopic Gap Trick lagao.",
   deepDive: {
-    what: "Series like (3/1²) + (5/(1²+2²)) + ... require expressing T_n in terms of n using sum formulas, then breaking into partial fractions or telescoping.",
-    why: "IAT DPP questions: Q7, Q8.",
-    how: "Find formula for denominator (sum of squares). Write T_n = (2n+1)/(Σk²) = (2n+1)/[n(n+1)(2n+1)/6] = 6/(n(n+1)). Then telescoping.",
-    derivation: "Σk² = n(n+1)(2n+1)/6.",
-    example: "T_n = (2n+1)/(1²+2²+...+n²) = 6/(n(n+1)) = 6(1/n − 1/(n+1)). S_n = 6(1 − 1/(n+1)) = 6n/(n+1).",
-    useYes: "✅ Series where denominator is sum of squares/cubes.",
-    useNo: "❌ Not for non‑standard.",
-    examQ: "📌 IAT Style: Sum to n terms: 3/1² + 5/(1²+2²) + 7/(1²+2²+3²) + ... = 6n/(n+1)."
+    what: "Series like 3/1² + 5/(1²+2²) + ... require expressing T_n in terms of n using sum formulas (like Σn or Σn²), canceling terms, and breaking into partial fractions or telescoping.",
+    why: "IAT 'Transformer' Questions: They combine Sequence formulas (Card 10) with Telescopic series (Card 12) to test if you panic looking at large fractions.",
+    how: "⚡ SPEED TRICK: Identify the denominator formula immediately. For Σn², the (2n+1) cancels the numerator. Then use (1/Gap)[1/First - 1/Last] directly on the remaining T_n. \n📚 CONCEPT: Write general term T_n and simplify.",
+    derivation: "T_n = (2n+1)/(Σk²) = (2n+1)/[n(n+1)(2n+1)/6] = 6/[n(n+1)]. Then S_n = 6 [1/1 - 1/(n+1)].",
+    example: "T_n = 6/(n(n+1)) = 6(1/n − 1/(n+1)). S_n = 6(1 − 1/(n+1)) = 6n/(n+1).",
+    useYes: "✅ Complex looking fractional series where denominator is growing as a sum.",
+    useNo: "❌ Don't expand denominators manually (like 1+4+9=14). Use formulas.",
+    examQ: "📌 IAT Style: Sum to infinity: 3/1² + 5/(1²+2²) + ... → Mentally: T_n = 6/(n(n+1)). Sum = 6 × (1/1 - 1/∞) = 6."
   }
 },
 {
