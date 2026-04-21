@@ -46,8 +46,15 @@
       min-height: 100vh;
       font-family: 'DM Sans', sans-serif;
       color: var(--text);
+      
     }
+body {
+    touch-action: pan-y; /* vertical scroll allow, horizontal drag bhi sortable handle karega */
+}
 
+.drag-block {
+    touch-action: pan-y; /* block ke upar se bhi scroll start ho sake */
+}
     /* HEADER */
     .site-header {
       background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 60%, #ef4444 100%);
@@ -1664,7 +1671,7 @@
       <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px;">
         <div style="background: #fff; padding: 10px; border-radius: 8px; color: #000; width: 45%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 4px solid #3b82f6;">
           <b style="color: #2563eb;">1. Centriole Pair</b><br>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Centriole_en.svg/400px-Centriole_en.svg.png" alt="Centriole" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
+          <img src="https://eureka.patsnap.com/blog/wp-content/uploads/2024/11/21-3.png" alt="Centriole" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
           <div style="font-size:11px; text-align:center; margin-top:5px; font-weight:600;">Mutually Perpendicular</div>
         </div>
       </div>`,
@@ -1745,7 +1752,7 @@
       <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px;">
         <div style="background: #fff; padding: 10px; border-radius: 8px; color: #000; width: 45%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 4px solid #ef4444;">
           <b style="color: #dc2626;">Nucleus Structure</b><br>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Diagram_human_cell_nucleus.svg/400px-Diagram_human_cell_nucleus.svg.png" alt="Nucleus" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
+          <img src="https://www.sciencefacts.net/wp-content/uploads/2020/06/Nucleus-Structure-Diagram.jpg" alt="Nucleus" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
           <div style="font-size:11px; text-align:center; margin-top:5px; font-weight:600;">Double Membrane with Pores</div>
         </div>
       </div>`,
@@ -1789,9 +1796,23 @@
     badge: "🧴 MICROBODIES",
     stripe: "green",
     formula: "<b>Peroxisome = Catalase (Detox H₂O₂).<br>Glyoxysome = Fats to Carbs (Germinating Seeds).</b>",
-    desc: "⚡ 10-Second Trick: 'Peroxi' = Peroxide (H₂O₂ breakdown by Catalase). 'Glyoxy' = Gluconeogenesis (converting stored lipids into sugars for plant seeds). Both are SINGLE membrane-bound minute vesicles.",
+    desc: "⚡ 10-Second Trick: 'Peroxi' = Peroxide (H₂O₂ breakdown by Catalase). 'Glyoxy' = Gluconeogenesis (converting stored lipids into sugars for plant seeds). Both are SINGLE membrane-bound minute vesicles. ",
     deepDive: {
-      what: "Microbodies are single-membrane bound vesicles containing specific enzymes. Present in both plants and animals (Peroxisomes). Glyoxysomes are specialized peroxisomes found ONLY in plants (like germinating castor seeds).",
+      what: `Microbodies are single-membrane bound vesicles containing specific enzymes. Inki visual memory set kar le:<br><br>
+      <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px;">
+        <div style="background: #fff; padding: 10px; border-radius: 8px; color: #000; width: 45%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 4px solid #38bdf8;">
+          <b style="color: #0284c7;">1. Peroxisome</b><br>
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240127182656/Peroxisomes.png" alt="Peroxisome" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
+          <div style="font-size:11px; text-align:center; margin-top:5px; font-weight:600;">Detoxifies H₂O₂ (Plants & Animals) 
+            </div>
+        </div>
+        
+        <div style="background: #fff; padding: 10px; border-radius: 8px; color: #000; width: 45%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 4px solid #34d399;">
+          <b style="color: #059669;">2. Glyoxysome</b><br>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Glyoxysome.jpg" alt="Castor Seeds" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
+          <div style="font-size:11px; text-align:center; margin-top:5px; font-weight:600;">Fats ➔ Carbs (Only Plant Seeds)</div>
+        </div>
+      </div>`,
       why: "IAT Trap: Confusing the functions. Remember, lysosomes do 'digestion' (hydrolytic enzymes), whereas microbodies do 'oxidative' reactions (catalase, urate oxidase).",
       how: "If a question mentions 'germinating seeds' and 'lipid to carbohydrate conversion', blindfold mark Glyoxysome.",
       derivation: "",
@@ -1833,7 +1854,16 @@
     formula: "<b>0-Membrane: Ribosome, Centriole, Nucleolus.<br>2-Membrane: Mito, Chloro, Nucleus.<br>1-Membrane: ER, Golgi, Lyso, Vacuole.</b>",
     desc: "⚡ 10-Second Trick: Hamesha pehle 'Membrane count' check karo! Match the following mein 2 options direct eliminate ho jayenge. Function yaad rakho: Golgi = Packaging, RER = Protein, SER = Lipid.",
     deepDive: {
-      what: "The final summary for rapid elimination in exam. IAT often mixes functions, membrane numbers, and organelle types.",
+      what: `The final summary for rapid elimination in exam. Dimag mein images lock kar:<br><br>
+      <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px;">
+        <div style="background: #fff; padding: 10px; border-radius: 8px; color: #000; width: 30%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 4px solid #facc15;">
+          <b style="color: #ca8a04;">0 Membrane</b><br>
+          <img src="https://cdn.britannica.com/02/114902-050-0D7352BF/cells-organelles-mitochondria-chloroplasts-endoplasmic-reticulum-lysosomes.jpg" alt="Ribosome" class="zoomable-img" style="width:100%; border-radius:4px; margin-top:5px; min-height:120px; height:auto; object-fit:contain;">
+          <div style="font-size:11px; text-align:center; margin-top:5px; font-weight:600;">Ribosome, Centriole, Nucleolus</div>
+        </div>
+        
+        
+      </div>`,
       why: "IAT's 'Match the Following' questions are time-consuming. Using membrane count and core keywords (Lysosome=Suicidal/Acidic, RER=Ribosomes, SER=Detox) saves you 30+ seconds.",
       how: "Look for the easiest match first (like Mitochondria ➔ ATP). Use that to eliminate 2 wrong options instantly.",
       derivation: "",
@@ -1936,16 +1966,19 @@
 
     function setupSortable(container, cardId) {
       new Sortable(container, {
-        animation: 200,
-        ghostClass: 'sortable-ghost',
-        dragClass: 'sortable-drag',
-        handle: '.drag-block',
-        filter: '.drag-hint',
-        onEnd: function() {
-          const order = Array.from(container.querySelectorAll('.drag-block')).map(b => b.getAttribute('data-block-type'));
-          localStorage.setItem(`cardOrder_${cardId}`, JSON.stringify(order));
-        }
-      });
+    animation: 200,
+    ghostClass: 'sortable-ghost',
+    dragClass: 'sortable-drag',
+    handle: '.drag-block',
+    filter: '.drag-hint',
+    scroll: true,               // ✅ page scroll enable kare jab drag nahi ho raha
+    scrollSensitivity: 100,      // scroll trigger hone ki sensitivity
+    scrollSpeed: 20,             // scroll speed
+    onEnd: function() {
+        const order = Array.from(container.querySelectorAll('.drag-block')).map(b => b.getAttribute('data-block-type'));
+        localStorage.setItem(`cardOrder_${cardId}`, JSON.stringify(order));
+    }
+});
     }
 
     // ---------- RENDER CARD ----------
