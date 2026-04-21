@@ -1966,19 +1966,21 @@ body {
 
     function setupSortable(container, cardId) {
       new Sortable(container, {
-    animation: 200,
-    ghostClass: 'sortable-ghost',
-    dragClass: 'sortable-drag',
-    handle: '.drag-block',
-    filter: '.drag-hint',
-    scroll: true,               // ✅ page scroll enable kare jab drag nahi ho raha
-    scrollSensitivity: 100,      // scroll trigger hone ki sensitivity
-    scrollSpeed: 20,             // scroll speed
-    onEnd: function() {
-        const order = Array.from(container.querySelectorAll('.drag-block')).map(b => b.getAttribute('data-block-type'));
-        localStorage.setItem(`cardOrder_${cardId}`, JSON.stringify(order));
-    }
-});
+        animation: 200,
+        ghostClass: 'sortable-ghost',
+        dragClass: 'sortable-drag',
+        handle: '.drag-block',
+        filter: '.drag-hint',
+        delay: 150,               // 👈 YEH ADD KIYA: Mobile scroll allow karne ke liye
+        delayOnTouchOnly: true,   // 👈 YEH ADD KIYA: Sirf touch devices par delay
+        scroll: true,
+        scrollSensitivity: 100,
+        scrollSpeed: 20,
+        onEnd: function() {
+            const order = Array.from(container.querySelectorAll('.drag-block')).map(b => b.getAttribute('data-block-type'));
+            localStorage.setItem(`cardOrder_${cardId}`, JSON.stringify(order));
+        }
+      });
     }
 
     // ---------- RENDER CARD ----------
@@ -2119,7 +2121,11 @@ body {
     }, { passive: false });
     
     window.addEventListener('touchmove', e => {
-      e.preventDefault();
+      // 👈 YEH ADD KIYA: Agar zoom modal band hai, toh normal page scroll hone de!
+      if (!modal.classList.contains('active')) return; 
+
+      e.preventDefault(); // Modal khula hai tabhi scroll block hoga
+      
       if (e.touches.length === 1 && dragging) {
         moveDrag(e.touches[0].clientX, e.touches[0].clientY);
       } else if (e.touches.length === 2) {
