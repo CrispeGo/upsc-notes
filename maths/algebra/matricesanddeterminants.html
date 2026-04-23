@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Mind Map · Baap Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d9;
+  --card-bg: #fffcf7;
+  --card-border: rgba(0,0,0,0.08);
+  --accent: #2563eb;
+--accent2: #3b82f6;
+--accent3: #1d4ed8;
+  --gold: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #7a7a9a;
+  --formula-bg: #eff6ff;
+--formula-border: #2563eb;
+  --dive-bg: #f8faff;
+  --what-bg: #eef4ff;
+  --why-bg: #fff3e0;
+  --deriv-bg: #e8f5e9;
+  --example-bg: #fce4ec;
+  --use-bg: #e8f5e9;
+  --nouse-bg: #ffebee;
+  --exam-bg: #fff9c4;
+  --shadow: 0 4px 24px rgba(37,99,235,0.10);
+--shadow-hover: 0 12px 40px rgba(37,99,235,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59,130,246,0.04) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 14px;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.header-title span { color: #ffd54f; }
+.header-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  font-weight: 400; line-height: 1.6;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.header-stats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 500;
+}
+
+/* ── HINT BAR ── */
+.hint-bar {
+  background: #fff8e1;
+  border-bottom: 2px solid #ffd54f;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 13px; color: #5d4037;
+  font-weight: 500;
+}
+.hint-bar code {
+  background: rgba(0,0,0,0.06); padding: 2px 7px; border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1300px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Chapter label */
+.chapter-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; margin-top: 12px;
+}
+.chapter-label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text);
+}
+.chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+
+/* ── GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card top stripe */
+.card-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5b7fc4 100%);
+}
+.card-stripe.red    { background: linear-gradient(90deg, #c0392b, #e57368); }
+.card-stripe.green  { background: linear-gradient(90deg, #1a6b3c, #4caf7d); }
+.card-stripe.gold   { background: linear-gradient(90deg, #b8860b, #e6b33d); }
+.card-stripe.purple { background: linear-gradient(90deg, #6a2b8a, #b570d4); }
+
+.card-body { padding: 22px 22px 0; }
+
+/* number + title */
+.card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900;
+  line-height: 1; color: var(--accent);
+  opacity: 0.25; min-width: 44px;
+  user-select: none;
+}
+.card-title-area { flex: 1; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 4px;
+}
+.card-badge {
+  display: inline-block;
+  background: #fff3e0; color: #8d4e00;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.card-badge.star { background: #fff8e1; color: #7b5800; }
+.card-badge.tip  { background: #e8f5e9; color: #1b5e20; }
+.card-badge.hot  { background: #fce4ec; color: #880e4f; }
+
+/* formula box */
+.formula-box {
+  background: var(--formula-bg);
+  border-left: 4px solid var(--formula-border);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: #1e3a8a;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* short description */
+.card-desc {
+  font-size: 13.5px; color: var(--text2);
+  line-height: 1.6; margin-bottom: 18px;
+}
+
+/* ── DEEP DIVE TOGGLE ── */
+.dd-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: transparent;
+  border: none; border-top: 1px solid var(--card-border);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--accent);
+  gap: 8px;
+  transition: background 0.2s;
+  text-align: left;
+}
+.dd-toggle:hover { background: rgba(42,68,148,0.04); }
+.dd-label { display: flex; align-items: center; gap: 8px; }
+.dd-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.dd-icon svg { width: 10px; height: 10px; fill: white; }
+.dd-toggle.open .dd-icon { transform: rotate(180deg); }
+
+/* ── DEEP DIVE PANEL ── */
+.dd-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.dd-panel.open { max-height: 4000px; }
+.dd-inner {
+  background: var(--dive-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 20px 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* info block */
+.info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .info-row { grid-template-columns: 1fr; } }
+
+.info-block {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.info-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.info-block-body {
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+
+.ib-what   { background: var(--what-bg);    }
+.ib-what   .info-block-title { color: #1a3a8a; }
+.ib-why    { background: var(--why-bg);     }
+.ib-why    .info-block-title { color: #8b4500; }
+.ib-how    { background: var(--example-bg); }
+.ib-how    .info-block-title { color: #880e4f; }
+
+/* derivation */
+.deriv-block {
+  background: var(--deriv-bg);
+  border-left: 3px solid var(--accent3);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 12px 14px;
+}
+.deriv-block .info-block-title { color: #1b5e20; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-block .info-block-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: #2e4d2e; line-height: 1.8;
+}
+
+/* diagram */
+.diagram-wrap {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; }
+.diagram-placeholder {
+  color: var(--text3); font-size: 12px; text-align: center;
+  line-height: 1.6;
+}
+
+/* use / not-use */
+.use-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .use-row { grid-template-columns: 1fr; } }
+
+.use-block {
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+}
+.use-block-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 4px;
+}
+.use-block-body { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.ub-yes { background: var(--use-bg); }
+.ub-yes .use-block-title { color: #1b5e20; }
+.ub-no  { background: var(--nouse-bg); }
+.ub-no  .use-block-title { color: #b71c1c; }
+
+/* exam question */
+.exam-block {
+  background: var(--exam-bg);
+  border: 1px solid #ffe57f;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.exam-tag {
+  background: #ffd600; color: #4a3000;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+.exam-q { font-size: 13px; color: #3e2000; line-height: 1.6; font-weight: 500; }
+
+/* ── STEP indicator (optional) ── */
+.step-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: currentColor; border-radius: 50; margin-right: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+footer strong { color: var(--text2); }
+
+/* ── UTILITY ── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Mind Map — formula cards with deep dive panels for each concept</h2>
+
+<!-- HEADER (Dynamic Subject & Chapter) -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow" id="header-eyebrow">Physics · Master Revision</div>
+    <h1 class="header-title">Mind Map <span id="chapter-title">Formula Cards</span></h1>
+    <p class="header-sub">Neeche <code>cardsData</code> array mein apne formulas daalo — bas. Pura structure ready hai.</p>
+    <div class="header-stats">
+      <div class="hstat">📌 Number · Title · Formula</div>
+      <div class="hstat">🔽 Deep Dive per card</div>
+      <div class="hstat">📐 SVG Diagram support</div>
+      <div class="hstat">📝 Real Exam Question</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main" id="main">
+  <!-- Cards JS se inject honge -->
+</main>
+
+<footer>
+  <strong>Baap Level Mind Map Template</strong> · Background light, text visible, fully responsive · koi black background nahi 🎯
+</footer>
+
+<script>
+  // ⚡ SIRF YE DO VARIABLES CHANGE KARO ⚡
+const SUBJECT = "Mathematics";
+const CHAPTER = "Matrices & Determinants";
+
+// Header auto-update hoga (ye do lines add karo)
+document.getElementById('header-eyebrow').textContent = `${SUBJECT} · Master Revision`;
+document.getElementById('chapter-title').textContent = CHAPTER;
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════
+   🧠  SIRF YE ARRAY EDIT KARO — APNE CHAPTERS KE HISAAB SE
+   ═══════════════════════════════════════════════════════════
+
+   Har card mein:
+     number      → "01", "02" ...
+     title       → formula / concept ka naam
+     badge       → "⭐ STAR" | "🔥 HOT" | "💡 TIP"  (optional)
+     stripe      → "blue"(default) | "red" | "green" | "gold" | "purple"
+     formula     → main formula / main baat (HTML allowed, e.g. sub/sup)
+     desc        → ek-do line mein short idea
+     deepDive    → {
+       what        → Kya hai?  (simple bhasha mein)
+       why         → Kyon hota hai? (intuition / physics)
+       how         → Kaise hota hai? (working / process)
+       derivation  → Step-by-step derivation (text or math)
+       example     → Solved example with numbers
+       diagramSvg  → SVG string  (ya "" chhod do placeholder aayega)
+       useYes      → Kab use karna hai ✅
+       useNo       → Kab nahi karna ❌
+       examQ       → Real exam question + ans
+     }
+
+   ══════════════════════════════════════════════════════════ */
+
+const cardsData = [
+
+  /* ─── CARD 1 ─── */
+// ========== MATHEMATICS · MATRICES & DETERMINANTS (Cards 01 to 32) ==========
+{
+  number: "01",
+  title: "Matrix Basics · Types & Order",
+  badge: "📐 BASICS",
+  stripe: "blue",
+  formula: "<b>Order = rows × columns<br>Square, Diagonal, Scalar, Identity, Zero matrices</b>",
+  desc: "10‑Second Trick: Pehle matrix ka order dekho. Square matrix ke liye hi determinant aur inverse define hote hain.",
+  deepDive: {
+    what: "Matrix numbers ka rectangular arrangement hai. Row matrix (1 row), Column matrix (1 column), Square matrix (rows=columns), Diagonal (sirf diagonal par non‑zero), Scalar (diagonal elements same), Identity (I, diagonal 1), Zero matrix (O, saare 0).",
+    why: "IAT basic definitions aur matrix ke type puchhta hai.",
+    how: "Order pehchano. Square matrix ke liye properties apply karo.",
+    derivation: "",
+    example: "A = [1 2; 3 4] → order 2×2, square. B = [1 0 0; 0 2 0; 0 0 3] → diagonal. I₂ = [1 0; 0 1].",
+    diagramSvg: "",
+    useYes: "✅ Matrix type identification. Order based calculations.",
+    useNo: "❌ Not for direct numerical solving.",
+    examQ: "📌 IAT Style: Which is a scalar matrix? (A) diag(2,2,2) (B) diag(2,3,2) (C) diag(1,0,1) (D) Zero matrix. → Ans: A."
+  }
+},
+{
+  number: "02",
+  title: "Rotation Matrix Magic · Angle Addition",
+  badge: "🔄 ROTATION",
+  stripe: "red",
+  formula: "<b>A(θ) = [[cosθ,−sinθ],[sinθ,cosθ]]<br>A(θ₁)A(θ₂)=A(θ₁+θ₂), Aⁿ=A(nθ), A⁻¹=A(−θ)</b>",
+  desc: "10‑Second Trick: Rotation matrices multiply karne par angles add hote hain. Power n is nθ. Inverse −θ.",
+  deepDive: {
+    what: "Rotation matrix A(θ) = [[cosθ, −sinθ], [sinθ, cosθ]]. Determinant = 1. Product of two rotations is rotation by sum of angles. Power n rotates by nθ. Inverse rotates by −θ.",
+    why: "IAT questions: 'A(θ)¹⁰ = ?' Without actual multiplication, seedha angle multiply.",
+    how: "Angle nikaalo given matrix se. For power, multiply angle by n. For product, add angles.",
+    derivation: "From trigonometry addition formulas.",
+    example: "A(30°) = [[√3/2, −1/2],[1/2, √3/2]]. (A(30°))³ = A(90°) = [[0,−1],[1,0]].",
+    diagramSvg: "",
+    useYes: "✅ Rotation matrix powers, products, inverses.",
+    useNo: "❌ Not for non‑rotation matrices.",
+    examQ: "📌 IAT Style: If A = [[cosθ,−sinθ],[sinθ,cosθ]], then Aⁿ = [[cos nθ,−sin nθ],[sin nθ,cos nθ]]."
+  }
+},
+{
+  number: "03",
+  title: "Elevator Matrix Shortcut · Power & Inverse",
+  badge: "🛗 ELEVATOR",
+  stripe: "green",
+  formula: "<b>[[1,0],[x,1]]ⁿ = [[1,0],[nx,1]]<br>Its inverse: [[1,0],[−x,1]]</b>",
+  desc: "10‑Second Trick: Lower triangular with diagonal 1 and one non‑zero corner. Power n multiplies that element by n.",
+  deepDive: {
+    what: "Matrix L = [[1,0],[x,1]] is an elementary shear matrix. Its nth power: Lⁿ = [[1,0],[nx,1]]. Inverse simply changes sign of x. Similarly for upper triangular: [[1,x],[0,1]]ⁿ = [[1,nx],[0,1]].",
+    why: "IAT: 'Find A⁵ if A = [[1,0],[2,1]].' Direct: [[1,0],[10,1]].",
+    how: "Check pattern: diagonal 1, one non‑zero off‑diagonal. Apply formula.",
+    derivation: "By induction or binomial expansion noting that the off‑diagonal generator is nilpotent.",
+    example: "[[1,0],[3,1]]⁴ = [[1,0],[12,1]]. [[1,2],[0,1]]⁻¹ = [[1,−2],[0,1]].",
+    diagramSvg: "",
+    useYes: "✅ Quick powers and inverses of elementary triangular matrices.",
+    useNo: "❌ If diagonal elements are not 1.",
+    examQ: "📌 IAT Style: If A = [[1,0],[5,1]], then A⁻¹ = (A) [[1,0],[−5,1]] (B) [[1,0],[5,1]] (C) [[−1,0],[5,−1]] (D) None. → Ans: A."
+  }
+},
+{
+  number: "04",
+  title: "Skew‑Symmetric Matrix · Odd Order Det = 0",
+  badge: "🔷 SKEW",
+  stripe: "purple",
+  formula: "<b>Aᵀ = −A → diag = 0. For odd n, |A| = 0</b>",
+  desc: "10‑Second Trick: Skew‑symmetric mein diagonal zero. 3×3, 5×5 ka determinant hamesha zero.",
+  deepDive: {
+    what: "A square matrix A is skew‑symmetric if Aᵀ = −A. Diagonal elements must be zero. Determinant of skew‑symmetric matrix of odd order is always zero.",
+    why: "IAT: 'If A is 3×3 skew‑symmetric, then |A| = ?' Answer: 0.",
+    how: "Check Aᵀ = −A. If odd order, |A| = 0. For even order, |A| may be non‑zero.",
+    derivation: "|A| = |Aᵀ| = |−A| = (−1)ⁿ|A|. If n odd, |A| = −|A| ⇒ |A| = 0.",
+    example: "A = [[0,2,−3],[−2,0,4],[3,−4,0]] is 3×3 skew‑symmetric; |A| = 0.",
+    diagramSvg: "",
+    useYes: "✅ Determinant of skew‑symmetric matrices. Identifying symmetry.",
+    useNo: "❌ Not for even order (may be zero or perfect square).",
+    examQ: "📌 IAT Style: If A is a 5×5 skew‑symmetric matrix, then |A| = (A) 1 (B) 0 (C) −1 (D) 5. → Ans: B."
+  }
+},
+{
+  number: "05",
+  title: "Homogeneous System · Trivial vs Infinite",
+  badge: "⚖️ HOMOGENEOUS",
+  stripe: "blue",
+  formula: "<b>MX = O: |M|≠0 → unique (X=0); |M|=0 → infinite solutions</b>",
+  desc: "10‑Second Trick: Determinant zero hua to origin ke alawa aur bhi solutions; non‑zero to sirf zero.",
+  deepDive: {
+    what: "A homogeneous system of linear equations is MX = 0. If det(M) ≠ 0, only solution is trivial (X=0). If det(M) = 0, there are infinitely many non‑trivial solutions.",
+    why: "IAT frequently asks number of solutions of homogeneous system.",
+    how: "Find determinant of coefficient matrix. If non‑zero → unique (trivial). If zero → infinite.",
+    derivation: "From invertibility: M invertible ⇔ |M|≠0 ⇔ unique solution M⁻¹0 = 0.",
+    example: "x+2y=0, 2x+4y=0. |[1,2;2,4]| = 0 → infinite solutions (lines coincide).",
+    diagramSvg: "",
+    useYes: "✅ Solving homogeneous linear systems. Consistency check.",
+    useNo: "❌ Not for non‑homogeneous (RHS non‑zero).",
+    examQ: "📌 IAT Style: If |A|=0 in AX=O, then system has: (A) unique (B) no solution (C) infinite (D) exactly 2 solutions. → Ans: C."
+  }
+},
+{
+  number: "06",
+  title: "Determinant Row Operations · Effect on Value",
+  badge: "🔧 ROW OPS",
+  stripe: "red",
+  formula: "<b>Rᵢ↔Rⱼ → sign change; Rᵢ→kRᵢ → det×k; Rᵢ→Rᵢ+kRⱼ → det unchanged</b>",
+  desc: "10‑Second Trick: Row add/subtract se determinant same. Row multiply → det multiply. Row swap → sign flip.",
+  deepDive: {
+    what: "Elementary row operations affect determinant: (1) Swapping two rows changes sign of determinant. (2) Multiplying a row by scalar k multiplies determinant by k. (3) Adding multiple of one row to another does not change determinant.",
+    why: "IAT: 'If |A|=5 and we do R₁→3R₁, new determinant?' Answer: 15.",
+    how: "Count operations and apply rules to track determinant changes.",
+    derivation: "Properties of determinants.",
+    example: "|A| = 5. After R₁↔R₂: |A| = −5. After R₂→2R₂: |A| = 10. After R₁→R₁+3R₂: |A| remains 5.",
+    diagramSvg: "",
+    useYes: "✅ Evaluating determinants using row operations.",
+    useNo: "❌ Column operations follow same rules.",
+    examQ: "📌 IAT Style: If |A| = 4, and we apply R₁→3R₁, R₂→R₂−R₁, then determinant becomes: (A) 12 (B) 4 (C) −12 (D) 0. → R₁→3R₁ multiplies by 3, R₂−R₁ doesn't change → 12."
+  }
+},
+{
+  number: "07",
+  title: "Scalar Multiplication Rule · |kA| = kⁿ|A|",
+  badge: "🔢 SCALAR",
+  stripe: "green",
+  formula: "<b>|kA| = k<sup>n</sup> |A| &nbsp;(n = order of A)</b>",
+  desc: "10‑Second Trick: Scalar multiply se determinant mein k^n factor aata hai, na ki sirf k.",
+  deepDive: {
+    what: "If every element of an n×n matrix A is multiplied by scalar k, then determinant becomes kⁿ times original determinant, because each of the n rows contributes a factor k.",
+    why: "IAT trap: '|2A| = 2|A|?' No, |2A| = 2ⁿ|A|.",
+    how: "Identify order n. Multiply |A| by kⁿ.",
+    derivation: "Each row multiplied by k → determinant multiplied by k, done n times.",
+    example: "A is 3×3 matrix, |A|=2. |3A| = 3³×2 = 54.",
+    diagramSvg: "",
+    useYes: "✅ Evaluating determinant of scalar multiple matrices.",
+    useNo: "❌ Not for |A+B|; that's not |A|+|B|.",
+    examQ: "📌 IAT Style: If A is a 3×3 matrix with |A|=5, then |−2A| = (−2)³×5 = −40."
+  }
+},
+{
+  number: "08",
+  title: "Adjoint Powers Formula · |adj A| = |A|ⁿ⁻¹",
+  badge: "📐 ADJOINT",
+  stripe: "purple",
+  formula: "<b>|adj A| = |A|<sup>n−1</sup><br>|adj(adj A)| = |A|<sup>(n−1)²</sup></b>",
+  desc: "10‑Second Trick: n×n matrix ke liye |adj A| = |A|^(n−1). For 3×3, |adj A| = |A|².",
+  deepDive: {
+    what: "Determinant of adjoint of A is |A|^{n−1}. For adjoint of adjoint, it's |A|^{(n−1)²}. If |A|=0 and n>2, adj A may be zero matrix.",
+    why: "IAT: 'If A is 3×3 with |A|=2, find |adj(adj A)|.' Answer: 2^{(3−1)²} = 2⁴ = 16.",
+    how: "First find |A|. Then raise to appropriate power based on order n.",
+    derivation: "A·adj A = |A|I. Take determinant: |A|·|adj A| = |A|ⁿ ⇒ |adj A| = |A|^{n−1}.",
+    example: "n=3, |A|=3. |adj A| = 3² = 9. |adj(adj A)| = 3⁴ = 81.",
+    diagramSvg: "",
+    useYes: "✅ Finding determinant of adjoint powers. Quick IAT MCQs.",
+    useNo: "❌ Not for singular matrices when n−1=0? Actually if n=1, adj A = [1].",
+    examQ: "📌 IAT Style: For a 3×3 matrix A with |A|=4, |adj(adj A)| = 4⁴ = 256."
+  }
+},
+{
+  number: "09",
+  title: "Cayley‑Hamilton Shortcut · 2×2 Inverse",
+  badge: "🧠 CAYLEY",
+  stripe: "blue",
+  formula: "<b>A² − (tr A)A + (det A)I = O<br>A⁻¹ = (tr A·I − A) / det A</b>",
+  desc: "10‑Second Trick: 2×2 matrix ka inverse bina formula ke: A⁻¹ = ( (tr A)I − A ) / |A|.",
+  deepDive: {
+    what: "Cayley‑Hamilton theorem: Every square matrix satisfies its own characteristic equation. For 2×2: A² − (trace)A + (det)I = O. Rearranging gives inverse formula.",
+    why: "IAT: 'Find A⁻¹ using Cayley‑Hamilton.'",
+    how: "Compute trace (sum of diagonal), determinant. Then A⁻¹ = ((tr A)I − A)/|A|.",
+    derivation: "A² − (tr A)A = −(det A)I ⇒ A(A − (tr A)I) = −(det A)I ⇒ A⁻¹ = ((tr A)I − A)/(det A).",
+    example: "A = [[2,3],[1,2]]. tr=4, |A|=1. A⁻¹ = 4I − A = [[2,−3],[−1,2]].",
+    diagramSvg: "",
+    useYes: "✅ 2×2 matrix inverse quickly. Verification of matrix equations.",
+    useNo: "❌ For 3×3, formula is more complex (use adjoint).",
+    examQ: "📌 IAT Style: If A = [[1,2],[3,4]], using Cayley‑Hamilton, A⁻¹ = (5I − A)/(−2) = −½[[4,−2],[−3,1]] = [[−2,1],[1.5,−0.5]]."
+  }
+},
+{
+  number: "10",
+  title: "Split Trick · Symmetric + Skew‑Symmetric",
+  badge: "🔀 SPLIT",
+  stripe: "red",
+  formula: "<b>M = ½(M + Mᵀ) + ½(M − Mᵀ)<br>Symmetric part: (M+Mᵀ)/2; Skew: (M−Mᵀ)/2</b>",
+  desc: "10‑Second Trick: Matrix ko symmetric aur skew‑symmetric mein todne ka shortcut: add karke half, subtract karke half.",
+  deepDive: {
+    what: "Any square matrix M can be expressed uniquely as sum of a symmetric matrix A (Aᵀ=A) and a skew‑symmetric matrix B (Bᵀ=−B). A = ½(M+Mᵀ), B = ½(M−Mᵀ).",
+    why: "IAT: 'Express M as sum of symmetric and skew‑symmetric.'",
+    how: "Compute Mᵀ. Then A = (M+Mᵀ)/2, B = (M−Mᵀ)/2.",
+    derivation: "M = ½(M+Mᵀ) + ½(M−Mᵀ). Check: (½(M+Mᵀ))ᵀ = ½(Mᵀ+M) = same → symmetric. (½(M−Mᵀ))ᵀ = ½(Mᵀ−M) = −½(M−Mᵀ) → skew.",
+    example: "M=[[1,2],[3,4]]. Mᵀ=[[1,3],[2,4]]. A=[[1,2.5],[2.5,4]], B=[[0,−0.5],[0.5,0]].",
+    diagramSvg: "",
+    useYes: "✅ Decomposing matrices into symmetric and skew‑symmetric parts.",
+    useNo: "❌ Not for sum of other special forms.",
+    examQ: "📌 IAT Style: The skew‑symmetric part of [[2,5],[7,3]] is: (A) [[0,−1],[1,0]] (B) [[0,1],[−1,0]] (C) [[0,−6],[6,0]]? M−Mᵀ = [[0,−2],[2,0]], half = [[0,−1],[1,0]]. Ans: A (but sign check: B should have Bᵀ=−B; here B=[[0,−1],[1,0]] → Bᵀ=[[0,1],[−1,0]] = −B ✓)."
+  }
+},
+{
+  number: "11",
+  title: "Transpose Properties · (AB)ᵀ = BᵀAᵀ",
+  badge: "🔄 TRANSPOSE",
+  stripe: "green",
+  formula: "<b>(AB)ᵀ = Bᵀ Aᵀ<br>(Aⁿ)ᵀ = (Aᵀ)ⁿ</b>",
+  desc: "10‑Second Trick: Product ka transpose order reverse karta hai. Power ka transpose power ke saath commute.",
+  deepDive: {
+    what: "Transpose of product is product of transposes in reverse order: (AB)ᵀ = BᵀAᵀ. Powers: (Aⁿ)ᵀ = (Aᵀ)ⁿ. For symmetric (Aᵀ=A), powers remain symmetric. For skew‑symmetric (Aᵀ=−A), even powers become symmetric, odd powers remain skew.",
+    why: "IAT: 'If A is skew‑symmetric, then A² is ?' Answer: Symmetric.",
+    how: "Apply transpose properties.",
+    derivation: "From definition of matrix multiplication.",
+    example: "A skew‑symmetric: Aᵀ = −A. (A²)ᵀ = (Aᵀ)² = (−A)² = A² → symmetric.",
+    diagramSvg: "",
+    useYes: "✅ Determining symmetry of matrix expressions.",
+    useNo: "❌ Not for determinant of transpose (same).",
+    examQ: "📌 IAT Style: If A is skew‑symmetric, then A³ is: (A) Symmetric (B) Skew‑symmetric (C) Both (D) Neither. → A³ transpose = (Aᵀ)³ = (−A)³ = −A³ → skew. Ans: B."
+  }
+},
+{
+  number: "12",
+  title: "Determinant \"A.P. Zero\" Magic · Row Operation",
+  badge: "🪄 AP ZERO",
+  stripe: "blue",
+  formula: "<b>If rows/cols in AP, use R₁+R₃−2R₂ → zero row</b>",
+  desc: "10‑Second Trick: Matrix ki rows arithmetic progression mein hain to R₁+R₃−2R₂ karo, ek row zero banegi.",
+  deepDive: {
+    what: "When elements of rows (or columns) of a determinant are in arithmetic progression, the operation R₁ + R₃ − 2R₂ produces a row of zeros, making the determinant zero.",
+    why: "IAT: 'Evaluate |[1,2,3;4,5,6;7,8,9]|.' Direct row operation gives det=0.",
+    how: "Check if consecutive rows have constant difference. Apply operation to one row.",
+    derivation: "If second row is average of first and third, then R₁+R₃=2R₂ ⇒ difference zero.",
+    example: "|[1,2,3; 3,5,7; 5,8,11]|. R₂−R₁ = [2,3,4]; R₃−R₂ = [2,3,4] → not exactly AP? But R₁+R₃−2R₂ = [1+5−6, 2+8−10, 3+11−14]=[0,0,0] → det=0.",
+    diagramSvg: "",
+    useYes: "✅ Quickly spotting zero determinants with AP rows/columns.",
+    useNo: "❌ If rows are not exactly in AP.",
+    examQ: "📌 IAT Style: Determinant of [[1,2,3],[4,5,6],[7,8,9]] is: (A) 0 (B) 1 (C) 27 (D) 45. → Ans: A."
+  }
+},
+{
+  number: "13",
+  title: "System of Equations · 3‑Step Eye Scan",
+  badge: "👁️ EYE SCAN",
+  stripe: "red",
+  formula: "<b>Eq₁+Eq₂=Eq₃ or Eq₁+Eq₃=2Eq₂ or find multipliers</b>",
+  desc: "10‑Second Trick: Equations ko solve mat karo; dekho kya rows linearly dependent hain.",
+  deepDive: {
+    what: "For a system of three linear equations, if one equation is a linear combination of the other two, the system has either infinite or no solution (depending on consistency). Quickly check sums and differences.",
+    why: "IAT asks whether system is consistent without solving.",
+    how: "Check: (1) Does Eq₁+Eq₂=Eq₃? (2) Does Eq₁+Eq₃=2Eq₂? (3) If not, find p,q such that p·Eq₁+q·Eq₂=Eq₃ by comparing coefficients.",
+    derivation: "",
+    example: "x+y=2, 2x+3y=5, 3x+4y=7. Eq₃ = Eq₁+Eq₂? 3x+4y=7 vs (x+y)+(2x+3y)=3x+4y=7 → Yes. So consistent, infinite if they are same line? Check RHS: 2+5=7 matches → infinite solutions.",
+    diagramSvg: "",
+    useYes: "✅ Checking consistency of linear equations without full solving.",
+    useNo: "❌ Not if all three are independent.",
+    examQ: "📌 IAT Style: For what λ do equations x+y+z=1, 2x+3y+4z=3, 3x+4y+λz=5 have infinite solutions? Set Eq₃ = a·Eq₁ + b·Eq₂ and match."
+  }
+},
+{
+  number: "14",
+  title: "System of Equations · Logic Chart",
+  badge: "🧭 LOGIC MAP",
+  stripe: "purple",
+  formula: "<b>|A|≠0 → Unique; |A|=0 → Infinite or No Solution (check rank)</b>",
+  desc: "10‑Second Trick: Determinant zero hai to unique impossible. RHS match kare to infinite, nahi to no solution.",
+  deepDive: {
+    what: "For AX=B, if |A|≠0, solution is unique. If |A|=0, either no solution or infinite solutions, determined by consistency of augmented matrix: rank(A) vs rank(A|B).",
+    why: "IAT options filtering: 'For α=3, the system has...'",
+    how: "Compute |A|. If |A|≠0, unique for any B. If |A|=0, check if B is in column space: put the value and check consistency (row reduction or rank).",
+    derivation: "Rank‑nullity theorem.",
+    example: "x+y=2, 2x+2y=5. |A|=0. Augmented: [1,1,2; 2,2,5] → rank(A)=1, rank(AB)=2 → no solution.",
+    diagramSvg: "",
+    useYes: "✅ Classifying system solutions based on determinant and consistency.",
+    useNo: "❌ Not for non‑linear systems.",
+    examQ: "📌 IAT Style: If |A|=0 and adj A·B ≠ 0, then system AX=B has: (A) unique (B) infinite (C) no solution (D) none. → If |A|=0 and adj A·B ≠ 0, then no solution (since consistency condition fails)."
+  }
+},
+{
+  number: "15",
+  title: "Determinant Property Hacker · |ABAᵀ| = |A|²|B|",
+  badge: "🔗 PROPERTIES",
+  stripe: "green",
+  formula: "<b>|AB| = |A||B|, |A⁻¹| = 1/|A|, |Aᵀ| = |A|</b>",
+  desc: "10‑Second Trick: Complex matrix expression ke determinants ko simple product rules se tod do.",
+  deepDive: {
+    what: "Determinant properties: product rule |AB|=|A||B|, inverse rule |A⁻¹|=1/|A|, transpose rule |Aᵀ|=|A|, scalar multiple |kA|=kⁿ|A|. Use them to simplify expressions like |ABAᵀ| = |A|·|B|·|Aᵀ| = |A|²|B|.",
+    why: "IAT: 'If |A|=2, |B|=3, find |AB⁻¹|.' = 2/3.",
+    how: "Break expression into product of matrices whose determinants known or cancel.",
+    derivation: "Standard properties from determinant theory.",
+    example: "|A(adj A)Aᵀ| = |A|·|adj A|·|A| = |A|·|A|ⁿ⁻¹·|A| = |A|ⁿ⁺¹.",
+    diagramSvg: "",
+    useYes: "✅ Simplifying determinant expressions using properties.",
+    useNo: "❌ Sum/difference: |A+B| ≠ |A|+|B|.",
+    examQ: "📌 IAT Style: If A is orthogonal (|A|=±1), then |A Aᵀ| = |A|² = 1."
+  }
+},
+{
+  number: "16",
+  title: "3D Geometry Filter · Homogeneous System & Sphere",
+  badge: "🌐 3D FILTER",
+  stripe: "blue",
+  formula: "<b>If |P|=0 in PX=0 → line through origin<br>Intersect with sphere → 2 points</b>",
+  desc: "10‑Second Trick: Homogeneous system with det=0 represents line through origin. Sphere intersect karega to 2 intersection points.",
+  deepDive: {
+    what: "PX=0 where P is 3×3 with |P|=0 represents a straight line passing through the origin (intersection of two planes). Intersecting this line with a sphere centered at origin yields exactly two points (opposite ends of diameter).",
+    why: "IAT geometry‑matrix mix: 'Number of solutions of PX=0 satisfying x²+y²+z²=1?'",
+    how: "Solve PX=0 to get line direction. Parametrize and plug into sphere equation to get two solutions.",
+    derivation: "Line: (x,y,z)=t·v. t²(v·v)=1 → t=±1/|v| → two points.",
+    example: "2x−y+z=0, x+2y−z=0, 3x+y=0. Get line, then x²+y²+z²=1 gives two points.",
+    useYes: "✅ Combining homogeneous systems with geometric constraints.",
+    useNo: "❌ If sphere is not centered at origin (may have 0,1,2 points).",
+    examQ: "📌 IAT Style: The system x+2y−z=0, 2x−y+3z=0, 3x+y+2z=0 has how many solutions on x²+y²+z²=1? → Solve, find direction, answer 2."
+  }
+},
+{
+  number: "17",
+  title: "Nilpotent Matrix Trap · Black Hole Concept",
+  badge: "🕳️ NILPOTENT",
+  stripe: "red",
+  formula: "<b>If Nullspace = Columnspace, then A² = O</b>",
+  desc: "10‑Second Trick: Null space aur column space equal hain to matrix khud ka output khud ko zero karta hai.",
+  deepDive: {
+    what: "A linear operator A where Null(A)=Col(A) implies that for any y in column space (y=Ax), A applied to y gives zero: A(Ax)=0 for all x ⇒ A² = O. This is a nilpotent matrix of index 2.",
+    why: "IAT conceptual: 'If {x: Ax=0} = {Ay}, then A² = ?'.",
+    how: "Every vector in column space is of the form Ay. Since it's also in null space, A(Ay) = 0. Thus A²x=0 for all x → A²=O.",
+    derivation: "Col(A) ⊆ Null(A) ⇒ A·Col(A) = {0} ⇒ for any x, A(Ax)=0 ⇒ A²=O.",
+    example: "A = [[0,1],[0,0]]: Null=span{[1,0]}, Col=span{[1,0]}, equal, A²=O.",
+    diagramSvg: "",
+    useYes: "✅ Identifying nilpotent matrices from subspace conditions.",
+    useNo: "❌ Not for general nilpotent without this specific condition.",
+    examQ: "📌 IAT Style: If for a matrix A, {x|Ax=0} = {Ay|y∈Rⁿ}, then A² = (A) I (B) O (C) A (D) −A. → Ans: O."
+  }
+},
+{
+  number: "18",
+  title: "Divisibility Eye‑Scan · Integer Determinants",
+  badge: "🔍 DIVISIBILITY",
+  stripe: "purple",
+  formula: "<b>Factor equation to use divisibility: e.g., 5x−3y=−5 ⇒ y must be multiple of 5</b>",
+  desc: "10‑Second Trick: Matrix entries integers hain to determinant equation mein variables ke multiples check karo.",
+  deepDive: {
+    what: "When a matrix has integer entries and its determinant is given, expanding the determinant yields a linear Diophantine equation. Use divisibility to find integer solutions without solving fully.",
+    why: "IAT: 'Find y if 5x−3y = −5 and entries are integers.' y must be multiple of 5.",
+    how: "Factor: 5x − 3y = −5 → 5x + 5 = 3y → 5(x+1) = 3y. Since 5 divides LHS, 5 must divide RHS ⇒ 5|3y ⇒ 5|y (as gcd(3,5)=1).",
+    derivation: "From number theory.",
+    example: "Det condition gives 7x + 2y = 14 → 2y = 14 − 7x = 7(2−x) → y = 7(2−x)/2. For integer y, (2−x) must be even → x even.",
+    diagramSvg: "",
+    useYes: "✅ Finding integer solutions using divisibility.",
+    useNo: "❌ If coefficients aren't coprime.",
+    examQ: "📌 IAT Style: If matrix has integer entries and determinant yields 3x + 5y = 10, then which could be y? (A) 2 (B) 3 (C) 4 (D) 5. → 5y = 10 − 3x → y = (10−3x)/5. For y integer, 10−3x must be multiple of 5. Try x=0⇒y=2. Ans: A."
+  }
+},
+{
+  number: "19",
+  title: "Matrix Polynomial Factoring · Invertibility Hack",
+  badge: "🧩 FACTOR",
+  stripe: "green",
+  formula: "<b>If A² + kA + mI = O, then A(A+kI) = −mI ⇒ A⁻¹ exists if m≠0</b>",
+  desc: "10‑Second Trick: Matrix equation mein A common nikalo. Agar m≠0 to A invertible.",
+  deepDive: {
+    what: "Given a polynomial equation satisfied by matrix A, e.g., A² + kA + mI = O. Rewrite as A(A + kI) = −mI. If m ≠ 0, then A is invertible with A⁻¹ = −(1/m)(A + kI). Similarly A+kI is invertible.",
+    why: "IAT: 'If A²+A+I=O, then A is invertible?' Yes, because A(−A−I)=I.",
+    how: "Factor out A from terms containing A. The constant term's coefficient determines invertibility.",
+    derivation: "From matrix algebra.",
+    example: "A² − 5A + 6I = O. Then A(A−5I) = −6I ⇒ A⁻¹ = −(1/6)(A−5I).",
+    diagramSvg: "",
+    useYes: "✅ Determining invertibility from polynomial equations. Finding inverse.",
+    useNo: "❌ If constant term is zero, A may be singular.",
+    examQ: "📌 IAT Style: If A² − 3A + 2I = O, then A is invertible and A⁻¹ = (A) ½(A−3I) (B) ½(3I−A) (C) A−3I (D) I. → A(A−3I)=−2I ⇒ A⁻¹=−½(A−3I)=½(3I−A). Ans: B."
+  }
+},
+{
+  number: "20",
+  title: "Fake Eigenvalue Square Hack",
+  badge: "🪞 SQUARE HACK",
+  stripe: "red",
+  formula: "<b>Given A²+bA+cI=O, find |A−kI|. Compute (A−kI)² = A²−2kA+k²I, substitute</b>",
+  desc: "10‑Second Trick: Target expression (A−kI) ka square karo, original equation se A² replace karo, determinant lo.",
+  deepDive: {
+    what: "When a matrix equation is given, to find determinant of A−kI, compute (A−kI)² = A² − 2kA + k²I. Replace A² from the given equation, simplify to a scalar multiple of A or I, then take determinant.",
+    why: "IAT: 'If A²−7A+4I=O, find |A−2I|.' No eigenvalues needed.",
+    how: "(A−2I)² = A²−4A+4I. Given A² = 7A−4I, so (A−2I)² = (7A−4I)−4A+4I = 3A. Then |A−2I|² = |3A| = 3ⁿ|A|. Need |A| from original: A²=7A−4I ⇒ |A|² = |7A−4I|? Not directly. But often |A| can be found by taking determinant of original: |A²−7A+4I|=0 ⇒ using Cayley‑Hamilton? Actually the equation itself doesn't directly give |A|. Instead, we find |A−2I| from (A−2I)² = 3A, so |A−2I|² = |3A| = 3ⁿ|A|. If |A| is known from trace/det? Sometimes given. Typically such IAT problems provide |A| or ask for |A−kI| relative to |A|.",
+    derivation: "Matrix algebra; determinant of both sides of polynomial identity.",
+    example: "Given A² − 5A + 6I = O, and |A|=6. Find |A−3I|. (A−3I)² = A²−6A+9I = (5A−6I)−6A+9I = −A+3I? Actually A²=5A−6I. So (A−3I)² = (5A−6I)−6A+9I = −A+3I. Not simple scalar multiple. Alternative: from characteristic equation (λ−2)(λ−3)=0, eigenvalues 2,3, so A−3I has eigenvalue 2−3=−1 and 3−3=0? Not unique. Better: Use given |A| and trace? This trick works perfectly when the equation yields a scalar multiple of A, as in user's example: A²−7A+4I=O, (A−2I)² = 3A. Then |A−2I|² = 3ⁿ|A|.",
+    useYes: "✅ Finding determinants like |A−kI| from polynomial equation.",
+    useNo: "❌ If the simplification doesn't yield a simple matrix.",
+    examQ: "📌 IAT Style: If A²−7A+4I=O and |A|=4 for 3×3 matrix, then |A−2I| = √(3³×4) = √108 = 6√3? But IAT expects numeric maybe. Check: (A−2I)² = 3A ⇒ |A−2I|² = 3³×4 = 108 ⇒ |A−2I| = ±√108 = ±6√3."
+  }
+},
+{
+  number: "21",
+  title: "Bounding Hack · Trig + Matrix Equations",
+  badge: "📉 BOUNDING",
+  stripe: "blue",
+  formula: "<b>Use −1 ≤ cosθ ≤ 1, etc., to bound and solve equations</b>",
+  desc: "10‑Second Trick: Matrix equation mein trigonometric function aur polynomial side by side? Range compare karo.",
+  deepDive: {
+    what: "When an equation involves bounded functions (e.g., cos x, sin x) and polynomial expressions, comparing ranges often forces equality only at boundary values.",
+    why: "IAT: 'If cos x = x² + 1, find x.' cos x ≤ 1, x²+1 ≥ 1. Equality only when both =1 → x=0.",
+    how: "LHS maximum/minimum find karo. RHS minimum/maximum find karo. Intersection point(s) solve.",
+    derivation: "Inequality analysis.",
+    example: "sin x = x² + 2? sin x ≤ 1, x²+2 ≥ 2 → no solution.",
+    diagramSvg: "",
+    useYes: "✅ Solving equations with mixed transcendental and algebraic terms.",
+    useNo: "❌ If ranges don't restrict to a single point.",
+    examQ: "📌 IAT Style: Equation cos x = x²+1 holds for: (A) no x (B) exactly one x (C) two values (D) infinite. → cos x ≤ 1, x²+1 ≥ 1, equality only at x=0. Ans: B."
+  }
+},
+{
+  number: "22",
+  title: "Matrix Relations · Equivalence Trap",
+  badge: "🔗 RELATIONS",
+  stripe: "red",
+  formula: "<b>Reflexive: det(A−A)=0 ∈ ℤ → Yes<br>Symmetric: det(B−A)=−det(A−B) ∈ ℤ → Yes<br>Transitive: det(A−B),det(B−C) ∈ ℤ ⇏ det(A−C) ∈ ℤ</b>",
+  desc: "10‑Second Trick: Matrix relation based on determinant being integer. Transitive always fails.",
+  deepDive: {
+    what: "Define relation R: A R B if det(A−B) is an integer. Reflexive: det(A−A)=det(O)=0 integer → yes. Symmetric: det(B−A)=det(−(A−B))=(−1)ⁿ det(A−B). For odd n, it's negative but still integer; for even, same. So symmetric if n is? Actually if det(A−B) is integer, det(B−A) = (−1)ⁿ det(A−B), also integer. So symmetric. Transitive: det(A−B) and det(B−C) integers does not imply det(A−C) integer, because det(A−C) = det((A−B)+(B−C)) ≠ det(A−B)+det(B−C) generally. So transitive fails.",
+    why: "IAT: 'Is the relation reflexive, symmetric, transitive?'",
+    how: "Check each property using determinant rules.",
+    derivation: "det(X+Y) ≠ det X + det Y.",
+    example: "For 3×3 matrices, R is reflexive and symmetric but not transitive.",
+    diagramSvg: "",
+    useYes: "✅ Checking relation properties based on determinant condition.",
+    useNo: "❌ Not for other relation definitions.",
+    examQ: "📌 IAT Style: Let R be relation on 3×3 real matrices: A R B if det(A−B) is integer. Then R is: (A) Equivalence (B) Reflexive, symmetric but not transitive (C) Only reflexive (D) None. → Ans: B."
+  }
+},
+{
+  number: "23",
+  title: "True Polynomial Trick · Characteristic Equation",
+  badge: "📈 POLYNOMIAL",
+  stripe: "green",
+  formula: "<b>det(A−xI) = (−1)ⁿ(xⁿ + c₁xⁿ⁻¹ + ... + cₙ)<br>If A³−7A²+4A−3I=O, then det(A−kI)=−P(k) (for n=3)</b>",
+  desc: "10‑Second Trick: Matrix ki cubic equation se seedha det(A−kI) = −P(k).",
+  deepDive: {
+    what: "The characteristic polynomial of a 3×3 matrix A is det(A−xI) = −(x³ − tr(A)x² + ... − det(A)). If A satisfies A³ + c₂A² + c₁A + c₀I = O, then its characteristic polynomial is x³ + c₂x² + c₁x + c₀ = 0 (monic, for 3×3). Then det(A−kI) = (−1)³(k³ + c₂k² + c₁k + c₀) = −P(k) where P(x)=x³+c₂x²+c₁x+c₀.",
+    why: "IAT: 'Given A³−7A²+4A−3I=O, find det(A−2I).' P(x)=x³−7x²+4x−3, P(2)=8−28+8−3=−15, so det(A−2I) = −P(2) = 15.",
+    how: "Write monic polynomial from equation (coefficient of A³ must be 1; if not, divide). Then substitute k and take negative (for odd n).",
+    derivation: "Eigenvalues of A are roots of characteristic polynomial. For each eigenvalue λ, det(A−kI) = ∏(λᵢ−k) = (−1)ⁿ ∏(k−λᵢ) = (−1)ⁿ P(k).",
+    example: "A²−5A+6I=O (2×2). P(x)=x²−5x+6. det(A−3I) = P(3) = 0? (A−3I singular). Actually for n=2, det(A−kI) = P(k). For 3×3, det(A−kI) = −P(k).",
+    diagramSvg: "",
+    useYes: "✅ Finding det(A−kI) from matrix polynomial equation.",
+    useNo: "❌ If the equation doesn't represent characteristic polynomial (multiple possible).",
+    examQ: "📌 IAT Style: If A³−6A²+11A−6I=O, find |A−4I|. P(4)=64−96+44−6=6, so |A−4I| = −6."
+  }
+},
+{
+  number: "24",
+  title: "Mirror Equation Attack · Pᵀ = aP + cI",
+  badge: "🪞 MIRROR",
+  stripe: "purple",
+  formula: "<b>Take transpose of both sides, solve with original to find P</b>",
+  desc: "10‑Second Trick: Dono taraf transpose lo, phir dono equations ko solve karo. Often P = ±I milta hai.",
+  deepDive: {
+    what: "If given Pᵀ = aP + cI, taking transpose again: (Pᵀ)ᵀ = aPᵀ + cI ⇒ P = aPᵀ + cI. Substitute original Pᵀ into this: P = a(aP + cI) + cI = a²P + (ac+c)I. Rearranging: (1−a²)P = (ac+c)I. If a≠±1, P is scalar multiple of I, then determinant easily found.",
+    why: "IAT: 'Find |P| if Pᵀ = 2P + I.' Leads to P = −I ⇒ |P| = (−1)ⁿ.",
+    how: "Take transpose, substitute back, solve for P.",
+    derivation: "As above.",
+    example: "Pᵀ = −P + I. Transpose: P = −Pᵀ + I = −(−P+I)+I = P−I+I = P. Identity; no new info. But with Pᵀ = 3P + 2I: transpose → P = 3Pᵀ + 2I = 3(3P+2I)+2I = 9P+8I ⇒ −8P = 8I ⇒ P = −I.",
+    diagramSvg: "",
+    useYes: "✅ Solving matrix equations involving transpose and linear terms.",
+    useNo: "❌ If a=±1, may need more conditions.",
+    examQ: "📌 IAT Style: If Pᵀ = 3P + 2I and P is 3×3, then |P| = (−1)³ = −1."
+  }
+},
+{
+  number: "25",
+  title: "Logarithm Stripper · Variable Substitution",
+  badge: "📝 LOG STRIP",
+  stripe: "blue",
+  formula: "<b>If matrix has reciprocals like logₓy and logᵧx, set x=y=z (mentally) to simplify</b>",
+  desc: "10‑Second Trick: Log terms with reciprocal pairs? Assume all variables equal → logs become 1.",
+  deepDive: {
+    what: "When a determinant contains expressions like log_a b and log_b a (which are reciprocals), and the answer is a constant, we can substitute a=b=c=... any convenient value (like 2 or 10) that makes logs simple, and evaluate the determinant numerically.",
+    why: "IAT: 'If a,b,c are distinct positive numbers, find determinant with log terms.' Answer is often 0 or constant.",
+    how: "Set a=b=c (mentally). Then log_a b = 1, etc. Evaluate determinant.",
+    derivation: "Due to symmetric property, value is independent of variables.",
+    example: "| [1, log_b a, log_c a; log_a b, 1, log_c b; log_a c, log_b c, 1] |. Put a=b=c=10: all logs=1, matrix all 1's → det=0.",
+    diagramSvg: "",
+    useYes: "✅ Evaluating symmetric determinants with logarithmic entries.",
+    useNo: "❌ If variables must be distinct and answer depends on them.",
+    examQ: "📌 IAT Style: Determinant with entries 1, log_b a, etc., equals: (A) 0 (B) 1 (C) (log a)(log b)(log c) (D) log(abc). → Ans: A."
+  }
+},
+{
+  number: "26",
+  title: "Inverse of 2×2 Matrix · Instant Formula",
+  badge: "⚡ 2×2 INVERSE",
+  stripe: "red",
+  formula: "<b>[[a,b],[c,d]]⁻¹ = 1/(ad−bc) [[d,−b],[−c,a]]</b>",
+  desc: "10‑Second Trick: Swap a,d, negate b,c, divide by determinant.",
+  deepDive: {
+    what: "Inverse of a 2×2 matrix is obtained by swapping the diagonal elements, negating the off‑diagonal elements, and dividing by determinant.",
+    why: "IAT basic computation.",
+    how: "Compute det = ad−bc. If non‑zero, inverse = [[d,−b],[−c,a]] / det.",
+    derivation: "From adjoint formula.",
+    example: "[[2,3],[1,4]]⁻¹ = 1/(8−3) [[4,−3],[−1,2]] = [[0.8,−0.6],[−0.2,0.4]].",
+    diagramSvg: "",
+    useYes: "✅ Quick inverse of 2×2 matrices.",
+    useNo: "❌ Not for 3×3 or larger.",
+    examQ: "📌 IAT Style: Inverse of [[1,2],[3,4]] is [[−2,1],[1.5,−0.5]]."
+  }
+},
+{
+  number: "27",
+  title: "Cramer's Rule · Solve using Determinants",
+  badge: "📐 CRAMER",
+  stripe: "green",
+  formula: "<b>x = |Aₓ|/|A|, y = |Aᵧ|/|A|, z = |A₂|/|A|</b>",
+  desc: "10‑Second Trick: Variable nikalne ke liye us column ko RHS se replace karo, determinant ratio lo.",
+  deepDive: {
+    what: "For a system AX=B with |A|≠0, solution is given by replacing i‑th column of A with B, taking determinant, and dividing by |A|.",
+    why: "IAT: 'Solve 2x+3y=5, 4x+6y=10?' |A|=0, so not applicable. But if |A|≠0, quick.",
+    how: "Compute |A|. Then for each variable, replace its column with B and find determinant.",
+    derivation: "From A⁻¹ = adj A / |A|; multiplying by B gives x_i = det(A_i)/det(A).",
+    example: "x+2y=3, 3x+4y=7. |A|=−2. |A_x|=|[3,2],[7,4]| = 12−14=−2 → x=1. |A_y|=|[1,3],[3,7]| = 7−9=−2 → y=1.",
+    diagramSvg: "",
+    useYes: "✅ Solving small linear systems with non‑zero determinant.",
+    useNo: "❌ If |A|=0, use other methods.",
+    examQ: "📌 IAT Style: Using Cramer's rule, if |A|=5, |A_x|=10, then x = 2."
+  }
+},
+{
+  number: "28",
+  title: "Minors, Cofactors & Adjoint",
+  badge: "🧩 COFACTOR",
+  stripe: "purple",
+  formula: "<b>Cofactor Cᵢⱼ = (−1)ⁱ⁺ʲ Mᵢⱼ<br>adj A = transpose of cofactor matrix</b>",
+  desc: "10‑Second Trick: Adjoint nikalne ke liye cofactors ka transpose lo.",
+  deepDive: {
+    what: "Minor Mᵢⱼ is determinant after removing row i and column j. Cofactor Cᵢⱼ = (−1)^{i+j} Mᵢⱼ. Adjoint = transpose of cofactor matrix.",
+    why: "IAT: 'Find the cofactor a₂₃ of matrix A.'",
+    how: "Remove row, column, compute determinant, apply sign.",
+    derivation: "Definition.",
+    example: "A=[[1,2,3],[0,4,5],[1,0,6]]. C₂₃ = (−1)²⁺³ det[[1,2],[1,0]] = −1 × (0−2) = 2.",
+    diagramSvg: "",
+    useYes: "✅ Computing adjoint, inverse, and individual cofactors.",
+    useNo: "❌ Not for direct determinant of large matrix.",
+    examQ: "📌 IAT Style: Cofactor of element a₁₂ in [[2,3,1],[0,−1,4],[2,0,1]]: remove row1 col2 → det[[0,4],[2,1]] = −8; sign (−1)¹⁺² = −1 → cofactor = 8."
+  }
+},
+{
+  number: "29",
+  title: "Inverse via Adjoint · A⁻¹ = adj A / |A|",
+  badge: "🔁 INVERSE",
+  stripe: "blue",
+  formula: "<b>A⁻¹ = (1/|A|) · adj A</b>",
+  desc: "10‑Second Trick: Adjoint nikaalo, determinant se divide karo. 3×3 ka inverse yaad rakhne ka tarika.",
+  deepDive: {
+    what: "For a non‑singular square matrix, A⁻¹ = adj A / |A|. The adjoint is the transpose of the cofactor matrix.",
+    why: "IAT: 'Find inverse using adjoint method.'",
+    how: "Compute all cofactors, arrange in matrix, transpose, divide by |A|.",
+    derivation: "A · adj A = |A| I.",
+    example: "A = [[1,2],[3,4]]: adj A = [[4,−2],[−3,1]], |A|=−2, A⁻¹ = −½[[4,−2],[−3,1]].",
+    diagramSvg: "",
+    useYes: "✅ Theoretical relationship. Manual inverse calculation.",
+    useNo: "❌ For large matrices, use other methods.",
+    examQ: "📌 IAT Style: If |A|=5 and adj A = [[10,0],[0,10]], then A = (adj A)/5 = 2I."
+  }
+},
+{
+  number: "30",
+  title: "Orthogonal Matrix · A Aᵀ = I",
+  badge: "🟢 ORTHOGONAL",
+  stripe: "green",
+  formula: "<b>AAᵀ = I ⇒ |A| = ±1; rows/cols are orthonormal</b>",
+  desc: "10‑Second Trick: Orthogonal matrix hai to inverse = transpose. Determinant ±1.",
+  deepDive: {
+    what: "A square matrix A is orthogonal if AAᵀ = I. Its determinant is either +1 or −1. Its rows (and columns) are orthonormal vectors.",
+    why: "IAT: 'If A is orthogonal, then |A| = ?'.",
+    how: "Check if AAᵀ=I. If yes, |A|=±1, A⁻¹=Aᵀ.",
+    derivation: "From definition.",
+    example: "Rotation matrix [[cosθ,−sinθ],[sinθ,cosθ]] is orthogonal, |A|=1.",
+    diagramSvg: "",
+    useYes: "✅ Identifying orthogonal matrices and their properties.",
+    useNo: "❌ Not for non‑square matrices.",
+    examQ: "📌 IAT Style: An orthogonal matrix must have determinant: (A) 0 (B) 1 (C) −1 (D) ±1. → Ans: D."
+  }
+},
+{
+  number: "31",
+  title: "Idempotent & Involutory Matrices",
+  badge: "🔄 IDEMPOTENT",
+  stripe: "red",
+  formula: "<b>Idempotent: A² = A ⇒ |A| = 0 or 1<br>Involutory: A² = I ⇒ |A| = ±1</b>",
+  desc: "10‑Second Trick: Idempotent matrix projection jaisi; determinant 0 ya 1. Involutory matrix apna inverse khud.",
+  deepDive: {
+    what: "A is idempotent if A²=A. Taking determinant: |A|²=|A| ⇒ |A|(|A|−1)=0 ⇒ |A|=0 or 1. Involutory: A²=I ⇒ |A|²=1 ⇒ |A|=±1.",
+    why: "IAT: 'If A²=A, then determinant can be?'",
+    how: "Use determinant property.",
+    derivation: "From definition.",
+    example: "Projection matrix P = [[1,0],[0,0]]: P²=P, |P|=0.",
+    diagramSvg: "",
+    useYes: "✅ Classifying special matrices based on powers.",
+    useNo: "❌ Not for general matrices without specific relation.",
+    examQ: "📌 IAT Style: If A²=I and A≠I, then |A| = (A) 0 (B) 1 (C) −1 (D) ±1 but not 0. → Ans: D."
+  }
+},
+{
+  number: "32",
+  title: "Matrices & Determinants Cheat Sheet",
+  badge: "🏁 CHEAT",
+  stripe: "gold",
+  formula: "<b>|Aᵀ|=|A|, |AB|=|A||B|, |A⁻¹|=1/|A|, |adj A|=|A|ⁿ⁻¹<br>Cayley‑Hamilton, Symmetric/Skew‑Symmetric split</b>",
+  desc: "10‑Second Trick: Last minute glance — saare key formulas ek jagah.",
+  deepDive: {
+    what: "Summary card for Matrices & Determinants chapter.",
+    why: "Quick revision before exam.",
+    how: "Memorize these formulas and tricks.",
+    derivation: "",
+    example: "",
+    diagramSvg: `
+      <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="380" height="160" fill="#fffcf7" stroke="#b8860b" stroke-width="2" rx="8"/>
+        <text x="200" y="30" font-size="11" fill="#b8860b" text-anchor="middle" font-weight="600">⚡ MATRICES &amp; DETERMINANTS CHEAT SHEET ⚡</text>
+        <text x="20" y="50" font-size="9" fill="#333">• |kA| = kⁿ|A|, |AB| = |A||B|, |A⁻¹| = 1/|A|, |Aᵀ| = |A|</text>
+        <text x="20" y="65" font-size="9" fill="#333">• |adj A| = |A|ⁿ⁻¹, |adj(adj A)| = |A|^{(n-1)²}</text>
+        <text x="20" y="80" font-size="9" fill="#333">• Cayley‑Hamilton: A satisfies its characteristic equation</text>
+        <text x="20" y="95" font-size="9" fill="#333">• Skew‑Symmetric odd order → |A| = 0. Orthogonal → |A| = ±1</text>
+        <text x="20" y="110" font-size="9" fill="#333">• (AB)ᵀ = BᵀAᵀ. A = ½(A+Aᵀ) + ½(A−Aᵀ) (Sym + Skew)</text>
+        <text x="20" y="125" font-size="9" fill="#333">• Homogeneous system: |A|≠0 → trivial; |A|=0 → infinite</text>
+        <text x="20" y="140" font-size="9" fill="#c0392b">• Rotation matrix: Aⁿ = A(nθ). Elevator matrix: [1,0;x,1]ⁿ = [1,0;nx,1]</text>
+      </svg>
+    `,
+    useYes: "✅ Last minute revision.",
+    useNo: "❌ Not for detailed derivation.",
+    examQ: "📌 IAT Style: Use this as mental summary."
+  }
+}
+];
+
+/* ════════════════════════════════════════
+   RENDER ENGINE — mat chhedo ise ♡
+   ════════════════════════════════════════ */
+
+function icon(d) {
+  return `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M2 3l3 4 3-4" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function buildDiveHTML(d) {
+  const diag = d.diagramSvg
+    ? `<div class="diagram-wrap">${d.diagramSvg}</div>`
+    : `<div class="diagram-wrap"><p class="diagram-placeholder">📐 Diagram placeholder<br><span style="font-size:11px">diagramSvg mein SVG string daalo</span></p></div>`;
+
+  return `
+    <div class="dd-inner">
+      <div class="info-row">
+        <div class="info-block ib-what">
+          <div class="info-block-title">🔍 Kya hai?</div>
+          <div class="info-block-body">${d.what||'—'}</div>
+        </div>
+        <div class="info-block ib-why">
+          <div class="info-block-title">⚡ Kyon?</div>
+          <div class="info-block-body">${d.why||'—'}</div>
+        </div>
+      </div>
+      <div class="info-block ib-how">
+        <div class="info-block-title">🔄 Kaise kaam karta hai?</div>
+        <div class="info-block-body">${d.how||'—'}</div>
+      </div>
+      <div class="deriv-block">
+        <div class="info-block-title">📐 Derivation / Proof</div>
+        <div class="info-block-body">${(d.derivation||'—').replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-block ib-how">
+          <div class="info-block-title">🧪 Example</div>
+          <div class="info-block-body" style="font-size:12.5px">${(d.example||'—').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${diag}
+      </div>
+      <div class="use-row">
+        <div class="use-block ub-yes">
+          <div class="use-block-title">✅ Kab use karo</div>
+          <div class="use-block-body">${d.useYes||'—'}</div>
+        </div>
+        <div class="use-block ub-no">
+          <div class="use-block-title">❌ Kab nahi karo</div>
+          <div class="use-block-body">${d.useNo||'—'}</div>
+        </div>
+      </div>
+      <div class="exam-block">
+        <span class="exam-tag">📝 REAL EXAM</span>
+        <span class="exam-q">${(d.examQ||'Add exam question here.').replace(/\n/g,'<br>')}</span>
+      </div>
+    </div>`;
+}
+
+function buildCard(data, idx) {
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.animationDelay = (idx * 80) + 'ms';
+
+  const stripe = document.createElement('div');
+  stripe.className = 'card-stripe ' + (data.stripe || '');
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  // head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const numEl = document.createElement('div');
+  numEl.className = 'card-num';
+  numEl.textContent = data.number || '·';
+  const titleArea = document.createElement('div');
+  titleArea.className = 'card-title-area';
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = data.title || 'Untitled';
+  titleArea.appendChild(titleEl);
+  if (data.badge) {
+    const b = document.createElement('span');
+    b.className = 'card-badge star';
+    b.textContent = data.badge;
+    titleArea.appendChild(b);
+  }
+  head.appendChild(numEl);
+  head.appendChild(titleArea);
+
+  // formula
+  const fbox = document.createElement('div');
+  fbox.className = 'formula-box';
+  fbox.innerHTML = data.formula || '…';
+
+  // desc
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.innerHTML = data.desc || '';
+
+  body.appendChild(head);
+  body.appendChild(fbox);
+  if (data.desc) body.appendChild(desc);
+
+  // toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'dd-toggle';
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML = `<span class="dd-label"><span class="dd-icon">${icon()}</span> Deep Dive · Purn Khandan</span><span style="font-size:11px;color:var(--text3);font-weight:400">derivation · example · diagram · exam Q</span>`;
+
+  // dive panel
+  const panel = document.createElement('div');
+  panel.className = 'dd-panel';
+  panel.innerHTML = buildDiveHTML(data.deepDive || {});
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  wrap.appendChild(stripe);
+  wrap.appendChild(body);
+  wrap.appendChild(toggle);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+// RENDER
+const main = document.getElementById('main');
+// chapter heading
+const ch = document.createElement('div');
+ch.className = 'chapter-label';
+ch.innerHTML = `<div class="chapter-line"></div><span>📚 Chapter Cards — ${cardsData.length} concepts</span><div class="chapter-line"></div>`;
+main.appendChild(ch);
+
+const grid = document.createElement('div');
+grid.className = 'cards-grid';
+cardsData.forEach((c, i) => grid.appendChild(buildCard(c, i)));
+main.appendChild(grid);
+
+})();
+</script>
+</body>
+</html>
